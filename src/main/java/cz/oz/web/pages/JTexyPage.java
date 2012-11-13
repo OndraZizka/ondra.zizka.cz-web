@@ -2,6 +2,7 @@ package cz.oz.web.pages;
 
 import cz.dynawest.jtexy.JTexy;
 import cz.dynawest.jtexy.TexyException;
+import cz.oz.web.WicketJavaEEApplication;
 import cz.oz.web.dao.TexyFileDaoBean;
 import java.io.File;
 import java.io.IOException;
@@ -33,13 +34,18 @@ public class JTexyPage extends WebPage {
     // Set up the dynamic behavior for the page, widgets bound by id
     public JTexyPage(PageParameters params) {
 
+        
+        // Construct the path to the texy file.
         StringBuilder sb = new StringBuilder();
         for( int i = 0; i < params.getIndexedCount(); i++ ) {
             sb.append('/').append(params.get(i));
         }
-        String path = sb.toString();
+        // Requested path. May be served from cache/db.
+        String reqPath = sb.toString();
         
-        File texyFile = new File(path);
+        // Filesystem path.
+        File rootPath = new File(((WicketJavaEEApplication)this.getApplication()).getSettings().getTexyFilesRootPath());
+        File texyFile = new File(rootPath, reqPath);
         
         if( ! texyFile.exists() ){
             add(new Label("content", "Doesn't exist: " + texyFile.getPath() ));

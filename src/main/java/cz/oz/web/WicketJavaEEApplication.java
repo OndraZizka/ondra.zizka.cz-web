@@ -76,6 +76,3 @@ public class WicketJavaEEApplication extends WebApplication {
     }
     
 }// class
-class Settings {
-    String texyFilesRootPath;
-}// class
