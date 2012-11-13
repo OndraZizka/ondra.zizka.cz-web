@@ -14,7 +14,7 @@ import org.apache.wicket.protocol.http.WebApplication;
 
 
 /**
- *
+ * Web app for http://ondra.zizka.cz
  * @author Ondrej Zizka
  */
 public class WicketJavaEEApplication extends WebApplication {
