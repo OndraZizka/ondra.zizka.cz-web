@@ -16,7 +16,6 @@
     <deployment>
         <!-- Exclusions allow you to prevent the server from automatically adding some dependencies.     -->
         <exclusions>
-            <module name="org.javassist" />
         </exclusions>
     </deployment>
     
