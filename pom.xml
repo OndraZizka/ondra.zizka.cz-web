@@ -1,72 +1,160 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>web</groupId>
-	<artifactId>web</artifactId>
-	<packaging>war</packaging>
-	<version>1.0</version>
-	<name>web</name>
-	<repositories>
-		<repository>
-			<id>eap</id>
-			<url>http://maven.repository.redhat.com/techpreview/all</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>eap</id>
-			<url>http://maven.repository.redhat.com/techpreview/all</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>1.6</maven.compiler.source>
-		<maven.compiler.target>1.6</maven.compiler.target>
-	</properties>
-	<dependencies>
-		<dependency>
-			<groupId>org.jboss.spec</groupId>
-			<artifactId>jboss-javaee-6.0</artifactId>
-			<version>3.0.0.Final-redhat-1</version>
-			<type>pom</type>
-			<scope>provided</scope>
-		</dependency>
-	</dependencies>
-	<profiles>
-		<profile>
-			<!-- When built in OpenShift the 'openshift' profile will be used when 
-				invoking mvn. -->
-			<!-- Use this profile for any OpenShift specific customization your app 
-				will need. -->
-			<!-- By default that is to put the resulting archive into the 'deployments' 
-				folder. -->
-			<!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html -->
-			<id>openshift</id>
-			<build>
-				<finalName>web</finalName>
-				<plugins>
-					<plugin>
-						<artifactId>maven-war-plugin</artifactId>
-						<version>2.1.1</version>
-						<configuration>
-							<outputDirectory>deployments</outputDirectory>
-							<warName>ROOT</warName>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cz.dynawest.ozcz</groupId>
+    <artifactId>ozcz-web</artifactId>
+    <version>1-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <name>OZ.cz web</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- JBoss dependency versions -->
+        <version.org.jboss.as.plugins.maven.plugin>7.3.Final</version.org.jboss.as.plugins.maven.plugin>
+        <!--
+        <version.org.jboss.spec.jboss.javaee.6.0>3.0.0.Final-redhat-1</version.org.jboss.spec.jboss.javaee.6.0>
+        -->
+        <version.org.jboss.spec.jboss.javaee.6.0>3.0.0.Final</version.org.jboss.spec.jboss.javaee.6.0>
+
+        <version.org.apache.wicket>6.2.0</version.org.apache.wicket>
+        <version.net.ftlines.wicket-cdi>6.0</version.net.ftlines.wicket-cdi>
+
+        <version.compiler.plugin>2.5.1</version.compiler.plugin>
+        <version.war.plugin>2.1.1</version.war.plugin>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.jboss.spec</groupId>
+                <artifactId>jboss-javaee-6.0</artifactId>
+                <version>${version.org.jboss.spec.jboss.javaee.6.0}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Wicket -->
+            <dependency>
+                <groupId>org.apache.wicket</groupId>
+                <artifactId>wicket-core</artifactId>
+                <version>${version.org.apache.wicket}</version>
+            </dependency>
+
+            <!-- Wicket Java EE integration. -->
+            <dependency>
+                <groupId>net.ftlines.wicket-cdi</groupId>
+                <artifactId>wicket-cdi</artifactId>
+                <version>${version.net.ftlines.wicket-cdi}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- Dependencies. -->
+
+    <dependencies>
+        <!-- "provided" scope used for API's included in JBoss AS 7. -->
+
+        <!-- Import the CDI API. -->
+        <dependency>
+            <groupId>javax.enterprise</groupId>
+            <artifactId>cdi-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Import the Common Annotations API (JSR-250). -->
+        <dependency>
+            <groupId>org.jboss.spec.javax.annotation</groupId>
+            <artifactId>jboss-annotations-api_1.1_spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Import the EJB API. -->
+        <dependency>
+            <groupId>org.jboss.spec.javax.ejb</groupId>
+            <artifactId>jboss-ejb-api_3.1_spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Import the JPA API. -->
+        <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.0-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+
+        <!-- Wicket -->
+        <dependency>
+            <groupId>org.apache.wicket</groupId>
+            <artifactId>wicket-core</artifactId>
+        </dependency>
+
+        <!-- Wicket CDI integration. -->
+        <dependency>
+            <groupId>net.ftlines.wicket-cdi</groupId>
+            <artifactId>wicket-cdi</artifactId>
+        </dependency>
+
+    </dependencies>
+
+
+    <build>
+        <!-- Set the name of the war, used as the context root when the app is deployed. -->
+        <finalName>${project.artifactId}</finalName>
+
+        <!-- Allow packaging the html files alongside the java sources. -->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <filtering>false</filtering>
+                <includes> <include>**</include> </includes>
+                <excludes> <exclude>**/*.java</exclude> </excludes>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <filtering>false</filtering>
+            </testResource>
+            <testResource>
+                <directory>src/test/java</directory>
+                <filtering>false</filtering>
+                <includes> <include>**</include> </includes>
+                <excludes> <exclude>**/*.java</exclude> </excludes>
+            </testResource>
+        </testResources>
+
+        <plugins>
+            <!-- JBoss AS plugin to deploy the war -->
+            <plugin>
+                <groupId>org.jboss.as.plugins</groupId>
+                <artifactId>jboss-as-maven-plugin</artifactId>
+                <version>${version.org.jboss.as.plugins.maven.plugin}</version>
+                <configuration>
+                    <fileNames>
+                        <fileName>target/${build.finalName}.war</fileName>
+                    </fileNames>
+                </configuration>
+            </plugin>
+            
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${version.compiler.plugin}</version>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
+
