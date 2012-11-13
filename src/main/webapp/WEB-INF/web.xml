@@ -20,10 +20,9 @@
         <filter-name>Wicket</filter-name>
         <filter-class>org.apache.wicket.protocol.http.WicketFilter</filter-class>
         <init-param>
-            <!-- Specify the "entry point" for Wicket to configure itself 
-                from -->
+            <!-- Specify the "entry point" for Wicket to configure itself from. -->
             <param-name>applicationClassName</param-name>
-            <param-value>org.jboss.as.quickstarts.wicketWar.WicketJavaEEApplication</param-value>
+            <param-value>cz.oz.web.WicketJavaEEApplication</param-value>
         </init-param>
     </filter>
 
