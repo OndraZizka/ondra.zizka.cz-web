@@ -1,0 +1,19 @@
+<jboss-deployment-structure
+    xmlns="urn:jboss:deployment-structure:1.2"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+    urn:jboss:deployment-structure:1.0 http://www.jboss.org/schema/jbossas/jboss-deployment-structure-1_0.xsd
+    urn:jboss:deployment-structure:1.2 https://raw.github.com/jbossas/jboss-as/master/build/src/main/resources/docs/schema/jboss-deployment-structure-1_2.xsd
+">
+    
+    <!-- See https://docs.jboss.org/author/display/AS71/Class+Loading+in+AS7 -->
+    
+    <!-- TODO: Exclude logging.properties from dependencies. -->
+    <deployment>
+        <!-- Exclusions allow you to prevent the server from automatically adding some dependencies.     -->
+        <exclusions>
+            <module name="org.javassist" />
+        </exclusions>
+    </deployment>
+    
+</jboss-deployment-structure>

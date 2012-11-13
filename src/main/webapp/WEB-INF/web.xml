@@ -24,9 +24,9 @@
 
     <!-- A message displayed on the page, externalized into web.xml -->
     <env-entry>
-        <env-entry-name>welcomeMessage</env-entry-name>
+        <env-entry-name>texyFilesRootPath</env-entry-name>
         <env-entry-type>java.lang.String</env-entry-type>
-        <env-entry-value>Welcome to the JBoss AS Quickstart showing the use of Wicket, packaged in an EAR</env-entry-value>
+        <env-entry-value>/home/ondra/uw/oz.cz/web/pages</env-entry-value>
     </env-entry>
 
 </web-app>
