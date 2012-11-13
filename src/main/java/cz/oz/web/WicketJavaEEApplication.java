@@ -30,48 +30,50 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.as.quickstarts.wicketWar.dao;
+package cz.oz.web;
 
-import java.util.List;
+import cz.oz.web.pages.InsertContact;
+import cz.oz.web.pages.ListContacts;
+import static net.ftlines.wicket.cdi.ConversationPropagation.NONE;
 
-import javax.ejb.Local;
+import javax.enterprise.inject.spi.BeanManager;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 
-import org.jboss.as.quickstarts.wicketWar.model.Contact;
+import net.ftlines.wicket.cdi.CdiConfiguration;
+
+import org.apache.wicket.Page;
+import org.apache.wicket.protocol.http.WebApplication;
+
 
 /**
  *
- * @author Filippo Diotalevi
+ * @author Ondrej Zizka
  */
-@Local
-public interface ContactDao {
+public class WicketJavaEEApplication extends WebApplication {
 
-    /**
-     * Returns the currently available contacts.
-     *
-     * @return every contact in the database
-     */
-    public List<Contact> getContacts();
+    @Override
+    public Class<? extends Page> getHomePage() {
+        return ListContacts.class;
+    }
 
-    /**
-     * Returns a specific Contact from DB.
-     *
-     * @param id The Id for the Contact
-     * @return The specified Contact object
-     */
-    public Contact getContact(Long id);
+    @Override
+    protected void init() {
+        super.init();
 
-    /**
-     * Persist a new Contact in the DB.
-     *
-     * @param name The name of the new Contact
-     * @param email The e-mail address of the new Contact
-     */
-    public void addContact(String name, String email);
+        // Enable CDI
+        BeanManager bm;
+        try {
+            bm = (BeanManager) new InitialContext().lookup("java:comp/BeanManager");
+        } catch (NamingException e) {
+            throw new IllegalStateException("Unable to obtain CDI BeanManager", e);
+        }
 
-    /**
-     * Removes a specific item from the DB.
-     *
-     * @param modelObject The specific Contact object, which we wants to remove
-     */
-    public void remove(Contact modelObject);
+        // Configure CDI, disabling Conversations as we aren't using them
+        new CdiConfiguration(bm).setPropagation(NONE).configure(this);
+
+        // Mount the InsertContact page at /insert
+        mountPage("/insert", InsertContact.class);
+    }
+    
 }
