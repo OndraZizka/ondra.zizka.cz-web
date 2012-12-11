@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250"/>
+	<meta name="Author" content="Ondra Žižka, ondra at dynawest.cz; Design by Petr Záveský, petr.zavesky@seznam.cz"/>
+	<meta name="Keywords" content="ÚVSSR, výroba, výrobní stroje, výrobní systémy, roboty, robotika, Brno, VUT, FSI, strojní fakulta"/>
+	<meta name="Description" content="Web Ústavu výrobních strojů, systémů a robotiky"/>
+	<link rel="stylesheet" type="text/css" href="<?=WEB_ROOT_URL?>css/dw_styles.css"/>
+	<link rel="stylesheet" type="text/css" href="<?=WEB_ROOT_URL?>css/styl.css"/>
+  <?if( @$_AKCE['page.favicon'] ){?>
+    <link rel="shortcut icon" href="<?=hs($_AKCE['page.favicon'])?>">
+  <?}?>
+  <script type="text/javascript" charset="windows-1250" src="<?=WEB_ROOT_URL?>js/jquery.js.php"></script>
+  <script type="text/javascript" charset="windows-1250" src="<?=WEB_ROOT_URL?>js/logout.js"></script>
+<script type="text/javascript">
+function ShowMenuSekce( eSekce ){
+  $("ul.level0>li").addClass("collapsed");
+  $(eSekce).removeClass("collapsed");
+}
+//window.onload = function(){ $("ul.level0>li").addClass("collapsed"); }
+</script>
+<title><?=$_AKCE['page.title']?></title></head>
+<body>
+
+<!--  Header  -->
+<div class="UNIcenter">
+  <div id="header">
+    <span class="datum"><?=$_AKCE['datum']?></span>
+    <span class="svatek">Svátek má <?=$_AKCE['svatek.dnes']?>, zítra <?=$_AKCE['svatek.zitra']?></span>
+  </div>
+</div>
+
+
+<!--  Nadpis hlavní  -->
+<div id="nadpis">
+<table border="0" align="center" width="736" cellspacing="0" cellpadding="0">
+	<tr><td id="title_part1" width="192" height="97">&nbsp;</td>
+	<td id="title_part2" width="387" height="97">
+		<h1 class="title"><?=str_replace('.', '<span>.</span>', @$_AKCE['nadpis']);?></h1>
+	</td><td id="title_part3" width="157" height="97" valign="bottom">
+		<table border="0" cellspacing="0" cellpadding="0">
+			<tr><td height="70"></td></tr>
+			<tr><td align="right" valign="top" width="82" height="27">
+				<span class="counter">Vidělo <?=$_AKCE['visitors']?> lidí</span></td>
+		</tr></table>
+	</td></tr>
+</table>
+</div>
+<!-- Nadpis hlavní KONEC -->
+
+
+
+<div id="main">
+  <!-- MAIN TABLE -->
+  <table align="center" border="0" width="1000" cellspacing="0" cellpadding="0"><tr>
+  <!-- Menu -->
+  <td valign="top">
+    <div id="menu_container">
+
+
+          <!-- Login -->
+          <div class="login">
+          <?if( IsLoggedUserValid() ){?>
+            <div>Přihlášený: <?=GetLoggedUser()?></div>
+            <div>Role: <?=GetLoggedUserRoles()?></div>
+            <a href="#" onclick="Logout();">Odhlásit</a>
+          <?}else{?>
+            <a href="<?=WEB_ROOT_URL?>Login.php?<?=time()?>">Přihlášení...</a>
+          <?}?>
+          </div>
+
+          <!-- Menu -->
+          <div class="menu">
+            <?=($_AKCE['menu.html'])?>
+          </div>
+
+
+    	<hr class="cistic" />
+    </div>
+  </td><!-- Menu KONEC -->
+
+
+
+  <!-- MAIN CELL -->
+  <td valign="top" width="850">
+
+          <!-- Obsah -->
+          <div class="obsah" id="obsah">
+            <?if( is_array( @$_AKCE['page.content.parts'] ) )
+              foreach( $_AKCE['page.content.parts'] as $aPart ){?>
+                <?if( !@$aPart['html'] ){?>
+                  <!-- Položka obsahu nemá HTML obsah. Zdroj: <?=@$aPart['src.rel']?> -->
+                <? continue; }?>
+              <div class="zaznam">
+                <?if($_AKCE['zobraz_cas'] && @$aPart['changed']){?>
+                  <div class="zmeneno"><?=date('j.n.Y H:i', $aPart['changed'])?></div><?}?>
+                <?if(@$aPart['writable']){?><div class="admin edit">
+                  [<a href="~edit~/<?=$aPart['src.rel']?>">upravit</a>]
+                </div><?}?>
+                <div class="content"><?=$aPart['html'];?></div>
+                <div class="cistic"><!--  --></div>
+              </div>
+            <?}//foreach
+            else{
+              echo @$_AKCE['page.content.html'];
+            }?>
+            <span class="konec-odrazka" style="font-size: 200%;">
+              <!-- &#x062A; &#x0643; &#xFDF2; &#x06DE; -->
+              <!-- &#x25A1; -->
+            </span>
+          </div>
+
+  </td>
+  <!-- MAIN CELL KONEC -->
+
+
+
+  </tr>
+  <tr><td colspan="2" height="1" bgcolor="#000000"></td></tr><!-- carka -->
+  </table>
+  <!-- MAIN TABLE KONEC -->
+  <!-- <hr class="cistic" size="0"/> -->
+</div>
+
+
+<div id="pocitadla" class="">
+  <div class="pocitadlo" id="moje">
+  <script language="JavaScript" type="text/javascript">
+  document.write("<img src='http://ondra.zizka.cz/log/?id=1&ref=" + escape(top.document.referrer)
+   + "&res=" + screen.width + "x" + screen.height + "&cd=" + screen.colorDepth + "' width='14' height='14' alt=''>");
+  </script><noscript><img src="http://ondra.zizka.cz/log/?id=1" width="14" height="14"/></noscript>
+  </div>
+  <div class="pocitadlo" id="navrcholu">
+    <script src="http://c1.navrcholu.cz/code?site=116753;t=lb14" type="text/javascript"></script><noscript><div><a target="_blank" href="http://navrcholu.cz/"><img src="http://c1.navrcholu.cz/hit?site=116753;t=lb14;ref=;jss=0" width="14" height="14" alt="Statistiky NaVrcholu.cz" style="border:none" /></a></div></noscript>
+  </div>
+  <!-- Driv: code?site=79008;t=lb14" -->
+  <div class="pocitadlo" id="toplist">
+  <a target="_blank" href="http://toplist.cz/stat/117144"><script language="JavaScript" type="text/javascript"><!--
+  document.write('<img src="http://toplist.cz/count.asp?id=117144&amp;start=806&amp;logo=2&amp;http='
+  +escape(document.referrer)+'&amp;wi='+escape(window.screen.width)+'&he='+escape(window.screen.height)
+  +'&amp;cd='+escape(window.screen.colorDepth)+'" width="36" height="14" border="0" alt="TOPlist statistiky" />');
+  //--></script><noscript><img src="http://toplist.cz/count.asp?id=117144&amp;start=1&amp;logo=2" border="0" alt="TOPlist statistiky" width="36" height="14"/></noscript></a>
+  </div>
+  <!-- ClustrMaps.com -->
+  <a href="http://www4.clustrmaps.com/user/64952149"><img src="http://www4.clustrmaps.com/stats/maps-no_clusters/ondra.zizka.cz--thumb.jpg" alt="0" border="0" width="14" height="14" /></a>
+</div><!-- pocitadla -->
+
+</div>
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-4584951-1";
+urchinTracker();
+</script>
+
+</body></html>
