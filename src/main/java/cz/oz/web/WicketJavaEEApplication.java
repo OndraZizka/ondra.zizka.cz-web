@@ -9,6 +9,9 @@ import javax.naming.NamingException;
 import net.ftlines.wicket.cdi.CdiConfiguration;
 import org.apache.wicket.Page;
 import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.request.resource.PackageResourceReference;
+import org.apache.wicket.request.resource.ResourceReference;
+import org.apache.wicket.request.resource.SharedResourceReference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -51,6 +54,10 @@ public class WicketJavaEEApplication extends WebApplication {
         
         // Mount all paths to JTexy.
         mountPage("/pages", JTexyPage.class);
+
+        ResourceReference favicon = new SharedResourceReference("favicon.gif");
+        //mount("/favicon.gif", rrefFavicon.getSharedResourceKey());
+        mountResource("favicon.gif", favicon);
     }
 
     
