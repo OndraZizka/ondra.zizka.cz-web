@@ -55,6 +55,7 @@ public class WicketJavaEEApplication extends WebApplication {
         // Mount all paths to JTexy.
         mountPage("/pages", JTexyPage.class);
 
+        // Resources
         ResourceReference favicon = new SharedResourceReference("favicon.gif");
         //mount("/favicon.gif", rrefFavicon.getSharedResourceKey());
         mountResource("favicon.gif", favicon);
