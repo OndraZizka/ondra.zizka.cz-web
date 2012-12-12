@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs-CZ" lang="cs-CZ"
+      xmlns:wicket="http://git-wip-us.apache.org/repos/asf/wicket/repo?p=wicket.git;a=blob_plain;f=wicket-core/src/main/resources/META-INF/wicket-1.5.xsd;hb=master">
+<head>
+	<meta name="Author" content="Ondra Žižka, ondra at dynawest.cz"/>
+    <!--
+	<link rel="stylesheet" type="text/css" href="css/dw_styles.css"/>
+	<link rel="stylesheet" type="text/css" href="css/styl.css"/>
+    -->
+    <link wicket:id="favicon" rel="shortcut icon" href="img/favicon.gif"/>
+    <script type="text/javascript" charset="windows-1250" src="js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript">
+        function ShowMenuSekce( eSekce ){
+            $("ul.level0>li").addClass("collapsed");
+            $(eSekce).removeClass("collapsed");
+        }
+        //window.onload = function(){ $("ul.level0>li").addClass("collapsed"); }
+    </script>
+    <title>Ondra.Zizka.cz</title>
+</head>
+<body>
+
+<!--  Header  -->
+<div class="UNIcenter">
+    <div id="header">
+        <span class="datum">12.12.2012</span>
+        <span class="svatek">Svátek má <span wicket:id="svatek">Ondra</span>, zítra <span wicket:id="svatekZitra">Andrea</span></span>
+    </div>
+</div>
+
+
+<!--  Nadpis hlavní  -->
+<div wicket:id="nadpis" id="nadpis"/>
+
+
+
+<div id="main">
+    <!-- MAIN TABLE -->
+    <table align="center" border="0" width="1000" cellspacing="0" cellpadding="0"><tr>
+
+        <!-- Sidebar -->
+        <td valign="top">
+            <div wicket:id="sidebar" id="menu_container"/>
+        </td>
+        <!-- Sidebar konec -->
+
+
+        <!-- MAIN CELL -->
+        <td valign="top" width="850">
+
+            <!-- Obsah -->
+            <div wicket:id="obsah" id="obsah" class="obsah">
+                <wicket:child/>
+            </div>
+
+        </td>
+        <!-- MAIN CELL KONEC -->
+
+    </tr>
+    <tr><td colspan="2" height="1" bgcolor="#000000"></td></tr><!-- carka -->
+    </table>
+    <!-- MAIN TABLE KONEC -->
+</div>
+
+
+<div wicket:id="pocitadla" id="pocitadla"/>
+
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+<script type="text/javascript"> _uacct = "UA-4584951-1"; urchinTracker(); </script>
+
+<div wicket:id="debugBar"/>
+
+</body></html>

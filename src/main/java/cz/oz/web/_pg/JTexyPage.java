@@ -1,4 +1,4 @@
-package cz.oz.web.pages;
+package cz.oz.web._pg;
 
 import cz.dynawest.jtexy.JTexy;
 import cz.dynawest.jtexy.TexyException;

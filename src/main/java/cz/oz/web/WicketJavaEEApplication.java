@@ -1,6 +1,6 @@
 package cz.oz.web;
 
-import cz.oz.web.pages.JTexyPage;
+import cz.oz.web._pg.JTexyPage;
 import static net.ftlines.wicket.cdi.ConversationPropagation.NONE;
 import javax.enterprise.inject.spi.BeanManager;
 import javax.naming.Context;

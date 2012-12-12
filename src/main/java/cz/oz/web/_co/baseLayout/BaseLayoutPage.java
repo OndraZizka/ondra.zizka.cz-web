@@ -1,20 +1,19 @@
-package cz.oz.web.pages;
+package cz.oz.web._co.baseLayout;
 
+import cz.oz.web._co.baseLayout.ContentPanel;
+import cz.oz.web._co.baseLayout.HeaderPanel;
+import cz.oz.web._co.baseLayout.PocitadlaPanel;
+import cz.oz.web._co.baseLayout.SidebarPanel;
 import org.apache.wicket.Session;
 import org.apache.wicket.devutils.debugbar.DebugBar;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.request.resource.CssResourceReference;
-import org.jboss.essc.web._cp.pagePanes.HeaderPanel;
-import org.jboss.essc.web._cp.pagePanes.SidebarPanel;
 import cz.oz.web.security.EsscAuthSession;
-import cz.oz.web.wicket.FavIconHeaderContributor;
 import cz.oz.web.wicket.FavIconLink;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
-import org.apache.wicket.request.resource.ResourceReference;
-import org.apache.wicket.request.resource.SharedResourceReference;
 
 
 /**
@@ -40,10 +39,13 @@ public class BaseLayoutPage extends WebPage {
 
         add( new DebugBar("debugBar") );
         
-        add( new HeaderPanel("header") );
+        add( new HeaderPanel("nadpis") );
         
         add( new SidebarPanel("sidebar") );
-        
+
+        add( new ContentPanel("obsah") );
+
+        add( new PocitadlaPanel("pocitadla") );
     }
     
     
@@ -54,6 +56,4 @@ public class BaseLayoutPage extends WebPage {
         return (EsscAuthSession) Session.get();
     }
     
-    
-
 }// class

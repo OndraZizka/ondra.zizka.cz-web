@@ -1,0 +1,26 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wicket="http://git-wip-us.apache.org/repos/asf/wicket/repo?p=wicket.git;a=blob_plain;f=wicket-core/src/main/resources/META-INF/wicket-1.5.xsd;hb=master">
+<wicket:panel>
+
+    <!-- Login -->
+    <div class="login">
+
+        <wicket:container wicket:id="userBox">
+            <div>Přihlášený: <span wicket:id="user">XXX</span></div>
+            <div>Role: <span wicket:id="role">XXX</span></div>
+            <a wicket:id="logout" href="#">Odhlásit</a>
+        </wicket:container>
+
+        <wicket:container wicket:id="noUserBox">
+            <a wicket:id="login" href="#">Přihlášení...</a>
+        </wicket:container>
+        
+    </div>
+
+    <!-- Menu -->
+    <div wicket:id="menu" class="menu"/>
+
+    <hr class="cistic" />
+    
+</wicket:panel>
+</html>
