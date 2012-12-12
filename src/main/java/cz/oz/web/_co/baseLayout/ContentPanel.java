@@ -11,7 +11,7 @@ import org.apache.wicket.markup.html.panel.Panel;
  */
 public class ContentPanel extends Panel {
 
-    @Inject private EntityManager em;
+    //@Inject private EntityManager em;
 
     public ContentPanel( String id ) {
         super( id );

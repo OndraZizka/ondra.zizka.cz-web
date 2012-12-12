@@ -35,7 +35,7 @@ public class BaseLayoutPage extends WebPage {
 
         add( new DebugBar("debugBar") );
         
-        //add( new HeaderPanel("nadpis") );
+        add( new HeaderPanel("header") );
         
         add( new SidebarPanel("sidebar") );
 

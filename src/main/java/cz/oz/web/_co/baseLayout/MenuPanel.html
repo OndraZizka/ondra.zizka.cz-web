@@ -1,19 +1,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:wicket="http://git-wip-us.apache.org/repos/asf/wicket/repo?p=wicket.git;a=blob_plain;f=wicket-core/src/main/resources/META-INF/wicket-1.5.xsd;hb=master">
-<wicket:panel>
+    <wicket:panel>
 
-    <table border="0" align="center" width="736" cellspacing="0" cellpadding="0">
-        <tr><td id="title_part1" width="192" height="97">&nbsp;</td>
-        <td id="title_part2" width="387" height="97">
-            <h1 wicket:id="title" class="title">Ondra<span>.</span>Zizka<span>.</span>cz</h1>
-        </td><td id="title_part3" width="157" height="97" valign="bottom">
-            <table border="0" cellspacing="0" cellpadding="0">
-                <tr><td height="70"></td></tr>
-                <tr><td align="right" valign="top" width="82" height="27">
-                    <span class="counter">Vidělo <span wicket:id="seenCount">1234</span> lidí</span></td>
-            </tr></table>
-        </td></tr>
-    </table>
-    
-</wicket:panel>
+        <!--stranky/uvodni_stranka.texy-->
+        <ul xmlns:php="http://php.net/xsl" id="menu" class="flat level0">
+            <li onclick="ShowMenuSekce(this);" class="level0 collapsed "><span>Programování</span><ul class="flat level1"><li><a href="/stranky/programovani/index.texy">Rozcestník...</a></li><li><a href="/stranky/programovani/insolvencni_rejstrik-isir_ws/index.texy">Insolvenční rejstřík - ISIR WS</a></li><li><a href="/stranky/programovani/java/index.texy">Java + J2EE</a></li><li><a href="/stranky/programovani/sql/index.texy">(My)SQL</a></li><li><a href="/stranky/programovani/artificial_intelligence/index.texy">Neural Networks</a></li><li><a href="/stranky/programovani/web_javascript_ajax_canvas/canvas_element_selection_buffer.texy">Web, JavaScript, AJAX, Canvas</a></li><a href="/tools/">Text tools</a></ul></li>
+            <li onclick="ShowMenuSekce(this);" class="level0 collapsed "><span>"Realitní kancelář"</span><ul class="flat level1"><li><a href="/stranky/realitni_kancelar/chaty_a_chalupy.texy">Chaty a chalupy</a></li></ul></li>
+            <li onclick="ShowMenuSekce(this);" class="level0 collapsed "><span>Osobní</span><ul class="flat level1"><li><a href="/stranky/osobni/kontakty.texy">Kontakty</a></li><li><a href="/stranky/osobni/poznamky.texy">Poznámky a postřehy</a></li><li><a href="/stranky/osobni/prodavam_shanim.texy">Prodávám / sháním</a></li></ul></li>
+            <li onclick="ShowMenuSekce(this);" class="level0 collapsed "><span>Odkazy</span><ul class="flat level1"><li><a href="/stranky/odkazy/software.texy">Zajímavý software</a></li><li><a href="/stranky/odkazy/pratele.texy">Přátelé</a></li></ul></li>
+            <li onclick="ShowMenuSekce(this);" class="level0 collapsed "><span>Donation</span></li>
+        </ul>
+
+
+    </wicket:panel>
 </html>

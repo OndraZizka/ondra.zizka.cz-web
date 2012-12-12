@@ -19,6 +19,7 @@ public class HeaderPanel extends Panel {
         super( id );
 
         add( new Label("title", "Ondra<span>.</span>Zizka<span>.</span>cz").setEscapeModelStrings(false) );
+        //add( new Label("seenCount", new SeenCountModel(this.getPage()) ));
         add( new Label("seenCount", new SeenCountModel(this.getPage()) ));
     }
 
