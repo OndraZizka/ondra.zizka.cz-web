@@ -2,6 +2,7 @@
 package cz.oz.web._co.baseLayout;
 
 import cz.oz.web._pg.ICountablePage;
+import cz.oz.web.util.Svatek;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.inject.Inject;
@@ -20,9 +21,12 @@ public class HeaderPanel extends Panel {
     public HeaderPanel( String id ) {
         super( id );
 
-        add( new Label("datum", new SimpleDateFormat().format( new Date(this.getRequestCycle().getStartTime()) ) ));
-        add( new Label("svatek", new SimpleDateFormat().format( new Date(this.getRequestCycle().getStartTime()) ) ));
+        // Datum, svátek.
+        Date now = new Date(this.getRequestCycle().getStartTime());
+        add( new Label("datum", new SimpleDateFormat().format( now ) ));
+        add( new Label("svatek", Svatek.getSvatekByDate( now ) ));
 
+        // Nadpis, počitadlo.
         add( new Label("title", "Ondra<span>.</span>Zizka<span>.</span>cz").setEscapeModelStrings(false) );
         //add( new Label("seenCount", new SeenCountModel(this.getPage()) ));
         add( new Label("seenCount", "12345" ));
