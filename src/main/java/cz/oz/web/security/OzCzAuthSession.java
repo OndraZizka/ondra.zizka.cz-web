@@ -15,7 +15,7 @@ import org.apache.wicket.request.Request;
  * 
  * @author ozizka@redhat.com
  */
-public class EsscAuthSession extends AuthenticatedWebSession {
+public class OzCzAuthSession extends AuthenticatedWebSession {
     
     @Inject private UserDaoBean userDao;
     
@@ -26,7 +26,7 @@ public class EsscAuthSession extends AuthenticatedWebSession {
     
     
 
-    public EsscAuthSession( Request request ) {
+    public OzCzAuthSession( Request request ) {
         super( request );
     }
 

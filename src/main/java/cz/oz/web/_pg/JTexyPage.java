@@ -3,6 +3,7 @@ package cz.oz.web._pg;
 import cz.dynawest.jtexy.JTexy;
 import cz.dynawest.jtexy.TexyException;
 import cz.oz.web.WicketJavaEEApplication;
+import cz.oz.web._co.baseLayout.BaseLayoutPage;
 import cz.oz.web.dao.TexyFileDaoBean;
 import java.io.File;
 import java.io.IOException;
@@ -10,7 +11,6 @@ import java.nio.charset.Charset;
 import javax.inject.Inject;
 import org.apache.commons.io.FileUtils;
 
-import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
@@ -22,7 +22,7 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
  * @author Ondrej Zizka
  */
 @SuppressWarnings("serial")
-public class JTexyPage extends WebPage {
+public class JTexyPage extends BaseLayoutPage {
 
     // Inject the ContactDao using @Inject
     @Inject

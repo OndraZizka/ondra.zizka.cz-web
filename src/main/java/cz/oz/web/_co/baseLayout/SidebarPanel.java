@@ -2,7 +2,7 @@
 package cz.oz.web._co.baseLayout;
 
 import cz.oz.web._pg.LoginPage;
-import cz.oz.web.security.EsscAuthSession;
+import cz.oz.web.security.OzCzAuthSession;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
@@ -18,7 +18,7 @@ public class SidebarPanel extends Panel {
     public SidebarPanel( String id ) {
         super( id );
 
-        EsscAuthSession sess = (EsscAuthSession)getSession();
+        OzCzAuthSession sess = (OzCzAuthSession)getSession();
 
         // User menu box.
         add( new WebMarkupContainer("userBox"){{

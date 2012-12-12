@@ -8,7 +8,7 @@ import org.apache.wicket.Session;
 import org.apache.wicket.devutils.debugbar.DebugBar;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.request.resource.CssResourceReference;
-import cz.oz.web.security.EsscAuthSession;
+import cz.oz.web.security.OzCzAuthSession;
 import cz.oz.web.wicket.FavIconLink;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -52,8 +52,8 @@ public class BaseLayoutPage extends WebPage {
     /**
      *  Global helper to avoid casting everywhere.
      */
-    public EsscAuthSession getSession(){
-        return (EsscAuthSession) Session.get();
+    public OzCzAuthSession getSession(){
+        return (OzCzAuthSession) Session.get();
     }
     
 }// class

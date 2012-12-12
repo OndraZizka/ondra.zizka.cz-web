@@ -2,6 +2,11 @@ package cz.oz.web;
 
 import cz.oz.web._pg.JTexyPage;
 import cz.oz.web._pg.JTexyTestPage;
+import cz.oz.web.model.User;
+import cz.oz.web.qualifiers.CurrentSession;
+import cz.oz.web.qualifiers.LoggedIn;
+import cz.oz.web.security.OzCzAuthSession;
+import javax.enterprise.inject.Produces;
 import static net.ftlines.wicket.cdi.ConversationPropagation.NONE;
 import javax.enterprise.inject.spi.BeanManager;
 import javax.naming.Context;
@@ -9,8 +14,10 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import net.ftlines.wicket.cdi.CdiConfiguration;
 import org.apache.wicket.Page;
+import org.apache.wicket.Session;
 import org.apache.wicket.protocol.http.WebApplication;
-import org.apache.wicket.request.resource.PackageResourceReference;
+import org.apache.wicket.request.Request;
+import org.apache.wicket.request.Response;
 import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.request.resource.SharedResourceReference;
 import org.slf4j.Logger;
@@ -69,7 +76,6 @@ public class WicketJavaEEApplication extends WebApplication {
         return settings;
     }
 
-    
     private Settings createSettings() {
         Settings settings = new Settings();
         
@@ -84,5 +90,20 @@ public class WicketJavaEEApplication extends WebApplication {
         
         return settings;
     }
+
     
+    @Override
+    public Session newSession( Request request, Response response ) {
+        return new OzCzAuthSession( request );
+    }
+
+    // CDI beans producers.
+    @Produces @LoggedIn User getCurrentUser(){
+        return ((OzCzAuthSession) Session.get()).getUser();
+    }
+
+    @Produces @CurrentSession OzCzAuthSession getCurrentSession(){
+        return (OzCzAuthSession) Session.get();
+    }
+
 }// class
