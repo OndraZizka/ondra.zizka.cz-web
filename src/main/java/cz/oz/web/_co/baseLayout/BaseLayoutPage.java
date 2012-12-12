@@ -1,9 +1,5 @@
 package cz.oz.web._co.baseLayout;
 
-import cz.oz.web._co.baseLayout.ContentPanel;
-import cz.oz.web._co.baseLayout.HeaderPanel;
-import cz.oz.web._co.baseLayout.PocitadlaPanel;
-import cz.oz.web._co.baseLayout.SidebarPanel;
 import org.apache.wicket.Session;
 import org.apache.wicket.devutils.debugbar.DebugBar;
 import org.apache.wicket.markup.html.WebPage;
@@ -39,7 +35,7 @@ public class BaseLayoutPage extends WebPage {
 
         add( new DebugBar("debugBar") );
         
-        add( new HeaderPanel("nadpis") );
+        //add( new HeaderPanel("nadpis") );
         
         add( new SidebarPanel("sidebar") );
 
