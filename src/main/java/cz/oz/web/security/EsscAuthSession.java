@@ -1,13 +1,13 @@
 
 package cz.oz.web.security;
 
+import cz.oz.web.dao.UserDaoBean;
+import cz.oz.web.model.User;
 import javax.inject.Inject;
 import javax.persistence.NoResultException;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
 import org.apache.wicket.authroles.authorization.strategies.role.Roles;
 import org.apache.wicket.request.Request;
-import org.jboss.essc.web.dao.UserDaoBean;
-import org.jboss.essc.web.model.User;
 
 
 /**
