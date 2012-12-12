@@ -51,7 +51,7 @@ public class LoginPage extends BaseLayoutPage {
                     //if( !  LoginPage.this.getSession().authenticate( user ) )
                     if( !  LoginPage.this.getSession().signIn( user.getName(), user.getPass() ) )
                         throw new NoResultException("No such user.");
-                    setResponsePage(JTexyPage.class);
+                    setResponsePage(JTexyTestPage.class);
                 }
                 catch( NoResultException ex ){
                     //setResponsePage(HomePage.class);

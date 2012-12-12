@@ -1,6 +1,7 @@
 package cz.oz.web;
 
 import cz.oz.web._pg.JTexyPage;
+import cz.oz.web._pg.JTexyTestPage;
 import static net.ftlines.wicket.cdi.ConversationPropagation.NONE;
 import javax.enterprise.inject.spi.BeanManager;
 import javax.naming.Context;
@@ -28,7 +29,7 @@ public class WicketJavaEEApplication extends WebApplication {
     
     @Override
     public Class<? extends Page> getHomePage() {
-        return JTexyPage.class;
+        return JTexyTestPage.class;
     }
 
     
@@ -53,6 +54,7 @@ public class WicketJavaEEApplication extends WebApplication {
         //mountPage("/add", InsertContact.class);
         
         // Mount all paths to JTexy.
+        mountPage("/test", JTexyTestPage.class);
         mountPage("/pages", JTexyPage.class);
 
         // Resources
