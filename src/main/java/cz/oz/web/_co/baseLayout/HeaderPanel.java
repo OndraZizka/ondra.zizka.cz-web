@@ -22,9 +22,11 @@ public class HeaderPanel extends Panel {
         super( id );
 
         // Datum, svátek.
-        Date now = new Date(this.getRequestCycle().getStartTime());
+        Date now  = new Date(this.getRequestCycle().getStartTime());
+        Date tmrw = new Date(this.getRequestCycle().getStartTime() + 24*3600*1000 );
         add( new Label("datum", new SimpleDateFormat().format( now ) ));
-        add( new Label("svatek", Svatek.getSvatekByDate( now ) ));
+        add( new Label("svatek",      Svatek.getSvatekByDate( now ) ));
+        add( new Label("svatekZitra", Svatek.getSvatekByDate( tmrw    ) ));
 
         // Nadpis, počitadlo.
         add( new Label("title", "Ondra<span>.</span>Zizka<span>.</span>cz").setEscapeModelStrings(false) );
