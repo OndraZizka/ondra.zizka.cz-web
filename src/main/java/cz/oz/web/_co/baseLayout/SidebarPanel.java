@@ -24,7 +24,7 @@ public class SidebarPanel extends Panel {
         add( new WebMarkupContainer("userBox"){{
             add( new Label("user", "Franta")); // TODO
             add( new Label("role", "user"));
-            add( new Link(("logout")) {
+            add( new Link(("logoutLink")) {
                 @Override public void onClick() {
                     getSession().invalidate();
                 }

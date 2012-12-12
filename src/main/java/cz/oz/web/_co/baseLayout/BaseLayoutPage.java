@@ -39,7 +39,7 @@ public class BaseLayoutPage extends WebPage {
         
         add( new SidebarPanel("sidebar") );
 
-        add( new ContentPanel("obsah") );
+        //add( new ContentPanel("obsah") );
 
         add( new PocitadlaPanel("pocitadla") );
     }
