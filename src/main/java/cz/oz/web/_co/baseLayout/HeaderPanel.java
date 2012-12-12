@@ -2,6 +2,8 @@
 package cz.oz.web._co.baseLayout;
 
 import cz.oz.web._pg.ICountablePage;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import org.apache.wicket.Page;
@@ -18,9 +20,12 @@ public class HeaderPanel extends Panel {
     public HeaderPanel( String id ) {
         super( id );
 
+        add( new Label("datum", new SimpleDateFormat().format( new Date(this.getRequestCycle().getStartTime()) ) ));
+        add( new Label("svatek", new SimpleDateFormat().format( new Date(this.getRequestCycle().getStartTime()) ) ));
+
         add( new Label("title", "Ondra<span>.</span>Zizka<span>.</span>cz").setEscapeModelStrings(false) );
         //add( new Label("seenCount", new SeenCountModel(this.getPage()) ));
-        add( new Label("seenCount", new SeenCountModel(this.getPage()) ));
+        add( new Label("seenCount", "12345" ));
     }
 
 
