@@ -8,7 +8,6 @@ import cz.oz.web.qualifiers.LoggedIn;
 import cz.oz.web.security.OzCzAuthSession;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.logging.Level;
 import javax.enterprise.inject.Produces;
 import static net.ftlines.wicket.cdi.ConversationPropagation.NONE;
 import javax.enterprise.inject.spi.BeanManager;
@@ -16,7 +15,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import net.ftlines.wicket.cdi.CdiConfiguration;
-import org.apache.wicket.Application;
 import org.apache.wicket.Page;
 import org.apache.wicket.Session;
 import org.apache.wicket.protocol.http.WebApplication;
@@ -24,7 +22,6 @@ import org.apache.wicket.request.Request;
 import org.apache.wicket.request.Response;
 import org.apache.wicket.request.resource.ByteArrayResource;
 import org.apache.wicket.request.resource.ResourceReference;
-import org.apache.wicket.request.resource.ResourceStreamResource;
 import org.apache.wicket.request.resource.SharedResourceReference;
 import org.apache.wicket.util.io.IOUtils;
 import org.slf4j.Logger;
@@ -69,7 +66,8 @@ public class WicketJavaEEApplication extends WebApplication {
         
         // Mount all paths to JTexy.
         mountPage("/test", JTexyTestPage.class);
-        mountPage("/pages", JTexyPage.class);
+        mountPage("/stranky", JTexyPage.class);
+        mountResource("/log", new LogResourceReference());
 
         // Resources
         ResourceReference favicon = new SharedResourceReference("favicon.gif");
