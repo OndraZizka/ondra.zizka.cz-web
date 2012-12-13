@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import javax.inject.Inject;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.StringUtils;
 
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
@@ -46,9 +47,10 @@ public class JTexyPage extends BaseLayoutPage {
         // Filesystem path.
         File rootPath = new File(((WicketJavaEEApplication)this.getApplication()).getSettings().getTexyFilesRootPath());
         File texyFile = new File(rootPath, reqPath);
-        
+
         if( ! texyFile.exists() ){
-            add(new Label("content", "Doesn't exist: " + texyFile.getPath() ));
+            add( new Label("substituteTitle", "Page not found."));
+            add( new Label("content", "Doesn't exist: " + texyFile.getPath() ));
         }
         else {
             // Read.
@@ -56,7 +58,7 @@ public class JTexyPage extends BaseLayoutPage {
             try {
                 src = FileUtils.readFileToString(texyFile, this.encoding);
             } catch (IOException ex) {
-                add(new Label("content", "Error reading " + texyFile.getPath() + ": " + ex.toString() ));
+                add( new Label("content", "Error reading " + texyFile.getPath() + ": " + ex.toString() ));
                 // TODO log
                 return;
             }
@@ -66,14 +68,24 @@ public class JTexyPage extends BaseLayoutPage {
             try {
                 html = JTexy.create().process(src);
             } catch( TexyException ex ){
-                add(new Label("content", "Error rendering " + texyFile.getPath() + ": " + ex.toString() ));
+                add( new Label("content", "Error rendering " + texyFile.getPath() + ": " + ex.toString() ));
                 // TODO log
                 return;
             }
             
             // Show.
-            add(new Label("content", html ).setEscapeModelStrings(false));
+            add( new Label("content", html).setEscapeModelStrings(false));
+
+            // Add title if absent in document.
+            add( new Label("substituteTitle", guessTitle(texyFile.getName())).setVisibilityAllowed(false) );
         }
+    }
+
+    /**
+     *  foo-bar-baz.texy --> Foo bar baz.
+     */
+    private String guessTitle( String name ) {
+        return StringUtils.capitalize( name ).replaceAll("-", " ");
     }
 
 }// class
