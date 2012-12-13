@@ -26,7 +26,7 @@
     <env-entry>
         <env-entry-name>texyFilesRootPath</env-entry-name>
         <env-entry-type>java.lang.String</env-entry-type>
-        <env-entry-value>/home/ondra/uw/oz.cz/web/pages</env-entry-value>
+        <env-entry-value>${ozcz.texyFilesRootPaths}</env-entry-value>
     </env-entry>
 
 </web-app>

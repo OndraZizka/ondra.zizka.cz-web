@@ -62,3 +62,8 @@ Security config in AS (devel purposes):
                         </login-module>
                     </authentication>
                 </security-domain>
+
+OpenShift:
+
+  
+  tail -500 jbosseap-6.0/logs/server.log
