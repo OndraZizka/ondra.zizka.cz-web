@@ -1,0 +1,3 @@
+/--code bash
+for i in `find . -name '*.texy'`; do echo $i; mkdir -p ../stranky2/`dirname $i`; iconv -f cp1250 -t UTF8 $i > ../stranky2/$i;  done
+\--
