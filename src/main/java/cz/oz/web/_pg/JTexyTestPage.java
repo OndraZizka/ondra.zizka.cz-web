@@ -26,9 +26,9 @@ public class JTexyTestPage extends WebPage {
 
     // Inject the ContactDao using @Inject
     @Inject
-    private TexyFileDaoBean dao;
+    private transient TexyFileDaoBean dao;
     
-    private Charset encoding = Charset.forName("utf-8");
+    private transient Charset encoding = Charset.forName("utf-8");
 
 
     // Set up the dynamic behavior for the page, widgets bound by id
