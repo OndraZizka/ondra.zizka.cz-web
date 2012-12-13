@@ -2,12 +2,33 @@
       xmlns:wicket="http://git-wip-us.apache.org/repos/asf/wicket/repo?p=wicket.git;a=blob_plain;f=wicket-core/src/main/resources/META-INF/wicket-1.5.xsd;hb=master">
     <wicket:panel>
 
-        <!--stranky/uvodni_stranka.texy-->
-        <ul xmlns:php="http://php.net/xsl" id="menu" class="flat level0">
-            <li onclick="ShowMenuSekce(this);" class="level0 collapsed "><span>Programování</span><ul class="flat level1"><li><a href="/stranky/programovani/index.texy">Rozcestník...</a></li><li><a href="/stranky/programovani/insolvencni_rejstrik-isir_ws/index.texy">Insolvenční rejstřík - ISIR WS</a></li><li><a href="/stranky/programovani/java/index.texy">Java + J2EE</a></li><li><a href="/stranky/programovani/sql/index.texy">(My)SQL</a></li><li><a href="/stranky/programovani/artificial_intelligence/index.texy">Neural Networks</a></li><li><a href="/stranky/programovani/web_javascript_ajax_canvas/canvas_element_selection_buffer.texy">Web, JavaScript, AJAX, Canvas</a></li><a href="/tools/">Text tools</a></ul></li>
-            <li onclick="ShowMenuSekce(this);" class="level0 collapsed "><span>"Realitní kancelář"</span><ul class="flat level1"><li><a href="/stranky/realitni_kancelar/chaty_a_chalupy.texy">Chaty a chalupy</a></li></ul></li>
-            <li onclick="ShowMenuSekce(this);" class="level0 collapsed "><span>Osobní</span><ul class="flat level1"><li><a href="/stranky/osobni/kontakty.texy">Kontakty</a></li><li><a href="/stranky/osobni/poznamky.texy">Poznámky a postřehy</a></li><li><a href="/stranky/osobni/prodavam_shanim.texy">Prodávám / sháním</a></li></ul></li>
-            <li onclick="ShowMenuSekce(this);" class="level0 collapsed "><span>Odkazy</span><ul class="flat level1"><li><a href="/stranky/odkazy/software.texy">Zajímavý software</a></li><li><a href="/stranky/odkazy/pratele.texy">Přátelé</a></li></ul></li>
+        <ul id="menu" class="flat level0">
+            <li onclick="ShowMenuSekce(this);" class="level0 collapsed "><span>Programování</span>
+                <ul class="flat level1">
+                    <li><a href="/stranky/programovani/index.texy">Rozcestník...</a></li>
+                    <li><a href="/stranky/programovani/insolvencni_rejstrik-isir_ws/index.texy">Insolvenční rejstřík - ISIR WS</a></li>
+                    <li><a href="/stranky/programovani/java/index.texy">Java + J2EE</a></li>
+                    <li><a href="/stranky/programovani/sql/index.texy">(My)SQL</a></li>
+                    <li><a href="/stranky/programovani/artificial_intelligence/index.texy">Neural Networks</a></li>
+                    <li><a href="/stranky/programovani/web_javascript_ajax_canvas/canvas_element_selection_buffer.texy">Web, JavaScript, AJAX, Canvas</a></li>
+                    <a href="/tools/">Text tools</a>
+                </ul>
+            </li>
+            <li onclick="ShowMenuSekce(this);" class="level0 collapsed "><span>"Realitní kancelář"</span>
+                <ul class="flat level1">
+                    <li><a href="/stranky/realitni_kancelar/chaty_a_chalupy.texy">Chaty a chalupy</a></li>
+                </ul></li>
+            <li onclick="ShowMenuSekce(this);" class="level0 collapsed "><span>Osobní</span>
+                <ul class="flat level1">
+                    <li><a href="/stranky/osobni/kontakty.texy">Kontakty</a></li>
+                    <li><a href="/stranky/osobni/poznamky.texy">Poznámky a postřehy</a></li>
+                    <li><a href="/stranky/osobni/prodavam_shanim.texy">Prodávám / sháním</a></li>
+                </ul></li>
+            <li onclick="ShowMenuSekce(this);" class="level0 collapsed "><span>Odkazy</span>
+                <ul class="flat level1">
+                    <li><a href="/stranky/odkazy/software.texy">Zajímavý software</a></li>
+                    <li><a href="/stranky/odkazy/pratele.texy">Přátelé</a></li>
+                </ul></li>
             <li onclick="ShowMenuSekce(this);" class="level0 collapsed "><span>Donation</span></li>
         </ul>
 
