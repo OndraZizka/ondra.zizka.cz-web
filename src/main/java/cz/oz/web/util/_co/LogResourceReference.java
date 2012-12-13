@@ -1,5 +1,5 @@
 
-package cz.oz.web;
+package cz.oz.web.util._co;
 
 import java.util.Locale;
 import org.apache.wicket.request.resource.IResource;
@@ -10,7 +10,7 @@ import org.apache.wicket.request.resource.ResourceReference;
  *
  *  @author Ondrej Zizka
  */
-class LogResourceReference extends ResourceReference {
+public class LogResourceReference extends ResourceReference {
 
     public LogResourceReference() {
         super(LogResourceReference.class, "viewLog");

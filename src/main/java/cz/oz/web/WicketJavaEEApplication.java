@@ -1,5 +1,6 @@
 package cz.oz.web;
 
+import cz.oz.web.util._co.LogResourceReference;
 import cz.oz.web._pg.JTexyPage;
 import cz.oz.web._pg.JTexyTestPage;
 import cz.oz.web.model.User;
@@ -9,12 +10,12 @@ import cz.oz.web.security.OzCzAuthSession;
 import java.io.IOException;
 import java.io.InputStream;
 import javax.enterprise.inject.Produces;
-import static net.ftlines.wicket.cdi.ConversationPropagation.NONE;
 import javax.enterprise.inject.spi.BeanManager;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import net.ftlines.wicket.cdi.CdiConfiguration;
+import static net.ftlines.wicket.cdi.ConversationPropagation.NONE;
 import org.apache.wicket.Page;
 import org.apache.wicket.Session;
 import org.apache.wicket.protocol.http.WebApplication;
