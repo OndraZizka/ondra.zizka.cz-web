@@ -94,10 +94,10 @@ public class WicketJavaEEApplication extends WebApplication {
         Settings settings = new Settings();
         
         // Get the value from web.xml's <env-entry>.
-        //settings.texyFilesRootPath = this.getServletContext().getResourceAsStream("texyFilesRootPath").toString();
+        //settings.texyFilesRootPath = this.getServletContext().getResourceAsStream("texyFilesRootPaths").toString();
         try {
             Context env = (Context)new InitialContext().lookup("java:comp/env");
-            settings.texyFilesRootPath = (String)env.lookup("texyFilesRootPath");
+            settings.setTexyFilesRootPaths( (String)env.lookup("texyFilesRootPaths") );
         } catch( NamingException ex ){
             // TODO
         }

@@ -13,4 +13,11 @@ public class Settings {
         return texyFilesRootPath;
     }
 
+    /**
+     *  TODO: Split by whitespace.
+     */
+    void setTexyFilesRootPaths( String paths ) {
+        this.texyFilesRootPath = paths;
+    }
+
 } // class
