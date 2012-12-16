@@ -22,16 +22,16 @@ public class BaseLayoutPage extends WebPage {
     /** Adds CSS reference. */
     public void renderHead(IHeaderResponse response) {
         //response.renderCSSReference(new CssResourceReference( BaseLayoutPage.class, "dw_styles.css" )); // Wicket 1.5
-        response.render( CssHeaderItem.forReference(new CssResourceReference( BaseLayoutPage.class, "css/dw_styles.css" ))); // Wicket 1.6
-        response.render( CssHeaderItem.forReference(new CssResourceReference( BaseLayoutPage.class, "css/styl.css" ))); // Wicket 1.6
-        response.render( JavaScriptHeaderItem.forReference(new JavaScriptResourceReference( BaseLayoutPage.class, "_/js/.js" )));
+        //response.render( CssHeaderItem.forReference(new CssResourceReference( BaseLayoutPage.class, "css/dw_styles.css" ))); // Wicket 1.6
+        //response.render( CssHeaderItem.forReference(new CssResourceReference( BaseLayoutPage.class, "css/styl.css" ))); // Wicket 1.6
+        //response.render( JavaScriptHeaderItem.forReference(new JavaScriptResourceReference( BaseLayoutPage.class, "js/.js" )));
         //response.render( .forReference(new ResourceReference( BaseLayoutPage.class, "_/img/favicon.gif" )));
     }
 
 
     // Set up the dynamic behavior for the page, widgets bound by id
     public BaseLayoutPage() {
-        add( new FavIconLink("favicon", "favicon.gif") );
+        //add( new FavIconLink("favicon", "favicon.gif") );
         //add( new FavIconHeaderContributor( new SharedResourceReference("favicon") ) );
 
         add( new DebugBar("debugBar") );

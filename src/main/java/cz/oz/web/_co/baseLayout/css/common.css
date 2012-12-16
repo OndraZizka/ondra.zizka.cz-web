@@ -1,5 +1,5 @@
 * { padding: 0; margin: 0; -moz-box-sizing: border-box; box-sizing: border-box; }
-table { color: inherit; font: inherit; } /* Tabulky dìdí vlastnosti */
+table { color: inherit; font: inherit; } /* Table inherits properties. */
 table td { vertical-align: top; }
 ul, ol { margin-left: 2.5em; }
 li { margin-bottom: 0.5ex; }

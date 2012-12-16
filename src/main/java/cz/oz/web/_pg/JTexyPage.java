@@ -21,6 +21,8 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
  * Either gets the content from a cache, or loads the file from filesystem and converts.
  * 
  * @author Ondrej Zizka
+ *
+ * TODO:  Split to TexyDocumentPanel.
  */
 @SuppressWarnings("serial")
 public class JTexyPage extends BaseLayoutPage implements ICountablePage {
@@ -87,7 +89,7 @@ public class JTexyPage extends BaseLayoutPage implements ICountablePage {
     /**
      *  foo-bar-baz.texy --> Foo bar baz.
      */
-    private String guessTitle( String name ) {
+    private static String guessTitle( String name ) {
         return StringUtils.capitalize( name ).replaceAll("-", " ");
     }
 
