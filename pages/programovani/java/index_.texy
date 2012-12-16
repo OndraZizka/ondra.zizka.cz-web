@@ -241,7 +241,7 @@ public class MyBeanImpl implements MyBean {
 \--
 
 
-/--code java
+/--code java .[brush:]
   MyBean bean = appContext.getBean("myBean");
 \--
 
@@ -427,7 +427,7 @@ iBatis inline map format: empty String in nullValue
 
 If i want to set a nullValue replacement for an empty String I use this in an explicit parameterMap:
 
-/--code xml
+/--code xml .[brush:]
 <parameter property="street" jdbcType="VARCHAR" nullValue=""/>
 \--
 
@@ -483,7 +483,7 @@ While waiting for response, I realized this:
 In case of MySQL, one can use `NULLIF(expr1,expr2)` function in `INSERT`,
 which returns `NULL` if `expr1` = `expr2` is true, otherwise returns `expr1`. 
 
-/--code sql
+/--code sql .[brush:]
 INSERT INTO table SET name = NULLIF(#name#,'');
 \--
 
@@ -502,7 +502,7 @@ JavaBeansDataExchange could not instantiate result class.  Cause: java.lang.Inst
 
 SQL mapping code:
 
-/--code
+/--code xml .[brush:]
 <select id="getMatchingDluzniciForUser" parameterClass="long" resultClass="map">
 SELECT * FROM table
 </select>

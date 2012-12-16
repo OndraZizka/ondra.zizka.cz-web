@@ -16,7 +16,7 @@ Jak se dozvíte ve výše odkazovaném článku, webová služba Insolvenční r
 funguje jako internetový záznam událostí, které se staly během existence systému ISIR.
 To znamená, že nežádáte o konkrétní informace, ale výstup tohoto typu:
 
-/--code xml
+/--code xml .[brush:]
 
 \--
 

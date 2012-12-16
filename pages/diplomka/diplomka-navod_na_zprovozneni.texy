@@ -33,7 +33,7 @@ Poté je třeba vytvořit dvě databáze a nastavit uživatelská práva pro už
 Následující kód vytvoří databáze `neural_network` a `jizdnirady_cb` 
 a nastaví veškerá práva k nim uživateli `OndrejZizka`, který se může připojit odkudkoliv ('%'):
 
-/--code
+/--code sql .[brush:]
 CREATE DATABASE neural_network;
 CREATE DATABASE jizdnirady_cb;
 GRANT ALL ON neural_network.* TO OndrejZizka@'%' IDENTIFIED BY 'BezpecneHeslo';
@@ -96,7 +96,7 @@ Výsledek (resultset) se zobrazí v dolní části
 
 Můžete prozkoumat obsah tabulek jízdních řádů těmito SQL příkazy:
 
-/--code sql
+/--code sql .[brush:]
 SELECT * FROM mhd_jizdy LIMIT 100;
 SELECT * FROM mhd_jizdy_stani LIMIT 100;
 SELECT * FROM mhd_linky;
@@ -132,7 +132,7 @@ Zde je ukázka výpisu všech linek projíždějících zastávkou Žižkova:
 
 Tabulky neuronových sítí prozkoumáte takto:
 
-/--code sql
+/--code sql .[brush:]
 SELECT * FROM neural_network.nn_networks;
 SELECT * FROM neural_network.nn_net_neurons;
 SELECT * FROM neural_network.nn_net_synapses;
@@ -145,7 +145,7 @@ několik testovacích neuronových sítí.
 Ladící zprávy pro algoritmy jízdních řádů, resp. neuronových sítí,
 najdete v tabulkách `neural_network.lib_logg`, resp. `jizdnirady_cb.lib_logg`:
 
-/--code sql
+/--code sql .[brush:]
 SELECT * FROM neural_network.lib_logg;
 SELECT * FROM jizdnirady_cb.lib_logg;
 \--
@@ -175,7 +175,7 @@ Stejného efektu lze docílit provedením příkazů `COMMIT;` nebo `ROLLBACK;`.
 Kód pro vyhledávání v jízdních řádech
 -------------------------------------
 
-/--code sql
+/--code sql .[brush:]
 -- Vyhledání spoje ze zastávky 115 do zastávky 465, maximálně 2 přestupy.
 CALL mhd_VyhledejSpoje(115, 465, NOW(), 3);
 SELECT * FROM mhd_VyhledejSpoje ORDER BY pos;
@@ -198,14 +198,14 @@ Na následujícím obrázku jsou zachycené první dva kroky.
 
 Nejprve vytváříme neuronovou síť s architekturou `2,2,1` (vhodná pro řešení XOR):
 
-/--code sql
+/--code sql .[brush:]
 -- Vytvoření neuronové sítě
 CALL nn_CreatePerceptron('2,2,1','XOR', 0.10, 0.5, @out_NetID);
 \--
 
 Pro vzniklou síť provádíme její výpočet a uchováváme hodnoty vnitřních neuronů:
 
-/--code sql
+/--code sql .[brush:]
 -- Výpočet neuronové sítě
 CALL nn_ComputeNet(1, '-1, 1', TRUE);
 
@@ -234,7 +234,7 @@ Výsledkem jsou tyto struktury:
 
 Na základě vzniklých hodnot můžeme provést jeden krok učení:
 
-/--code sql
+/--code sql .[brush:]
 -- Učení neuronové sítě
 ALTER TABLE nn_ComputeNet RENAME TO nn_CorrectWeights;
 ALTER TABLE nn_ComputeNet_InternalValues RENAME TO nn_CorrectWeights_InternalValues;
@@ -249,7 +249,7 @@ procedra `nn_TeachXOR_Dynamic( //ID//, //cílová úroveň chyby//, //maximum kr
 Kód v následující ukázce učí síť vytvořenou výše uvedeným postupem 
 na cílovou úroveň chyby 0,0001 v maximálním počtu 10 000 kroků:
 
-/--code sql
+/--code sql .[brush:]
 -- Učení neuronové sítě pro XOR
 CALL nn_TeachXOR_Dynamic(3, 0.0001, 10000);
 \--
@@ -261,7 +261,7 @@ V diplomové práci používáme neuronové sítě k určení vhodné trasy
 pro dosažení cílové zastávky v nejlepším čase.
  Zde je kód pro vytvoření a učení neuronové sítě pro zastávku 5:
 
-/--code sql
+/--code sql .[brush:]
 -- Vytvoření sítě pro zastávku 5 se třiceti neurony v jedné skryté vrstvě:
 CALL mhd_nn_CreateNetForStation(5, '30');
 

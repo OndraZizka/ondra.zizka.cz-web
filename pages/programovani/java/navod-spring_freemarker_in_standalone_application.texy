@@ -5,7 +5,7 @@ FreeMarker templates via Spring in non-web application
 Spring bean configuration
 *************************
 
-/--code xml
+/--code xml .[brush:]
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN 2.0//EN' 'http://www.springframework.org/dtd/spring-beans-2.0.dtd'>
 <beans>
@@ -67,7 +67,7 @@ Using the template
 
 Assuming that `beanFactory` is Spring Bean Factory object:
 
-/--code java
+/--code java .[brush:]
 Configuration cfg = (Configuration)beanFactory.getBean( "freemarkerConfiguration" );
 try {
   Template temp = cfg.getTemplate( "test.template" );

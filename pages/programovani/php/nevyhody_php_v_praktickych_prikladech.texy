@@ -336,7 +336,7 @@ Velice často zmiňovaná vada, vadí i těm nejzamilovanějším PHPčkárům (
 Zkrátka chybí objekty pro reprezentaci tříd, pokud vím. Nemůžu tedy udělat 
 např.:
 
-/--code
+/--code java .[brush:]
 public createObjectOfClass( Class cls, HashMap params ){
   cls.construct( params );
 }
@@ -351,7 +351,7 @@ Odkazování se na třídu pomocí stringů je jen work-around ("That's the PHP 
 Pokud chci předat nějaký objekt a jeho metodu (ve smyslu delegáta z C#),
 v PHP se to dělá takto:
 
-/--code
+/--code java .[brush:]
    ...MyFunc( Array( $myObject, "thatObjectMethod" ) );
 \--
 

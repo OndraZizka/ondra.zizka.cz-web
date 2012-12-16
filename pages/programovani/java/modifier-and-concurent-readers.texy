@@ -35,7 +35,7 @@ Uses a `ReentrantLock` with two `Conditions`.
  Also uses an adapted `HashMap` to count thread re-entries.
 
 
-/--code java
+/--code java .[brush:]
 
 package cz.dynawest.webttd;
 
@@ -218,7 +218,7 @@ One modifier and many concurrent Readers, non-reentrant:
 ========================================
 
 
-/--code java
+/--code java .[brush:]
 import java.util.concurrent.locks.*;
 import java.util.logging.Logger;
 
@@ -298,7 +298,7 @@ public class ReadersAndModifierSynchronizer2 {
 
 
 
-/--code java
+/--code java .[brush:]
 import cz.dynawest.logging.LoggingUtils;
 import java.util.*;
 import java.util.logging.Logger;
@@ -415,7 +415,7 @@ Modifier and concurrent Readers, leads to modifier starvation:
 
 
 
-/--code java
+/--code java .[brush:]
 /**
  * Todo: try to use Condition.
  * 
@@ -462,7 +462,7 @@ public class ReadersAndModifierSynchronizer {
 \--
 
 
-/--code java
+/--code java .[brush:]
 import cz.dynawest.logging.LoggingUtils;
 import java.util.*;
 import java.util.logging.Logger;
@@ -558,7 +558,7 @@ public class ReadersAndModifierTest {
 \--
 
 
-/--code java
+/--code java .[brush:]
 
 \--
 

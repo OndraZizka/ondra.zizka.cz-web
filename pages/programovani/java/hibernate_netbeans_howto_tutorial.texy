@@ -115,7 +115,7 @@ First we will try to do something with the EntityManager, what is the main objec
 > Create an instance of Query for executing a native SQL statement, e.g., for update or delete.
 * That is what we need. Press Enter. Then type `"SET @a = 1` and press enter. Then dot, select `executeUpdate()` and press Enter. Nice, isn't it? :-)
 
-/--code java
+/--code java .[brush:]
 
     // Use persistence.xml configuration
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("ISIR_PU");
@@ -134,7 +134,8 @@ Hibernate will complain that it needs to enclose the query in a transaction:
 
 /--
 Exception in thread "main" javax.persistence.TransactionRequiredException: Executing an update/delete query
-        at org.hibernate.ejb.QueryImpl.executeUpdate(QueryImpl.java:46)
+        at org.hibernate.ejb.QueryImpl.executeUpdate(QueryImpl.java:46)
+
 \--
 
 So let's look for something, that will provide the transaction.
@@ -149,7 +150,7 @@ Then begin the transaction: `transaction.begin();`
 Move under the `createNativeQuery()` call and `commit()` the transaction.
 The final code will look like this:
 
-/--code java
+/--code java .[brush:]
 
     // Use persistence.xml configuration
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("ISIR_PU");

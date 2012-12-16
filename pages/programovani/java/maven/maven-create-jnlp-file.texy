@@ -5,7 +5,7 @@ How to create a JNPL file (for Java WebStart) with Maven
 JFrog JNLP Maven plugin
 =======================
 
-/--code xml
+/--code xml .[brush:]
 <project>
 
   <properties>

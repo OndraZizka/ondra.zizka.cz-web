@@ -24,8 +24,8 @@ I am looking for a Java regexp lib with support for recursion, like: `<a+(?0)>`.
 See http://www.php.net/manual/en/regexp.reference.recursive.php.
 I need it for this expression:
 
-/--code
-`(?:mUi)^/--++ *+(.*)(?: *(?<= |^)\\.((?:\\([^)\\n]+\\)|\\[[^\\]\\n]+\\]|\\{[^}\\n]+\\}|<>|>|=|<){1,4}?))?$((?:\\n.*+)*)(?:\\n(?0)|\\n\\\\--.*$|\\z)`
+/--code regex
+(?:mUi)^/--++ *+(.*)(?: *(?<= |^)\\.((?:\\([^)\\n]+\\)|\\[[^\\]\\n]+\\]|\\{[^}\\n]+\\}|<>|>|=|<){1,4}?))?$((?:\\n.*+)*)(?:\\n(?0)|\\n\\\\--.*$|\\z)
 \--
 
 JDK does not support it, ORO does neither, nor Stevesoft Pat does.

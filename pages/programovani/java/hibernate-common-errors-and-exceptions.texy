@@ -84,7 +84,7 @@ Hibernate can't delete the refering entity before you release the other side of 
 
 Let's see the example:
 
-/--code java
+/--code java .[brush:]
 @Entity
 class Order
 
@@ -118,7 +118,7 @@ Long story in short:
 
 **Option 1:**  `getReference()`
 
-/--code java
+/--code java .[brush:]
 public void remove( Item item ) {
   this.em.remove( this.em.getReference( Item.class, item.getId() ) );
 }
@@ -127,7 +127,7 @@ public void remove( Item item ) {
 
 **Option 2:**  `merge()`
 
-/--code java
+/--code java .[brush:]
 public void remove( Item item ) {
   this.em.remove( this.em.merge( Item.class, item.getId() ) );
 }
@@ -162,7 +162,7 @@ This one is easy - probably you have a NOT NULL column, but haven't annotated it
 when it sees `null` value, it does not include the column in the `INSERT` query.
 Add `@Column( nullable=false )` to the mentioned property.
 
-/--code
+/--code java .[brush:]
   @Column( nullable=false )
   private Date created;
 \--

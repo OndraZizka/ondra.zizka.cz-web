@@ -14,7 +14,7 @@ For actual page and download links, see
 This is how I use it in the "Insolvenční rejstřík":http://www.pohlidame.cz/ project:
 
 
-/--code xml
+/--code xml .[brush:]
 <build>
     <plugins>
 

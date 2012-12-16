@@ -68,11 +68,12 @@ To je notoricky známá věc, takže pokud nemáte:
 Nyní již kompilace proběhne vpořádku, pouze si překladač stěžuje na podivné volání funkcí,
 
 > warning: non-varargs call of varargs method with inexact argument type for last parameter;
-
+
+
 za což může tato nezvyklá konstrukce v kódu projektu Apache POI:
 
 
-/--code java
+/--code java .[brush:]
 Class clazz = (Class) VALUE_EVALS_MAP.get(ptg.getClass());
 try {
  if (ptg instanceof Area3DPtg) {
@@ -81,5 +82,4 @@ try {
  }
 ...
 \--
-
 

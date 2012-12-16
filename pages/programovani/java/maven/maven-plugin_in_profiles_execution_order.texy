@@ -7,7 +7,7 @@ Whether it uses POM profile appearance order, or uses the ordering from the comm
 
 So I put this in a pom.xml:
 
-/--code
+/--code xml .[brush:]
 <profiles>
     <profile>
       <id>test1</id>
@@ -67,7 +67,7 @@ So I put this in a pom.xml:
 
 Then I launched it using:
 
-/--code
+/--code bash
 mvn initialize -P test2,test1
 \--
 
@@ -103,7 +103,7 @@ Executed twice?
 
 Another interesting thing is what happens when when launched using:
 
-/--code
+/--code bash
 mvn clean install -Dmaven.test.skip=true -P test1,test2
 \--
 
@@ -161,41 +161,3 @@ mvn install -Dmaven.test.skip=true -P test1,test2
 \--
 
 Does that mean that the `initialize` phase is used before packaging the `.jar`?
-
-
-
-
-
-/--code
-\--
-
-
-
-
-/--code
-\--
-
-
-
-
-/--code
-\--
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

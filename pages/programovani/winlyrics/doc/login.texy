@@ -8,7 +8,7 @@ User bude identifikovaný e-mailem.
  U toho je jeden problém - celkem dost uživatelů má ve WinLyrics více účtů s jedním mailem,
 patrně pro více počítačů. Viz tento dotaz:
 
-/--code
+/--code sql .[brush:]
 SELECT email, COUNT(*) AS cnt FROM wl2_users GROUP BY email HAVING cnt > 1 ORDER BY cnt DESC;
 \--
 
@@ -28,7 +28,7 @@ Challenge - response autentization
 
 Pro testování... - nastavíme někomu heslo...
 
-/--code sql
+/--code sql .[brush:]
 UPDATE wl2_users SET pass_md5 = MD5('') WHERE email='winlyrics@dark-sun.org';
 \--
 
@@ -49,7 +49,7 @@ UPDATE wl2_users SET pass_md5 = MD5('') WHERE email='winlyrics@dark-sun.org';
 \--
 
 
-/--code sql
+/--code sql .[brush:]
 SELECT id, MD5( CONCAT('f8675g1390s7dngloohqitsd74', pass_md5)) = '989bd8a84f9e42b314b3358bb263794e' FROM wl2_users WHERE email = 'winlyrics@dark-sun.org';
 \--
 | id | matches
@@ -64,7 +64,7 @@ SELECT id, MD5( CONCAT('f8675g1390s7dngloohqitsd74', pass_md5)) = '989bd8a84f9e4
 \--
 
 
-/--code
+/--code php
 print_r( $_SESSION );
 
 Array (

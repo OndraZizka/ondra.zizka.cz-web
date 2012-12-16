@@ -117,7 +117,7 @@ But since that slowed down the computation, which took about seven times longer,
 I had to switch to MyISAM or Memory engine.
 
 
-/--code
+/--code sql .[brush:]
 CREATE TABLE  nn_networks (
   `id` int(10) unsigned NOT NULL auto_increment,
   `name` varchar(45) NOT NULL,
@@ -130,7 +130,7 @@ CREATE TABLE  nn_networks (
 \--
 
 
-/--code
+/--code sql .[brush:]
 CREATE TABLE  nn_net_neurons (
   `id_net` int(10) unsigned NOT NULL,
   `id_neuron` int(10) unsigned NOT NULL auto_increment,
@@ -142,7 +142,7 @@ CREATE TABLE  nn_net_neurons (
 
 
 
-/--code
+/--code sql .[brush:]
 CREATE TABLE  nn_net_synapses (
   `id_from` int(10) unsigned default '0',
   `id_to` int(10) unsigned default '0',
@@ -153,7 +153,7 @@ CREATE TABLE  nn_net_synapses (
 \--
 
 
-/--code
+/--code sql .[brush:]
 CREATE TABLE lib_logg (
   `whn` datetime NOT NULL,
   `thread` int(10) unsigned NOT NULL,
@@ -171,7 +171,7 @@ Neural Network Creation
 
 Usage:
 ------
-/--code
+/--code sql .[brush:]
 ##    Layers definition,  initial weigths range, initial bias range, OUT network ID
 CALL nn_CreatePerceptron('2,2,1','XOR', 0.10, 0.5, @out_NetID);
 \--
@@ -197,7 +197,7 @@ Source:
 Procedure `nn_CreatePerceptron` is a wrapper for `nn_GeneratePerceptron` (see below).
 
 
-/--code
+/--code sql .[brush:]
 CREATE PROCEDURE `nn_CreatePerceptron`(
   sLayers VARCHAR(255), sName VARCHAR(255),
   dWeightsRange DOUBLE, dBiasRange DOUBLE,
@@ -252,7 +252,7 @@ in a virtual space, before merging it to the persistent tables.
 This helps isolating the eventual transactions and improves the performance.
 
 
-/--code
+/--code sql .[brush:]
 CREATE PROCEDURE `nn_GeneratePerceptron`(
   sLayers VARCHAR(255), dWeightsRange DOUBLE, dBiasRange DOUBLE
 )
@@ -397,7 +397,7 @@ That's what `nn_GetInputNeuronIDs` and `nn_GetOutputNeuronIDs` are.
 
 Usage:
 ------
-/--code
+/--code sql .[brush:]
 ##  Get the input neuron IDs for the network with ID 1.
 CALL nn_GetInputNeuronIDs( 1 );
 
@@ -423,7 +423,7 @@ For the XOR network with 2,2,1 architecture, the output could be like this:
 
 Source:
 -------
-/--code
+/--code sql .[brush:]
 CREATE PROCEDURE `nn_GetInputNeuronIDs`(iNetID INTEGER)
     COMMENT 'Returns tmp.t. (pos, id_neuron) with given net''s input neurons.'
 body:
@@ -450,7 +450,7 @@ BEGIN
 END $$
 \--
 
-/--code
+/--code sql .[brush:]
 CREATE PROCEDURE `nn_GetOutputNeuronIDs`(iNetID INTEGER)
     COMMENT 'Returns tmp.t. (pos, id_neuron) with given net''s output neurons.'
 body:
@@ -493,12 +493,12 @@ Computes a single network output for given input.
 
 Usage:
 ------
-/--code
+/--code sql .[brush:]
 CALL nn_ComputeNet(1, '-1, 1', TRUE);
 SELECT * FROM nn_ComputeNet;
 \--
 
-/--code
+/--code sql .[brush:]
 SELECT * FROM nn_ComputeNet_InternalValues;
 \--
 
@@ -520,11 +520,8 @@ Result:
 
 Source:
 -------
-/--code
-\--
 
-
-/--code
+/--code sql .[brush:]
 CREATE PROCEDURE `nn_ComputeNet`(
   iNetId INTEGER, sadInput VARCHAR(255), bStoreInternalValues BOOLEAN)
 body: BEGIN
@@ -651,7 +648,7 @@ First, procedure `nn_ComputeNet` computes the net's output.
 While doing that, it also stores the internal neurons' values;
 we asked to do so by setting the third parameter to `TRUE`.
 
-/--code
+/--code sql .[brush:]
 CALL nn_ComputeNet( iNetID, '1, -1', TRUE );  ##  Be sure to set to TRUE!
 \--
 
@@ -660,7 +657,7 @@ to pass the result set in any other way.
 (At least one row could be spared... see my 
 "MySQL wish-list":../sql/mysql_wishlist/alter_table_rename_overwrite.texy.)
 
-/--code
+/--code sql .[brush:]
   DROP TEMPORARY TABLE IF EXISTS nn_CorrectWeights, nn_CorrectWeights_InternalValues;
   ALTER TABLE nn_ComputeNet RENAME TO nn_CorrectWeights;
   ALTER TABLE nn_ComputeNet_InternalValues RENAME TO nn_CorrectWeights_InternalValues;
@@ -672,7 +669,7 @@ backpropagation algorithm to the network, and returns the //error value// to the
 First param is the ID of the network to compute, then comes the Lambda, Fi, Psi, Alfa, Beta, Gama, Pi,
 or however you call it - I call it "learning rate". Finally it's the output variable for error level.
 
-/--code
+/--code sql .[brush:]
 CALL nn_CorrectWeights(iNetID, '1', @dLearn, @out_dErrorSum);
 \--
 
@@ -687,7 +684,7 @@ to reflect the changes made by the backpropagation algorithm.
 
 Source:
 -------
-/--code
+/--code sql .[brush:]
 CREATE PROCEDURE `nn_CorrectWeights`(
   id_net INTEGER, sadValuesWanted VARCHAR(255), dLearn DOUBLE, OUT out_dErrorSum DOUBLE
 )
@@ -929,7 +926,7 @@ Each data set contains input-output pairs, I call them `train cases`, in the
 The individual input and output values are stored in
 `nn_trainsets_input` and `nn_trainsets_output` tables, respectively.
 
-/--code
+/--code sql .[brush:]
 CREATE TABLE `nn_trainsets` (
   `id_set` int(10) unsigned NOT NULL auto_increment,
   `name` varchar(45) NOT NULL,
@@ -970,7 +967,7 @@ had to be modified. Two specialized procedures complete this task -
 Their difference is in that they do not take serialized values
 in parameters; instead, they expect pre-created tables with these values.
 
-/--code
+/--code sql .[brush:]
 CREATE PROCEDURE `nn_ts_ComputeNet`( iNetID INTEGER, bStoreInternalValues BOOLEAN )
 body: BEGIN
 
@@ -1019,7 +1016,7 @@ maximum rounds to be completed (a "round" means that all cases from the training
 The training itself is done by "incremental backpropagation". The process of teaching is stopped
 immediatelly when the target error is reached with some training case (insufficient, to be fixed).
 
-/--code
+/--code sql .[brush:]
 CREATE PROCEDURE `neural_network`.`nn_ts_TeachTrainset` (
   iNetID INT UNSIGNED, iTrainsetID INT UNSIGNED, dLearn DOUBLE, dTargetError DOUBLE, iMaxRounds INT UNSIGNED
 )
@@ -1041,14 +1038,14 @@ Then, teaching the neural network is as easy as a one-line `CALL`.
 This trains the network #2 using training set #1, having learn rate of `0.5`,
 target error `0.0001` and with maximum of `1000` passes through the training set:
 
-/--code
+/--code sql .[brush:]
 CALL nn_ts_TeachTrainset( 2, 1, 0.5, 0.0001, 1000 );
 \--
 
 This way, "simulated annealing":http://en.wikipedia.org/wiki/Simulated_annealing
 can be easily applied:
 
-/--code
+/--code sql .[brush:]
 CALL nn_ts_TeachTrainset( 2, 1, 0.7,  0.01, 6000 );
 CALL nn_ts_TeachTrainset( 2, 1, 0.3,  0.003, 2000 );
 CALL nn_ts_TeachTrainset( 2, 1, 0.1,  0.0005, 1000 );
@@ -1058,7 +1055,7 @@ CALL nn_ts_TeachTrainset( 2, 1, 0.05, 0.0001, 1000 );
 
 You can have a look what was happening during the process:
 
-/--code
+/--code sql .[brush:]
 SELECT * FROM lib_logg WHERE rout = 'nn_ts_TeachTrainset';
 \--
 

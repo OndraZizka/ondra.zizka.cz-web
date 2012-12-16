@@ -9,7 +9,7 @@ je JavaScript, mimojiné pro jeho elegantní řešení uzávěrů.
 
 Jaké máme možnosti uzávěrů v Javě? Já jsem našel jen tento:
 
-/--code java
+/--code java .[brush:]
   /** Creates new form HlavniOkno */
   public HlavniOkno() {
 
@@ -32,7 +32,7 @@ Jde o to, že při použití anonymní vnitřní třídy nemůžete použít poj
 nelze tedy objektu předat nějakou hodnotu (což je podle mě škoda, ale asi tomu něco brání).
 Jinak by se dalo provést toto:
 
-/--code java
+/--code java .[brush:]
   /** Creates new form HlavniOkno */
   public HlavniOkno() {
 
@@ -57,7 +57,7 @@ Nelze použít ani `this`, protože u anonymních vnitřních tříd `this` ukaz
 Jinak by se dalo použít toto:
 
 
-/--code java
+/--code java .[brush:]
   /** Creates new form HlavniOkno */
   public HlavniOkno() {
 

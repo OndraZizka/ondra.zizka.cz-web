@@ -71,7 +71,7 @@ Inicializace probíhá tak, že vytvoříte továrnu na beany a do konstruktoru 
 U newebových aplikací můžete XML soubor dát kam chcete a pojmenovat jej jak chcete.
 
 
-/--code
+/--code java .[brush:]
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 
@@ -85,7 +85,7 @@ public void init() {
 
 U webových aplikací se konfigurační soubory dávají do `/WEB-INF/`, anžto tam se webový klient nikdy nedostane (zaručeno specifikací J2EE).
 
-/--code
+/--code java .[brush:]
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.web.context.support.ServletContextResource;
 
@@ -108,7 +108,7 @@ Nyní jak si budete žádat o připravený objekt (pro ukázku třeba DAO):
 
 
 
-/--code
+/--code java .[brush:]
   userDAO = (UserDAO) bf.getBean("userDAO");
 \--
 
@@ -133,7 +133,7 @@ jaké všechny objekty má připravit a jak je nastavit.
 //Poznámka: U newebových aplikací můžete XML soubor dát kam chcete a pojmenovat jej jak chcete.//
 
 
-/--code
+/--code xml .[brush:]
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
@@ -173,7 +173,7 @@ Ještě se podíváme na soubor `userDAOs.xml`.
 //Update 2008/09:// Momentálně trochu nedovysvětlené... časem snad připíšu.
 
 
-/--code
+/--code xml .[brush:]
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">

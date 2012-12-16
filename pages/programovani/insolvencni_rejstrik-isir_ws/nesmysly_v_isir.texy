@@ -16,7 +16,7 @@ Jak se dozvíte ve výše odkazovaném článku, webová služba Insolvenční r
 funguje jako internetový záznam událostí, které se staly během existence systému ISIR.
 To znamená, že nežádáte o konkrétní informace, ale výstup tohoto typu:
 
-/--code xml
+/--code xml .[brush:]
   <tns:udalost ... >
     <info cas="2008-01-22 00:00:00.0" id="2644" oddil="A" poradi="1" typ="6"
            typ_text="Insolvenční návrh spojený s návrhem na povolení oddlužení"/>
@@ -60,7 +60,7 @@ jindy událostí typu `5 - Insolvenční návrh`, a jindy zase typu `204 - Pokyn
 
 Dále vám přijde událost s osobou:
 
-/--code xml
+/--code xml .[brush:]
 <tns:udalost>
   <info cas="2008-02-18 00:00:00.0" id="7859" oddil="" poradi="-1" typ="1" typ_text="Změna osoby"/>
   <idOsobyPuvodce>KSJICCB</idOsobyPuvodce>
@@ -76,7 +76,7 @@ Dále vám přijde událost s osobou:
 
 A o chvíli později přide další událost, která se liží //pouze v ID události//!
 
-/--code xml
+/--code xml .[brush:]
 <tns:udalost>
   <info cas="2008-02-18 00:00:00.0" id="7863" oddil="" poradi="-1" typ="1" typ_text="Změna osoby"/>
   <idOsobyPuvodce>KSJICCB</idOsobyPuvodce>
@@ -107,7 +107,7 @@ Nesmysl druhý: nicneříkající události
 
 Velká spousta (ne-li většina) události nenesou jakoukoliv použitelnou informaci. Jako příklad vezměme třeba tuto:
 
-/--code xml
+/--code xml .[brush:]
 <tns:udalost ... >
   <info cas="2008-02-18 00:00:00.0" id="7865" oddil="A" poradi="2" typ="23" typ_text="Návrh - přílohy"/>
   <idOsobyPuvodce>KSJICCB</idOsobyPuvodce>
@@ -120,7 +120,7 @@ Nic víc a žádné další informace se již ve webové službě neobjeví. //K
 
 Moje naprosto nejoblíbenější událost je typ "Jiné":
 
-/--code xml
+/--code xml .[brush:]
 <tns:udalost ... >
   <info cas="2008-04-04 12:14:48.0" id="29563" oddil="P19" poradi="2" typ="239" typ_text="Jiné"/>
   <idOsobyPuvodce>KSJICCB</idOsobyPuvodce>

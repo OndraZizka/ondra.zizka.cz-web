@@ -32,8 +32,8 @@ Pro běh zkompilovaných .class souborů stačí **JRE - Java Runtime Environmen
 </li><li>
 Do systémové proměnné `PATH` přidejte cestu k právě nainstalovanému JDK.
  To provedete buď na konzoli příkazem
-/--code
-`set PATH=%PATH%;"D:\Program Files\j2sdk141\bin\";`
+/--code bat
+set PATH=%PATH%;"D:\Program Files\j2sdk141\bin\";
 \--
 (cestu samozřemě změňte tam, kam jste JDK instalovali),
  nebo nastavíte na Windows XP v `Ovládací panely -> Systém -> Upřesnít -> Proměnné prostředí -> Systémové proměnné`.
@@ -53,7 +53,7 @@ Zkuste spustit kompilátor Javy - `javac.exe`. Prostě napište `javac` a entr.
  Hodnotu `PATH` zkontrolujete pomocí příkazu `set path`.
  Pokud by se vám to nedařilo, můžete to zkusit ošmejdit přes `.bat` s příkazem 
 
-/--code java
+/--code java .[brush:]
 `javac {cesta k javac.exe} %1 %2 %3 %4 %5 %6 %7 %8 %9`,
 \--
 
@@ -99,14 +99,14 @@ Pokud soubor `.class` nemáte ve stejném adresáři, ve kterém se nacházíte,
 </li><li>
 Spusťte
 
-/--code
-`java [-classpath ...] <JménoTřídy>`
+/--code bat
+java [-classpath ...] <JménoTřídy>
 \--
 
   V našem případě to bude 
 
 /--code
-`java [-classpath ...] Zdrojak` .
+java [-classpath ...] Zdrojak
 \--
 
   Všimněte si a vtlučte si do hlavy, že jako **parametr, co spustit**, se nedává název souboru, ale **jméno třídy**!
@@ -115,7 +115,7 @@ Spusťte
     a v něm musí být veřejná třída `JménoTřídy` a v ní statická veřejná metoda `main`
     nevracející nic a s parametrem typu pole `String`ů, neboli:
     
-/--code
+/--code java .[brush:]
 public class JménoTřídy { public static void main(String[]){...} }
 \--
 

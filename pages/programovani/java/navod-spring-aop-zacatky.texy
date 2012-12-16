@@ -43,7 +43,7 @@ V současnosti se AOP nastavuje pomocí elementů z namespace `<aop:*>`.
 Tento jmenný prostor je třeba v XML souboru zmínit, proto se místo DTD použije definice přes `xmlns:aop`.
 
 
-/--code xml
+/--code xml .[brush:]
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -80,7 +80,7 @@ K tomu ještě pár poznámek:
 
 * Automatické volání metod funguje jen pro objekty vytvořené Springem. Následující tedy **nebude fungovat**:
 
-/--code java
+/--code java .[brush:]
 aoptest.NejakaTrida objekt = new aoptest.NejakaTrida();
 objekt.metoda();  // <--- ZDE AOP NEZAFUNGUJE!
 \--
@@ -89,7 +89,7 @@ objekt.metoda();  // <--- ZDE AOP NEZAFUNGUJE!
 
 Celý kód pro rozjetí AOP tedy vypadá takto:
 
-/--code java
+/--code java .[brush:]
 ApplicationContext ac = new ClassPathXmlApplicationContext("properties/SpringBeans.xml");
 aoptest.NejakaTrida objekt = (aoptest.NejakaTrida) new aoptest.NejakaTrida();
 objekt.metoda();  // <--- zde AOP zavolá napřed metodu aoptest.AopTestAdviceBean::test().

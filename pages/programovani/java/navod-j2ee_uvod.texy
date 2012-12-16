@@ -54,7 +54,7 @@ dostanou na vstup HTTP požadavek a vrátí kód stránky. Tak vznikly servlety.
 Je to krapet složitější – servlet není přímo program, ale spíše třída, která má určité metody jako `doGet(...)` a `doPost(...)`, 
 které se pro každý požadavek volají. V parametrech dostanou informace o požadavku, o session, a referenci na objekt odpovědi.
 
-/--code
+/--code java .[brush:]
 public class HelloServlet extends HttpServlet {
 
   public void doGet (HttpServletRequest pozadavek, HttpServletResponse odpoved)
@@ -68,7 +68,7 @@ public class HelloServlet extends HttpServlet {
 
 Pak takovouto třídu zabalíte do JAR archivu spolu s konfigurákem `WEB-INF/web.xml`:
 
-/--code
+/--code xml .[brush:]
 <web-app xmlns="http://java.sun.com/xml/ns/j2ee" version="2.4"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http:/java.sun.com/dtd/web-app_2_3.dtd">
@@ -99,7 +99,7 @@ Potom už jen archiv "deploynete" a aplikace jede.
 Pochopitelně konfigurace každého servletu a 
 generování HTML stránek přimo v Java kódu je dost otravné:
 
-/--code
+/--code java .[brush:]
 PrintWriter vystup = odpoved.getWriter();
 vystup.write("<h1>Ahoj " + session.getAttribute("name") +"!</h1>");
 vystup.write("<p>Takhle nějak se generuje stránka ze servletu.</p>");
@@ -117,7 +117,7 @@ a do ní tu a tam vložit nějaký kód, kterého je obvykle spíše menšina. N
 JSP – Java Server Pages
 -----------------------
 
-/--code
+/--code jsp
 <h1>Ahoj <%= session.getAttribute("name") %>!</h1>
 \--
 
@@ -125,7 +125,7 @@ JSP – Java Server Pages
 Rovnou při vzniku měla mnohem více možností, než konkureční způsoby vkládání kódu do HTML (můj názor).
 A to především díky zvláštním tagům, jejichž interpretaci mají na starosti Java třídy. Takový tag vypadá například takto:
 
-/--code
+/--code xml .[brush:]
 <html:link action="/logout">Odhlásit</html:link>
 \--
 
@@ -133,7 +133,7 @@ A to především díky zvláštním tagům, jejichž interpretaci mají na star
 Zrovna tento tag není úplně dobrý příklad, zrovna mi padnul pod ruku.  ***Dát lepší příklad.
 Lepší by byl třeba tento: //(Poznámka pro znalé: Tento kód jsem si z hlavy vymyslel, neodpovídá přesně tagům JSTL knihovny.)//
 
-/--code
+/--code xml .[brush:]
 <cache:cache key="vypis_uzivatelu">
   <sql:query sql="SELECT * FROM users ORDER BY name" var="resultUsers" />
   <table>
@@ -306,7 +306,7 @@ Nejznámějším nástrojem pro perzistenci je Hibernate. Ten používá jazyk H
 Pro mapování, tedy k popisu, jak se objekty které třídy rozkládají do tabulek v databázi,
 sloužily dříve XML soubory.
 
-/--code xml
+/--code xml .[brush:]
 <hibernate-mapping>
  <class name="ModelPlane" table="model_plane">
    <id name="id" column="id_model" type="java.lang.Long">
@@ -319,7 +319,7 @@ sloužily dříve XML soubory.
 
 V poslední době se ale rozmáhá pohodlnější způsob - @anotace.
 
-/--code xml
+/--code xml .[brush:]
 @Entity
 public class ModelPlane {
 
@@ -360,7 +360,7 @@ Tak vznikl standard JPA, což je v podstatě trochu ořezané Hibernare API, ale
 místo XML souborů používat @anotace, což jsou (pro ty, co neznají) meta-informace 
 zapsané přímo v kódu Java tříd za zavináčem:
 
-/--code
+/--code java .[brush:]
  @Entity
  @Table(name="users")
  public class User {

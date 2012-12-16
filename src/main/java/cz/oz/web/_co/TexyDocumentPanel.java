@@ -8,9 +8,16 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
+import org.apache.wicket.markup.head.CssReferenceHeaderItem;
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.JavaScriptReferenceHeaderItem;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.internal.HtmlHeaderContainer;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.request.resource.CssResourceReference;
+import org.apache.wicket.request.resource.JavaScriptResourceReference;
+import res.ResourcesPackageMarker;
 
 /**
  *
@@ -62,6 +69,18 @@ public class TexyDocumentPanel extends Panel {
         }
     }// const
 
+    
+    @Override
+    public void renderHead( IHeaderResponse response ) {
+        // Syntax Highlighter.
+        response.render( new CssReferenceHeaderItem(
+            new CssResourceReference( ResourcesPackageMarker.class, "js/syntaxhighlighter/styles/shThemeDefault.css"), null, null, null));
+        response.render( new JavaScriptReferenceHeaderItem(
+            new JavaScriptResourceReference( ResourcesPackageMarker.class, "js/syntaxhighlighter/scripts/shCore.js"), null, "shCore", true, null, null));
+        response.render( new JavaScriptReferenceHeaderItem(
+            new JavaScriptResourceReference( ResourcesPackageMarker.class, "js/syntaxhighlighter/scripts/shAutoloader.js"), null, "shAutoloader", true, null, null));
+    }
+
 
     /**
      *  foo-bar-baz.texy --> Foo bar baz.
@@ -70,4 +89,4 @@ public class TexyDocumentPanel extends Panel {
         return StringUtils.capitalize( name ).replaceAll("-", " ");
     }
 
-}
+}// class TexyDocumentPanel

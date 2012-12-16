@@ -6,7 +6,7 @@ You've probably provided your JBoss Microcontainer XML (usually `jboss-beans.xml
 
 JBoss AOP Maven Plugin eats this:
 
-/--code xml
+/--code xml .[brush:]
 <?xml version="1.0" encoding="UTF-8"?>
 <aop>
    <bind pointcut="execution(* *->*Fuel(..))">
@@ -43,7 +43,7 @@ Could not find class
 
 Use `<includeProjectDependency>true</includeProjectDependency>` for the Maven JBoss AOP plugin:
 
-/--code
+/--code xml .[brush:]
       <plugin>
         <groupId>org.jboss.maven.plugins</groupId>
         <artifactId>maven-jbossaop-plugin</artifactId>

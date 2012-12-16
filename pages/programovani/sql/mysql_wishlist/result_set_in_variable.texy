@@ -12,7 +12,7 @@ and others).
 Since MySQL does not support passing result sets in stored procedures, 
 common practice is to use TEMPORARY TABLES when working with larger data sets.
 
-/--code sql
+/--code sql .[brush:]
 CREATE PROCEDURE `lib_Explode`(sSepar VARCHAR(255), saVal TEXT)
 body: BEGIN
 
@@ -56,7 +56,7 @@ Storing a result set into a `@variable`
 
 First, let's create a 3 x 2 table:
 
-/--code sql
+/--code sql .[brush:]
 CREATE TABLE table1 ( a INT, b INT );
 INSERT INTO table1 VALUES (1,2), (3,4), (5,6);
 SELECT * FROM table1;
@@ -72,14 +72,14 @@ The table now looks like this:
 
 Currently, we can select a single value into a variable:
 
-/--code sql
+/--code sql .[brush:]
 SELECT a FROM table1 INTO @var LIMIT 1;
 \--
 
 But what much more cool would be if we could store a result set:
 
 
-/--code sql
+/--code sql .[brush:]
 ##  Create the result set and store it in a variable.
 SELECT * FROM table1 INTO @resultset;
   -- or --
@@ -95,7 +95,7 @@ Then, we could pass it to a stored procedure.
 Passing a result set as a parameter of a stored procedure
 =========================================================
 
-/--code sql
+/--code sql .[brush:]
 CREATE PROCEDURE StoredProcedure( rsData RESULTSET ) BEGIN
   SELECT a + b FROM rsData;
 END $$
@@ -111,7 +111,7 @@ In the stored procedure, a `RESULTSET` param could act exactly as a `TEMPORARY` 
 Retrieving a result set from a stored procedure
 ===============================================
 
-/--code sql
+/--code sql .[brush:]
 ##  Retrieving a result set from a stored procedure
 CALL StoredProcedure() INTO @result;
 
@@ -130,7 +130,7 @@ Retrieving multiple result sets from a stored procedure
 
 Multiple results from a `CALL` could also be fetched:
 
-/--code sql
+/--code sql .[brush:]
 CREATE PROCEDURE StoredProcedure( rsData RESULTSET ) BEGIN
   SELECT a + b FROM rsData;
   SELECT a * b FROM rsData;

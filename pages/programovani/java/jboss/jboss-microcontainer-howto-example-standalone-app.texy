@@ -21,7 +21,7 @@ Follow instalation instructions in
 "JBoss Micontainer User Guide":http://www.jboss.org/file-access/default/members/jbossmc/freezone/docs/2.0.x/userGuide/ch02.html.
 Here is the shortened version of the profile:
 
-/--code xml
+/--code xml .[brush:]
     <profile>
       <id>jboss.repository</id>
         <activation> <property> <name>!jboss.repository.off</name> </property> </activation>
@@ -57,7 +57,7 @@ Then add this dependency to your project:
     </dependency>
 -->
 
-/--code xml
+/--code xml .[brush:]
     <dependency>
       <groupId>org.jboss.microcontainer</groupId>
       <artifactId>jboss-kernel</artifactId>
@@ -92,7 +92,7 @@ Creating a class to use with JBoss Microcontainer
 
 As written above, any class can be used.
 
-/--code java
+/--code java .[brush:]
 package cz.zizka.ondra.jbmctest;
 
 public class Car
@@ -125,7 +125,7 @@ Instantiating a class in JBoss Microcontainer
 
 Create a XML file named `jboss-beans.xml` and put it to the resources dir (Maven's default is `src/main/resources`).
 
-/--code xml
+/--code xml .[brush:]
 <?xml version="1.0" encoding="UTF-8"?>
 <deployment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:schemaLocation="urn:jboss:bean-deployer:2.0 bean-deployer_2_0.xsd"
@@ -144,7 +144,7 @@ and then sets the properties. If they were private and you had setters for them,
 
 An alternative way is to call the constructor:
 
-/--code xml
+/--code xml .[brush:]
    <bean name="myCar" class="cz.zizka.ondra.jbmctest.Car">
     <constructor>
         <parameter>Red Devil</parameter>
@@ -158,7 +158,7 @@ Wiring up the objects
 
 To attach one object to the other, use `<inject>`:
 
-/--code java
+/--code java .[brush:]
 package cz.zizka.ondra.jbmctest;
 
 public class Garage
@@ -174,7 +174,7 @@ public class Garage
 \--
 
 
-/--code xml
+/--code xml .[brush:]
 <?xml version="1.0" encoding="UTF-8"?>
 <deployment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:schemaLocation="urn:jboss:bean-deployer:2.0 bean-deployer_2_0.xsd"
@@ -196,7 +196,7 @@ public class Garage
 Creating JBoss Microcontainer object in your application (bootstraping)
 =======================================================================
 
-/--code java
+/--code java .[brush:]
 public class App {
 
   public static void main( String[] args ) throws Throwable
@@ -246,28 +246,3 @@ A "chapter about JBoss Microcontainer":http://docs.jboss.org/jbossas/jboss4guide
 
 
 //TODO:// Have look at `org.jboss.kernel.plugins.bootstrap.standalone.StandaloneBootstrap` - loads all `jboss-beans.xml` from the classpath.
-
-
-/--code xml
-
-\--
-
-/--code java
-\--
-
-/--code java
-\--
-
-/--code java
-\--
-
-/--code java
-\--
-
-/--code java
-\--
-
-/--code java
-\--
-
-

@@ -128,14 +128,14 @@ export PATH=$JAVA_HOME/bin:$M2_HOME/bin:$PATH
 \--
 
 
-/--code bash
+/--code bash .[brush:]
 svn co -r 96748 http://anonsvn.jboss.org/repos/jbossas/trunk AS-trunk
 cd AS-trunk
 build.sh
 date; build.sh clean; build.sh date
 \--
 
-/--code bash
+/--code bash .[brush:]
 cd ..
 date; zip -R -1 AS.zip AS-svn-trunk > /dev/null; date
 date; unzip AS.zip -d test > /dev/null; date

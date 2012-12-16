@@ -15,7 +15,7 @@ Could not find class
 
 Use `<includeProjectDependency>true</includeProjectDependency>` for the Maven JBoss AOP plugin:
 
-/--code
+/--code xml .[brush:]
       <plugin>
         <groupId>org.jboss.maven.plugins</groupId>
         <artifactId>maven-jbossaop-plugin</artifactId>
@@ -43,7 +43,7 @@ The stacktrace...
 
 
 
-/--code mavenlog
+/--code mavenlog .[brush:]
 [jbossaop:compile]
 [ERROR][warn] Could not find class org.jboss.kernel.spi.dependency.KernelController (or one of its implemented interfaces) that cz.dynawest.webttd.backend.JBossAopSampleApp references.  It may not be in your classpath and you may not be getting field and constructor weaving for this class.
 [ERROR]javassist.NotFoundException: org.jboss.kernel.spi.dependency.KernelController
@@ -200,5 +200,6 @@ The stacktrace...
 [aop-debug] org.jboss.aop.instrument.JoinpointSimpleClassifier javassist.CtConstructor@16a786[public JBossAopSampleApp ()V] matches no pointcuts
 [aop-debug] org.jboss.aop.instrument.Instrumentor was cz.dynawest.webttd.backend.JBossAopSampleApp converted: false
 [no comp needed] D:\web\x-com\java\server\WebTTD-backend\target\classes\cz\dynawest\webttd\backend\JBossAopSampleApp.class
-Build Successful: 375 ms
+Build Successful: 375 ms
+
 \--

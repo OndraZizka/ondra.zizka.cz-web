@@ -13,7 +13,7 @@ and output data. Thus, passing temp tables between different procedures needs to
 them. To make it safely, one has to try the drop before altering:
 
 
-/--code
+/--code sql .[brush:]
 CALL PrepareSomeData(...);  -- This creates TEMP TABLE prepared_data
 DROP TEMPORARY TABLE IF EXISTS input_data;
 ALTER TABLE prepared_data RENAME TO input_data;
@@ -26,7 +26,7 @@ And this has to be done many times.
 
 My suggestion is to introduce the `OVERWRITE` option to the `ALTER TABLE` statement:
 
-/--code
+/--code sql .[brush:]
 CALL PrepareSomeData(...);  -- This creates TEMP TABLE prepared_data
 ALTER TABLE prepared_data RENAME OVERWRITE TO input_data;
 CALL ProcessData(...);      -- This procedure looks for the input_data table.

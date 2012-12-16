@@ -6,7 +6,7 @@ I've had a problem with reading `.properties` file in Spring Framework.
 I needed to inject it into the iBatis' `SqlMapConfig.xml`:
 
 
-/--code
+/--code xml .[brush:]
   <!-- iBatis -->
   <bean id="sqlMap" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
     <property name="sqlMapClientProperties" value="file:conf/${profile}/nastaveni.properties" />
@@ -20,7 +20,7 @@ I needed to inject it into the iBatis' `SqlMapConfig.xml`:
 But iBatis kept complaining that the properties defined in the file were not resolved.
 Better said, it behaved like the actual value was the property name, thus the code
 
-/--code
+/--code xml .[brush:]
   <transactionManager type="JDBC">
     <dataSource type="SIMPLE">
       <property name="JDBC.Driver" value="${jdbc.driver}"/>
@@ -35,7 +35,7 @@ and provides iBatis a `Properties` object with a single property: `file = conf/r
 
 The solution is to use the `SqlMapClientFactoryBean`:
 
-/--code
+/--code xml .[brush:]
   <!-- iBatis -->
   <bean id="sqlMap" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
     <property name="sqlMapClientProperties">

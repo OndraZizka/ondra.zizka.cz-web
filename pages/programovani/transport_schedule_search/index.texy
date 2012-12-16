@@ -10,7 +10,7 @@ Here is brief overview how it works.
 Persistent tables
 =================
 
-/--code sql
+/--code sql .[brush:]
 CREATE TABLE `mhd_jizdy` (
   `id` smallint(5) unsigned NOT NULL default '0',
   `nazev` varchar(140) NOT NULL,
@@ -21,7 +21,7 @@ CREATE TABLE `mhd_jizdy` (
 ) ENGINE=InnoDB ROW_FORMAT=FIXED COMMENT='Jizdy - seskupení jednotlivých zastávek na dané trase pr';
 \--
 
-/--code sql
+/--code sql .[brush:]
 CREATE TABLE `mhd_jizdy_stani` (
   `id_jizda` smallint(5) unsigned NOT NULL,
   `poradi` smallint(5) NOT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE `mhd_jizdy_stani` (
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1250 ROW_FORMAT=FIXED COMMENT='Jednotlivé zastávky jízd';
 \--
 
-/--code sql
+/--code sql .[brush:]
 CREATE TABLE `mhd_linky` (
   `id` smallint(5) unsigned NOT NULL auto_increment,
   `nazev` varchar(60) NOT NULL,
@@ -45,7 +45,7 @@ CREATE TABLE `mhd_linky` (
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=cp1250;
 \--
 
-/--code sql
+/--code sql .[brush:]
 CREATE TABLE `mhd_trasy` (
   `id` smallint(5) unsigned NOT NULL auto_increment,
   `id_linka` smallint(5) unsigned default NULL,
@@ -58,7 +58,7 @@ CREATE TABLE `mhd_trasy` (
 ) ENGINE=InnoDB AUTO_INCREMENT=158 DEFAULT CHARSET=cp1250 COMMENT='Jednotlive verze linek';
 \--
 
-/--code sql
+/--code sql .[brush:]
 CREATE TABLE `mhd_trasy_uzly` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `id_trasa` smallint(5) unsigned NOT NULL default '0',
@@ -72,7 +72,7 @@ CREATE TABLE `mhd_trasy_uzly` (
 ) ENGINE=InnoDB AUTO_INCREMENT=12555 DEFAULT CHARSET=cp1250 ROW_FORMAT=FIXED COMMENT='Trasy linek (pro kazdou verzi linky a pro kazdy smer)';
 \--
 
-/--code sql
+/--code sql .[brush:]
 CREATE TABLE `mhd_zast` (
   `id` smallint(5) unsigned NOT NULL auto_increment,
   `nazev` varchar(60) NOT NULL default '',
@@ -116,7 +116,7 @@ Usage:
 
 You ask for the fastest connection from the station #115 to the station #465 from now on, using at the most 2 changes (3 transport vehicles).
 
-/--code sql
+/--code sql .[brush:]
 CALL mhd_VyhledejSpoje(115, 465, NOW(), 3);
 \--
 
@@ -134,7 +134,7 @@ Source code:
 ------------
 
 
-/--code sql
+/--code sql .[brush:]
 CREATE DEFINER=`root`@`localhost` PROCEDURE `mhd_VyhledejSpoje`(
   idZastFrom INT UNSIGNED,
   idZastTo INT UNSIGNED,

@@ -3,7 +3,7 @@
 Short code for Antrun Maven plugin
 **********************************
 
-/--code xml
+/--code xml .[brush:]
          <build>
            <plugins>
              <plugin> <artifactId>maven-antrun-plugin</artifactId>

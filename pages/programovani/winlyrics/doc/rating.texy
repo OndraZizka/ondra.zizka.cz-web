@@ -64,31 +64,31 @@ Tests
 
 Creates a user-song-rating triplet for user `Trapper852@Adelphia.net` and song `1500`, rated `-10`:
 
-/--code sql
+/--code sql .[brush:]
 CALL wl2_SetRating( (SELECT id FROM wl2_users WHERE email = 'Trapper852@Adelphia.net'), 1500, -10 );
 \--
 
 Changes that rating to 50:
 
-/--code sql
+/--code sql .[brush:]
 CALL wl2_SetRating( (SELECT id FROM wl2_users WHERE email = 'Trapper852@Adelphia.net'), 1500, 50 );
 \--
 
 Creates rating for other song and other user:
 
-/--code sql
+/--code sql .[brush:]
 CALL wl2_SetRating( 20, 1700, 40 );
 \--
 
 Does nothing (invalid user)
 
-/--code sql
+/--code sql .[brush:]
 CALL wl2_SetRating( (SELECT id FROM wl2_users WHERE email = 'non@existent@user'), 200, 30 );
 \--
 
 Removes the rating for given user-song tuple:
 
-/--code sql
+/--code sql .[brush:]
 CALL wl2_SetRating( (SELECT id FROM wl2_users WHERE email = 'Trapper852@Adelphia.net'), 1500, NULL );
 \--
 
@@ -99,7 +99,7 @@ Tables
 -------
 
 
-/--code sql
+/--code sql .[brush:]
 CREATE TABLE  `winlyricscom`.`wl2_users` SELECT * FROM users; 
 ALTER TABLE `winlyricscom`.`wl2_users` 
   ADD COLUMN `pass_md5` char(32) character set cp1250 collate cp1250_bin NOT NULL,
@@ -113,7 +113,7 @@ INSERT INTO wl2_users
 
 
 
-/--code sql
+/--code sql .[brush:]
 CREATE TABLE  `winlyricscom`.`wl2_songs_rating` (
   `id_song` int(10) unsigned NOT NULL auto_increment,
   `rating_sum` int(10) unsigned NOT NULL,
@@ -125,7 +125,7 @@ CREATE TABLE  `winlyricscom`.`wl2_songs_rating` (
 
 
 
-/--code sql
+/--code sql .[brush:]
 CREATE TABLE  `winlyricscom`.`wl2_users_ratings` (
   `id_user` int(10) unsigned NOT NULL,
   `id_lyrics` int(10) unsigned NOT NULL,
@@ -147,7 +147,7 @@ Stores the data in `wl2_users_ratings`.
 
 
 
-/--code sql
+/--code sql .[brush:]
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `winlyricscom`.`wl2_SetRating`$$
@@ -176,7 +176,7 @@ Procedure `wl2_RebuildRating`
 Rebuilds the average ratings in `wl2_songs_rating` based on data in `wl2_users_ratings`.
 
 
-/--code sql
+/--code sql .[brush:]
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `winlyricscom`.`wl2_RebuildRating`$$
@@ -200,13 +200,13 @@ DELIMITER ;
 
 
 
-/--code sql
+/--code sql .[brush:]
 
 \--
 
 
 
-/--code sql
+/--code sql .[brush:]
 
 \--
 

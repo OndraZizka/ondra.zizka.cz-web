@@ -287,7 +287,8 @@ Now run the application, and you'll see that the interceptor is really being inv
 I have a garage: Garage with a car: Car "Red Devil" with 0 litres of fuel.
 16.11.2009 11:42:47 FuelInterceptor invoke INFO: The fuel is being changed for the car 'Red Devil'.
 16.11.2009 11:42:47 FuelInterceptor invoke INFO: The fuel is being changed for the car 'Red Devil'.
-I have a garage: Garage with a car: Car "Red Devil" with 2 litres of fuel.
+I have a garage: Garage with a car: Car "Red Devil" with 2 litres of fuel.
+
 \--
 
 
@@ -296,14 +297,3 @@ Sample application
 ==================
 
 The application created in the examples above can be downloaded here: "JBossAOPsample.zip":download/JBossAOPsample.zip
-
-
-
-
-
-/--code xml
-
-\--
-
-/--code java
-\--

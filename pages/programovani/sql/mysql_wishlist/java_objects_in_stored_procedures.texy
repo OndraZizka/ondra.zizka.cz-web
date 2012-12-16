@@ -7,14 +7,14 @@ made me like looking forward to great future :-)
 The best thing I can imagine now is that I could have Java object references 
 in user variables, something like:
 
-/--code
+/--code sql .[brush:]
 SET @jDate = java::new('java.util.Date');
 SET @sDate = @jDate.toString();
 \--
 
 Or, letting my imagination fly far away:
 
-/--code
+/--code sql .[brush:]
 SET @jWebService = java::jndi('java:comp/env/ws/weather');
 SET @jResults = @jWebService.getWeatherIn('Brno');
 SET @jResIter = @jResults.getIterator();

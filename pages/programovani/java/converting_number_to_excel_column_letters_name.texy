@@ -17,7 +17,7 @@ when counting on the fact that Excel's last column is IV,
 this could be done using one `if`.//
 
 
-/--code java
+/--code java .[brush:]
   /**
    * Converts column number to Excel column characters name, e.g.: 43 => AQ 
    * @autor Ondra Žižka

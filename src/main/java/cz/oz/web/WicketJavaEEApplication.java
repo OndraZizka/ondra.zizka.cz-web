@@ -82,6 +82,8 @@ public class WicketJavaEEApplication extends WebApplication {
         } catch( IOException ex ) {
             log.error( ex.toString() );
         }*/
+
+        getMarkupSettings().setStripWicketTags(true);
     }
 
     

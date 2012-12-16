@@ -36,7 +36,7 @@ ale zde najdete názvy podobného ražení jako
 `getIsirPub001`, `ns2:IsirPub001Data`, `IsirPub001SOAP12port_http`
 a `tns:IsirPub001SEI_getIsirPub001Response`:
 
-/--code xml
+/--code xml .[brush:]
   <wsdl:service name="IsirPub001">
     <wsdl:port name="IsirPub001Httpport1" binding="tns:IsirPub001HttpBinding">
       <http:address location="https://isir.justice.cz:8443/isir_ws/rest/IsirPub001"/>
@@ -182,7 +182,7 @@ Data:
 Po dalších pěti hodinách a další stovce záznamů z jiných soudů se soudce vrátí z oběda
 a v IS klikne na tlačítko "Nový pokyn insolvenčního soudu", a tím vzniká další **velmi užitečný záznam**:
 
-/--code
+/--code xml .[brush:]
 ID: 2954
 Cas: 23.1.2008 16:48:44 
 Spis: INS 132/2008  Odd: A  Poradi: 4, Typ: 204 (Pokyn insolvenčního soudu)

@@ -78,13 +78,13 @@ což je programátorovi samozřejmě k ničemu. Nastavit vlastní konfigurační
 
 1) Nastavením cesty k souboru do JVM proměnné `java.util.logging.config.file`:
 
-/--code
+/--code bash
 java -Djava.util.logging.config.file=logging.properties
 \--
 
 2) Programově:
 
-/--code java
+/--code java .[brush:]
 LogManager.getLogManager().readConfiguration(new FileInputStream("logging.properties"));
 \--
 
@@ -94,7 +94,7 @@ Pro zjednodušení používám zhruba takovýto kód, který respektuje onu prom
 Uznávám, v log4j takovéto opičárny dělat nemusíte.
 
 
-/--code java
+/--code java .[brush:]
 public class LoggingUtils
 {
   private static final Logger log = Logger.getLogger( LoggingUtils.class.getName() );
@@ -130,7 +130,7 @@ public class LoggingUtils
 
 Samotné logování potom provedete takto:
 
-/--code java
+/--code java .[brush:]
 class LoggingTest {
 
   // Získáte logger s nějakým jménem - obvykle se jménem aktuální třídy.

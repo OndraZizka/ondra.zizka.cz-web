@@ -47,7 +47,7 @@ See also: "How to add existing project's jar to SVN-based Maven repository":how-
 
 3) Create a `pom.xml` file, which will describe the mavenized library's dependencies.
 
-/--code xml
+/--code xml .[brush:]
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
@@ -69,7 +69,7 @@ See also: "How to add existing project's jar to SVN-based Maven repository":how-
 4) Most of the deps should be found in some existing Maven repository.
   
   Try to find as much as you can (the exact versions!), add them as a dependency to the `pom.xml`, and comment them out from the script.
-  /--code xml
+  /--code xml .[brush:]
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -139,7 +139,7 @@ See also: "How to add existing project's jar to SVN-based Maven repository":how-
 
   So, perform this:
   
-  /--code
+  /--code bash
   mvn install:install-file -DpomFile=sardine-pom.xml -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\sardine.jar -DartifactId=sardine -Dversion=80
   \--
 

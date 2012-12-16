@@ -22,7 +22,7 @@ z `JpaTemplate`. A teď co s tím?
 
 Moje nadtřída vypadala takto (zkráceno):
 
-/--code java
+/--code java .[brush:]
 public abstract class Action {
   
   protected static Logger log;
@@ -90,7 +90,7 @@ Vnitřní třídy pro seskupení funkčnosti vnější třídy
 
 Pokud chcete v nějaké třídě uklidit, možná vám pomůže použití vnitřní třídy.
 
-/--code
+/--code java .[brush:]
 class VnějšíTřída {
 
     class VnitřníTřída {
@@ -110,7 +110,7 @@ můžete vytvořit libovolný počet instancí vnitřní třídy.)//
 
 Díky tomu z ní můžete přistupovat ke všem jejím prvkům:
 
-/--code
+/--code java .[brush:]
 class MujProgram(){
   Logger log;
   
@@ -173,7 +173,7 @@ Keywords:  database, JDBC, character set, setting, charset.
 Jak zjistit, zda cesta (adresář) existuje, a pokud ne, vytvořit jej?
 ====================================================================
 
-/--code java
+/--code java .[brush:]
     try{
       File dir = new File("./spisy_xml");
       if( !dir.exists() && !dir.mkdirs() ) 

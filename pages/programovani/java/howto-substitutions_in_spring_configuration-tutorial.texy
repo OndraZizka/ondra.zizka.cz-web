@@ -19,7 +19,7 @@ You can read some properties from a file and use them to substitute
 some "variables" in bean properties' values.
 A typical usage example is JDBC configuration - one for developement and other for release:
 
-/--code xml
+/--code xml .[brush:]
   <!-- JDBC Datasource -->
   <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
     <property name="driverClassName" value="${jdbc.driver}" />
@@ -35,7 +35,7 @@ called placeholders, are defined. You can use more files, the later overriding t
 Here we use `properties/database.properties` from the .jar to define "defaults"
 and then override some properties in an external file.
 
-/--code xml
+/--code xml .[brush:]
 <context:property-placeholder location="
   classpath:properties/database.properties,
   file:conf/database.properties" />
@@ -44,7 +44,7 @@ and then override some properties in an external file.
 If you want to keep the possibility of removing the external file and relying solely on the defaults,
 you might use the `ignoreResourceNotFound` attribute:
 
-/--code xml
+/--code xml .[brush:]
 <context:property-placeholder location="
   classpath:properties/database.properties,
   file:conf/database.properties" ignoreResourceNotFound="true" />
@@ -55,7 +55,7 @@ However, in `Spring 2.x`, only the `location` attribute is supported for `<conte
 So, you need to define it "old way" - as a bean:
 
 
-/--code xml
+/--code xml .[brush:]
   <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
     <property name="locations" value="
         classpath:properties/database.properties, 
@@ -82,7 +82,7 @@ what is available from `System.getProperty(String)` and `System.getenv(String)`.
 
 So first, we define the system property, either as a JVM `-D` parameter, or programatically:
 
-/--code
+/--code bash .[brush:]
 ## in the command line:
 $ java -Dprofile=testing
 
@@ -92,7 +92,7 @@ System.setProperty( "profile", "testing" );
 
 Then we can set the bean up using all our weapons:
 
-/--code xml
+/--code xml .[brush:]
   <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
     <property name="locations" value="
         classpath:properties/database.properties,
@@ -124,7 +124,7 @@ so you might want to keep the defaults right in the custom beans' configuration 
 
 That is possible with `PropertyOverrideConfigurer`. Simply configure your bean as usualy:
 
-/--code xml
+/--code xml .[brush:]
   <bean  name="projectInfo" class="cz.dynawest.springtest.CoolProject">
     <property name="author" value="Ondřej Žižka" />
     <property name="maintainer" value="Ondřej Žižka" />
@@ -134,14 +134,14 @@ That is possible with `PropertyOverrideConfigurer`. Simply configure your bean a
 Then, you can override some of the properties in a properties file.
 The syntax of the name is `<bean-name>.<property-name>=<value>`.
 
-/--code properties
+/--code properties .[brush:]
 ## newProjectInfo.properties
 projectInfo.maintainer="Reese Witherspoon"
 \--
 
 The final piece of the puzzle is to create a bean that will apply the value to the bean.
 
-/--code xml
+/--code xml .[brush:]
 <context:property-override location="classpath:newProjectInfo.properties"/>
 \--
 

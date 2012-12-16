@@ -5,7 +5,7 @@ ImmutableProperties class
 This is an Immutable adapter of Properties class.
 
 
-/--code java
+/--code java .[brush:]
 
 package cz.dynawest.util;
 

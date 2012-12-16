@@ -12,14 +12,14 @@ Comparing configuration and scopes is nonsense.
 Scope says when the dependency should be used with the meaning of  _in_which_part_of_the_build_process_ to use it.
 When you want to use different dependencies for different app builds, Maven provides profiles.
 
-/--code
+/--code xml .[brush:]
 <dependency org="hibernate" name="hibernate" rev="2.1.8" conf="default->proxool,oscache"/>
 <dependency org="hibernate" name="hibernate" rev="2.1.8" conf="default->dbcp,swarmcache"/>
 \--
 
 becomes
 
-/--code
+/--code bash
 mvn <goal> -Pproxool,oscache
 mvn <goal> -Pdbcp,swarmcache
 + the respective profiles in pom.xml.
