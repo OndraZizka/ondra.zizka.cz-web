@@ -23,15 +23,18 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
  * @author Ondrej Zizka
  */
 @SuppressWarnings("serial")
-public class JTexyPage extends BaseLayoutPage {
+public class JTexyPage extends BaseLayoutPage implements ICountablePage {
 
-    // Inject the ContactDao using @Inject
-    @Inject
-    private transient TexyFileDaoBean dao;
-    
+    @Inject private transient TexyFileDaoBean dao;
+
+
     private transient Charset encoding = Charset.forName("utf-8");
 
+    // ID of the page to show.
+    private String reqPath;
 
+
+    
     // Set up the dynamic behavior for the page, widgets bound by id
     public JTexyPage(PageParameters params) {
 
@@ -42,7 +45,7 @@ public class JTexyPage extends BaseLayoutPage {
             sb.append('/').append(params.get(i));
         }
         // Requested path. May be served from cache/db.
-        String reqPath = sb.toString();
+        this.reqPath = sb.toString();
         
         // Filesystem path.
         File rootPath = new File(((WicketJavaEEApplication)this.getApplication()).getSettings().getTexyFilesRootPath());
@@ -86,6 +89,11 @@ public class JTexyPage extends BaseLayoutPage {
      */
     private String guessTitle( String name ) {
         return StringUtils.capitalize( name ).replaceAll("-", " ");
+    }
+
+
+    @Override public String getCounterId() {
+        return "stranky:" + this.reqPath;
     }
 
 }// class
