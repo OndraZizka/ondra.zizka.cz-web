@@ -16,7 +16,7 @@ public class Svatek {
      * Najde jmeno podle data.
      */
     public static final String getSvatekByDate( Date date ) {
-        return SVATKY.get( date.getMonth() + "/" + date.getDay() );
+        return SVATKY.get( (date.getMonth()+1) + "/" + date.getDate() );
     }
 
     static {
