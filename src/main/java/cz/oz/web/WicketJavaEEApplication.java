@@ -71,17 +71,17 @@ public class WicketJavaEEApplication extends WebApplication {
         mountResource("/log", new LogResourceReference());
 
         // Resources
-        ResourceReference favicon = new SharedResourceReference("favicon.gif");
+        //ResourceReference favicon = new SharedResourceReference("favicon.gif");
         //mount("/favicon.gif", rrefFavicon.getSharedResourceKey());
         //mountResource("favicon.gif", favicon);
-        InputStream is = WicketJavaEEApplication.class.getClassLoader().getResourceAsStream("favicon.gif");
+        /*InputStream is = WicketJavaEEApplication.class.getClassLoader().getResourceAsStream("favicon.gif");
         try {
             getSharedResources().add( "favicon", new ByteArrayResource("image/gif", IOUtils.toByteArray(is) ) );
             //Application.get().getSharedResources().add( "favicon", new ResourceStreamResource("image/gif", ) );
             mountResource("favicon.gif", new SharedResourceReference("favicon"));
         } catch( IOException ex ) {
             log.error( ex.toString() );
-        }
+        }*/
     }
 
     
