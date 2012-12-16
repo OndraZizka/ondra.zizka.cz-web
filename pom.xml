@@ -76,10 +76,12 @@
     <!-- Dependencies. -->
 
     <dependencies>
+
+        <!-- JTexy -->
         <dependency>
             <groupId>cz.dynawest.jtexy</groupId>
             <artifactId>JTexyCore</artifactId>
-            <version>1.0.2</version>
+            <version>1.0.3</version>
         </dependency>
         
         
