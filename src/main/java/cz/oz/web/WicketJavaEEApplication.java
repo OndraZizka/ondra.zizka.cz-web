@@ -7,8 +7,6 @@ import cz.oz.web.model.User;
 import cz.oz.web.qualifiers.CurrentSession;
 import cz.oz.web.qualifiers.LoggedIn;
 import cz.oz.web.security.OzCzAuthSession;
-import java.io.IOException;
-import java.io.InputStream;
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.BeanManager;
 import javax.naming.Context;
@@ -21,12 +19,10 @@ import org.apache.wicket.Session;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.Request;
 import org.apache.wicket.request.Response;
-import org.apache.wicket.request.resource.ByteArrayResource;
-import org.apache.wicket.request.resource.ResourceReference;
-import org.apache.wicket.request.resource.SharedResourceReference;
-import org.apache.wicket.util.io.IOUtils;
+import org.apache.wicket.request.resource.PackageResourceReference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import res.ResourcesPackageMarker;
 
 
 /**
@@ -69,6 +65,7 @@ public class WicketJavaEEApplication extends WebApplication {
         mountPage("/test", JTexyTestPage.class);
         mountPage("/stranky", JTexyPage.class);
         mountResource("/log", new LogResourceReference());
+        mountResource("/clipboard.swf", new PackageResourceReference( ResourcesPackageMarker.class, "js/syntaxhighlighter/scripts/clipboard.swf") );
 
         // Resources
         //ResourceReference favicon = new SharedResourceReference("favicon.gif");

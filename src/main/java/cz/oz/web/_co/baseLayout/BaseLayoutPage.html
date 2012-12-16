@@ -10,12 +10,16 @@
     <link rel="shortcut icon" href="img/favicon.gif"/>
     <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
     </wicket:link>
+    <script wicket:id="contextVar" type="text/javascript">var context = "/";</script>
     <script type="text/javascript">
         function ShowMenuSekce( eSekce ){
             $("ul.level0>li").addClass("collapsed");
             $(eSekce).removeClass("collapsed");
         }
         //window.onload = function(){ $("ul.level0>li").addClass("collapsed"); }
+
+        SyntaxHighlighter.config.clipboardSwf = context + '/clipboard.swf';
+        SyntaxHighlighter.all(); // Will add a listener to window.onload.
     </script>
     <title>Ondra.Zizka.cz</title>
 </head>

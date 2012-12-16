@@ -9,6 +9,7 @@ import cz.oz.web.wicket.FavIconLink;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
 
 
@@ -33,6 +34,9 @@ public class BaseLayoutPage extends WebPage {
     public BaseLayoutPage() {
         //add( new FavIconLink("favicon", "favicon.gif") );
         //add( new FavIconHeaderContributor( new SharedResourceReference("favicon") ) );
+
+        String context = this.getRequest().getContextPath();
+        add( new Label("contextVar", "var context = '"+context+"';").setEscapeModelStrings(false) );
 
         add( new DebugBar("debugBar") );
         
