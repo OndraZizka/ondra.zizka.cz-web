@@ -1,13 +1,15 @@
 
 
-MySQL setup:
+MySQL setup
+===========
 
    CREATE DATABASE ozcz DEFAULT CHARACTER SET = 'utf8';
    GRANT ALL ON ozcz.* TO ozcz@'%' IDENTIFIED BY 'ozcz';
 
    The tables are currently created by hbm2sql. That will change.
 
-Datasource in AS:
+Datasource in AS
+================
 
         <subsystem xmlns="urn:jboss:domain:datasources:1.1">
             <datasources>
@@ -29,6 +31,7 @@ Datasource in AS:
 
 
 Mail config in AS:
+==================
 Set SMTP host, user and pass.
 
             <mail-session jndi-name="java:jboss/mail/Default">
@@ -41,7 +44,8 @@ Set SMTP host, user and pass.
             <remote-destination host="mail.upcmail.cz" port="25"/>
         </outbound-socket-binding>
 
-Security config in AS (devel purposes):
+Security config in AS (devel purposes)
+======================================
 
         <subsystem xmlns="urn:jboss:domain:security:1.2">
             <security-domains>
@@ -63,7 +67,10 @@ Security config in AS (devel purposes):
                     </authentication>
                 </security-domain>
 
-OpenShift:
+OpenShift
+=========
 
-  
+  Adding a domain alias:
+  rhc alias add web ondra.zizka.cz -l ondra.zizka
+
   tail -500 jbosseap-6.0/logs/server.log
