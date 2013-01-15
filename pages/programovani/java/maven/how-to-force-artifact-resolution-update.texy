@@ -1,0 +1,8 @@
+
+
+Maven 3: How to force artifact resolution update
+************************************************
+
+/--code plain .[brush]
+resolution will not be reattempted until the update interval of brno-proxy has elapsed or updates are forced
+\--

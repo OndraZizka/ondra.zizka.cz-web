@@ -1,0 +1,34 @@
+
+
+Maven: XSLT transformation of pom.xml
+*************************************
+
+/--code xml .[brush:]
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+...
+\--
+
+This won't work:
+
+/--code xml .[brush:]
+    <xsl:template match="/project/version">...
+\--
+
+`pom.xml` is namespaced, so your XSLT stylesheet needs some tweak.
+
+You need to declare a namespace, effectively assigning it a prefix.
+
+/--code xml .[brush:]
+<xsl:stylesheet version="1.0" 
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:pom="http://maven.apache.org/POM/4.0.0"
+>
+    <xsl:template match="/pom:project/pom:version">
+        <xsl:value-of select="string()"/>
+    </xsl:template>
+\--
+
+Here you define the prefix for the POM's default namespace.
+The same applies for other namespaces, if others are ever used.
