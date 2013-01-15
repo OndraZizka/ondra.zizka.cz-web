@@ -12,7 +12,6 @@ import org.apache.wicket.markup.head.CssReferenceHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptReferenceHeaderItem;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.internal.HtmlHeaderContainer;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.resource.CssResourceReference;
@@ -41,28 +40,22 @@ public class TexyDocumentPanel extends Panel {
             add( new Label("body", "Doesn't exist: " + texyFile.getPath() ));
         }
         else {
-            // Read.
-            String src;
             try {
-                src = FileUtils.readFileToString(texyFile, this.encoding);
+                // Read.
+                String src = FileUtils.readFileToString(texyFile, this.encoding);
+                // Convert.
+                String html = JTexy.create().process(src);
+                // Show.
+                add( new Label("body", html).setEscapeModelStrings(false));
             } catch (IOException ex) {
                 add( new Label("body", "Error reading " + texyFile.getPath() + ": " + ex.toString() ));
+                getWebResponse().setStatus(404);
                 // TODO log
-                return;
-            }
-
-            // Convert.
-            String html;
-            try {
-                html = JTexy.create().process(src);
             } catch( TexyException ex ){
                 add( new Label("body", "Error rendering " + texyFile.getPath() + ": " + ex.toString() ));
+                getWebResponse().setStatus(500);
                 // TODO log
-                return;
             }
-
-            // Show.
-            add( new Label("body", html).setEscapeModelStrings(false));
 
             // Add title if absent in document.
             add( new Label("substituteTitle", guessTitle(texyFile.getName())).setVisibilityAllowed(false) );
