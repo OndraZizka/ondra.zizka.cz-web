@@ -7,7 +7,7 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>OZ.cz web</name>
+    <name>OZ.cz web (Java)</name>
 
 	<repositories>
 		<repository>
