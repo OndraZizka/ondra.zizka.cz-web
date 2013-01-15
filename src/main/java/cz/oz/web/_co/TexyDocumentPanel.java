@@ -40,6 +40,18 @@ public class TexyDocumentPanel extends Panel {
             add( new Label("body", "Doesn't exist: " + texyFile.getPath() ));
         }
         else {
+            // If given path points to a dir, try "index.texy".
+            if( texyFile.isDirectory() ){
+                File f = new File(texyFile, "index.texy");
+                if( f.isFile() )
+                    texyFile = f;
+                else {
+                    add( new Label("substituteTitle", "No directory index."));
+                    add( new Label("body", "This URL leads to a directory, but there's no index page." ));
+                    // TODO: Redirect to a dir listing?
+                }
+            }
+
             try {
                 // Read.
                 String src = FileUtils.readFileToString(texyFile, this.encoding);
