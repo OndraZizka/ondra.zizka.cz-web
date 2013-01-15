@@ -40,6 +40,10 @@ public class TexyDocumentPanel extends Panel {
             add( new Label("body", "Doesn't exist: " + texyFile.getPath() ));
         }
         else {
+            String title = guessTitle(texyFile.getName());
+            String body = "";
+            boolean success = false;
+
             // If given path points to a dir, try "index.texy".
             // TODO: This all should be done at the page level, not in the component.
             //       The component should receive Texy String.
@@ -48,12 +52,14 @@ public class TexyDocumentPanel extends Panel {
                 if( f.isFile() )
                     texyFile = f;
                 else {
-                    add( new Label("substituteTitle", "No directory index."));
-                    add( new Label("body", "This URL leads to a directory, but there's no index page." ));
+                    title = "No directory index.";
+                    body = "This URL leads to a directory, but there's no index page.";
+                    texyFile = null;
                     // TODO: Redirect to a dir listing?
                 }
             }
 
+            if( texyFile != null )
             try {
                 // Read.
                 String src = FileUtils.readFileToString(texyFile, this.encoding);
@@ -62,17 +68,18 @@ public class TexyDocumentPanel extends Panel {
                 // Show.
                 add( new Label("body", html).setEscapeModelStrings(false));
             } catch (IOException ex) {
-                add( new Label("body", "Error reading " + texyFile.getPath() + ": " + ex.toString() ));
+                body = "Error reading " + texyFile.getPath() + ": " + ex.toString();
                 getWebResponse().setStatus(404);
                 // TODO log
             } catch( TexyException ex ){
-                add( new Label("body", "Error rendering " + texyFile.getPath() + ": " + ex.toString() ));
+                body = "Error rendering " + texyFile.getPath() + ": " + ex.toString();
                 getWebResponse().setStatus(500);
                 // TODO log
             }
 
             // Add title if absent in document.
-            add( new Label("substituteTitle", guessTitle(texyFile.getName())).setVisibilityAllowed(false) );
+            add( new Label("substituteTitle", title).setVisibilityAllowed(!success) );
+            add( new Label("body",            body ).setEscapeModelStrings(!success));
         }
     }// const
 
