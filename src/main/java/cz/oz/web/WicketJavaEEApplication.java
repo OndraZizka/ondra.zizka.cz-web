@@ -37,7 +37,7 @@ public class WicketJavaEEApplication extends WebApplication {
     
     @Override
     public Class<? extends Page> getHomePage() {
-        return JTexyTestPage.class;
+        return JTexyPage.class;
     }
 
     
