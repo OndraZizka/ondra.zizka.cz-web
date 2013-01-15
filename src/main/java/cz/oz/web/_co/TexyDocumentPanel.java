@@ -41,6 +41,8 @@ public class TexyDocumentPanel extends Panel {
         }
         else {
             // If given path points to a dir, try "index.texy".
+            // TODO: This all should be done at the page level, not in the component.
+            //       The component should receive Texy String.
             if( texyFile.isDirectory() ){
                 File f = new File(texyFile, "index.texy");
                 if( f.isFile() )
