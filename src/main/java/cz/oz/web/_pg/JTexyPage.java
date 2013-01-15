@@ -1,11 +1,8 @@
 package cz.oz.web._pg;
 
-import cz.oz.web.WicketJavaEEApplication;
 import cz.oz.web._co.TexyDocumentPanel;
 import cz.oz.web._co.baseLayout.BaseLayoutPage;
 import cz.oz.web.dao.TexyFileDaoBean;
-import java.io.File;
-import java.nio.charset.Charset;
 import javax.inject.Inject;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
