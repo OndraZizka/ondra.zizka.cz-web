@@ -66,7 +66,8 @@ public class TexyDocumentPanel extends Panel {
                 // Convert.
                 String html = JTexy.create().process(src);
                 // Show.
-                add( new Label("body", html).setEscapeModelStrings(false));
+                body = html;
+                success = true;
             } catch (IOException ex) {
                 body = "Error reading " + texyFile.getPath() + ": " + ex.toString();
                 getWebResponse().setStatus(404);
