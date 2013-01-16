@@ -97,7 +97,7 @@ public class TexyDocumentPanel extends Panel {
         response.render( new JavaScriptReferenceHeaderItem(
             new JavaScriptResourceReference( ResourcesPackageMarker.class, "js/syntaxhighlighter3/scripts/shCore.js"), null, "shCore", true, null, null));
         response.render( new JavaScriptReferenceHeaderItem(
-            new JavaScriptResourceReference( ResourcesPackageMarker.class, "js/syntaxhighlighter3/scripts/shAutoloader.js"), null, "shAutoloader", true, null, null));
+            new JavaScriptResourceReference( ResourcesPackageMarker.class, "js/syntaxhighlighter3/init.js"), null, "shAutoloader", true, null, null));
     }
 
 
