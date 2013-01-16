@@ -57,6 +57,7 @@ public class TexyDocumentPanel extends Panel {
                 else {
                     title = "No directory index.";
                     body = "This URL leads to a directory, but there's no index page.";
+                    getWebResponse().setStatus(404);
                     texyFile = null;
                     // TODO: Redirect to a dir listing?
                 }
