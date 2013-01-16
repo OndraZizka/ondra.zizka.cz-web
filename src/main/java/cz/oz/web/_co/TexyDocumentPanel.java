@@ -38,6 +38,7 @@ public class TexyDocumentPanel extends Panel {
         if( ! texyFile.exists() ){
             add( new Label("substituteTitle", "Page not found."));
             add( new Label("body", "Doesn't exist: " + texyFile.getPath() ));
+            getWebResponse().setStatus(404);
         }
         else {
             String title = guessTitle(texyFile.getName());
