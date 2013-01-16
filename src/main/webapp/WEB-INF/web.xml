@@ -5,6 +5,19 @@
 
     <display-name>JBoss AS Quickstart: Wicket WAR</display-name>
 
+    <servlet>
+        <servlet-name>FileServlet</servlet-name>
+        <servlet-class>cz.oz.web.util.FileServlet</servlet-class>
+        <init-param>
+            <param-name>basePath</param-name>
+            <param-value>/</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FileServlet</servlet-name>
+        <url-pattern>/*</url-pattern>
+    </servlet-mapping>
+
     <!-- Enable Wicket -->
     <filter>
         <filter-name>Wicket</filter-name>
