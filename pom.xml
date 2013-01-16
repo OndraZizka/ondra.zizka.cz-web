@@ -33,7 +33,7 @@
     <properties>
         <!-- Local vs. OpenShift. -->
         <ozcz.dataSource>ozczDS</ozcz.dataSource>
-        <ozcz.texyFilesRootPaths>/home/ondra/uw/oz.cz/web/pages</ozcz.texyFilesRootPaths>
+        <ozcz.texyFilesRootPaths>/home/ondra/uw/oz.cz/web-git/pages</ozcz.texyFilesRootPaths>
 
         <!-- JBoss dependency versions -->
         <version.org.jboss.as.plugins.maven.plugin>7.3.Final</version.org.jboss.as.plugins.maven.plugin>
