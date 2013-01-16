@@ -1,0 +1,214 @@
+
+
+
+Trying Jira on JBoss?
+************************
+
+I've tried Jira on JBoss EAP 5.1.1 and encountered some errors...
+
+
+Specification violation [EJB3 JPA 6.2.1.2] - You have not defined a jta-data-source for a JTA enabled persistence context named: propertyset
+=============================================================================================================================================
+
+It's a known problem, see "EJBTHREE-1166":https://issues.jboss.org/browse/EJBTHREE-1166.
+
+I searched but google's results are cluttered with solution for Spring + JBoss problem with `RESOURCE_LOCAL`.
+
+This comes from `jira.war/WEB-INF/lib/propertyset-1.5.jar!/META-INF/persistence.xml` which contains:
+
+/--code xml .[brush:]
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0">
+  <persistence-unit name="propertyset" transaction-type="JTA">
+    <description>Persistence Unit for OSPropertySet</description>
+    <class>com.opensymphony.module.propertyset.ejb3.PropertyEntry</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+  </persistence-unit>
+</persistence>
+\--
+
+I use the `all` config with the default `<jboss>/server/<conf>/hsqldb-ds.xml` which defines  `<local-tx-datasource>`.
+
+
+/--code plain .[brush:]
+03:52:20,472 INFO  [PersistenceUnitDeployment] Starting persistence unit persistence.unit:unitName=#propertyset
+03:52:21,444 ERROR [AbstractKernelController] Error installing to Start: name=persistence.unit:unitName=#propertyset state=Create
+java.lang.RuntimeException: Specification violation [EJB3 JPA 6.2.1.2] - You have not defined a jta-data-source for a JTA enabled persistence context named: propertyset
+        at org.jboss.jpa.deployment.PersistenceUnitInfoImpl.<init>(PersistenceUnitInfoImpl.java:115)
+        at org.jboss.jpa.deployment.PersistenceUnitDeployment.start(PersistenceUnitDeployment.java:275)
+        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+        at java.lang.reflect.Method.invoke(Method.java:597)
+        at org.jboss.reflect.plugins.introspection.ReflectionUtils.invoke(ReflectionUtils.java:59)
+        at org.jboss.reflect.plugins.introspection.ReflectMethodInfoImpl.invoke(ReflectMethodInfoImpl.java:150)
+        at org.jboss.joinpoint.plugins.BasicMethodJoinPoint.dispatch(BasicMethodJoinPoint.java:66)
+        at org.jboss.kernel.plugins.dependency.KernelControllerContextAction$JoinpointDispatchWrapper.execute(KernelControllerContextAction.java:243)
+        at org.jboss.kernel.plugins.dependency.ExecutionWrapper.execute(ExecutionWrapper.java:47)
+        at org.jboss.kernel.plugins.dependency.KernelControllerContextAction.dispatchExecutionWrapper(KernelControllerContextAction.java:111)
+        at org.jboss.kernel.plugins.dependency.KernelControllerContextAction.dispatchJoinPoint(KernelControllerContextAction.java:72)
+        at org.jboss.kernel.plugins.dependency.LifecycleAction.installActionInternal(LifecycleAction.java:221)
+        at org.jboss.kernel.plugins.dependency.InstallsAwareAction.installAction(InstallsAwareAction.java:54)
+        at org.jboss.kernel.plugins.dependency.InstallsAwareAction.installAction(InstallsAwareAction.java:42)
+        at org.jboss.dependency.plugins.action.SimpleControllerContextAction.simpleInstallAction(SimpleControllerContextAction.java:62)
+        at org.jboss.dependency.plugins.action.AccessControllerContextAction.install(AccessControllerContextAction.java:71)
+        at org.jboss.dependency.plugins.AbstractControllerContextActions.install(AbstractControllerContextActions.java:51)
+        at org.jboss.dependency.plugins.AbstractControllerContext.install(AbstractControllerContext.java:348)
+        at org.jboss.dependency.plugins.AbstractController.install(AbstractController.java:1652)
+        at org.jboss.dependency.plugins.AbstractController.incrementState(AbstractController.java:938)
+        at org.jboss.dependency.plugins.AbstractController.resolveContexts(AbstractController.java:1082)
+        at org.jboss.dependency.plugins.AbstractController.resolveContexts(AbstractController.java:988)
+        at org.jboss.dependency.plugins.AbstractController.install(AbstractController.java:778)
+        at org.jboss.dependency.plugins.AbstractController.install(AbstractController.java:543)
+        at org.jboss.deployers.vfs.deployer.kernel.BeanMetaDataDeployer.deploy(BeanMetaDataDeployer.java:125)
+        at org.jboss.deployers.vfs.deployer.kernel.BeanMetaDataDeployer.deploy(BeanMetaDataDeployer.java:52)
+        at org.jboss.deployers.spi.deployer.helpers.AbstractSimpleRealDeployer.internalDeploy(AbstractSimpleRealDeployer.java:62)
+        at org.jboss.deployers.spi.deployer.helpers.AbstractRealDeployer.deploy(AbstractRealDeployer.java:55)
+        at org.jboss.deployers.plugins.deployers.DeployerWrapper.deploy(DeployerWrapper.java:179)
+        at org.jboss.deployers.plugins.deployers.DeployersImpl.doDeploy(DeployersImpl.java:1454)
+        at org.jboss.deployers.plugins.deployers.DeployersImpl.doInstallParentFirst(DeployersImpl.java:1172)
+        at org.jboss.deployers.plugins.deployers.DeployersImpl.doInstallParentFirst(DeployersImpl.java:1193)
+        at org.jboss.deployers.plugins.deployers.DeployersImpl.install(DeployersImpl.java:1113)
+        at org.jboss.dependency.plugins.AbstractControllerContext.install(AbstractControllerContext.java:348)
+        at org.jboss.dependency.plugins.AbstractController.install(AbstractController.java:1652)
+        at org.jboss.dependency.plugins.AbstractController.incrementState(AbstractController.java:938)
+        at org.jboss.dependency.plugins.AbstractController.resolveContexts(AbstractController.java:1082)
+        at org.jboss.dependency.plugins.AbstractController.resolveContexts(AbstractController.java:988)
+        at org.jboss.dependency.plugins.AbstractController.change(AbstractController.java:826)
+        at org.jboss.dependency.plugins.AbstractController.change(AbstractController.java:556)
+        at org.jboss.deployers.plugins.deployers.DeployersImpl.process(DeployersImpl.java:789)
+        at org.jboss.deployers.plugins.main.MainDeployerImpl.process(MainDeployerImpl.java:699)
+        at org.jboss.system.server.profileservice.repository.MainDeployerAdapter.process(MainDeployerAdapter.java:117)
+        at org.jboss.profileservice.management.upload.remoting.AbstractDeployHandler.start(AbstractDeployHandler.java:324)
+        at org.jboss.profileservice.management.upload.remoting.AbstractDeployHandler.invoke(AbstractDeployHandler.java:238)
+        at org.jboss.remoting.ServerInvoker.invoke(ServerInvoker.java:967)
+        at org.jboss.remoting.transport.local.LocalClientInvoker.invoke(LocalClientInvoker.java:106)
+        at org.jboss.remoting.Client.invoke(Client.java:2055)
+        at org.jboss.remoting.Client.invoke(Client.java:879)
+        at org.jboss.profileservice.management.client.upload.StreamingDeploymentTarget.invoke(StreamingDeploymentTarget.java:304)
+        at org.jboss.profileservice.management.client.upload.StreamingDeploymentTarget.start(StreamingDeploymentTarget.java:189)
+        at org.jboss.profileservice.management.client.upload.DeploymentProgressImpl.start(DeploymentProgressImpl.java:232)
+        at org.jboss.profileservice.management.client.upload.DeploymentProgressImpl.run(DeploymentProgressImpl.java:89)
+        at org.rhq.plugins.jbossas5.util.DeploymentUtils.run(DeploymentUtils.java:155)
+        at org.rhq.plugins.jbossas5.util.DeploymentUtils.deployArchive(DeploymentUtils.java:116)
+        at org.rhq.plugins.jbossas5.deploy.AbstractDeployer.deploy(AbstractDeployer.java:119)
+        at org.rhq.plugins.jbossas5.helper.CreateChildResourceFacetDelegate.createContentBasedResource(CreateChildResourceFacetDelegate.java:124)
+        at org.rhq.plugins.jbossas5.helper.CreateChildResourceFacetDelegate.createResource(CreateChildResourceFacetDelegate.java:56)
+        at org.rhq.plugins.jbossas5.ApplicationServerComponent.createResource(ApplicationServerComponent.java:308)
+        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+        at java.lang.reflect.Method.invoke(Method.java:597)
+        at org.rhq.core.pc.inventory.ResourceContainer$ComponentInvocationThread.call(ResourceContainer.java:525)
+        at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:303)
+        at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)
+        at java.lang.Thread.run(Thread.java:662)
+03:52:53,767 INFO  [TomcatDeployment] deploy, ctxPath=/atlassian-jira-4.3.2
+\--
+
+
+
+
+ClassCastException: org.apache.xerces.jaxp.SAXParserFactoryImpl cannot be cast to javax.xml.parsers.SAXParserFactory
+====================================================================================================================
+
+Another problem I run into.
+That can probably be solved by removing log4j from Jira's WAR.
+
+/--code plain .[brush:]
+03:52:54,448 ERROR [STDERR] log4j:ERROR A "org.jboss.logging.util.OnlyOnceErrorHandler" object is not assignable to a "org.apache.log4j.spi.ErrorHandler" variable.
+03:52:54,448 ERROR [STDERR] log4j:ERROR The class "org.apache.log4j.spi.ErrorHandler" was loaded by 
+03:52:54,448 ERROR [STDERR] log4j:ERROR [BaseClassLoader@172f1b4e{vfszip:/mnt/ssd1/_projekty/JBoss/EAP/eap/server/all/deploy/atlassian-jira-4.3.2.war/}] whereas object of type 
+03:52:54,448 ERROR [STDERR] log4j:ERROR "org.jboss.logging.util.OnlyOnceErrorHandler" was loaded by [org.jboss.bootstrap.NoAnnotationURLClassLoader@187a84e4].
+03:52:54,529 ERROR [2]] Exception sending context initialized event to listener instance of class org.jboss.web.jsf.integration.config.JBossJSFConfigureListener
+java.lang.ClassCastException: org.apache.xerces.jaxp.SAXParserFactoryImpl cannot be cast to javax.xml.parsers.SAXParserFactory
+        at javax.xml.parsers.SAXParserFactory.newInstance(SAXParserFactory.java:128)
+        at com.sun.faces.config.ConfigureListener$WebXmlProcessor.getConfiguredFactory(ConfigureListener.java:702)
+        at com.sun.faces.config.ConfigureListener$WebXmlProcessor.scanForFacesServlet(ConfigureListener.java:674)
+        at com.sun.faces.config.ConfigureListener$WebXmlProcessor.<init>(ConfigureListener.java:648)
+        at com.sun.faces.config.ConfigureListener.contextInitialized(ConfigureListener.java:156)
+        at org.jboss.web.jsf.integration.config.JBossJSFConfigureListener.contextInitialized(JBossJSFConfigureListener.java:60)
+        at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:3910)
+        at org.apache.catalina.core.StandardContext.start(StandardContext.java:4389)
+        at org.jboss.web.tomcat.service.deployers.TomcatDeployment.performDeployInternal(TomcatDeployment.java:321)
+        at org.jboss.web.tomcat.service.deployers.TomcatDeployment.performDeploy(TomcatDeployment.java:145)
+        at org.jboss.web.deployers.AbstractWarDeployment.start(AbstractWarDeployment.java:461)
+        at org.jboss.web.deployers.WebModule.startModule(WebModule.java:122)
+        at org.jboss.web.deployers.WebModule.start(WebModule.java:97)
+        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+        at java.lang.reflect.Method.invoke(Method.java:597)
+        at org.jboss.mx.interceptor.ReflectedDispatcher.invoke(ReflectedDispatcher.java:157)
+        at org.jboss.mx.server.Invocation.dispatch(Invocation.java:96)
+        at org.jboss.mx.server.Invocation.invoke(Invocation.java:88)
+        at org.jboss.mx.server.AbstractMBeanInvoker.invoke(AbstractMBeanInvoker.java:264)
+        at org.jboss.mx.server.MBeanServerImpl.invoke(MBeanServerImpl.java:668)
+        at org.jboss.system.microcontainer.ServiceProxy.invoke(ServiceProxy.java:206)
+        at $Proxy38.start(Unknown Source)
+        at org.jboss.system.microcontainer.StartStopLifecycleAction.installAction(StartStopLifecycleAction.java:42)
+        at org.jboss.system.microcontainer.StartStopLifecycleAction.installAction(StartStopLifecycleAction.java:37)
+        at org.jboss.dependency.plugins.action.SimpleControllerContextAction.simpleInstallAction(SimpleControllerContextAction.java:62)
+        at org.jboss.dependency.plugins.action.AccessControllerContextAction.install(AccessControllerContextAction.java:71)
+        at org.jboss.dependency.plugins.AbstractControllerContextActions.install(AbstractControllerContextActions.java:51)
+        at org.jboss.dependency.plugins.AbstractControllerContext.install(AbstractControllerContext.java:348)
+        at org.jboss.system.microcontainer.ServiceControllerContext.install(ServiceControllerContext.java:297)
+        at org.jboss.dependency.plugins.AbstractController.install(AbstractController.java:1652)
+        at org.jboss.dependency.plugins.AbstractController.incrementState(AbstractController.java:938)
+        at org.jboss.dependency.plugins.AbstractController.resolveContexts(AbstractController.java:1082)
+        at org.jboss.dependency.plugins.AbstractController.resolveContexts(AbstractController.java:988)
+        at org.jboss.dependency.plugins.AbstractController.change(AbstractController.java:826)
+        at org.jboss.dependency.plugins.AbstractController.change(AbstractController.java:556)
+        at org.jboss.system.ServiceController.doChange(ServiceController.java:688)
+        at org.jboss.system.ServiceController.start(ServiceController.java:460)
+        at org.jboss.system.deployers.ServiceDeployer.start(ServiceDeployer.java:163)
+        at org.jboss.system.deployers.ServiceDeployer.deploy(ServiceDeployer.java:99)
+        at org.jboss.system.deployers.ServiceDeployer.deploy(ServiceDeployer.java:46)
+        at org.jboss.deployers.spi.deployer.helpers.AbstractSimpleRealDeployer.internalDeploy(AbstractSimpleRealDeployer.java:62)
+        at org.jboss.deployers.spi.deployer.helpers.AbstractRealDeployer.deploy(AbstractRealDeployer.java:55)
+        at org.jboss.deployers.plugins.deployers.DeployerWrapper.deploy(DeployerWrapper.java:179)
+        at org.jboss.deployers.plugins.deployers.DeployersImpl.doDeploy(DeployersImpl.java:1454)
+        at org.jboss.deployers.plugins.deployers.DeployersImpl.doInstallParentFirst(DeployersImpl.java:1172)
+        at org.jboss.deployers.plugins.deployers.DeployersImpl.doInstallParentFirst(DeployersImpl.java:1193)
+        at org.jboss.deployers.plugins.deployers.DeployersImpl.install(DeployersImpl.java:1113)
+        at org.jboss.dependency.plugins.AbstractControllerContext.install(AbstractControllerContext.java:348)
+        at org.jboss.dependency.plugins.AbstractController.install(AbstractController.java:1652)
+        at org.jboss.dependency.plugins.AbstractController.incrementState(AbstractController.java:938)
+        at org.jboss.dependency.plugins.AbstractController.resolveContexts(AbstractController.java:1082)
+        at org.jboss.dependency.plugins.AbstractController.resolveContexts(AbstractController.java:988)
+        at org.jboss.dependency.plugins.AbstractController.change(AbstractController.java:826)
+        at org.jboss.dependency.plugins.AbstractController.change(AbstractController.java:556)
+        at org.jboss.deployers.plugins.deployers.DeployersImpl.process(DeployersImpl.java:789)
+        at org.jboss.deployers.plugins.main.MainDeployerImpl.process(MainDeployerImpl.java:699)
+        at org.jboss.system.server.profileservice.repository.MainDeployerAdapter.process(MainDeployerAdapter.java:117)
+        at org.jboss.profileservice.management.upload.remoting.AbstractDeployHandler.start(AbstractDeployHandler.java:324)
+        at org.jboss.profileservice.management.upload.remoting.AbstractDeployHandler.invoke(AbstractDeployHandler.java:238)
+        at org.jboss.remoting.ServerInvoker.invoke(ServerInvoker.java:967)
+        at org.jboss.remoting.transport.local.LocalClientInvoker.invoke(LocalClientInvoker.java:106)
+        at org.jboss.remoting.Client.invoke(Client.java:2055)
+        at org.jboss.remoting.Client.invoke(Client.java:879)
+        at org.jboss.profileservice.management.client.upload.StreamingDeploymentTarget.invoke(StreamingDeploymentTarget.java:304)
+        at org.jboss.profileservice.management.client.upload.StreamingDeploymentTarget.start(StreamingDeploymentTarget.java:189)
+        at org.jboss.profileservice.management.client.upload.DeploymentProgressImpl.start(DeploymentProgressImpl.java:232)
+        at org.jboss.profileservice.management.client.upload.DeploymentProgressImpl.run(DeploymentProgressImpl.java:89)
+        at org.rhq.plugins.jbossas5.util.DeploymentUtils.run(DeploymentUtils.java:155)
+        at org.rhq.plugins.jbossas5.util.DeploymentUtils.deployArchive(DeploymentUtils.java:116)
+        at org.rhq.plugins.jbossas5.deploy.AbstractDeployer.deploy(AbstractDeployer.java:119)
+        at org.rhq.plugins.jbossas5.helper.CreateChildResourceFacetDelegate.createContentBasedResource(CreateChildResourceFacetDelegate.java:124)
+        at org.rhq.plugins.jbossas5.helper.CreateChildResourceFacetDelegate.createResource(CreateChildResourceFacetDelegate.java:56)
+        at org.rhq.plugins.jbossas5.ApplicationServerComponent.createResource(ApplicationServerComponent.java:308)
+        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+        at java.lang.reflect.Method.invoke(Method.java:597)
+        at org.rhq.core.pc.inventory.ResourceContainer$ComponentInvocationThread.call(ResourceContainer.java:525)
+        at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:303)
+        at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)
+        at java.lang.Thread.run(Thread.java:662)
+03:52:54,703 ERROR [STDERR] SLF4J: Class path contains multiple SLF4J bindings.
+03:52:54,703 ERROR [STDERR] SLF4J: Found binding in [vfszip:/mnt/ssd1/_projekty/JBoss/EAP/eap/common/lib/slf4j-jboss-logging.jar/org/slf4j/impl/StaticLoggerBinder.class]
+03:52:54,703 ERROR [STDERR] SLF4J: Found binding in [vfszip:/mnt/ssd1/_projekty/JBoss/EAP/eap/server/all/deploy/atlassian-jira-4.3.2.war/WEB-INF/lib/slf4j-log4j12-1.5.8.jar/org/slf4j/impl/StaticLoggerBinder.class]
+\--

@@ -1,0 +1,102 @@
+
+Wicket exception on shutdown - java.lang.NoClassDefFoundError: org/apache/wicket/util/lang/PropertyResolver
+***********************************************************************************************************
+
+
+This happens when I undeploy a Wicket 1.4.9 application (remove the webapp dir) on Tomcat 6.0.29:
+
+
+/--code plain
+Nov 25, 2010 11:30:49 PM org.apache.catalina.startup.HostConfig checkResources
+INFO: Undeploying context []
+Nov 25, 2010 11:30:49 PM org.apache.catalina.startup.HostConfig checkResources
+WARNING: Error while removing context []
+java.lang.NoClassDefFoundError: org/apache/wicket/util/lang/PropertyResolver
+        at org.apache.wicket.Application.internalDestroy(Application.java:952)
+        at org.apache.wicket.protocol.http.WebApplication.internalDestroy(WebApplication.java:527)
+        at org.apache.wicket.protocol.http.WicketFilter.destroy(WicketFilter.java:179)
+        at org.apache.catalina.core.ApplicationFilterConfig.release(ApplicationFilterConfig.java:357)
+        at org.apache.catalina.core.StandardContext.filterStop(StandardContext.java:4036)
+        at org.apache.catalina.core.StandardContext.stop(StandardContext.java:4768)
+        at org.apache.catalina.core.ContainerBase.removeChild(ContainerBase.java:924)
+        at org.apache.catalina.startup.HostConfig.checkResources(HostConfig.java:1174)
+        at org.apache.catalina.startup.HostConfig.check(HostConfig.java:1342)
+        at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:303)
+        at org.apache.catalina.util.LifecycleSupport.fireLifecycleEvent(LifecycleSupport.java:119)
+        at org.apache.catalina.core.ContainerBase.backgroundProcess(ContainerBase.java:1337)
+        at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1601)
+        at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1610)
+        at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.run(ContainerBase.java:1590)
+        at java.lang.Thread.run(Thread.java:662)
+Caused by: java.lang.ClassNotFoundException: org.apache.wicket.util.lang.PropertyResolver
+        at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1645)
+        at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1491)
+        ... 16 more
+Nov 25, 2010 11:30:49 PM org.apache.catalina.core.ContainerBase stop
+INFO: Container org.apache.catalina.core.ContainerBase.[Catalina].[localhost].[/].[apiServlet] has not been started
+Nov 25, 2010 11:30:49 PM org.apache.catalina.core.ContainerBase stop
+INFO: Container org.apache.catalina.core.ContainerBase.[Catalina].[localhost].[/].[jsp] has not been started
+Nov 25, 2010 11:30:49 PM org.apache.catalina.core.ContainerBase stop
+INFO: Container org.apache.catalina.core.ContainerBase.[Catalina].[localhost].[/].[default] has not been started
+Nov 25, 2010 11:30:49 PM org.apache.catalina.startup.HostConfig checkResources
+WARNING: Error during context [] destroy
+java.lang.NoClassDefFoundError: org/apache/wicket/util/lang/PropertyResolver
+        at org.apache.wicket.Application.internalDestroy(Application.java:952)
+        at org.apache.wicket.protocol.http.WebApplication.internalDestroy(WebApplication.java:527)
+        at org.apache.wicket.protocol.http.WicketFilter.destroy(WicketFilter.java:179)
+        at org.apache.catalina.core.ApplicationFilterConfig.release(ApplicationFilterConfig.java:357)
+        at org.apache.catalina.core.StandardContext.filterStop(StandardContext.java:4036)
+        at org.apache.catalina.core.StandardContext.stop(StandardContext.java:4768)
+        at org.apache.catalina.core.ContainerBase.destroy(ContainerBase.java:1164)
+        at org.apache.catalina.core.StandardContext.destroy(StandardContext.java:4868)
+        at org.apache.catalina.startup.HostConfig.checkResources(HostConfig.java:1180)
+        at org.apache.catalina.startup.HostConfig.check(HostConfig.java:1342)
+        at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:303)
+        at org.apache.catalina.util.LifecycleSupport.fireLifecycleEvent(LifecycleSupport.java:119)
+        at org.apache.catalina.core.ContainerBase.backgroundProcess(ContainerBase.java:1337)
+        at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1601)
+        at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1610)
+        at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.run(ContainerBase.java:1590)
+        at java.lang.Thread.run(Thread.java:662)
+\--
+
+
+Solution 
+========
+
+From http://www.mail-archive.com/users@wicket.apache.org/msg49863.html :
+
+Alexandros Karypidis:
+> Sun, 21 Mar 2010 02:58:42 -0700
+>  Ok, I've pinpointed the underlying cause. Indeed, the file is simply removed before the destroy() method has a chance to clean up. I verified this by using this ugly hack:
+> 
+> 1.  Adding a field:
+>     `private InputStream wicketJarProtector;`
+> 
+> 2. In `WicketFilter.init()` I open the wicket jar to "protect" it from deletion:
+>    `wicketJarProtector = filterConfig.getServletContext().getResourceAsStream("/WEB-INF/lib/wicket.jar");`
+> 
+> 3. In `WicketFilter.destroy()` I close the file handle:
+>     `wicketJarProtector.close();`
+> 
+> 
+> This prevents the file from being deleted, undeployment completes successfully.
+> 
+> I'm not sure how to "properly" fix this... Any ideas?
+
+
+
+Igor Vaynberg:
+> I can kind of see what is going on, the YourApplication class is
+> loaded using a different classloader then the wicket jar. and tomcat
+> cleans it up. fair enough. but, YourApplication class extends
+> Application which is inside the jar, so tomcat should not be cleaning
+> it up...makes no sense. How can the entire jar be gone if one of the
+> classes that was loaded from it is still being used. It may be an
+> optimization they do but its may be backfiring in this particular
+> case. You may have to use your jar protector as a permanent
+> workaround.
+> 
+> -igor
+
+

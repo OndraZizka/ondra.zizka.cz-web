@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250"/>
+	<meta name="Author" content="Ondra Žižka, ondra at dynawest.cz; Design by Petr Záveský, petr.zavesky@seznam.cz"/>
+	<meta name="Keywords" content=""/>
+	<meta name="Description" content=""/>
+	<script type="text/javascript" charset="windows-1250" src="fce.js"></script>
+<style type="text/css">
+	/* * { margin: 0; padding: 0; } */
+	body { background-color: #ffffff; font-family: "Arial CE", "Helvetica CE", "Verdana CE", Arial, Helvetica, Verdana, sans-serif; }
+</style>
+<script type="text/javascript">
+</script>
+<title> Pong AI dokumentace </title></head>
+<body>
+	<!--
+	<h1>
+		<p>Dokumentace k Pong AI - umělá inteligence pro hru pong.</p>
+		<p>projekt na SIN</p>
+	</h1>
+	-->
+	
+	<h1>Dokumentace k Pong AI - umělá inteligence pro hru pong</h1>
+	
+	<h2>Struktura</h2>
+	<p>Pro ovládání aktivních prvků ve hře Pong slouží agent s umělou inteligencí.
+	Inteligence je implementována pomocí zpětnovazebního učení (RE)
+	s použitím neuronové sítě pro ohodnocovací funkci <strong>Q</strong>.
+	</p>
+	
+	<h2>Neuronová síť - funkce</h2>
+	<p>Naše síť funguje na běžných principech. Jedná se o orientovaný graf, jehož uzly jsou 
+	neurony a jsou propojeny ohodnocenými hranami, které znamenají váhu.
+	Některé neurony jsou tzv. vstupní, resp. výstupní; jejich seskupení tvoří vstupní, resp. výstupní vrstvu,
+	do které se vkládá vstup pro výpočet, resp. ze které se odečítá výsledek.
+	</p><p>
+	Výpočet probíhá klasicky - pro každý neuron jsou vynásobeny jeho vstupy  vahou na daném vstupu,
+	součet těchto výsledků je potom vstupem pro funkci neuronu, obvykle
+	<a href="http://en.wikipedia.org/wiki/Sigmoid_function">sigmoidu</a> (funkce je ale volitelná).
+	Výstup z této funkce je pak výstupem neuronu.	
+	</p><p>Tento výpočet probíhá v pořadí takovém, aby všechny vstupy počítaného neuronu byly již vypočtené.
+	Pro optimalizaci rychlosti výpočtu se nepočítá s cyklickým zapojením neuronů.
+	</p><p>Zapojení neuronů může být libovolné při zachování podmínky neexistence cyklů.
+	Síť tedy nemusí být striktně vrstvená. Tato výhoda nevedla ke snížení výkonu oproti
+	implementaci počítající pouze s vrstvenou sítí.
+	</p>
+	
+	<h2>Neuronová síť - implementace</h2>
+	<p>Pro potřeby implementace RE byla nejprve implementována neuronová síť s backpropagation.
+	Jedná se o obecnou neuronovou síť specializovanou pomocí dědění.
+	</p>
+	<ul> <li><strong>{@link pongai.cNeuron cNeuron}</strong> - základní stavební prvek sítě.
+	
+	</li><li><strong>{@link pongai.cSynapse cSynapse}</strong> - spojení mezi neurony.
+	
+  </li><li><strong>{@link pongai.cNeuralNet cNeuralNet}</strong> - obecná neuronová síť s libovolným počtem a zapojením neuronů.
+		Metoda <code>Compute</code> počítá s neexistencí cyklů v síti.
+			
+  </li><li><strong>{@link pongai.cNeuralNetIOAdapter cNeuralNetIOAdapter}</strong> - rozhraní neuronové sítě pro vkládání vstupů
+		(<code>SetInputValues(double[] adValues)</code>) a pro odečet výsledků
+		(<code>double[] GetOutputValues()</code>).
+		
+  </li><li><strong>{@link pongai.cNeuralNetPerceptron cNeuralNetPerceptron}</strong> - specializace <code>cNeuralNet</code>.
+		Přetížen je jen konstruktor, který podle pole počtu neuronů ve vrstvách
+		vytvoří příslušný počet neuronů, propojí je, a neurony
+		z první, resp. poslední vrstvy určí jako vstupní, resp. výstupní.
+		
+  </li><li><strong>{@link pongai.cNeuralNetTeacher cNeuralNetTeacher}</strong> - učitel neuronové sítě; učí metodou backpropagation.
+		Pracuje s objektem <code>cNeuralNetIOAdapter</code> a jeho odkazem na objekt <code>cNeuralNet</code>.
+		Obsahuje trénovací sadu vzorů a požadovaných výsledků. Na základě odchylky skutečného výsledku sítě
+		od požadovaného (přímo) upravuje jednotlivé váhy na synapsích mezi neurony sítě.
+		
+  </li><li><strong>cRound</strong> - třída s různými statickými pomocnými funkcemi.
+  </li></ul>
+	
+	<!-- Agent - funkce -->
+	<h2>Agent - funkce</h2>
+	<p>Hra Pong je popsána v příslušné části dokumentace. Tam jsou popsány pojmy jako brána, míček, gól atp.</p>
+	<p>Jelikož jednoho agenta v modelu světa představuje jedna pohyblivá hrací ploška,
+	budou se v následujících odstavcích tyto dva pojmy pro stručnost mírně prolínat.</p>
+	
+	<p>Agent má "nastarosti" jednu plošku, jejíž pomocí sleduje tyto cíle:</p>
+		<ul style="list-style-type: decimal;"> <li>zabránit tomu, aby míček pronikl až do jeho brány (nedostat gól)
+    </li><li>dostat míček do soupeřovy brány (dát mu gól)
+    </li></ul>
+	
+	<p>Agent dostává od modelu prostředí v pravidelných intervalech tyto informace:</p>
+		<ul> <li>Pozice pohyblivých prvků (X) - tedy pozice jeho samotného a soupeřova pozice.
+    </li><li>Pozice míčku (X,Y) - normalizováno na interval &lt;0,1&gt;
+    </li><li>Směr a rychlost pohybu míčku jako dvousložkový vektor.
+    </li></ul>
+		
+	<p>Při obdržení těchto informací s nimi agent naloží tak, že podle nich upraví svůj vnitřní stav.
+		Tyto informace jsou prakticky přímo "namapovány" na proměnné v jeho stavu.</p>
+	<p>Na žádost od agent podle svého současného stavu "vymyslí", jaká akce by měla být provedena s jeho ploškou,
+		a tuto informaci vrátí. Agent je lehce nedeterministický v závislosti na konstatě pravděpodobnosti výběru
+		akce, která podle současných agentových zkušeností povede ke kladnému ohodnocení. Může se tedy stát,
+		že vrátí jiné instrukce ve dvou následujících žádostech, aniž by mezi nimi byl upraven stav.
+		Nedeterminističnost je zavedena za účelem "vyskočení" z případného lokálního minima.</p>
+	
+	<p>Agent se učí na principu zpětnovazebního učení (reinforcement learning, RE).
+	To znamená, že informaci o správnosti či úspěšnosti svého konání nedostává okamžitě po provedení akce,
+	ale řídce, nepravidelně, obvykle na základě nějaké události, a v hodnocení není příliš informací,
+	obvykle jen kladné či záporné číslo různých velikostí určující prospěšnost a závažnost dané události.</p>
+	
+	<p>Původní plán byl takový, že náš agent ze hry Pong jako ohodnocení činnosti bude dostávat body:</p>
+		<ul> <li>+100 bodů, pokud soupeř dostane gól. 
+    </li><li>-100 bodů, pokud agent sám dostane gól do vlastní brány.
+    </li></ul>
+	<p>Tento přístup se však v průběhu vývoje ukázal být jako ne zcela vhodný, viz nadřazená část dokumentace.</p>
+		
+		
+	<!-- Agent - implementace -->
+	<h2>Agent - implementace</h2>
+	<p>Třída Agenta byla vytvořena v rámci balíčku objects a byla promíchána funkčnost agenta a plošky.
+	Tato část pojednává pouze o částech části týkajících se implementace agenta jako představitele umělé inteligence.
+	</p>
+	
+	<p>Metoda učení vzniklá kombinací metody Monte Carlo a ukládání "eligibility", podle návrhu popsaného v {@link overview přehledu }
+	byla implementována ve třídě {@link objects.Agent Agent }. Tato třída je sice v balíčku <code>objects</code>,
+	patří ale spíše do <code>pongai</code>, proto je ideově popsána zde.</p>
+	
+	<h3>Pozorování a ovlivňování prostředí</h3>
+	
+	<p>Agent pozoruje i ovlivňuje prostředí především prostřednictvím metody
+		{@link objects.Agent#doAction doAction() } V ní se děje toto:</p>
+	<ul> <li>Odečtou se hodnoty z modelu prostředí.
+	</li><li>Hodnoty se znormalizují: Rychlost se převede z rozsahu (-oo, +oo) na rozsah (0,1).
+  </li><li>Tyto hodnoty se vloží na vstup agentovy neuronové sítě.
+  </li><li>Provede se výpočet neuronové sítě.
+  </li><li>Odečtou se výstupní hodnoty sítě, které představují pravděpodobnost výberu jednotlivých akcí.
+  </li><li>Zjistí se, která z akcí má nejvyšší pravděpodobnost.
+  </li><li>Podle metody epsilon-greedy je vybrána akce, která se má provést, a ta je provedena.
+  </li></ul>
+	<p>Až sem je to postup běžný pro Q-learning s aplikací neurnové sítě. Nakonec provedeme jeden krok navíc:</p>
+	<ul> <li>Uložíme si informace o této iteraci - jaké hodnoty jsme poskytli neuronové sítí, a jakou akci jsme vybrali.
+		Tyto informace se ukládají do fronty FIFO s pevnou délkou N. Jsou v ní tedy informace o maximálně N posledních iteracích.
+  </li></ul>
+	
+	
+	<div><img src="doc-files/rozlozeni_vah.gif" alt="" width="707" height="235" /></div>
+		
+	<h3>Událost "trefa míčku"</h3>
+	<p>Když se míček dotkne plošky, kterou má agent nastarosti, je zavolána jeho metoda {@link objects.Agent#hitReceived},
+	ve které se zkopíruje aktuální obsah FIFO fronty, tedy informace o několika posledních iteracích.
+	Tato sada se uloží do skladu (interní třída <code>cHitsStore</code>), kde se ukládají takovéto sady pro celou 
+	aktuální epizodu (za posledních několik set až tisíc iterací, starší se zahazují).
+	</p>
+	<p>Této události na obrázku odpovídají vrchol <strong>černé</strong> křivky.</p>
+	
+	
+	<h3>Zpětná vazba</h3>
+	
+	<p>Hodnocení chování agent dostává prostřednictvím metod {@link objects.Agent#goalMaked } a {@link objects.Agent#goalReceived}.
+	Tyto metody jsou volány, když agent dá, resp. dostane gól.
+	V nich se zavolá metoda (@link #AdaptNeuralNet} s hodnotou odměny +100, resp. -100.
+	</p>
+	<p>Této události na obrázku odpovídají vrchol <strong style="color: blue;">modré</strong> křivky.</p>
+	
+	
+	<h3>Učení</h3>
+	
+	<p>Samotné učení probíhá v metodě (@link #AdaptNeuralNet}. Probíhá takto:</p>
+	<ul> <li>V objektu <code>cHitsStore</code> máme informace o dění před důležitými událostmi:
+		Několik iterací před každým zásahem plošky míčkem v nedávné době během této epizody.
+		(Význam pojmů "několik" a "nedávné" závisí na konstantě.)
+  </li><li>Všem zásahům je určena "váha" v rozmezí <0,1> podle jejich stáří - čím starší, tím méně.
+  </li><li>U všech zásahů přiřadíme jednotlivým iteracím váhu podobným způsobem.
+  </li><li>Procházíme iterace od nejmladší po nejstarší:
+  </li><li>Pro každou iteraci nastavíme neuronové síti na vstup hodnoty uložené u této iterace
+		a provedeme výpočet sítě (za účelem správného nastavení vnitřních hodnot pro použití back-propagation).
+  </li><li>Vytvoříme kopii uložených hodnot. U výstupu, který představuje akci, která byla v dané iteraci provedena,
+		nastavíme rozdíl podle váhy dané iterace a podle odměny (rozdíl tedy může být kladný i záporný).
+	</li><li>Tyto vstupní hodnoty a výstupní hodnoty s jednou z nich upravenou poskytneme učiteli sítě
+		(objekt {@link pongai.cNeuralNetTeacher}) a provedeme distribuci chyby metodou back-propagation.
+  </li></ul>
+	<p>Tím by mělo být zajištěno, že:</p>
+	<ul> <li>pravděpodobnost výběru akce vedoucí v určitém stavu (a jim blízkých) k obdržení gólu se sníží,
+  </li><li>pravděpodobnost výběru akce vedoucí v určitém stavu (a jim blízkých) ke gólu soupeři se zvýší.
+  </li></ul>
+	<p>A jestli ne, ať mě zašlápne obří pštros.</p>
+	
+
+	<h3>Response welcome</h3>
+	<p>Pokud je uvedený postup principiálně špatný, dejte prosím vědět autorovi,
+		který se velmi rád dozví, proč, a jaký postup by byl lepší. Díky.</p>
+		
+
+	
+	
+</body></html>

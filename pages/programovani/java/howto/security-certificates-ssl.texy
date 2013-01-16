@@ -1,0 +1,46 @@
+
+
+Java security - how to work with SSL certificates
+*************************************************
+
+/--code bash .[brush:]
+# Get the server's cert.
+openssl s_client -connect support.stage.redhat.com:443
+# Store the cert incl. -----BEGIN .... and -----END ... to stage.pem
+
+# Import.
+sudo keytool -import -alias support.stage.redhat.com -keystore /etc/java-6-sun/security/cacerts -file stage.pem
+
+# Check if it's really there.
+keytool -keystore /etc/java-6-sun/security/cacerts -list | grep stage
+\--
+
+Sources
+=======
+
+* "No more 'unable to find valid certification path to requested target'":http://blogs.sun.com/andreas/entry/no_more_unable_to_find *****
+* "keytool - Key and Certificate Management Tool":http://java.sun.com/javase/6/docs/technotes/tools/solaris/keytool.html *****
+* "Connecting to SSL services": http://confluence.atlassian.com/display/JIRA/Connecting+to+SSL+services *****
+* "OpenSSL to Keytool Conversion tips":http://conshell.net/wiki/index.php/OpenSSL_to_Keytool_Conversion_tips ***
+
+
+-----BEGIN CERTIFICATE-----
+MIIDUzCCArygAwIBAgICApowDQYJKoZIhvcNAQEFBQAwgZ0xCzAJBgNVBAYTAlVT
+MRcwFQYDVQQIEw5Ob3J0aCBDYXJvbGluYTEQMA4GA1UEBxMHUmFsZWlnaDEWMBQG
+A1UEChMNUmVkIEhhdCwgSW5jLjELMAkGA1UECxMCSVMxFjAUBgNVBAMTDVJlZCBI
+YXQgSVMgQ0ExJjAkBgkqhkiG9w0BCQEWF3N5c2FkbWluLXJkdUByZWRoYXQuY29t
+MB4XDTEwMDMyMzA3MTI1OFoXDTEyMDMyMjA3MTI1OFowgZkxCzAJBgNVBAYTAlVT
+MRcwFQYDVQQIEw5Ob3J0aCBDYXJvbGluYTEWMBQGA1UEChMNUmVkIEhhdCwgSW5j
+LjELMAkGA1UECxMCSVMxITAfBgNVBAMTGHN1cHBvcnQuc3RhZ2UucmVkaGF0LmNv
+bTEpMCcGCSqGSIb3DQEJARYac3lzYWRtaW4tcmhjb3JwQHJlZGhhdC5jb20wgZ8w
+DQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBANwkCOjqkZN1a9UZx3ghl8v/cOG+I2kj
+1SggHDlPDO5W1qwbKOIduL156W6goX5qzH1dhTJMoLGcBqn8aYeLYVvf0rQ9hk8u
+ZvJmXdwNqA4cKS53cW3dmDzU6V7DIRPUawh/cQ2T6Ab81gkxHuXdhAWKsD95bb4Y
+WsdNnL6/O3npAgMBAAGjgaMwgaAwCQYDVR0TBAIwADAsBglghkgBhvhCAQ0EHxYd
+T3BlblNTTCBHZW5lcmF0ZWQgQ2VydGlmaWNhdGUwHQYDVR0OBBYEFKq7K0bnawI3
+da76+NWa20pwKzlVMB8GA1UdIwQYMBaAFA2sGXDtBKdeeKv+i6g06yEmwVY1MCUG
+A1UdEQQeMByBGnN5c2FkbWluLXJoY29ycEByZWRoYXQuY29tMA0GCSqGSIb3DQEB
+BQUAA4GBANfwuLigUmnxEy3E2LybIlrm5OJV9U3KLua3I18uUg5jmBRb6fhqcddw
+kiX/WVZyhAy+XZWM3UtoDSoQRqvgdcklmuUSlKRS8/aWniD0cVK1uDxK9QVNkIyb
+BiWGuekG2xawh3lICNVHbaSTxxn3kHGxCWSbtwXngI7+cRrCz3xE
+-----END CERTIFICATE-----

@@ -1,0 +1,12 @@
+
+
+
+JBoss EJB 3.0 annotations
+*************************
+
+//This is my list, not intended to be a complete reference.//
+
+
+| Annotation   |   Meaning   |
+| `@org.jboss.ejb3.annotation.Depends` | Annotated service (`@Service`, `@MessageDriven`, ...) depends on other one, i.e. it cannot be started until the other one has been started. |
+

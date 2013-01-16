@@ -1,0 +1,56 @@
+
+
+Jetty: Serving static files from a directory
+********************************************
+
+/--code java .[brush:]
+		Server server = new Server(8080);
+		Context ctx = new Context( server, "/", Context.SESSIONS );
+
+		ServletHolder servletHolder = new ServletHolder(new WicketServlet());
+		servletHolder.setInitParameter("applicationClassName", WicketApplication.class.getName() );
+		ctx.addServlet( servletHolder, "/bot/*" );
+
+      /* Static content is not being served. You need to add a servlet
+         that will serve the html, images etc for you: */
+      ServletHolder defaultSH = new ServletHolder(new org.mortbay.jetty.servlet.DefaultServlet());
+      
+      // This didn't work - see the NPE bellow. 
+      //defaultSH.setInitParameter("relativeResourceBase", "./src/main/java/org/jawabot/web/files");
+      defaultSH.setInitParameter("resourceBase", "./src/main/java/org/jawabot/web/files");
+      ctx.addServlet(defaultSH, "/");
+\--
+
+
+
+Strange thing is that `resourceBase` works when provided with a relative path,
+and setting `relativeResourceBase` didn't work, I was getting this NPE:
+
+
+/--code plain .[brush:]
+04:49:39.401 DEBUG [main] org.mortbay.log  started org.apache.wicket.protocol.http.WicketServlet-16695559
+04:49:39.404 DEBUG [main] org.mortbay.log  Checking Resource aliases
+04:49:39.405 ERROR [main] org.mortbay.log  EXCEPTION 
+java.lang.NullPointerException
+        at org.mortbay.jetty.servlet.DefaultServlet.init(DefaultServlet.java:181)
+        at javax.servlet.GenericServlet.init(GenericServlet.java:241)
+        at org.mortbay.jetty.servlet.ServletHolder.initServlet(ServletHolder.java:440)
+        at org.mortbay.jetty.servlet.ServletHolder.doStart(ServletHolder.java:263)
+        at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+        at org.mortbay.jetty.servlet.ServletHandler.initialize(ServletHandler.java:685)
+        at org.mortbay.jetty.servlet.Context.startContext(Context.java:140)
+        at org.mortbay.jetty.handler.ContextHandler.doStart(ContextHandler.java:517)
+        at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+        at org.mortbay.jetty.handler.HandlerWrapper.doStart(HandlerWrapper.java:130)
+        at org.mortbay.jetty.Server.doStart(Server.java:224)
+        at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+        at org.jawabot.web.RunInJetty.main(RunInJetty.java:54)
+04:49:39.406 INFO  [main] /  Unavailable javax.servlet.UnavailableException: java.lang.NullPointerException
+04:49:39.406 DEBUG [main] org.mortbay.log  started org.mortbay.jetty.servlet.DefaultServlet-29132923
+04:49:39.406 DEBUG [main] org.mortbay.log  started org.mortbay.jetty.servlet.Context@19209ea{/,null}
+04:49:39.407 DEBUG [main] org.mortbay.log  starting Server@16a786
+04:49:39.410 INFO  [main] org.mortbay.log  Started SocketConnector@0.0.0.0:8080
+04:49:39.410 DEBUG [main] org.mortbay.log  started SocketConnector@0.0.0.0:8080
+04:49:39.410 DEBUG [main] org.mortbay.log  started Server@16a786
+\--
+

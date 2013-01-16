@@ -1,0 +1,46 @@
+
+
+Wicket: How to render a page to a string
+****************************************
+
+
+
+/--code java .[brush:]
+	public static String renderPage(Class<? extends Page> pageClass, PageParameters pageParameters) {
+		// renders a page to a string
+		WebApplication application = WebApplication.get();
+		ServletContext context = application.getServletContext();
+
+		//fake a request/response cycle
+		MockHttpSession servletSession = new MockHttpSession(context);
+		servletSession.setTemporary(true);
+
+		MockHttpServletRequest servletRequest = new MockHttpServletRequest(application, servletSession, context);
+		MockHttpServletResponse servletResponse = new MockHttpServletResponse(servletRequest);
+
+		//initialize request and response
+		servletRequest.initialize();
+		servletResponse.initialize();
+
+		ServletWebRequest webRequest = new ServletWebRequest(servletRequest);
+		BufferedWebResponse webResponse = new BufferedWebResponse(servletResponse);
+		webResponse.setAjax(true);
+
+		WebRequestCycle requestCycle = new WebRequestCycle(application, webRequest, webResponse);
+		requestCycle.setRequestTarget(new BookmarkablePageRequestTarget(pageClass, pageParameters));
+
+		try {
+			requestCycle.getProcessor().respond(requestCycle);
+
+			if (requestCycle.wasHandled() == false) {
+				requestCycle.setRequestTarget(new WebErrorCodeResponseTarget(HttpServletResponse.SC_NOT_FOUND));
+			}
+			requestCycle.detach();
+
+		} finally {
+			requestCycle.getResponse().close();
+		}
+
+		return webResponse.toString();
+	}
+\--

@@ -1,0 +1,40 @@
+
+
+GZip servlet filter from the JSP book
+*************************************
+
+The filter code is "here":jspbook.src.zip in the class `com.jspbook.GZipFilter`.
+
+The "PJL Compression Filter":http://sourceforge.net/projects/pjl-comp-filter/
+is allegedly better.
+
+Usage:
+
+/--code xml .[brush:]
+<web-app>
+
+  <!-- GZip filter -->
+  <filter>
+    <filter-name>gzip</filter-name>
+    <filter-class>com.jspbook.GZIPFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>gzip</filter-name>
+    <url-pattern>*.js</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>gzip</filter-name>
+    <url-pattern>*.css</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>gzip</filter-name>
+    <url-pattern>*.html</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>gzip</filter-name>
+    <url-pattern>*.texy</url-pattern>
+  </filter-mapping>
+
+</web-app>
+\--

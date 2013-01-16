@@ -1,0 +1,226 @@
+
+
+Kontrola rodného èísla (RÈ) a identifikaèního èísla (IÈ)
+********************************************************
+
+Výcuc z http://latrine.dgx.cz/jak-overit-platne-ic-a-rodne-cislo .
+
+
+
+Ovìøení rodného èísla
+=====================
+
+1.  spoèti zbytek po dìlení prvních devíti èíslic a èísla 11
+2. je-li zbytek 10, musí být poslední èíslice 0
+3. jinak poslední èíslice musí být rovna zbytku 
+
+Tedy 780123/3540 je korektní rodné èíslo, aèkoliv není dìlitelné jedenácti.
+
+
+Implementace v PHP:
+-------------------------
+
+/--code php .[brush:]
+function verifyRC($rc)
+{
+    // "be liberal in what you receive"
+    if (!preg_match('#^\s*(\d\d)(\d\d)(\d\d)[ /]*(\d\d\d)(\d?)\s*$#', $rc, $matches)) {
+        return FALSE;
+    }
+
+    list(, $year, $month, $day, $ext, $c) = $matches;
+
+    // do roku 1954 pøidìlovaná devítimístná RÈ nelze ovìøit
+    if ($c === '') {
+        return $year < 54;
+    }
+
+    // kontrolní èíslice
+    $mod = ($year . $month . $day . $ext) % 11;
+    if ($mod === 10) $mod = 0;
+    if ($mod !== (int) $c) {
+        return FALSE;
+    }
+
+    // kontrola data
+    $year += $year < 54 ? 2000 : 1900;
+
+    // k mìsíci mùže být pøipoèteno 20, 50 nebo 70
+    if ($month > 70 && $year > 2003) $month -= 70;
+    elseif ($month > 50) $month -= 50;
+    elseif ($month > 20 && $year > 2003) $month -= 20;
+
+    if (!checkdate($month, $day, $year)) {
+        return FALSE;
+    }
+
+    // cislo je OK
+    return TRUE;
+}
+\--
+
+
+Rodné èíslo - JavaScript:
+-------------------------
+
+/--code js .[brush:]
+function testRC(x, age)
+{
+  if(!age) age = 0;
+  try
+  {
+    if(x.length == 0) return true;
+    if(x.length < 9) throw 1;
+    var year = parseInt(x.substr(0, 2), 10);
+    var month = parseInt(x.substr(2, 2), 10);
+    var day = parseInt( x.substr(4, 2), 10);
+    var ext = parseInt(x.substr(6, 3), 10);
+    if((x.length == 9) && (year < 54)) return true;
+    var c = 0;
+    if(x.length == 10) c = parseInt(x.substr(9, 1));
+    var m = parseInt( x.substr(0, 9)) % 11;
+    if(m == 10) m = 0;
+    if(m != c) throw 1;
+    year += (year < 54) ? 2000 : 1900;
+    if((month > 70) && (year > 2003)) month -= 70;
+    else if (month > 50) month -= 50;
+    else if ((month > 20) && (year > 2003)) month -= 20;
+    var d = new Date();
+    if((year + age) > d.getFullYear()) throw 1;
+    if(month == 0) throw 1;
+    if(month > 12) throw 1;
+    if(day == 0) throw 1;
+    if(day > 31) throw 1;
+  }
+  catch(e)
+  {
+    alert('Zadaný údaj není korektní!');
+    return false;
+  }
+  return true;
+}
+\--
+
+
+
+
+
+
+Ovìøení IÈ
+==========
+
+
+Takže, jak se ovìøuje IÈ? Napøíklad 69663963
+
+1. první až sedmou èíslici vynásobíme èísly 8, 7, 6, 5, 4, 3, 2 a souèiny seèteme:
+   `soucet = 6*8 + 9*7 + 6*6 + 6*5 + 3*4 + 9*3 + 6*2 = 228`
+2. spoèítáme zbytek po dìlení jedenácti: `zbytek = soucet % 11`
+3. pro poslední osmou èíslici c musí platit:
+    * je-li zbytek 0 nebo 10, pak `c = 1`
+    * je-li zbytek 1, pak `c = 0`
+    * v ostatních pøípadech je `c = 11 - zbytek`
+
+
+Implementace v PHP:
+-------------------------
+
+/--code php .[brush:]
+function verifyIC($ic)
+{
+    // "be liberal in what you receive"
+    $ic = preg_replace('#\s+#', '', $ic);
+
+    // má požadovaný tvar?
+    if (!preg_match('#^\d{8}$#', $ic)) {
+        return FALSE;
+    }
+
+    // kontrolní souèet
+    $a = 0;
+    for ($i = 0; $i < 7; $i++) {
+        $a += $ic[$i] * (8 - $i);
+    }
+
+    $a = $a % 11;
+
+    if ($a === 0) $c = 1;
+    elseif ($a === 10) $c = 1;
+    elseif ($a === 1) $c = 0;
+    else $c = 11 - $a;
+
+    return (int) $ic[7] === $c;
+}
+\--
+
+
+
+
+IÈ - JavaScript:
+-------------------------
+
+/--code js .[brush:]
+function testICO(x)
+{
+  try
+  {
+    var a = 0;
+    if(x.length == 0) return true;
+    if(x.length != 8) throw 1;
+    var b = x.split('');
+    var c = 0;
+    for(var i = 0; i < 7; i++) a += (parseInt(b[i]) * (8 - i));
+    a = a % 11;
+    c = 11 - a;
+    if(a == 1) c = 0;
+    if(a == 0) c = 1;
+    if(a == 10) c = 1;
+    if(parseInt(b[ 7]) != c) throw(1);
+  }
+  catch(e)
+  {
+    alert('Zadaný údaj není korektní!');
+    return false;
+  }
+  return true;
+}
+\--
+
+
+
+
+
+DIÈ - JavaScript:
+-------------------------
+
+/--code js .[brush:]
+function testDIC(x)
+{
+  try
+  {
+    if(x.length == 0) return true;
+    var id = x.substr(0, 2).toUpperCase();
+    x = x.substr(2);
+    if((id == 'CZ') || (id == 'SK'))
+    {
+      if(x.length < 8) throw 1;
+      if(x.length > 11) throw 1;
+      if(x.length == 8)
+      {
+        return testICO(x);
+      }
+      else
+      {
+        return testRC(x, 18);
+      }
+      throw 1;
+    }
+    alert('Není možné zkontrolovat DIÈ mimo Èeskou a Slovenskou republiku!');
+    return true;
+  }
+  catch(e)
+  {
+    alert('Zadaný údaj není korektní!');
+    return false;
+  }
+}
+\--

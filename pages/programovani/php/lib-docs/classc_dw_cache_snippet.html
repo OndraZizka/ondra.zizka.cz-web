@@ -1,0 +1,280 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=windows-1250">
+<title>web inc lib: Dokumentace třídy cDwCacheSnippet</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generováno programem Doxygen 1.5.0 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Hlavní&nbsp;stránka</span></a></li>
+    <li id="current"><a href="annotated.html"><span>Třídy</span></a></li>
+    <li><a href="files.html"><span>Soubory</span></a></li>
+    <li><a href="pages.html"><span>Ostatní&nbsp;stránky</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="annotated.html"><span>Seznam&nbsp;tříd</span></a></li>
+    <li><a href="hierarchy.html"><span>Hierarchie&nbsp;tříd</span></a></li>
+    <li><a href="functions.html"><span>Seznam&nbsp;členů&nbsp;tříd</span></a></li>
+  </ul></div>
+<h1>Dokumentace třídy cDwCacheSnippet</h1><!-- doxytag: class="cDwCacheSnippet" --><a href="classc_dw_cache_snippet-members.html">Seznam všech členů.</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Veřejné metody</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classc_dw_cache_snippet.html#5dfafba03efd71a88a2e466b337b975f">cDwCacheSnippet</a> ($sId, $oStore=false)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classc_dw_cache_snippet.html#76c48c10b08415d531f6c774629466d0">SetContentType</a> ($sContentType)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classc_dw_cache_snippet.html#2033be6dd49b36e3d98803a003d0f1d1">__destruct</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classc_dw_cache_snippet.html#fbdf3a7c4bb4ae514c0e063fb7b41fad">PrintFromCache</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classc_dw_cache_snippet.html#11a4eb4e145ed511999c2f8d3a87a10a">Load</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classc_dw_cache_snippet.html#ae50f4d736e03404552ccf824300eac7">Save</a> ()</td></tr>
+
+<tr><td colspan="2"><br><h2>Veřejné atributy</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classc_dw_cache_snippet.html#e2a170844339300810c2e97f534c8c59">$sData</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classc_dw_cache_snippet.html#20740230a657aa5afc94eedbf18f5b17">$sContentType</a> = 'text/html'</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classc_dw_cache_snippet.html#dfc094ddecad1d6b5dbaf044c01d7da1">$sId</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classc_dw_cache_snippet.html#1d5a3a09b7f3e9a2b0e9cde19a5a4c1f">$bCachingNow</a> = false</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classc_dw_cache_snippet.html#d7528ffedbe9eb70bf0242a0a7b93572">$bDirectEcho</a> = true</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classc_dw_cache_snippet.html#8e331863dcd09dbbeb9941d3a6b8f066">$oStore</a> = null</td></tr>
+
+</table>
+<hr><a name="_details"></a><h2>Detailní popis</h2>
+Dw Snippet Cache Written by Ondrej Zizka - <a href="http://ondra.zizka.cz">http://ondra.zizka.cz</a> , <a href="mailto:ondra@dynawest.cz">ondra@dynawest.cz</a>, <a href="http://www.dynawest.cz">http://www.dynawest.cz</a><p>
+Caches portions of code - automates output buffer and include operations.<p>
+Example of use: ?&gt;&lt;? $oDwCacheSnippet = new <a class="el" href="classc_dw_cache_snippet.html">cDwCacheSnippet</a>('page1_content.html'); if(!$oDwCacheSnippet-&gt;<a class="el" href="classc_dw_cache_snippet.html#fbdf3a7c4bb4ae514c0e063fb7b41fad">PrintFromCache()</a>){ echo 'Hello everybody! This content was generated on '.date('j.n.Y H:i:s').'.'; $oDwCacheSnippet-&gt;<a class="el" href="classc_dw_cache_snippet.html#ae50f4d736e03404552ccf824300eac7">Save()</a>; } /* First, the cache object is created. Second, <a class="el" href="classc_dw_cache_snippet.html#fbdf3a7c4bb4ae514c0e063fb7b41fad">PrintFromCache()</a> tries to print the cached data. If not found [or expired - may be implemented in future version], all output (echo'ed or the code outside PHP's "&lt;? ? &gt;" tags) is being caught until the method <a class="el" href="classc_dw_cache_snippet.html#ae50f4d736e03404552ccf824300eac7">Save()</a> is called. <a class="el" href="classc_dw_cache_snippet.html#ae50f4d736e03404552ccf824300eac7">Save()</a> stops catching, flushes the output to the client and saves the output trough the storage handler. Flushing can be suppressed by setting $bDirectEcho = false; In this example, data would be stored in 'page1_content.html' file.<p>
+Default behavior is to store data in files in the scripts directory, using pre-created <a class="el" href="classc_dw_cache_store_files.html">cDwCacheStoreFiles</a> class. That directory can be changed by providing another such object: $oDwCacheSnippet = new <a class="el" href="classc_dw_cache_snippet.html">cDwCacheSnippet</a>('page1_content.html', new <a class="el" href="classc_dw_cache_store_files.html">cDwCacheStoreFiles</a>('./pre/') ); The mean of data storage can be changed by extending the <a class="el" href="classc_dw_cache_store.html">cDwCacheStore</a> class.?&gt;&lt;? Connect to MySQL @ server:port as user 'user' with password 'pass' and use table 'table' from database 'database' and use 'key' column for the id and 'val' column for the value. $oCacheStoreMysql = new cDwCacheStoreMysql('mysql://user:pass:port/database.tablekey,val'); $oDwCacheSnippet = new <a class="el" href="classc_dw_cache_snippet.html">cDwCacheSnippet</a>('page1', $oCacheStoreMysql); /* Unfortunatelly such handler is not yet written. 
+<p>
+<hr><h2>Dokumentace konstruktoru a destruktoru</h2>
+<a class="anchor" name="2033be6dd49b36e3d98803a003d0f1d1"></a><!-- doxytag: member="cDwCacheSnippet::__destruct" ref="2033be6dd49b36e3d98803a003d0f1d1" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">cDwCacheSnippet::__destruct           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<hr><h2>Dokumentace k metodám</h2>
+<a class="anchor" name="5dfafba03efd71a88a2e466b337b975f"></a><!-- doxytag: member="cDwCacheSnippet::cDwCacheSnippet" ref="5dfafba03efd71a88a2e466b337b975f" args="($sId, $oStore=false)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">cDwCacheSnippet::cDwCacheSnippet           </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>sId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>oStore</em> = <code>false</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="76c48c10b08415d531f6c774629466d0"></a><!-- doxytag: member="cDwCacheSnippet::SetContentType" ref="76c48c10b08415d531f6c774629466d0" args="($sContentType)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">cDwCacheSnippet::SetContentType           </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>sContentType</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="fbdf3a7c4bb4ae514c0e063fb7b41fad"></a><!-- doxytag: member="cDwCacheSnippet::PrintFromCache" ref="fbdf3a7c4bb4ae514c0e063fb7b41fad" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">cDwCacheSnippet::PrintFromCache           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Tries to print the cache content. If not exists [or has expired], starts caching. Returns false if the content was not found. Returns true if the content was found and printed. Returns the cache content if it was found but not printed ($bDirectEcho == true). 
+</div>
+</div><p>
+<a class="anchor" name="11a4eb4e145ed511999c2f8d3a87a10a"></a><!-- doxytag: member="cDwCacheSnippet::Load" ref="11a4eb4e145ed511999c2f8d3a87a10a" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">cDwCacheSnippet::Load           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Loads cache content 
+</div>
+</div><p>
+<a class="anchor" name="ae50f4d736e03404552ccf824300eac7"></a><!-- doxytag: member="cDwCacheSnippet::Save" ref="ae50f4d736e03404552ccf824300eac7" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">cDwCacheSnippet::Save           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Saves cache content 
+</div>
+</div><p>
+<hr><h2>Dokumentace k datovým členům</h2>
+<a class="anchor" name="e2a170844339300810c2e97f534c8c59"></a><!-- doxytag: member="cDwCacheSnippet::$sData" ref="e2a170844339300810c2e97f534c8c59" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">cDwCacheSnippet::$sData          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="20740230a657aa5afc94eedbf18f5b17"></a><!-- doxytag: member="cDwCacheSnippet::$sContentType" ref="20740230a657aa5afc94eedbf18f5b17" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">cDwCacheSnippet::$sContentType = 'text/html'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="dfc094ddecad1d6b5dbaf044c01d7da1"></a><!-- doxytag: member="cDwCacheSnippet::$sId" ref="dfc094ddecad1d6b5dbaf044c01d7da1" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">cDwCacheSnippet::$sId          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="1d5a3a09b7f3e9a2b0e9cde19a5a4c1f"></a><!-- doxytag: member="cDwCacheSnippet::$bCachingNow" ref="1d5a3a09b7f3e9a2b0e9cde19a5a4c1f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">cDwCacheSnippet::$bCachingNow = false          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="d7528ffedbe9eb70bf0242a0a7b93572"></a><!-- doxytag: member="cDwCacheSnippet::$bDirectEcho" ref="d7528ffedbe9eb70bf0242a0a7b93572" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">cDwCacheSnippet::$bDirectEcho = true          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="8e331863dcd09dbbeb9941d3a6b8f066"></a><!-- doxytag: member="cDwCacheSnippet::$oStore" ref="8e331863dcd09dbbeb9941d3a6b8f066" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">cDwCacheSnippet::$oStore = null          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<hr>Dokumentace pro tuto třídu byla generována z následujícího souboru:<ul>
+<li><a class="el" href="lib_8c_dw_cache_snippet_8php.html">lib.cDwCacheSnippet.php</a></ul>
+<hr size="1"><address style="align: right;"><small>Generováno Mon Dec 11 11:13:37 2006 pro projekt web inc lib programem&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.0 </small></address>
+</body>
+</html>

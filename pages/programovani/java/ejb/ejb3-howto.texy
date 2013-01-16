@@ -1,0 +1,271 @@
+
+
+
+How to create an EBJ 3 jar
+**************************
+
+No guarantees.
+
+
+/--code xml .[brush:]
+    <!-- I used JBoss varia, 'cos I'm lazy. -->
+    <dependency>
+      <groupId>org.jboss.jbossas</groupId>
+      <artifactId>jboss-as-varia</artifactId>
+      <version>5.1.0.GA</version>
+      <classifier>jbossjmx-ant</classifier>
+    </dependency>
+\--
+
+
+/--code java .[brush:]
+package org.jboss.qa.eapperf.deployers.ejb3.calc;
+
+import javax.ejb.Stateless;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
+
+@Stateless
+@TransactionManagement(TransactionManagementType.CONTAINER)
+public class CalculatorBean
+  implements CalculatorRemote, CalculatorLocal
+{
+  public int add(int x, int y)
+  {
+    return x + y;
+  }
+
+  public int subtract(int x, int y)
+  {
+    return x - y;
+  }
+}
+\--
+
+
+
+Optional XML, which can override annotations:
+
+/--code xml .[brush:]
+<ejb-jar xmlns="http://java.sun.com/xml/ns/javaee"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+          http://java.sun.com/xml/ns/javaee/ejb-jar_3_0.xsd"
+      version="3.0">
+        
+   <description>EAP deployers perf test bean</description>
+   <display-name>EJB3 Calculator</display-name>
+   <enterprise-beans>
+      <session>
+         <ejb-name>Calculator${ejb.name.suffix}</ejb-name>
+         <remote>org.jboss.qa.eapperf.deployers.ejb3.calc.CalculatorRemote</remote>
+         <ejb-class>org.jboss.qa.eapperf.deployers.ejb3.calc.Calculator</ejb-class>
+         <session-type>Stateless</session-type>
+         <transaction-type>Container</transaction-type>
+      </session>
+   </enterprise-beans>
+</ejb-jar>
+\--
+
+
+Namespaces are necessary in `ejb-jar.xml` - JBMETA-208
+======================================================
+
+If you only use `<ejb-jar>` (without the namespace), you'll get:
+
+/--code plain .[brush:]
+java.lang.IllegalStateException: Attempt to process non-EJB3.x EJB-JAR metadata as EJB3.x for deployment ejb3-calculator-001.jar
+
+        at org.jboss.deployers.plugins.deployers.DeployersImpl.checkComplete(DeployersImpl.java:994)
+        at org.jboss.deployers.plugins.deployers.DeployersImpl.checkComplete(DeployersImpl.java:940)
+        at org.jboss.deployers.plugins.main.MainDeployerImpl.checkComplete(MainDeployerImpl.java:873)
+        at org.jboss.system.server.profileservice.repository.MainDeployerAdapter.checkComplete(MainDeployerAdapter.java:128)
+        at org.jboss.system.server.profileservice.hotdeploy.HDScanner.scan(HDScanner.java:416)
+        at org.jboss.system.server.profileservice.hotdeploy.HDScanner.run(HDScanner.java:294)
+        at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:441)
+        at java.util.concurrent.FutureTask$Sync.innerRunAndReset(FutureTask.java:317)
+        at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:150)
+        at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$101(ScheduledThreadPoolExecutor.java:98)
+        at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.runPeriodic(ScheduledThreadPoolExecutor.java:181)
+        at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:205)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)
+        at java.lang.Thread.run(Thread.java:619)
+\--
+
+EJB 3.0 page 497:     http://java.sun.com/xml/ns/javaee
+> "All EJB deployment descriptors must indicate the ejb-jar schema by using the Java EE namespace 
+> and by indicating the version of the schema by using the version element."
+
+
+
+EJB ... has defined EJB2.x home interface of ... but has no remote component interface; ; Incomplete EJB2.x View [JBMETA-130]
+==========================================================
+
+If you happen to see this:
+
+/--code plain .[brush:]
+Caused by: org.jboss.metadata.validation.chain.ValidatorChainException: Validation has failed due to the following ValidationException(s) raised:
+* EJB Calculator-003 has defined EJB2.x home interface of org.jboss.qa.eapperf.deployers.ejb3.calc.Calculator but has no remote component interface; ; Incomplete EJB2.x View [JBMETA-130]
+
+        at org.jboss.metadata.validation.chain.ejb.jboss.JBossMetaDataValidatorChain.validate(JBossMetaDataValidatorChain.java:130)
+        at org.jboss.metadata.process.processor.ejb.jboss.JBossMetaDataValidatorChainProcessor.process(JBossMetaDataValidatorChainProcessor.java:68)
+        at org.jboss.metadata.process.chain.ejb.jboss.JBossMetaDataProcessorChain.process(JBossMetaDataProcessorChain.java:115)
+        at org.jboss.ejb3.deployers.Ejb3MetadataProcessingDeployer.deploy(Ejb3MetadataProcessingDeployer.java:115)
+        at org.jboss.deployers.plugins.deployers.DeployerWrapper.deploy(DeployerWrapper.java:171)
+\--
+
+Then perhaps you have `<home>` and `<remote>` in your `ejb-jar.xml`, wishing to override a `@Remote` annotation in a session bean.
+
+This comes from EJB 2.0, when the remote inteface had to be accompanied by a home interface.
+
+In EJB 3, you need to use `<business-remote>` instead.
+
+
+
+
+
+
+
+
+
+JBoss docs has invalid examples - EJBTHREE-1490
+===============================================
+
+If you'll use the "JBoss EJB 3 docs examples":http://docs.jboss.com/ejb3/app-server/reference/build/reference/en/html/partial_deployment_descriptors.html,
+you'll end up with:
+
+/--code plain .[brush:]
+DEPLOYMENTS IN ERROR:
+  Deployment "vfszip:/home/ondra/work/perf-eap/EAP-501/server/default/deploy/ejb3-calculator-001.jar/" is in error due to the following reason(s): org.jboss.metadata.validation.chain.ValidatorChainException: Validation has failed due to the following ValidationException(s) raised:
+* EJB Calculator-001 has defined EJB2.x remote component interface of org.jboss.qa.eapperf.deployers.ejb3.calc.CalculatorRemote but has no home; ; Incomplete EJB2.x View [JBMETA-130]
+
+        at org.jboss.deployers.plugins.deployers.DeployersImpl.checkComplete(DeployersImpl.java:994)
+        at org.jboss.deployers.plugins.deployers.DeployersImpl.checkComplete(DeployersImpl.java:940)
+        at org.jboss.deployers.plugins.main.MainDeployerImpl.checkComplete(MainDeployerImpl.java:873)
+        at org.jboss.system.server.profileservice.repository.MainDeployerAdapter.checkComplete(MainDeployerAdapter.java:128)
+        at org.jboss.system.server.profileservice.hotdeploy.HDScanner.scan(HDScanner.java:416)
+        at org.jboss.system.server.profileservice.hotdeploy.HDScanner.run(HDScanner.java:294)
+        at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:441)
+        at java.util.concurrent.FutureTask$Sync.innerRunAndReset(FutureTask.java:317)
+        at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:150)
+        at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$101(ScheduledThreadPoolExecutor.java:98)
+        at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.runPeriodic(ScheduledThreadPoolExecutor.java:181)
+        at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:205)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)
+        at java.lang.Thread.run(Thread.java:619)
+\--
+
+Remove the `<remote>` from `ejb-jar.xml` to fix it.
+
+/--code xml .[brush:]
+   <enterprise-beans>
+      <session>
+         <ejb-name>Calculator-003</ejb-name>
+         <!--
+            <home>org.jboss.qa.eapperf.deployers.ejb3.calc.Calculator</home>
+            <remote>org.jboss.qa.eapperf.deployers.ejb3.calc.CalculatorRemote</remote>
+          -->
+         <business-remote>org.jboss.qa.eapperf.deployers.ejb3.calc.CalculatorRemote</business-remote>
+         <ejb-class>org.jboss.qa.eapperf.deployers.ejb3.calc.Calculator</ejb-class>
+         <session-type>Stateless</session-type>
+         <transaction-type>Container</transaction-type>
+      </session>
+   </enterprise-beans>
+\--
+
+
+
+------------------------------------
+
+/--code plain .[brush:]
+Deployment "vfszip:/home/ondra/work/perf-eap/EAP-501/server/default/deploy/ejb3-calculator-008.jar/" is in error due to the following reason(s):
+org.jboss.xb.binding.JBossXBRuntimeException: Element {http://www.jboss.com/xml/ns/javaee}jboss is not bound as a global element.
+...
+Caused by: org.jboss.xb.binding.JBossXBException: Failed to parse source: Element {http://www.jboss.com/xml/ns/javaee}jboss is not bound as a global element.
+        at org.jboss.xb.binding.parser.sax.SaxJBossXBParser.parse(SaxJBossXBParser.java:203)
+        at org.jboss.xb.binding.UnmarshallerImpl.unmarshal(UnmarshallerImpl.java:168)
+        at org.jboss.xb.util.JBossXBHelper.parse(JBossXBHelper.java:189)
+        at org.jboss.xb.util.JBossXBHelper.parse(JBossXBHelper.java:166)
+        at org.jboss.deployers.vfs.spi.deployer.SchemaResolverDeployer.parse(SchemaResolverDeployer.java:137)
+        at org.jboss.deployers.vfs.spi.deployer.SchemaResolverDeployer.parse(SchemaResolverDeployer.java:121)
+        at org.jboss.deployers.vfs.spi.deployer.AbstractVFSParsingDeployer.parseAndInit(AbstractVFSParsingDeployer.java:256)
+        at org.jboss.deployers.vfs.spi.deployer.AbstractVFSParsingDeployer.parse(AbstractVFSParsingDeployer.java:188)
+        at org.jboss.deployers.spi.deployer.helpers.AbstractParsingDeployerWithOutput.createMetaData(AbstractParsingDeployerWithOutput.java:348)
+        ... 29 more
+Caused by: org.jboss.xb.binding.JBossXBRuntimeException: Element {http://www.jboss.com/xml/ns/javaee}jboss is not bound as a global element.
+        at org.jboss.xb.binding.sunday.unmarshalling.SundayContentHandler.startElement(SundayContentHandler.java:660)
+        at org.jboss.xb.binding.parser.sax.SaxJBossXBParser$DelegatingContentHandler.startElement(SaxJBossXBParser.java:401)
+        at org.apache.xerces.parsers.AbstractSAXParser.startElement(Unknown Source)
+        at org.apache.xerces.xinclude.XIncludeHandler.startElement(Unknown Source)
+        at org.apache.xerces.impl.XMLNSDocumentScannerImpl.scanStartElement(Unknown Source)
+        at org.apache.xerces.impl.XMLNSDocumentScannerImpl$NSContentDispatcher.scanRootElementHook(Unknown Source)
+        at org.apache.xerces.impl.XMLDocumentFragmentScannerImpl$FragmentContentDispatcher.dispatch(Unknown Source)
+        at org.apache.xerces.impl.XMLDocumentFragmentScannerImpl.scanDocument(Unknown Source)
+        at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source)
+        at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source)
+        at org.apache.xerces.parsers.XMLParser.parse(Unknown Source)
+        at org.apache.xerces.parsers.AbstractSAXParser.parse(Unknown Source)
+        at org.apache.xerces.jaxp.SAXParserImpl$JAXPSAXParser.parse(Unknown Source)
+        at org.jboss.xb.binding.parser.sax.SaxJBossXBParser.parse(SaxJBossXBParser.java:199)
+        ... 37 more
+\--
+
+I got this when using `<jboss version="5.1" ...>`. The `version` stands for EJB version, not XSD or JBoss AS version. This works:
+
+/--code xml .[brush:]
+<jboss xmlns="http://www.jboss.com/xml/ns/javaee"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.jboss.com/xml/ns/javaee
+                      http://www.jboss.org/j2ee/schema/jboss_5_0.xsd"
+       version="3.0">
+\--
+
+
+---------------
+
+This happens when you forget to state the name of the bean you're describing - in the `<ejb-name>...</ejb-name>` element.
+
+/--code plain .[brush:]
+Caused by: java.lang.RuntimeException: QName {http://www.jboss.com/xml/ns/javaee}session error adding org.jboss.metadata.ejb.jboss.JBoss50SessionBeanMetaData@1586a5 to collection org.jboss.metadata.ejb.jboss.JBossEnterpriseBeansMetaData@13ac6fd
+        at org.jboss.xb.builder.runtime.CollectionPropertyHandler.handle(CollectionPropertyHandler.java:166)
+        at org.jboss.xb.builder.runtime.AbstractPropertyHandler.doHandle(AbstractPropertyHandler.java:98)
+        at org.jboss.xb.builder.runtime.BeanHandler.setParent(BeanHandler.java:197)
+        at org.jboss.xb.binding.group.ValueListHandler$FACTORY$1.newInstance(ValueListHandler.java:401)
+        at org.jboss.xb.binding.sunday.unmarshalling.SundayContentHandler.endRepeatableParticle(SundayContentHandler.java:851)
+        at org.jboss.xb.binding.sunday.unmarshalling.SundayContentHandler.endElement(SundayContentHandler.java:191)
+        at org.jboss.xb.binding.parser.sax.SaxJBossXBParser$DelegatingContentHandler.endElement(SaxJBossXBParser.java:373)
+        at org.apache.xerces.parsers.AbstractSAXParser.endElement(Unknown Source)
+        at org.apache.xerces.xinclude.XIncludeHandler.endElement(Unknown Source)
+        at org.apache.xerces.impl.XMLNSDocumentScannerImpl.scanEndElement(Unknown Source)
+        at org.apache.xerces.impl.XMLDocumentFragmentScannerImpl$FragmentContentDispatcher.dispatch(Unknown Source)
+        at org.apache.xerces.impl.XMLDocumentFragmentScannerImpl.scanDocument(Unknown Source)
+        at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source)
+        at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source)
+        at org.apache.xerces.parsers.XMLParser.parse(Unknown Source)
+        at org.apache.xerces.parsers.AbstractSAXParser.parse(Unknown Source)
+        at org.apache.xerces.jaxp.SAXParserImpl$JAXPSAXParser.parse(Unknown Source)
+        at org.jboss.xb.binding.parser.sax.SaxJBossXBParser.parse(SaxJBossXBParser.java:199)
+        ... 37 more
+Caused by: java.lang.IllegalStateException: Null name for bean: org.jboss.metadata.ejb.jboss.JBoss50SessionBeanMetaData@0{null}
+        at org.jboss.metadata.ejb.spec.EnterpriseBeansMap.add(EnterpriseBeansMap.java:59)
+        at org.jboss.metadata.ejb.spec.EnterpriseBeansMap.add(EnterpriseBeansMap.java:40)
+        at org.jboss.xb.builder.runtime.CollectionPropertyHandler.handle(CollectionPropertyHandler.java:160)
+        ... 54 more
+\--
+
+Correct:
+
+/--code xml .[brush:]
+  <enterprise-beans>
+    <session>
+      <ejb-name>Calculator-003</ejb-name>
+      <jndi-name>ejb/Calculator-003</jndi-name>
+    </session>
+  </enterprise-beans>
+\--
+
+/--code plain .[brush:]
+
+\--

@@ -1,0 +1,172 @@
+
+
+My Linux Notes
+**************
+
+
+"Installing Trac 12 on Centos 5.5 - requires Python 2.6":centos-trac12-sqlite-svn16-python26.texy
+
+
+SSH tunelling
+=============
+
+Mapovani vzdaleneho portu na vzdalenem stroji na lokalni port:
+/--code bash .[brush:]
+ssh -L localPort:TargetPC:RemotePort PCsSSHaccountem
+\--
+
+Zpristupneni lokalniho portu na zvoleny port vzdaleny:
+/--code bash .[brush:]
+ssh -R VzdalenyPort:LokalniPC:LokalniPort PCsSSHaccountem
+\--
+
+
+
+Bash string operations
+======================
+
+/--code bash .[brush:]
+${parameter:-word}   # Provide a default if parameter is unset or null.
+
+${variable%pattern}   # Trim the shortest match from the end.
+${variable##pattern}  # Trim the longest match from the beginning.
+${variable%%pattern}  # Trim the longest match from the end.
+${variable#pattern}   # Trim the shortest match from the beginning.
+\--
+
+
+Current script
+==============
+
+/--code .plain
+scriptPath="$(cd "${0%/*}" 2>/dev/null; echo "$PWD"/"${0##*/}")"
+scriptDir=`dirname "$scriptPath"`
+
+JAVA=/mnt/jqa/jdk1.6.0_18-x86_64/bin/java
+
+$JAVA -cp $scriptDir/JiraBot-1.1.04.jar:`ls $scriptDir/lib/*.jar | awk '{ORS=":";print}'` org.jboss.jirabot.Main
+\--
+
+
+
+Colorful prompt
+===============
+
+`PS1='${debian_chroot:+($debian_chroot)}\e[1;31m\u@\h:\w\$\e[m '`
+
+| 32 | green |
+| 35 | magenta |
+| 40 | white |
+| 31 | red |
+| 33 | yellow |
+| 34 |  blue |
+
+
+Resolve softlinks
+=================
+
+/--code bash .[brush:]
+# resolve links - $0 may be a softlink
+PRG="$0"
+
+while [ -h "$PRG" ] ; do
+  ls=`ls -ld "$PRG"`
+  link=`expr "$ls" : '.*-> \(.*\)$'`
+  if expr "$link" : '/.*' > /dev/null; then
+    PRG="$link"
+  else
+    PRG=`dirname "$PRG"`/"$link"
+  fi
+done
+\--
+(from Tomcat's startup.sh)
+
+
+
+/--code bash .[brush:]
+##  Resolve a softlink.
+function resolve(){
+
+  PRG="$1"
+
+  if [ "" == "$1" ] ; then
+    return ""
+  fi
+
+  if [ ! -x "$PRG" ] ; then
+    PRGW=`which "$PRG"`
+    if [ ! -x "$PRGW" ] ; then
+      RET=""
+      return -1
+    fi
+  fi
+
+
+  while [ -h "$PRG" ] ; do
+    ls=`ls -ld "$PRG"`
+    link=`expr "$ls" : '.*-> \(.*\)$'`
+    if expr "$link" : '/.*' > /dev/null; then
+      PRG="$link"
+    else
+      PRG=`dirname "$PRG"`/"$link"
+    fi
+  done
+
+  RET=$PRG
+  return 0
+}
+
+##  If called instead of sourced 
+if [ "resolve" == "${0: -7}" ] ; then
+  if [ "" == "$1" ] ; then
+    echo "Usage:  resolve <softlink>";
+    exit
+  fi
+
+  resolve $1
+  if [ "" == "$RET" ] ; then
+    echo "$PRG not found."
+  else
+    echo $RET;
+  fi
+fi
+\--
+
+
+Snippets
+========
+
+
+/--code .plain
+cvs -d:gserver:cvs.devel.redhat.com:/cvs/dist checkout httpd
+\--
+
+/--code .plain
+tcpdump -w snap -s2000 -i eth0
+\--
+
+/--code .plain
+keytool -list -keystore /qa/home/ozizka/opt/jdk1.6.0_18/jre/lib/security/cacerts
+keytool -import -alias support.stage.redhat.com -keystore /qa/home/ozizka/opt/jdk1.6.0_18/jre/lib/security/cacerts -file stage-cert.pem
+\--
+
+
+
+
+/--code .plain
+# Debian root
+PS1='\[\e[1m\]\[\e[31m\]\u@\h \[\e[0m\]\[\e[32m\][\[\e[33m\]\t\[\e[32m\]]\[\e[33m\]\[\e[1m\] \w\[\e[32m\]\[\e[0m\] \$ '
+
+# Debian:
+export PS1='${debian_chroot:+($debian_chroot)}\e[1;34m\u@\h:\e[1;33m\w\e[1;34m\$\e[m '
+
+# Generic:
+export PS1='\e[1;34m\u@\h:\e[1;33m\w\e[1;34m\$\e[m '
+
+# Plain:
+export PS1='\u@\h:\w\$ '
+
+export PATH=$JAVA_HOME/bin:$PATH
+
+
+\--

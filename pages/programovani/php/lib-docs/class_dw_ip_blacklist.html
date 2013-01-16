@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=windows-1250">
+<title>web inc lib: Dokumentace třídy DwIpBlacklist</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generováno programem Doxygen 1.5.0 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Hlavní&nbsp;stránka</span></a></li>
+    <li id="current"><a href="annotated.html"><span>Třídy</span></a></li>
+    <li><a href="files.html"><span>Soubory</span></a></li>
+    <li><a href="pages.html"><span>Ostatní&nbsp;stránky</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="annotated.html"><span>Seznam&nbsp;tříd</span></a></li>
+    <li><a href="hierarchy.html"><span>Hierarchie&nbsp;tříd</span></a></li>
+    <li><a href="functions.html"><span>Seznam&nbsp;členů&nbsp;tříd</span></a></li>
+  </ul></div>
+<h1>Dokumentace třídy DwIpBlacklist</h1><!-- doxytag: class="DwIpBlacklist" --><a href="class_dw_ip_blacklist-members.html">Seznam všech členů.</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Veřejné metody</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dw_ip_blacklist.html#51f968b075081cefef5a6d80a63e134e">LoadIpList</a> ($saList)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dw_ip_blacklist.html#d53e0ce57e96126aed2368510bca0749">PrintIpList</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dw_ip_blacklist.html#e25640ee174f50da46bad20c068c3067">GetIpMatches</a> ($xIP, $bBoolOnly=false)</td></tr>
+
+<tr><td colspan="2"><br><h2>Veřejné atributy</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dw_ip_blacklist.html#2d9c199f46120ffcc305e88e2f4c638f">$aoIps</a> = Array()</td></tr>
+
+</table>
+<hr><a name="_details"></a><h2>Detailní popis</h2>
+<a class="el" href="class_dw_ip_blacklist.html">DwIpBlacklist</a> 
+<p>
+<hr><h2>Dokumentace k metodám</h2>
+<a class="anchor" name="51f968b075081cefef5a6d80a63e134e"></a><!-- doxytag: member="DwIpBlacklist::LoadIpList" ref="51f968b075081cefef5a6d80a63e134e" args="($saList)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DwIpBlacklist::LoadIpList           </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>saList</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Loads a list of IP adresses into this Blacklist. One record per line. Line format is: &lt;IP&gt;[/&lt;mask&gt;] [#&lt;comment&gt;]<br>
+ or &lt;IP&gt;-&lt;IP&gt; [#&lt;comment&gt;]<br>
+ (range) 
+</div>
+</div><p>
+<a class="anchor" name="d53e0ce57e96126aed2368510bca0749"></a><!-- doxytag: member="DwIpBlacklist::PrintIpList" ref="d53e0ce57e96126aed2368510bca0749" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DwIpBlacklist::PrintIpList           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Print IPs in the list in format used for input. 
+</div>
+</div><p>
+<a class="anchor" name="e25640ee174f50da46bad20c068c3067"></a><!-- doxytag: member="DwIpBlacklist::GetIpMatches" ref="e25640ee174f50da46bad20c068c3067" args="($xIP, $bBoolOnly=false)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DwIpBlacklist::GetIpMatches           </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>xIP</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>bBoolOnly</em> = <code>false</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Returns an array of records matching given IP. 
+</div>
+</div><p>
+<hr><h2>Dokumentace k datovým členům</h2>
+<a class="anchor" name="2d9c199f46120ffcc305e88e2f4c638f"></a><!-- doxytag: member="DwIpBlacklist::$aoIps" ref="2d9c199f46120ffcc305e88e2f4c638f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DwIpBlacklist::$aoIps = Array()          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<hr>Dokumentace pro tuto třídu byla generována z následujícího souboru:<ul>
+<li><a class="el" href="lib_8_dw_ip_blacklist_8php.html">lib.DwIpBlacklist.php</a></ul>
+<hr size="1"><address style="align: right;"><small>Generováno Mon Dec 11 11:13:38 2006 pro projekt web inc lib programem&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.0 </small></address>
+</body>
+</html>

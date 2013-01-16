@@ -1,0 +1,72 @@
+
+
+Web Services over SSL with JBoss WS
+***********************************
+
+To use specifically JBoss Web Services, set the path to JBoss AS endorsed dirs as JVM arg:
+
+/--code plain .[brush:]
+-Djava.endorsed.dirs=/jboss-as/default/lib/endorsed/
+\--
+
+To set SSL debugging on, add this arg to JVM:
+
+/--code plain .[brush:]
+-Djavax.net.debug=all
+\--
+
+
+
+Example code
+============
+
+/--code java .[brush:]
+		String hostPort = "https://localhost:8443";
+		
+		// Using 1 keystore as both key and trust store
+		String keystoreTruststorePath = "/tmp/my.keystore";
+		String keystoreTruststorePassword = "changeit";
+		String keystoreTruststoreAlias = "changeit";
+		
+		QName qname = new QName("http://ejb.jaxws.examples.jboss.com/", "HelloBeanService");
+		
+		//System.setProperty("javax.net.ssl.keyStoreType", "JKS");
+		System.setProperty("javax.net.ssl.keyStore", keystoreTruststorePath);
+		System.setProperty("javax.net.ssl.keyStoreAlias", keystoreTruststoreAlias);
+		System.setProperty("javax.net.ssl.keyStorePassword", keystoreTruststorePassword);
+		//System.setProperty("javax.net.ssl.trustStoreType", "JKS");
+		System.setProperty("javax.net.ssl.trustStore", keystoreTruststorePath);
+		System.setProperty("javax.net.ssl.trustStorePassword", keystoreTruststorePassword);
+	
+		// Create service
+		URL emdpointAddress = new URL(hostPort + "/helloWorld-ejb/HelloBean");
+		//URL wsdl = new URL(hostPort + "/helloWorld-ejb/HelloBean?wsdl");			
+		URL wsdl = new File("/mnt/jqa/home/ozizka/OneOffPatch/JBPAPP-5826/HelloBean.wsdl").toURL(); 
+		
+		Service service = Service.create(wsdl, qname);
+		            
+		// Create port
+		HelloBean port = service.getPort(HelloBean.class);
+	
+		// Set properties
+		BindingProvider bp = (BindingProvider) port;    
+		bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, emdpointAddress.toString());
+	
+		// Create the request object from the object factory
+		ObjectFactory msgFactory = new ObjectFactory();
+		Name name = msgFactory.createName();
+						
+		info ( "HelloBean port class: " + port.getClass().getName() );
+		
+		// Call service multiple times in a loop
+		for(int i=0; i < 5; i++)
+		{
+			Thread.sleep(2000);
+			name.setValue("Red Hat - " + i);
+			log.info( "******* CLIENT: ABOUT TO INVOKE WS *******" );
+			Greeting greeting = port.hello2(name); // Step into hello2 to follow the JBossWS code			
+			info ( greeting.getText() );
+			log.info( "******* CLIENT: INVOKE WS COMPLETED *******" );
+			log.info( "Client invoked - reponse: " + greeting.getText() );
+		}
+\--

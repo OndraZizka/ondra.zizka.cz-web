@@ -1,0 +1,19 @@
+
+
+Tomcat remote deployment
+************************
+
+Tomcat 6.x:
+===========
+
+`HTTP PUT` on `/manager/deploy?update=<true|false>&path=<context-to-deploy-to>`
+
+
+
+JBoss AS / EAP
+==============
+
+Just for my record:
+
+
+"[#JBAS-8319]":https://issues.jboss.org/browse/JBAS-8319 [Regression in JBoss 5.x and 6.x compared to 4.x] VFS doesn't support fetching http resources [Closed, Major, Emanuel Muckenhuber]

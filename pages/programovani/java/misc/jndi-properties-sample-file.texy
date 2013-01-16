@@ -1,0 +1,79 @@
+
+JNDI: sample jndi.properties file
+*********************************
+
+* For web app, this file must end up in `your.war/WEB-INF/jndi.properties`.
+* For standalone app, it must end up in some classpath root. Which is e.g. some jar's root.
+
+
+For JBoss client app:
+=====================
+
+/--code plain .[brush:]
+java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory
+java.naming.provider.url=jnp://localhost:1099
+java.naming.factory.url.pkgs=org.jboss.naming.client
+\--
+
+
+For Jetty:
+==========
+
+/--code plain .[brush:]
+java.naming.factory.initial=org.mortbay.naming.InitialContextFactory
+java.naming.factory.url.pkgs=org.mortbay.naming
+\--
+
+
+Don't forget to add jetty-naming to your classpath.
+
+/--code xml .[brush:]
+      <dependency>
+         <groupId>org.mortbay.jetty</groupId>
+         <artifactId>jetty-naming</artifactId>
+         <version>${jetty.version}</version>
+         <scope>compile</scope>
+      </dependency>
+\--
+
+Otherwise you'll get
+
+/--code plain .[brush:]
+java.lang.ClassNotFoundException: org.mortbay.naming.InitialContextFactory
+    at java.net.URLClassLoader$1.run(URLClassLoader.java:202) 
+\--
+
+
+For advanced setups, e.g. with LDAP, see "JNDI tutorial":http://download.oracle.com/javase/jndi/tutorial/trailmap.html.
+
+
+
+
+
+NoInitialContextException
+=========================
+
+This is what Sun JDK throws when the above properties are not set:
+
+00:34:52.752 ERROR [main] org.jboss.jawabot.web.RunInJetty    Error putting BeanManager to JNDI: java.lang.reflect.InvocationTargetException
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at org.mortbay.xml.XmlConfiguration.newObj(XmlConfiguration.java:608)
+	at org.mortbay.xml.XmlConfiguration.configure(XmlConfiguration.java:256)
+	at org.mortbay.xml.XmlConfiguration.configure(XmlConfiguration.java:190)
+	at org.jboss.jawabot.web.RunInJetty.run(RunInJetty.java:146)
+	at org.jboss.jawabot.mod.web.WebModuleHook.initModule(WebModuleHook.java:18)
+	at org.jboss.jawabot.JawaBotApp.initAndStartModules(JawaBotApp.java:106)
+	at org.jboss.jawabot.JawaBotApp.main(JawaBotApp.java:53)
+Caused by: javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or as an applet parameter, or in an application resource file:  java.naming.factory.initial
+	at javax.naming.spi.NamingManager.getInitialContext(NamingManager.java:645)
+	at javax.naming.InitialContext.getDefaultInitCtx(InitialContext.java:288)
+	at javax.naming.InitialContext.getURLOrDefaultInitCtx(InitialContext.java:325)
+	at javax.naming.InitialContext.getNameParser(InitialContext.java:480)
+	at org.mortbay.jetty.plus.naming.NamingEntry.save(NamingEntry.java:192)
+	at org.mortbay.jetty.plus.naming.NamingEntry.<init>(NamingEntry.java:58)
+	at org.mortbay.jetty.plus.naming.Resource.<init>(Resource.java:34)
+	... 11 more

@@ -1,0 +1,83 @@
+
+Wicket: ClassCastException with CompoundPropertyModel
+*****************************************************
+
+Code
+====
+
+/--code java .[brush:]
+public class ReservePage extends BaseLayoutPage {
+
+   private Resource selectedResource = null;
+   private Date dateFrom = null;
+   private Date dateTo = null;
+   private String owner = null;
+
+   public Date getDateFrom() { return dateFrom; }
+   public void setDateFrom( Date dateFrom ) { this.dateFrom = dateFrom; }
+   public Date getDateTo() { return dateTo; }
+   public void setDateTo( Date dateTo ) { this.dateTo = dateTo; }
+   public String getOwner() { return owner; }
+   public void setOwner( String owner ) { this.owner = owner; }
+   public Resource getSelectedResource() { return selectedResource; }
+   public void setSelectedResource( Resource selectedResource ) { this.selectedResource = selectedResource; }
+
+
+   public ReservePage( PageParameters params ) {
+
+      super( params );
+
+      Form form = new Form( "form" );
+      this.add(form);
+
+
+      // Model.
+      IModel<List<? extends Resource>> resourceChoices = new AbstractReadOnlyModel<List<? extends Resource>>() {
+         @Override public List<Resource> getObject() {
+            return JawaBotApp.getJawaBot().getResourceManager().getResources_SortByName();
+         }
+      };
+
+      // Resource select.
+      final DropDownChoice<Resource> resourcesSelect = new DropDownChoice<Resource>("resources",
+            new PropertyModel<Resource>(this, "selectedResource"), resourceChoices);
+      form.add( resourcesSelect );
+
+      // User.
+      form.add( new TextField( "owner", new CompoundPropertyModel( this )) );
+      // Date pickers
+      PatternDateConverter pdc = WicketApplication.getPatternDateConverterTL().get();
+      // Errorneous:
+      // form.add( new DateTextField("dateTo",   new PropertyModel<Date>( this, "dateTo" ), pdc ) );
+      form.add( new DateTextField("dateFrom", new PropertyModel<Date>( this, "dateFrom" ), pdc ) );
+      form.add( new DateTextField("dateTo",   new PropertyModel<Date>( this ), pdc ) );
+
+      
+
+      // Action handling.
+      Integer fromOffset = params.getInt("fromDateOffset", 0);
+      Integer toOffset   = params.getAsInteger("toDateOffset");
+...
+\--
+
+
+
+Discussion
+==========
+
+/--code plain .[brush:]
+(12:58:33 AM) OndraZizka: CompoundPropertyModel depends on getters/setters right?
+(12:58:49 AM) reisi: just like PropertyModel
+(12:58:50 AM) OndraZizka: not enough to have private field
+(12:58:58 AM) OndraZizka: ok thx
+(12:59:20 AM) OndraZizka: When I don't have that,
+(12:59:25 AM) OndraZizka: wicket throws: 
+(12:59:25 AM) OndraZizka: java.lang.ClassCastException: org.jboss.jawabot.web.pg.ReservePage cannot be cast to java.util.Date
+(01:00:00 AM) OndraZizka: I'd expect it to complain like "dateFrom" property not found in ...ReservePage
+\--
+
+Stacktrace
+==========
+
+<span wicket:id="exception"><p>WicketMessage: Exception in rendering component: [MarkupContainer [Component id = form]]</p><p>Root cause:</p><p>java.lang.ClassCastException: org.jboss.jawabot.web.pg.ReservePage cannot be cast to java.util.Date<br>     at org.apache.wicket.datetime.DateConverter.convertToString(DateConverter.java:143)<br>     at org.apache.wicket.Component.getDefaultModelObjectAsString(Component.java:1770)<br>     at org.apache.wicket.Component.getDefaultModelObjectAsString(Component.java:1743)<br>     at org.apache.wicket.markup.html.form.FormComponent.getModelValue(FormComponent.java:1377)<br>     at org.apache.wicket.markup.html.form.FormComponent.getValue(FormComponent.java:879)<br>     at org.apache.wicket.markup.html.form.TextField.onComponentTag(TextField.java:106)<br>     at org.apache.wicket.Component.renderComponent(Component.java:2661)<br>     at org.apache.wicket.MarkupContainer.onRender(MarkupContainer.java:1539)<br>     at org.apache.wicket.Component.render(Component.java:2521)<br>     at org.apache.wicket.MarkupContainer.renderNext(MarkupContainer.java:1441)<br>     at org.apache.wicket.MarkupContainer.renderComponentTagBody(MarkupContainer.java:1604)<br>     at org.apache.wicket.MarkupContainer.onComponentTagBody(MarkupContainer.java:1528)<br>     at org.apache.wicket.markup.html.form.Form.onComponentTagBody(Form.java:2011)<br>     at org.apache.wicket.Component.renderComponent(Component.java:2690)<br>     at org.apache.wicket.MarkupContainer.onRender(MarkupContainer.java:1539)<br>     at org.apache.wicket.Component.render(Component.java:2521)<br>     at org.apache.wicket.MarkupContainer.renderNext(MarkupContainer.java:1441)<br>     at org.apache.wicket.MarkupContainer.renderComponentTagBody(MarkupContainer.java:1604)<br>     at org.apache.wicket.MarkupContainer.onComponentTagBody(MarkupContainer.java:1528)<br>     at org.apache.wicket.Component.renderComponent(Component.java:2690)<br>     at org.apache.wicket.MarkupContainer.onRender(MarkupContainer.java:1539)<br>     at org.apache.wicket.Component.render(Component.java:2521)<br>     at org.apache.wicket.MarkupContainer.autoAdd(MarkupContainer.java:229)<br>     at org.apache.wicket.markup.resolver.MarkupInheritanceResolver.resolve(MarkupInheritanceResolver.java:66)<br>     at org.apache.wicket.markup.resolver.ComponentResolvers.resolve(ComponentResolvers.java:81)<br>     at org.apache.wicket.MarkupContainer.renderNext(MarkupContainer.java:1445)<br>     at org.apache.wicket.MarkupContainer.renderComponentTagBody(MarkupContainer.java:1604)<br>     at org.apache.wicket.MarkupContainer.onComponentTagBody(MarkupContainer.java:1528)<br>     at org.apache.wicket.Component.renderComponent(Component.java:2690)<br>     at org.apache.wicket.MarkupContainer.onRender(MarkupContainer.java:1539)<br>     at org.apache.wicket.Component.render(Component.java:2521)<br>     at org.apache.wicket.MarkupContainer.autoAdd(MarkupContainer.java:229)<br>     at org.apache.wicket.markup.resolver.MarkupInheritanceResolver.resolve(MarkupInheritanceResolver.java:73)<br>     at org.apache.wicket.markup.resolver.ComponentResolvers.resolve(ComponentResolvers.java:81)<br>     at org.apache.wicket.MarkupContainer.renderNext(MarkupContainer.java:1445)<br>     at org.apache.wicket.MarkupContainer.renderAll(MarkupContainer.java:1555)<br>     at org.apache.wicket.Page.onRender(Page.java:1594)<br>     at org.apache.wicket.Component.render(Component.java:2521)<br>     at org.apache.wicket.Page.renderPage(Page.java:932)<br>     at org.apache.wicket.request.target.component.BookmarkablePageRequestTarget.respond(BookmarkablePageRequestTarget.java:261)<br>     at org.apache.wicket.request.AbstractRequestCycleProcessor.respond(AbstractRequestCycleProcessor.java:105)<br>     at org.apache.wicket.RequestCycle.processEventsAndRespond(RequestCycle.java:1258)<br>     at org.apache.wicket.RequestCycle.step(RequestCycle.java:1329)<br>     at org.apache.wicket.RequestCycle.steps(RequestCycle.java:1436)<br>     at org.apache.wicket.RequestCycle.request(RequestCycle.java:545)<br>     at org.apache.wicket.protocol.http.WicketFilter.doGet(WicketFilter.java:486)<br>     at org.apache.wicket.protocol.http.WicketServlet.doGet(WicketServlet.java:138)<br>     at javax.servlet.http.HttpServlet.service(HttpServlet.java:707)<br>     at javax.servlet.http.HttpServlet.service(HttpServlet.java:820)<br>     at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:511)<br>     at org.mortbay.jetty.servlet.ServletHandler.handle(ServletHandler.java:401)<br>     at org.mortbay.jetty.servlet.SessionHandler.handle(SessionHandler.java:182)<br>     at org.mortbay.jetty.handler.ContextHandler.handle(ContextHandler.java:766)<br>     at org.mortbay.jetty.handler.HandlerWrapper.handle(HandlerWrapper.java:152)<br>     at org.mortbay.jetty.Server.handle(Server.java:326)<br>     at org.mortbay.jetty.HttpConnection.handleRequest(HttpConnection.java:542)<br>     at org.mortbay.jetty.HttpConnection$RequestHandler.headerComplete(HttpConnection.java:928)<br>     at org.mortbay.jetty.HttpParser.parseNext(HttpParser.java:549)<br>     at org.mortbay.jetty.HttpParser.parseAvailable(HttpParser.java:212)<br>     at org.mortbay.jetty.HttpConnection.handle(HttpConnection.java:404)<br>     at org.mortbay.jetty.bio.SocketConnector$Connection.run(SocketConnector.java:228)<br>     at org.mortbay.thread.QueuedThreadPool$PoolThread.run(QueuedThreadPool.java:582)</p><p>Complete stack:</p><p>org.apache.wicket.WicketRuntimeException: Exception in rendering component: [MarkupContainer [Component id = form]]<br>     at org.apache.wicket.Component.renderComponent(Component.java:2729)<br>     at org.apache.wicket.MarkupContainer.onRender(MarkupContainer.java:1539)<br>     at org.apache.wicket.Component.render(Component.java:2521)<br>     at org.apache.wicket.MarkupContainer.renderNext(MarkupContainer.java:1441)<br>     at org.apache.wicket.MarkupContainer.renderComponentTagBody(MarkupContainer.java:1604)<br>     at org.apache.wicket.MarkupContainer.onComponentTagBody(MarkupContainer.java:1528)<br>     at org.apache.wicket.Component.renderComponent(Component.java:2690)<br>     at org.apache.wicket.MarkupContainer.onRender(MarkupContainer.java:1539)<br>     at org.apache.wicket.Component.render(Component.java:2521)<br>     at org.apache.wicket.MarkupContainer.autoAdd(MarkupContainer.java:229)<br>     at org.apache.wicket.markup.resolver.MarkupInheritanceResolver.resolve(MarkupInheritanceResolver.java:66)<br>     at org.apache.wicket.markup.resolver.ComponentResolvers.resolve(ComponentResolvers.java:81)<br>     at org.apache.wicket.MarkupContainer.renderNext(MarkupContainer.java:1445)<br>     at org.apache.wicket.MarkupContainer.renderComponentTagBody(MarkupContainer.java:1604)<br>     at org.apache.wicket.MarkupContainer.onComponentTagBody(MarkupContainer.java:1528)<br>     at org.apache.wicket.Component.renderComponent(Component.java:2690)<br>     at org.apache.wicket.MarkupContainer.onRender(MarkupContainer.java:1539)<br>     at org.apache.wicket.Component.render(Component.java:2521)<br>     at org.apache.wicket.MarkupContainer.autoAdd(MarkupContainer.java:229)<br>     at org.apache.wicket.markup.resolver.MarkupInheritanceResolver.resolve(MarkupInheritanceResolver.java:73)<br>     at org.apache.wicket.markup.resolver.ComponentResolvers.resolve(ComponentResolvers.java:81)<br>     at org.apache.wicket.MarkupContainer.renderNext(MarkupContainer.java:1445)<br>     at org.apache.wicket.MarkupContainer.renderAll(MarkupContainer.java:1555)<br>     at org.apache.wicket.Page.onRender(Page.java:1594)<br>     at org.apache.wicket.Component.render(Component.java:2521)<br>     at org.apache.wicket.Page.renderPage(Page.java:932)<br>     at org.apache.wicket.request.target.component.BookmarkablePageRequestTarget.respond(BookmarkablePageRequestTarget.java:261)<br>     at org.apache.wicket.request.AbstractRequestCycleProcessor.respond(AbstractRequestCycleProcessor.java:105)<br>     at org.apache.wicket.RequestCycle.processEventsAndRespond(RequestCycle.java:1258)<br>     at org.apache.wicket.RequestCycle.step(RequestCycle.java:1329)<br>     at org.apache.wicket.RequestCycle.steps(RequestCycle.java:1436)<br>     at org.apache.wicket.RequestCycle.request(RequestCycle.java:545)<br>     at org.apache.wicket.protocol.http.WicketFilter.doGet(WicketFilter.java:486)</p><p></p></span>
+

@@ -1,0 +1,61 @@
+
+
+Controversial Java cliches
+**************************
+
+
+1) Using underscore `_` in Java identifiers is lame
+===================================================
+
+This stupid cliche comes from the times when Java was replacing C++.
+Every typical thing which was used in C++ was lame and must have had been done the other way.
+so, instead of `get_whatever()`, you write `getWhatever()`. I'm okay with that.
+
+But some people didn't get it right and started thinking that you can't use underscore, neva-eva.
+Well, you can. And it's very appropriate sometimes. Consider DAO classes:
+
+/--code java .[brush:]
+public interface FooDAO {
+  public Foo getFoo();
+  public List<Foo> getAllFoo_OrderByName();
+  public List<Foo> getAllFoo_OrderByAge();
+}
+\--
+
+The underscores make the method names much more readable.
+Of course, you could parametrize that - but why not implement a method for use cases used in 95% of overall DAO usage.
+Leave parametrization to low-level APIs.
+
+
+2) Using `goto` statement in Java is lame
+=========================================
+
+Wrong, again. The so-called "Java goto statement", or labeled break, is very useful for certain cases of flow control.
+
+/--code java .[brush:]
+  foo:
+  for( String s : strings ){
+    for( int i = 0; i < s.length(); i++ ){
+      if( s.charAt(i) == '@' )
+        break foo;
+    }
+  }
+\--
+
+It's just a shorter syntax for not-so-smart handling of everything in `if {...} else {...}`.
+I still don't get this hypocrisy of some people who fall in love with Scala or Groovy
+which are full of various syntax shortcuts of the same kind, but yell hysterically when they see this.
+
+
+3) Gathering `CONSTANTS` in `interface`s
+========================================
+
+...is percieved by some people as misuse. However, it makes perfect sense semantically too:
+public constants are a part of API, aka application programming interface.
+
+
+4) Inner classes  in `interface`s
+========================================
+
+This is perfectly cool if you want to use interface implementation's methods in e.g. default implementations of some algorithms.
+Some people don't understand the advantage of this possibility and consider this as a bad practice, without any rationale.

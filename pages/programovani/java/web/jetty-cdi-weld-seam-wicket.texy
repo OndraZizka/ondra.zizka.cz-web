@@ -1,0 +1,137 @@
+
+
+Trying to get CDI/Weld working in embedded Jetty for a Wicket application.
+**************************************************************************
+
+
+Why the hell does Weld need javax.el.ExpressionFactory?
+
+/--code plain .[brush:]
+WARNING: failed org.mortbay.jetty.servlet.Context@2f8b5a{/,null}: java.lang.NoClassDefFoundError: javax/el/ExpressionFactory
+13.4.2011 3:38:21 org.mortbay.log.Slf4jLog warn
+SEVERE: Error starting handlers
+java.lang.NoClassDefFoundError: javax/el/ExpressionFactory
+	at org.jboss.weld.bootstrap.WeldBootstrap.startContainer(WeldBootstrap.java:277)
+	at org.jboss.weld.environment.servlet.Listener.contextInitialized(Listener.java:174)
+	at org.mortbay.jetty.handler.ContextHandler.startContext(ContextHandler.java:549)
+	at org.mortbay.jetty.servlet.Context.startContext(Context.java:136)
+	at org.mortbay.jetty.handler.ContextHandler.doStart(ContextHandler.java:518)
+	at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+	at org.mortbay.jetty.handler.HandlerWrapper.doStart(HandlerWrapper.java:130)
+	at org.mortbay.jetty.Server.doStart(Server.java:224)
+	at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+	at org.jboss.jawabot.web.RunInJetty.run(RunInJetty.java:193)
+	at org.jboss.jawabot.mod.web.WebModuleHook.initModule(WebModuleHook.java:18)
+	at org.jboss.jawabot.JawaBotApp.initAndStartModules(JawaBotApp.java:106)
+	at org.jboss.jawabot.JawaBotApp.main(JawaBotApp.java:53)
+Caused by: java.lang.ClassNotFoundException: javax.el.ExpressionFactory
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:202)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:190)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:307)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:301)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:248)
+	... 13 more
+\--
+
+Solution:
+
+/--code xml .[brush:]
+<dependency>
+  <groupId>javax.el</groupId>
+  <artifactId>el-api</artifactId>
+  <version>2.2</version>
+</dependency>
+\--
+
+
+
+/--code plain .[brush:]
+WARNING: failed org.mortbay.jetty.servlet.Context@165c7f6{/,null}: java.lang.NoClassDefFoundError: javax/servlet/jsp/JspFactory
+13.4.2011 3:50:49 org.mortbay.log.Slf4jLog warn
+SEVERE: Error starting handlers
+java.lang.NoClassDefFoundError: javax/servlet/jsp/JspFactory
+	at org.jboss.weld.environment.servlet.Listener.contextInitialized(Listener.java:254)
+	at org.mortbay.jetty.handler.ContextHandler.startContext(ContextHandler.java:549)
+	at org.mortbay.jetty.servlet.Context.startContext(Context.java:136)
+	at org.mortbay.jetty.handler.ContextHandler.doStart(ContextHandler.java:518)
+	at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+	at org.mortbay.jetty.handler.HandlerWrapper.doStart(HandlerWrapper.java:130)
+	at org.mortbay.jetty.Server.doStart(Server.java:224)
+	at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+	at org.jboss.jawabot.web.RunInJetty.run(RunInJetty.java:193)
+	at org.jboss.jawabot.mod.web.WebModuleHook.initModule(WebModuleHook.java:18)
+	at org.jboss.jawabot.JawaBotApp.initAndStartModules(JawaBotApp.java:106)
+	at org.jboss.jawabot.JawaBotApp.main(JawaBotApp.java:53)
+Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.JspFactory
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:202)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:190)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:307)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:301)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:248)
+	... 12 more
+\--
+
+Solution:
+
+/--code xml .[brush:]
+<dependency>
+  <groupId>javax.servlet.jsp</groupId>
+  <artifactId>jsp-api</artifactId>
+  <version>2.2</version>
+</dependency>
+\--
+
+
+Good. That moved us to a point when Weld is happy.
+However, Seam Solder still can't find it's toys in JNDI:
+
+/--code plain .[brush:]
+13.4.2011 3:54:16 org.jboss.weld.bootstrap.WeldBootstrap <clinit>
+INFO: WELD-000900 1.1.0 (Final)
+13.4.2011 3:54:16 org.mortbay.log.Slf4jLog info
+INFO: jetty-6.1.26
+13.4.2011 3:54:16 org.jboss.weld.bootstrap.WeldBootstrap startContainer
+INFO: WELD-000101 Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+03:54:16.541 INFO  [main] org.jboss.seam.solder.Version  Seam Solder 3.0.0.Final (build id: 3.0.0.Final)
+13.4.2011 3:54:16 org.jboss.weld.environment.servlet.Listener contextInitialized
+INFO: Jetty detected, JSR-299 injection will be available in Servlets and Filters. Injection into Listeners is not supported.
+03:54:16.812 INFO  [main] org.jboss.seam.solder.core.CoreExtension  Preventing class org.jboss.seam.solder.core.VersionLoggerUtil from being installed as bean due to @Veto annotation
+03:54:16.986 INFO  [main] org.jboss.seam.solder.core.CoreExtension  Preventing class org.jboss.seam.solder.resourceLoader.ResourceProvider from being installed as bean due to @Veto annotation
+13.4.2011 3:54:17 org.jboss.interceptor.util.InterceptionTypeRegistry <clinit>
+WARNING: Class 'javax.ejb.PostActivate' not found, interception based on it is not enabled
+13.4.2011 3:54:17 org.jboss.interceptor.util.InterceptionTypeRegistry <clinit>
+WARNING: Class 'javax.ejb.PrePassivate' not found, interception based on it is not enabled
+03:54:17.161 DEBUG [main] org.jboss.seam.solder.bean.defaultbean.DefaultBeanExtension  Installing default managed bean Default Bean with types [class javax.el.VariableMapper, class java.lang.Object] and qualifiers [@org.jboss.seam.solder.el.Mapper()]
+03:54:17.161 DEBUG [main] org.jboss.seam.solder.bean.defaultbean.DefaultBeanExtension  Installing default managed bean Default Bean with types [class javax.el.FunctionMapper, class java.lang.Object] and qualifiers [@org.jboss.seam.solder.el.Mapper()]
+13.4.2011 3:54:17 org.mortbay.log.Slf4jLog warn
+SEVERE: unavailable
+org.jboss.seam.solder.beanManager.BeanManagerUnavailableException: Failed to locate BeanManager using any of these providers: org.jboss.seam.solder.beanManager.DefaultJndiBeanManagerProvider(11), org.jboss.seam.solder.beanManager.ServletContainerJndiBeanManagerProvider(10)
+	at org.jboss.seam.solder.beanManager.BeanManagerLocator.getBeanManager(BeanManagerLocator.java:91)
+	at org.jboss.seam.wicket.SeamApplication.internalInit(SeamApplication.java:54)
+	at org.apache.wicket.protocol.http.WicketFilter.init(WicketFilter.java:723)
+	at org.apache.wicket.protocol.http.ReloadingWicketFilter.init(ReloadingWicketFilter.java:175)
+	at org.apache.wicket.protocol.http.WicketServlet.init(WicketServlet.java:219)
+	at javax.servlet.GenericServlet.init(GenericServlet.java:241)
+	at org.mortbay.jetty.servlet.ServletHolder.initServlet(ServletHolder.java:440)
+	at org.mortbay.jetty.servlet.ServletHolder.doStart(ServletHolder.java:263)
+	at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+	at org.mortbay.jetty.servlet.ServletHandler.initialize(ServletHandler.java:736)
+	at org.mortbay.jetty.servlet.Context.startContext(Context.java:140)
+	at org.mortbay.jetty.handler.ContextHandler.doStart(ContextHandler.java:518)
+	at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+	at org.mortbay.jetty.handler.HandlerWrapper.doStart(HandlerWrapper.java:130)
+	at org.mortbay.jetty.Server.doStart(Server.java:224)
+	at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+	at org.jboss.jawabot.web.RunInJetty.run(RunInJetty.java:193)
+	at org.jboss.jawabot.mod.web.WebModuleHook.initModule(WebModuleHook.java:18)
+	at org.jboss.jawabot.JawaBotApp.initAndStartModules(JawaBotApp.java:106)
+	at org.jboss.jawabot.JawaBotApp.main(JawaBotApp.java:53)
+\--
+
+
+
+
+JNDI does not work because when attaching the BeanManager to servlet.Context, 
+inside it works so that the JNDI prefix is context.toString(), thus the whole name is "org.mortbay.jetty.servlet.Context@1a8dfb3{_,null}/__/BeanManager"

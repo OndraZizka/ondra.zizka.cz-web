@@ -1,0 +1,709 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250"/>
+	<meta name="Author" content="Ondra Žižka, ondra at dynawest.cz"/>
+	<meta name="Keywords" content="Java, J2EE, SQL, JBoss, PLSQL, AOP, Hibernate, JavaScript, insolvenční rejstřík"/>
+	<meta name="Description" content="Výhody a nevýhody PHP - osobní web Ondřeje Žižky"/>
+	<link rel="stylesheet" type="text/css" href="/css/dw_styles.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/styl.css"/>
+    <script type="text/javascript" charset="windows-1250" src="/js/jquery.js.php"></script>
+  <script type="text/javascript" charset="windows-1250" src="/js/logout.js"></script>
+  <script type="text/javascript" charset="windows-1250" src="/lib/syntaxhighlighter/scripts/shCore.js"></script>
+  <script type="text/javascript" charset="windows-1250" src="/lib/syntaxhighlighter/scripts/shBrushJava.js"></script>
+  <script type="text/javascript" charset="windows-1250" src="/lib/syntaxhighlighter/scripts/shBrushGroovy.js"></script>
+  <script type="text/javascript" charset="windows-1250" src="/lib/syntaxhighlighter/scripts/shBrushXml.js"></script>
+  <script type="text/javascript" charset="windows-1250" src="/lib/syntaxhighlighter/scripts/shBrushSql.js"></script>
+  <script type="text/javascript" charset="windows-1250" src="/lib/syntaxhighlighter/scripts/shBrushPlain.js"></script>
+  <link type="text/css" rel="stylesheet" href="/lib/syntaxhighlighter/styles/shCore.css"/>
+  <link type="text/css" rel="stylesheet" href="/lib/syntaxhighlighter/styles/shThemeDefault.css"/>
+
+<script type="text/javascript">
+function ShowMenuSekce( eSekce ){
+  $("ul.level0>li").addClass("collapsed");
+  $(eSekce).removeClass("collapsed");
+}
+//window.onload = function(){ $("ul.level0>li").addClass("collapsed"); }
+
+SyntaxHighlighter.config.clipboardSwf = '/lib/syntaxhighlighter/scripts/clipboard.swf';
+SyntaxHighlighter.all(); // Will add a listener to window.onload.
+</script>
+<title>Výhody a nevýhody PHP</title></head>
+<body>
+
+<!--
+<div style="position: fixed; right: 0px; top: 0px; background-image: URL(/img/banner-20years.png); height: 233px; width: 231px;">
+</div>
+-->
+
+<!--  Header  -->
+<div class="UNIcenter">
+  <div id="header">
+    <span class="datum">Neděle 17. ledna '10</span>
+    <span class="svatek">Svátek má Drahoslav, zítra Vladislav</span>
+  </div>
+</div>
+
+
+<!--  Nadpis hlavní  -->
+<div id="nadpis">
+<table border="0" align="center" width="736" cellspacing="0" cellpadding="0">
+	<tr><td id="title_part1" width="192" height="97">&nbsp;</td>
+	<td id="title_part2" width="387" height="97">
+		<h1 class="title">Ondra<span>.</span>Žižka<span>.</span>cz</h1>
+	</td><td id="title_part3" width="157" height="97" valign="bottom">
+		<table border="0" cellspacing="0" cellpadding="0">
+			<tr><td height="70"></td></tr>
+			<tr><td align="right" valign="top" width="82" height="27">
+				<span class="counter">Vidělo 6 lidí</span></td>
+		</tr></table>
+	</td></tr>
+</table>
+</div>
+<!-- Nadpis hlavní KONEC -->
+
+
+
+<div id="main">
+  <!-- MAIN TABLE -->
+  <table align="center" border="0" width="1000" cellspacing="0" cellpadding="0"><tr>
+  <!-- Menu -->
+  <td valign="top">
+    <div id="menu_container">
+
+
+          <!-- Login -->
+          <div class="login">
+                      <a rel="nofollow" href="/Login.php?1263712441">Přihlášení...</a>
+                    </div>
+        
+          <!-- Menu -->
+          <div class="menu">
+            <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--stranky/programovani/php/vyhody_a_nevyhody_php.texy-->
+<ul xmlns:php="http://php.net/xsl" id="menu" class="flat level0">
+
+  <li onclick="ShowMenuSekce(this);" class="level0 collapsed "><span>Programování</span><ul class="flat level1"><li><a href="/stranky/programovani/index.texy">Rozcestník...</a></li><li><a href="/stranky/programovani/insolvencni_rejstrik-isir_ws/index.texy">Insolvenční rejstřík - ISIR WS</a></li><li><a href="/stranky/programovani/java/index.texy">Java + J2EE</a></li><li><a href="/stranky/programovani/sql/index.texy">(My)SQL</a></li><li><a href="/stranky/programovani/artificial_intelligence/index.texy">Neural Networks</a></li><li><a href="/stranky/programovani/web_javascript_ajax_canvas/canvas_element_selection_buffer.texy">Web, JavaScript, AJAX, Canvas</a></li><a href="/tools/">Text tools</a></ul></li>
+
+  <li onclick="ShowMenuSekce(this);" class="level0 collapsed "><span>"Realitní kancelář"</span><ul class="flat level1"><li><a href="/stranky/realitni_kancelar/chaty_a_chalupy.texy">Chaty a chalupy</a></li><li><a href="/stranky/realitni_kancelar/byty_ceske_budejovice.texy">Byty</a></li></ul></li>
+
+  <li onclick="ShowMenuSekce(this);" class="level0 collapsed "><span>Osobní</span><ul class="flat level1"><li><a href="/stranky/osobni/kontakty.texy">Kontakty</a></li><li><a href="/stranky/osobni/poznamky.texy">Poznámky a postřehy</a></li><li><a href="/stranky/osobni/prodavam_shanim.texy">Prodávám / sháním</a></li></ul></li>
+
+  <li onclick="ShowMenuSekce(this);" class="level0 collapsed "><span>Odkazy</span><ul class="flat level1"><li><a href="/stranky/odkazy/software.texy">Zajímavý software</a></li><li><a href="/stranky/odkazy/pratele.texy">Přátelé</a></li></ul></li>
+
+</ul>
+          </div>
+          
+    
+    	<hr class="cistic" />
+    </div>
+  </td><!-- Menu KONEC -->				 
+
+
+
+  <!-- MAIN CELL -->
+  <td valign="top" width="850">
+
+          <!-- Obsah -->
+          <div class="obsah" id="obsah">
+                                          <div class="zaznam">
+                                                <div class="content">
+<h1>Výhody a nevýhody PHP</h1>
+
+<p><em>Update: V návaznosti na tento článek vznikl další – <a
+href="/stranky/programovani/java/je_java_jako_linux_nebo_jako_windows.texy">Je
+Java jako Linux nebo jako Windows?</a></em></p>
+
+<p><em>Update: Abych nezůstal u teorie a subjektivních hodnocení <acronym
+title="Personal Home Page Tools">PHP</acronym>, přidám ukázku jednoho webu
+napsaného v PHP – a to hned <a
+href="vysledek_nasazeni_php_aneb_navrch_huj_uvnitr_fuj.texy">web zabývající
+se programováním</a>.</em></p>
+
+<p><em>Update: V posledním (aspoň doufám) článku na toto téma <a
+href="nevyhody_php_v_praktickych_prikladech.texy">vysvětluji jednotlivé body
+ze seznamu nevýhod</a>.</em></p>
+<!-- "Srovnání Java a PHP":srovnani_php_a_javy.texy. -->
+<hr />
+
+<div><img src="/stranky/programovani/php/ElePHPant_with_Tiger.jpg" alt=""
+class="right" /></div>
+
+<p>Na webu je mnoho flejmů, zda je PHP lepší / horší než Java a .NET atd.
+Ostatně, nejjednodušší způsob, jak rozpoutat flejm, je zajít na hodně
+čtený blog nějakého PHPčkáře a zeptat se místních, že jste nováček a
+jestli je PHP lepší než Java. Mimojiné se na tom otestuje složení
+čtenářů – tj. nakolik jsou zastoupeni čistokrevní PHPčkáři
+s klapkami na očích, kteří nemají šajna o MVC, O/R a kolikrát ani
+pořádném OOP návrhu.</p>
+
+<p>Nicméně nenašel jsem (pravda, zas tolik jsem nehledal) nějakou pořádnou
+moderovanou diskusi, případně článek, o výhodách a
+nevýhodách PHP.</p>
+
+<p><em>Update:</em> Našel jsem celkem dobrý článek na <a
+href="http://spyced.blogspot.com/2005/06/why-php-sucks.html">http://spyced.blogspot.com/…p-sucks.html</a>.
+Sice je poněkud starší, ale jádro pudla zůstává. Je o dost ostřejší a
+než tento můj článek, takže PHPčkáři – bacha! :-) A všimněte si,
+že J2EE autor označuje za neelegantní stejně jako PHP.</p>
+
+<p>Trochu se porozhlížím, kamže půjdu pracovat na fulltime. Do toho mě
+oslovil bývalý spolužák, že prý si mě všimnul na přednáškách
+Seznam.cz a že jejich firma naléhavě hledá programátory PHP a jestli bych
+k nim nešel. Já na to, jestli dělají v Javě, a že prý ano, ale hledají
+PHP programátory. Slíbil jsem, že se tedy ozvu jeho šéfovi a pokecáme. Pak
+jsem na to ale pozapomněl a šéf se ozval sám (asi hledají opravdu
+naléhavě :-)</p>
+
+<p>Popravdě jsem mu vyložil, že PHP umím dobře, prakticky do detailů, no
+což to budu opisovat – zde je má odpověď:</p>
+
+<blockquote>
+	<p>Dobrý den,</p>
+
+	<p>Vaše nabídka mě zaujala. Shrnu svoji situaci:</p>
+
+	<p>V PHP vyvíjím (komerčně) už několik let. Možná právě proto mě to
+	ale velice silně táhne k Javě a J2EE […]. Dále mám zkušenosti s […
+	… …] .</p>
+
+	<p>Kolega XY mi už také psal, zvažoval jsem, že se ozvu, ale říkal, že
+	váš J2EE tým je asi spíše plný.</p>
+
+	<p>Mohl bych tedy pracovat jak jako vývojář PHP, tak J2EE, nicméne druhé
+	o mnoho raději […]. Nabídku pracovního místa už mám, proto by mě
+	zajímaly další podmínky – můžeme je případně probrat po
+	telefonu.</p>
+
+	<p>V příloze posílám své CV, pokud by bylo třeba.</p>
+
+	<p>S pozdravem Ing. Ondřej Žižka</p>
+</blockquote>
+
+<p>Asi půl hodinu na to se mi šéfík ozval po telefonu a domluvili jsme si
+schůzku. Na té jsem se dozvěděl, že získali kontrakt od firmy ABC, jíž
+dělají pokladní systém v J2EE a registrační web v PHP. A že na
+PHPkové weby mají svůj PHP framework (a v tu chvíli jsem si říkal –
+ajejej, další „svůj PHP framework…“) a že jej chtějí rozvinout. Ptal
+jsem se, co umí, jak funguje a oč jej chtějí rozvinout. A dozvěděl jsem
+se, že:</p>
+
+<ul>
+	<li>začali jej vyvíjet jako redakční systém</li>
+
+	<li>přesto to ale nyní není něco jako Joomla, naopak, něco diametrálně
+	odlišného (jestli jo, tak jedině dobře)</li>
+
+	<li>umí trochu MVC ve stylu Struts</li>
+
+	<li>zkoušeli dělat O/R mapování, ale je to moc složité</li>
+
+	<li>chtějí framework refaktorovat (oddělit moduly, zmenšit velikost a
+	snížit počet styčných ploch, redesign)</li>
+
+	<li>chtějí zapracovat na Ajaxové části</li>
+
+	<li>chtějí zabudovat podporu webových služeb</li>
+
+	<li>chtějí zabudovat mechanismus šablon</li>
+
+	<li>atd atd.</li>
+</ul>
+
+<p>Potom se stočila řeč na to, jestli bych mohl dělat Java juniora, a
+později, proč bych nemohl, respektive proč chtějí vyvíjet v PHP a poč
+vyvíjet framework pro PHP, který:</p>
+
+<ul>
+	<li>který bude pokrývat 2% funkčnosti existujících (Java a J2EE)
+	frameworků</li>
+
+	<li>který budou vyvíjet jejich vlastní programátoři za v součtu
+	slušnou částku</li>
+
+	<li>který nehodlají uvolnit jako opensource ani prodávat (vyplynulo)</li>
+
+	<li>který bude po dlouhou dobu neodladěný a bude mít „dětské
+	nemoci“</li>
+</ul>
+
+<p>a nakonec – a to především –</p>
+
+<ul>
+	<li>proč vůbec vyvíjet v PHP.</li>
+</ul>
+
+<p>No diskuse to byla těžká, protože šéfík (nic proti němu, zdál se
+jako moc fajn chlap) je programátor – teoretik z Masarykovy univerzity,
+který zná PHP i J2EE „z manažerského pohledu“, a třetí
+účastník – jejich PHP senior – neví o Javě a J2EE nic (také nic
+proti němu, fajn kluk :-)</p>
+
+<p>Zkrátka jejich postoj je takový, že PHP je skvělá technologie na
+jednodušší věci, jako je frontend pro Javovský backend, resp. nad
+databází. Inu dobrá, já jim to neberu, ale během celého rozhovoru mi
+hlavou běhaly vzpomínky na nejrůznější veselé příhody (dalo by se
+přeložit jako „gay incidents“ :) s PHP:</p>
+
+<h2>Proč neprogramovat v PHP</h2>
+
+<ul>
+	<li>Záhadné chyby mezi minor verzemi</li>
+
+	<li>Nutnost překopat celý systém při přechodu na novou major verzi</li>
+
+	<li>„Krása“ procesu deployování uploadem na FTP či obdobným</li>
+
+	<li>Dlouhé hodiny hledání obezliček a work-aroundů, jak obejít tu kterou
+	vlastnost PHP</li>
+
+	<li>Vytváření OOP wrapperů pro procedurální PHP funkce
+	typu <code>mysql_*</code></li>
+
+	<li>Přepisování stohů zdrojáků při refaktoringu, protože PHP je <a
+	href="http://www.php.net/">bordelářský jazyk</a> a programátora vyloženě
+	svádí programovat jak prase</li>
+
+	<li>Stovky případů hledání chyby, kdy se ukázalo, že za vším stojí
+	přepis v názvu proměnné</li>
+
+	<li>Ošetřování rozdílnosti implementace ve Windows a na Linuxu</li>
+
+	<li>Desítky zbytečných řádek kódu pro převod z/do UNICODE při práci
+	s UNICODE stringy</li>
+
+	<li>AAAAAAAAAAAAA­AAAAAAAAA!!!!!!! Už nééééééé!</li>
+</ul>
+
+<p>Prostě při pomyšlení, že bych měl jít vyvíjet framework v PHP, se
+mě jímaly úzkostné pocity. Jasně, potenciální PHP-fanatik mi bude
+oponovat, že kdybych psal rovnou dobrý kód, tak jsem v pohodě. Ale
+<em>není to pravda</em>, a to hned několikrát:</p>
+
+<ul>
+	<li>PHP dobrý OOP kód nedovoluje, protože všechny core funkce jsou
+	procedurální a mixovat je s OOP je hnus.</li>
+
+	<li>PHP hezký kód nedovoluje, protože core funkce nevyhazují výjimky, a
+	<code>if</code>y jen kvůli ošetření chyby je pravěká metoda táhnoucí se
+	snad ještě z dob Alana Turinga.</li>
+
+	<li><a href="http://latrine.dgx.cz/jsem-zdesen-z-php5">Nekvalitní zpracování
+	OOP v PHP</a> zásadně podkopává možnost používat zcela základní OOP
+	principy.</li>
+
+	<li>PHP vás přímo tlačí do kouta s imperativem „Delej hnusný kód!“,
+	když zcela ignoruje možnost naprogramovat kolekce objektově a v návaznosti
+	na teoretický rozbor věci, a místo toho naprosto vše cpe do Array: pole,
+	hash, frontu, zásobník, množinu… což ještě někteří vydávají za
+	výhodu.</li>
+
+	<li>I kdybych psal krásný kód, nikde není žádná záruka, že
+	v příští verzi budu muset vše opět přepisovat – neexistuje norma PHP
+	ani oficiální plán vývoje! PHP prostě jen bude vykrádat Javu, takže
+	v PHP 7 nabeton budou anotace.</li>
+</ul>
+
+<h2>Srovnání s Javou</h2>
+
+<p>Naproti tomu, když programuji v Javě, dobrý kód vzniká skoro sám (už
+se neubráním srovnání):</p>
+
+<ul>
+	<li>Vyplatí se pro sebemenší blbinu vytvořit třídu.</li>
+
+	<li>Pokud dělám třídu pro potřebu jiné, dám ji do souboru k ní a
+	zůstane tedy skrytá a nezabordelim si adresář (balíček).</li>
+
+	<li>Pokud ji ale potřebuju jinde, přesunu ji do zvláštního souboru a už je
+	k dispozici.</li>
+
+	<li>Samotné JRE je vzorem dobrého návrhu, a čistě jeho používáním se
+	podvědomě naučíte návrhu:
+		<ul>
+			<li>Abstrahovat problémy (úlohy) a tvořit jim rozhraní – viz
+			<code>interface List</code> a implementaci <code>ArrayList</code></li>
+
+			<li>Rozdělovat svoji aplikaci do namespace (balíčků) – viz např.
+			<code>java.util</code> a <code>java.lang</code></li>
+
+			<li>Využívat výjimky tam, kde je to vhodné, a zjednodušovat jimi API
+			jednotlivých modulů</li>
+		</ul>
+	</li>
+
+	<li>Co naprogramujete s jedním JDK, je skoro na 100% jisté, že přeložíte
+	i v další verzi
+		<ul>
+			<li>JRE má totiž narozdíl od PHP promyšlený návrh a nemusí se zásadní
+			věci měnit každou major verzi</li>
+
+			<li>Pokud už se stane, že cosi nevyhovuje, je to označeno za
+			„deprecated“, ale ponecháno a nová verze je v jiném namespace;</li>
+
+			<li>Přesto však nová verze využívá maximum ze staré verze, a vy tak při
+			dalším vývoji můžete snáze navázat a začít používat nové možnosti
+			(viz <em>AWT</em> a <em>Swing</em>) místo totálního přepsání (viz
+			<code>mysql_*</code> a <code>PDO</code>)</li>
+
+			<li>Když už by se náhodou stalo, že byste něco nepřeložili (jako se mi
+			stalo v případě <em>MySQL Connector/J</em>), můžete aspoň používat
+			binárky a vesele psát pro novou verzi.</li>
+		</ul>
+	</li>
+
+	<li>Nové verze různých projektů (knihoven a frameworků) využívají
+	anotace, takže kód je ještě čistší a zářivější</li>
+
+	<li>S využitím „injection“ (např. ze Springu) vám navíc ještě
+	odpadají desítky jednotlivých řádků kódu, které jsou jaksi samozřejmé,
+	ale přesto musí být (získání spojení, otevření transakce, ověření
+	přístupových práv…)</li>
+</ul>
+
+<p>Prostě při prvním komerčním projektu v Javě moje srdénko jen
+zaplesalo nad tím, jak neuvěřitelně hladce to jde od ruky.</p>
+
+<h2>Složitost programování v J2EE</h2>
+
+<p>A ještě ke složitosti J2EE.<br />
+Když srovnám PHP a JSP, tak to jsou zhruba srovnatelné technologie:</p>
+
+<ul>
+	<li>nějaká core knihovna funkcí,</li>
+
+	<li>a nějaký jazyk vkládaný do HTML.</li>
+</ul>
+
+<p>Jenže tam, kde PHP končí, tam J2EE teprve začíná. Pokud skutečně
+rezignujete na leta vývoje a nechcete se učit tagy ze Struts nebo anotace
+z JPA / Hibernate, prosím – můžete vše poctivě datlovat jako v PHP,
+psát si SQL dotazy (jednoduchost přístupu k výsledkům dotazu v PHP přes
+pole zajistí iBatis) a třeba si i prasit kód rovnou do HTML souborů.</p>
+
+<p>Jenže v J2EE máte <strong>možnost</strong> jít dál. Co máte v PHP?
+Ano, je zde pár povedených věcí… Smarty, Zend Framework, CakePHP. Ale ty
+stejně jedou nad shnilým jádrem.</p>
+
+<p>Pokud někdo říká, že PHP se naučíte rychleji než J2EE, tak já
+říkám ano, protože v PHP skoro není co se učit.</p>
+
+<p>Když jsem s J2EE začínal, také jsem se zalekl té neuvěřitelné haldy
+nových pojmů, specifikací, zkratek, XML konfiguračních souborů a postupů;
+dále nutnosti použít IDE nebo aspoň buildovací nástroj (Ant), naučit se
+spravovat něco jiného než Apache HTTPD…</p>
+
+<p>Ono totiž PHP je jen taková lehká nadstavba nad CGI – nad něj dává
+jen relativně jednoduchou syntaxi a spoustu knihoven použitelných z této
+syntaxe. Jenže když jde do tuhého a úroveň vašich projektů se vznese nad
+příklady z manuálu PHP, stejně musite začít řešit (hodně na
+přeskáčku):</p>
+
+<ul>
+	<li>Fyzickou strukturu webové aplikace – aneb adresáře, kam co dát</li>
+
+	<li>Zjednodušení správy obsahu v databázi</li>
+
+	<li>Verzování záznamů v databázi</li>
+
+	<li>Konfiguraci chování a struktury webu nad úrovní kódu</li>
+
+	<li>Abstrakci nad různými databázemi</li>
+
+	<li>Interakci s backendem, případně sjednocení API s GUI částí
+	enterprise aplikace</li>
+
+	<li>Možnosti pokročilé konfigurace aplikace</li>
+
+	<li>Centrální repozitář objektů poskytujících nějaké služby</li>
+
+	<li>Clusterování</li>
+</ul>
+
+<p>atd.</p>
+
+<p>A zatímco J2EE vás těmito „nesmysly“ zavalí hned zpočátku,
+protože postupy jsou standardizované a často se věci rovnou řeší
+„složitě“ s výhledem na budoucí rozvoj, PHP vás nechá, ať si
+děláte co chcete – zlepšující se programátoři časem začnou
+vytvářet „vlastní framework“, vlastní normu pro strukturu aplikace,
+vlastní knihovnu pro automatické ukládání objektů do DB, a tak dále,
+zatímco <a
+href="http://blog.maxell-cz.cz/item/zaklady-pouziti-smarty-sablon">naprostí
+začátečníci – neprogramátoři mohou třeba takto</a> (viz část
+„Přiřazení prvků v šabloně“):</p>
+
+<blockquote>
+	<p>Často potřebujeme vybrat data z databáze a následně je předat
+	šabloně. Na začátku je tedy SQL dotaz:</p>
+
+	<pre
+	class="php">$result = mysql_query("SELECT nazev, titulek, text, cena FROM tabulka WHERE id='$id'");</pre>
+
+	<p>Jak nyní předat data šabloně?</p>
+
+	<p>Nejjednodušší řešení je předat rovnou pole:</p>
+
+	<pre class="php">$smarty-&gt;assign('data',mysql_fetch_assoc($result));</pre>
+</blockquote>
+
+<hr />
+
+<p>Nyní se pokusím oprostit od Javy a zaměřit se čistě na PHP. Kdyby se
+někde v dalším textu vyskytlo slovo „Java“, klidně mi dejte virtuální
+facku :)</p>
+
+<p>Zkusím tedy shrnout, jaké má PHP výhody a jaké nevýhody. Zkusím při
+tom zaujmout pokud možno nezaujatý postoj, i když případného čtenáře
+o tom po přečtení předchozí kritiky asi nepřesvědčím.</p>
+
+<p>Komentáře nevedu, ale jestli se vám něco v následujícím výčtu
+nezdá, napište mi <a href="mailto:ondra&#64;dynawest.cz">mail</a> a já zde
+provedu veřejné pokání a omluvu sloníkovi elePHPantovi :)</p>
+
+<p><em>Výhoda</em> a <em>nevýhoda</em> jsou relativní pojmy. Proto navrhuji
+jako „baseline“ pro srovnání použít ostatní technologie použitelné na
+podobné účely jako PHP, tedy: ASP.NET, ColdFusion, Java EE, Perl, Python,
+Ruby (on Rails). Naopak neuvažoval bych kombinace typu C + CGI (příliš
+složité programování), Apache SSI (příliš omezená funkčnost), Caché
+Server Pages (příliš nesmyslná technologie), XML + XSLT + JavaScript
+(principiálně příliš jinde), ASP (zastaralé) a podobně.</p>
+
+<p>Takže – posuďte sami:</p>
+
+<h2>Výhody PHP</h2>
+
+<div><img src="/stranky/programovani/php/elePHPant_Front_Tiny.png" alt=""
+class="right" /></div>
+
+<p>Technologie PHP má spoustu výhod, díky které se rychle stalo
+populárním. Mezi ně patří např.:</p>
+
+<ul>
+	<li>Velká rozsáhlost funkcí k dispozici přímo v základní instalaci</li>
+
+	<li>Další nativně implementované funkční celky snadno instalovatelné
+	z repozitáře PEAR</li>
+
+	<li>Další knihovny instalovatelné z repozitáře PECL</li>
+
+	<li>Nativní podpora mnoha databázových systémů</li>
+
+	<li>Zpočátku strmá křivka učení</li>
+
+	<li><del>Je multiplaforní</del> S tou multiplatformností to není tak
+	žhavé. Zkuste si třeba PHP na Novellu. Spíše bych řekl: Jede víceméně
+	stejně na Linuxu a na Windows.</li>
+
+	<li>Časem vznikla velká celosvětová komunita vývojářů a mnoho dobrých
+	svobodných projektů, zejména publikační systémy a <a
+	href="http://www.texy.info/">Texy!</a> :-)</li>
+
+	<li>Velmi široká nabídka hostingu, levné ceny díky konkurenci</li>
+
+	<li>Dobrý, aktuální a úplný manuál s příklady</li>
+
+	<li>Někdy se hodí stručný model zpracování nedefinovaných hodnot
+	a <code>null</code></li>
+
+	<li>Stručný přístup k prvkům hash-mapy přes operátor
+	<code>[]</code></li>
+</ul>
+
+<h2>Nevýhody PHP</h2>
+
+<div><img src="/stranky/programovani/php/elePHPant_RightFront_Tiny.png" alt=""
+class="right" /></div>
+
+<p>Na druhou stranu, PHP má také značné nevýhody, pro které jej mnozí
+kritizují a někdy i opouštějí; mimo jiné tyto:</p>
+
+<ul>
+	<li>Až do verze PHP 4 nepříliš povedená podpora objektově orientovaného
+	programování s mnoha záludnostmi</li>
+
+	<li>Verze 5 již podporuje OOP lépe (i když stále <a
+	href="http://latrine.dgx.cz/jsem-zdesen-z-php5">velmi mizerně</a>), ale
+	nativní knihovna funkcí nadále používá procedurální paradigma</li>
+
+	<li>Nativní funkce nejen nepoužívají objektový přístup, ale ani
+	nepodporují výjimky (<code>set_error_handler()</code> je pouze slabá
+	náplast)</li>
+
+	<li>Některé rysy jazyka svádějí ke špatným stylům programování (např.
+	přílišné užívání polí a hash-map)</li>
+
+	<li>Nekonzistentní pojmenování nativních funkcí a nejednotnost v logice
+	pořadí parametrů</li>
+
+	<li>Nativně nepodporuje UNICODE (připravuje se pro verzi 6 – už skoro
+	tři roky)</li>
+
+	<li>Dosud neexistuje formální specifikace syntaxe jazyka a jeho chování
+	(jedinou úplnou definicí je interpreter)</li>
+
+	<li>Tím pádem existuje jediný interpreter</li>
+
+	<li>Způsob, jakým PHP funguje, principiálně brání efektivnímu řešení
+	mnoha úloh (např. objektově-relační mapování)</li>
+</ul>
+
+<div><img src="/stranky/programovani/php/elePHPant_LeftFront_Tiny_sad.png"
+alt="" class="right" /></div>
+
+<ul>
+	<li>PHP nemá danou politiku vývoje, místo toho nadále jen kopíruje prvky
+	jiných jazyků</li>
+
+	<li>Je značně zatížené svým vlastním historickým vývojem</li>
+
+	<li>Oficiálně není zaručena zpětná kompatibilita</li>
+
+	<li>Programátor nemá zaručené cílové prostředí, mnoho věcí přímo
+	ovlivňujících chování PHP lze změnit pouze mimo soubory projektu
+	(v konfiguračním souboru php.ini)</li>
+</ul>
+<!-- * Pro PHP není mnoho kvalitních vývojových prostředí (IDE) s podporou vlasností běžných pro jiné jazyky (generování a refaktorizace kódu, automatické dokončování, on-line nápověda, automatizované testování a validace, automatické nasazení na server, a další) -->
+<ul>
+	<li>Nepodporuje paralelní výpočet a synchronizaci (vlákna)</li>
+
+	<li>Nepodporuje škálování pomocí prostředí sdíleného na více
+	serverech</li>
+
+	<li>Ve standardní sadě nástrojů není nástroj pro tvorbu dokumentace</li>
+
+	<li><del>Nedostatek</del> Nemnoho kvalitních frameworků (Pozor! Drupal,
+	Joomla, WordPress a spol. nejsou frameworky, ale publikační systémy
+	/ CMS).</li>
+
+	<li>Nelze snadno integrovat s jinými technologiemi (znovupoužití knihoven
+	napsaných v PHP v jiném jazyce)</li>
+
+	<li>Ve standardní distribuci chybí ladící (debugovací) nástroj</li>
+
+	<li>Relativně složitá syntaxe oproti jiným technologiím použitelným na
+	stejný účel</li>
+
+	<li>Po zpracování požadavku se „ztrácí“ kontext aplikace a při
+	příštím je vytvářen jiný</li>
+
+	<li>Mimo jiné z toho plyne relativně slabý výkon</li>
+
+	<li>Velký počet zásadních chyb v počátcích nových verzí</li>
+
+	<li>Nepodporuje jmenné prostory (Skutečně, stále ještě mohou existovat
+	obrovské projekty, kde se knihovny rozlišují prefixem.)</li>
+
+	<li>Podivné fungování referencí – asi nejzrádnější askept PHP</li>
+
+	<li>Donedávna chybělo rozumné jednotné rozhraní pro práci s databázemi,
+	nyní <code>PDO</code></li>
+</ul>
+
+<div><img
+src="/stranky/programovani/php/elePHPant_RightFront_Tiny_lezi_oci_v_sloup.png"
+alt="" class="right" /></div>
+
+<ul>
+	<li>Chybí anotace a aspektově orientované programování</li>
+
+	<li>Chybí možnost vynutit deklaraci proměnných, takže se dá omylem zapsat
+	něco do jiné (nové) proměnné. Taková chyba se hledá VELMI těžko.</li>
+
+	<li>Nedostatečná sebereflexe – datové typy „Třída“/„Funce“,
+	místo toho se na ně odkazujete přes stringy</li>
+
+	<li>Nemožnost odkazovat se na metody objektů jinak než neohrabanou
+	konstrukcí s <code>Array()</code></li>
+
+	<li>Kvůli slabé typovosti neobratné přetěžování funkcí a metod a jejich
+	překrytí při dědění</li>
+
+	<li>Projekty se musí šířit výhradně formou zdrojových kódů</li>
+
+	<li>Neexistuje přímá podpora pro webové služby a pro vzdálené volání
+	procedur obecně</li>
+
+	<li>Chybí solidní knihovna / nástroj pro logování</li>
+</ul>
+<!--
+[*  elePHPant_Right_Tiny_jde_pryc.png  >]
+-->
+<p>Jak je vidět, seznam výhod a nevýhod je trochu nevyvážený. Nyní
+čekám polemiku :-) <a
+href="mailto:ondra&#64;dynawest.cz">ondra&#64;<!---->dynawest.cz</a></p>
+
+<p><em>PS:</em> Ale pořád ještě to není tak strašné, jako s Caché –
+kdo zkoušel, ví :-)</p>
+
+<h3>Další články s podobnou tématikou:</h3>
+
+<ul>
+	<li><a href="http://www.abclinuxu.cz/blog/miloslavponkrac/2006/2/3/119608">Kam
+	kráčíš, PHP?</a> (2006, doporučuji přečíst i komentáře)</li>
+</ul>
+
+<p><em>Obrázky přejaty z <a
+href="http://www.nexen.net/elephpant/index.php">http://www.nexen.net/…nt/index.php</a>
+a <a
+href="http://shop.yourphppro.com/elePHPant.html">http://shop.yourphppro.com/elePHPant.html</a>.</em></p>
+
+<p><em>(PS: Kdyby někoho zajímalo, proč je tento web v PHP, tak je to kvůli
+Texy! ;-)</em><br />
+<em>PS pro Jana Škráška: Porty Texy? Ruby nemám rád, python neumím, .NET
+nechci a pro Javu ještě port není.</em></p>
+
+<!-- by Texy2! --></div>
+                <div class="cistic"><!--  --></div>
+              </div>
+                        <span class="konec-odrazka" style="font-size: 200%;">
+              <!-- &#x062A; &#x0643; &#xFDF2; &#x06DE; -->
+              <!-- &#x25A1; -->
+            </span>
+          </div>
+
+  </td>
+  <!-- MAIN CELL KONEC -->
+
+
+
+  </tr>
+  <tr><td colspan="2" height="1" bgcolor="#000000"></td></tr><!-- carka -->
+  </table>
+  <!-- MAIN TABLE KONEC -->
+  <!-- <hr class="cistic" size="0"/> -->
+</div>
+
+
+<div id="pocitadla" class="">
+  <div class="pocitadlo" id="moje">
+  <script language="JavaScript" type="text/javascript">
+  document.write("<img src='http://ondra.zizka.cz/log/?id=1&ref=" + escape(top.document.referrer)
+   + "&res=" + screen.width + "x" + screen.height + "&cd=" + screen.colorDepth + "' width='14' height='14' alt=''>");
+  </script><noscript><img src="http://ondra.zizka.cz/log/?id=1" width="14" height="14"/></noscript>
+  </div>
+  <div class="pocitadlo" id="navrcholu">
+    <script src="http://c1.navrcholu.cz/code?site=116753;t=lb14" type="text/javascript"></script><noscript><div><a target="_blank" href="http://navrcholu.cz/"><img src="http://c1.navrcholu.cz/hit?site=116753;t=lb14;ref=;jss=0" width="14" height="14" alt="Statistiky NaVrcholu.cz" style="border:none" /></a></div></noscript>
+  </div>
+  <!-- Driv: code?site=79008;t=lb14" -->  
+  <div class="pocitadlo" id="toplist">
+  <a target="_blank" href="http://toplist.cz/stat/117144"><script language="JavaScript" type="text/javascript"><!--
+  document.write('<img src="http://toplist.cz/count.asp?id=117144&amp;start=806&amp;logo=2&amp;http='
+  +escape(document.referrer)+'&amp;wi='+escape(window.screen.width)+'&he='+escape(window.screen.height)
+  +'&amp;cd='+escape(window.screen.colorDepth)+'" width="36" height="14" border="0" alt="TOPlist statistiky" />');
+  //--></script><noscript><img src="http://toplist.cz/count.asp?id=117144&amp;start=1&amp;logo=2" border="0" alt="TOPlist statistiky" width="36" height="14"/></noscript></a>
+  </div>
+  <!-- ClustrMaps.com -->
+  <a href="http://www4.clustrmaps.com/user/64952149"><img src="http://www4.clustrmaps.com/stats/maps-no_clusters/ondra.zizka.cz--thumb.jpg" alt="0" border="0" width="14" height="14" /></a>
+</div><!-- pocitadla -->
+
+</div>
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-4584951-1";
+urchinTracker();
+</script>
+
+</body></html>
+
+

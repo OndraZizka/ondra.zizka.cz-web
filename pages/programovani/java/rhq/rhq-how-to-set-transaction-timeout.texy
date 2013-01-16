@@ -1,0 +1,35 @@
+
+
+RHQ: How to set transaction timeout
+***********************************
+
+
+When using slower DB, RHQ often fails due to a Transaction timeout.
+Need a mechanism to set it longer.
+
+/--code plain .[brush:]
+2011-03-12 10:20:33,982 WARN [com.arjuna.ats.arjuna.logging.arjLoggerI18N] [com.arjuna.ats.arjuna.coordinator.BasicAction_58] - Abort of action id a0c394e:c118:4d7b8569:7a7 invoked while multiple threads active within it.
+2011-03-12 10:20:33,985 INFO [org.rhq.enterprise.server.common.TransactionInterruptInterceptor] Transaction [a0c394e:c118:4d7b8569:7a7] is aborting with active thread [Latched Service Processor: JBossAS5]. interrupting=[false]
+java.lang.Throwable: STACK TRACE OF ACTIVE THREAD IN TERMINATING TRANSACTION
+at java.net.SocketInputStream.socketRead0(Native Method)
+at java.net.SocketInputStream.read(SocketInputStream.java:129)
+at org.postgresql.core.VisibleBufferedInputStream.readMore(VisibleBufferedInputStream.java:135)
+...
+\--
+
+
+What's necessary is to change `$RHQ_HOME/jbossas/server/default/conf/jboss-service.xml`:
+
+
+/--code xml .[brush:]
+   <!-- JBoss Transactions JTA -->
+   <mbean code="com.arjuna.ats.jbossatx.jta.TransactionManagerService"
+      name="jboss:service=TransactionManager">
+      <attribute name="TransactionTimeout">1800</attribute> <!-- RHQ;  originally 600 -->
+      <attribute name="ObjectStoreDir">${jboss.server.data.dir}/tx-object-store</attribute>
+      <attribute name="StatisticsEnabled">true</attribute>
+   </mbean>
+\--
+
+
+HTH.

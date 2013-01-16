@@ -1,0 +1,31 @@
+
+
+LGeneral - Panzer General
+*************************
+
+
+Convertor - lgs-pg
+==================
+
+
+/--code bash .[brush:]
+sudo mkdir -p /usr/local/share/games/lgeneral/nations
+sudo mkdir -p /usr/local/share/games/lgeneral/gfx/flags
+sudo mkdir -p /usr/local/share/games/lgeneral/units
+sudo mkdir -p /usr/local/share/games/lgeneral/gfx/units
+sudo mkdir -p /usr/local/share/games/lgeneral/sounds/pg
+sudo mkdir -p /usr/local/share/games/lgeneral/maps
+sudo mkdir -p /usr/local/share/games/lgeneral/gfx/terrain/pg
+sudo mkdir -p /usr/local/share/games/lgeneral/scenarios/pg
+for name in EXPLODE.SHP FLAGS.SHP SCENSTAT.BIN TACICONS.SHP TACMAP.SHP; do
+  mv `echo $name | tr '[:upper:]' '[:lower:]'` $name;
+done
+sudo lgc-pg -s ../pg-data -d /usr/local/share/games/lgeneral
+
+# for ./configure not to complain
+sudo apt-get install libsdl1.2-dev
+\--
+
+> checking for SDL - version >= 1.1.4... no
+> *** The sdl-config script installed by SDL could not be found
+> configure: error: lib SDL >=1.1.4 is needed

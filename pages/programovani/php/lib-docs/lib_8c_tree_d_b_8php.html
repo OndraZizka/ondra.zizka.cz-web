@@ -1,0 +1,298 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=windows-1250">
+<title>web inc lib: Dokumentace souboru lib.cTreeDB.php</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generováno programem Doxygen 1.5.0 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Hlavní&nbsp;stránka</span></a></li>
+    <li><a href="annotated.html"><span>Třídy</span></a></li>
+    <li id="current"><a href="files.html"><span>Soubory</span></a></li>
+    <li><a href="pages.html"><span>Ostatní&nbsp;stránky</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="files.html"><span>Seznam&nbsp;souborů</span></a></li>
+    <li><a href="globals.html"><span>Symboly&nbsp;v&nbsp;souborech</span></a></li>
+  </ul></div>
+<h1>Dokumentace souboru lib.cTreeDB.php</h1><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Třídy</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classc_tree_node.html">cTreeNode</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classc_tree_d_b.html">cTreeDB</a></td></tr>
+
+<tr><td colspan="2"><br><h2>Výčty</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8c_tree_d_b_8php.html#62cd5718e1891924fc7e3a646d7574da">CTREEDB_OVERWRITE</a> </td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8c_tree_d_b_8php.html#125394369ca02ce6eaa93406d3352ede">CTREEDB_ODKU</a> </td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8c_tree_d_b_8php.html#947fcc5eb5df88d3efa3ac4534d3cab2">CTREEDB_RETURN_INSERT_ID</a> </td></tr>
+
+<tr><td colspan="2"><br><h2>Proměnné</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8c_tree_d_b_8php.html#0544c3fe466e421738dae463968b70ba">else</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8c_tree_d_b_8php.html#fe4eeb300e568bacac72df4094daf23f">$oDB</a> = &amp; new <a class="el" href="classc_d_b_access___my_s_q_l.html">cDBAccess_MySQL</a>('localhost:3350', 'test', 'test', 'test'/*, 'windows-1250'/**/)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8c_tree_d_b_8php.html#678deed48270a83c8c4cd7e89446c560">$oTreeDB</a> = new <a class="el" href="classc_tree_d_b.html">cTreeDB</a>($oDB, 'treedb', 'id', 'idstr', 'idpar', 'val')</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8c_tree_d_b_8php.html#83018d9153d17d91fbcf3bc10158d34f">$i</a> = 0</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8c_tree_d_b_8php.html#cc82c89377c2863e7a27b1614db00c1f">$oTree</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8c_tree_d_b_8php.html#d1fb4e124799874b20591f6f69070894">$oTreeLoaded</a> = $oTreeDB-&gt;LoadTree($sIdStr)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8c_tree_d_b_8php.html#7872e66ebb88a299fdbfe6b7011a4bf8">$sStructure1</a> = AdjustedPrintR($oTreeLoaded)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8c_tree_d_b_8php.html#d1fb4e124799874b20591f6f69070894">$oTreeLoaded</a> = $oTreeDB-&gt;LoadTree($sIdStr)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8c_tree_d_b_8php.html#3968d3536c339373e106d4104d1a9dfe">$sStructure2</a> = AdjustedPrintR($oTreeLoaded)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8c_tree_d_b_8php.html#0da6ed56dfacb2cb9b9916b86c225ca0">$iLastNodeId</a> = $oDB-&gt;SelectCell(&quot;SELECT MAX(id) FROM &quot;.$oTreeDB-&gt;GetTable())</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8c_tree_d_b_8php.html#d1fb4e124799874b20591f6f69070894">$oTreeLoaded</a> = $oTreeDB-&gt;LoadPathFromRootTo($iLastNodeId)</td></tr>
+
+</table>
+<hr><h2>Dokumentace výčtových typů</h2>
+<a class="anchor" name="125394369ca02ce6eaa93406d3352ede"></a><!-- doxytag: member="lib.cTreeDB.php::CTREEDB_ODKU" ref="125394369ca02ce6eaa93406d3352ede" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="lib_8c_tree_d_b_8php.html#125394369ca02ce6eaa93406d3352ede">CTREEDB_ODKU</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="62cd5718e1891924fc7e3a646d7574da"></a><!-- doxytag: member="lib.cTreeDB.php::CTREEDB_OVERWRITE" ref="62cd5718e1891924fc7e3a646d7574da" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="lib_8c_tree_d_b_8php.html#62cd5718e1891924fc7e3a646d7574da">CTREEDB_OVERWRITE</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="947fcc5eb5df88d3efa3ac4534d3cab2"></a><!-- doxytag: member="lib.cTreeDB.php::CTREEDB_RETURN_INSERT_ID" ref="947fcc5eb5df88d3efa3ac4534d3cab2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="lib_8c_tree_d_b_8php.html#947fcc5eb5df88d3efa3ac4534d3cab2">CTREEDB_RETURN_INSERT_ID</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<hr><h2>Dokumentace proměnných</h2>
+<a class="anchor" name="83018d9153d17d91fbcf3bc10158d34f"></a><!-- doxytag: member="lib.cTreeDB.php::$i" ref="83018d9153d17d91fbcf3bc10158d34f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$i = 0          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="0da6ed56dfacb2cb9b9916b86c225ca0"></a><!-- doxytag: member="lib.cTreeDB.php::$iLastNodeId" ref="0da6ed56dfacb2cb9b9916b86c225ca0" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$iLastNodeId = $oDB-&gt;SelectCell(&quot;SELECT MAX(id) FROM &quot;.$oTreeDB-&gt;GetTable())          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="fe4eeb300e568bacac72df4094daf23f"></a><!-- doxytag: member="lib.cTreeDB.php::$oDB" ref="fe4eeb300e568bacac72df4094daf23f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$oDB = &amp; new <a class="el" href="classc_d_b_access___my_s_q_l.html">cDBAccess_MySQL</a>('localhost:3350', 'test', 'test', 'test'/*, 'windows-1250'/**/)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="cc82c89377c2863e7a27b1614db00c1f"></a><!-- doxytag: member="lib.cTreeDB.php::$oTree" ref="cc82c89377c2863e7a27b1614db00c1f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$oTree          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<b>Initializer:</b><div class="fragment"><pre class="fragment"> <span class="keyword">new</span> <a class="code" href="classc_tree_node.html">cTreeNode</a>( null, <a class="code" href="inc_8php3.html#214c52515fce219c0e06c1d587221a3f">Array</a>('idstr'=&gt;'node'.++<a class="code" href="lib_8c_tree_d_b_8php.html#83018d9153d17d91fbcf3bc10158d34f">$i</a>), <a class="code" href="inc_8php3.html#214c52515fce219c0e06c1d587221a3f">Array</a>(
+        <span class="keyword">new</span> <a class="code" href="classc_tree_node.html">cTreeNode</a>( null, <a class="code" href="inc_8php3.html#214c52515fce219c0e06c1d587221a3f">Array</a>('idstr'=&gt;'node'.++<a class="code" href="lib_8c_tree_d_b_8php.html#83018d9153d17d91fbcf3bc10158d34f">$i</a>), <a class="code" href="inc_8php3.html#214c52515fce219c0e06c1d587221a3f">Array</a>(
+                <span class="keyword">new</span> <a class="code" href="classc_tree_node.html">cTreeNode</a>( null, <a class="code" href="inc_8php3.html#214c52515fce219c0e06c1d587221a3f">Array</a>('idstr'=&gt;'node'.++<a class="code" href="lib_8c_tree_d_b_8php.html#83018d9153d17d91fbcf3bc10158d34f">$i</a>), <a class="code" href="inc_8php3.html#214c52515fce219c0e06c1d587221a3f">Array</a>(
+                         <span class="keyword">new</span> <a class="code" href="classc_tree_node.html">cTreeNode</a>( null, <a class="code" href="inc_8php3.html#214c52515fce219c0e06c1d587221a3f">Array</a>('idstr'=&gt;'node'.++<a class="code" href="lib_8c_tree_d_b_8php.html#83018d9153d17d91fbcf3bc10158d34f">$i</a>), <a class="code" href="inc_8php3.html#214c52515fce219c0e06c1d587221a3f">Array</a>())
+                        ,<span class="keyword">new</span> <a class="code" href="classc_tree_node.html">cTreeNode</a>( null, <a class="code" href="inc_8php3.html#214c52515fce219c0e06c1d587221a3f">Array</a>('idstr'=&gt;'node'.++<a class="code" href="lib_8c_tree_d_b_8php.html#83018d9153d17d91fbcf3bc10158d34f">$i</a>), <a class="code" href="inc_8php3.html#214c52515fce219c0e06c1d587221a3f">Array</a>())
+                        ,<span class="keyword">new</span> <a class="code" href="classc_tree_node.html">cTreeNode</a>( null, <a class="code" href="inc_8php3.html#214c52515fce219c0e06c1d587221a3f">Array</a>('idstr'=&gt;'node'.++<a class="code" href="lib_8c_tree_d_b_8php.html#83018d9153d17d91fbcf3bc10158d34f">$i</a>), <a class="code" href="inc_8php3.html#214c52515fce219c0e06c1d587221a3f">Array</a>())
+                ))
+                ,<span class="keyword">new</span> <a class="code" href="classc_tree_node.html">cTreeNode</a>( null, <a class="code" href="inc_8php3.html#214c52515fce219c0e06c1d587221a3f">Array</a>('idstr'=&gt;'node'.++<a class="code" href="lib_8c_tree_d_b_8php.html#83018d9153d17d91fbcf3bc10158d34f">$i</a>), <a class="code" href="inc_8php3.html#214c52515fce219c0e06c1d587221a3f">Array</a>(
+                         <span class="keyword">new</span> <a class="code" href="classc_tree_node.html">cTreeNode</a>( null, <a class="code" href="inc_8php3.html#214c52515fce219c0e06c1d587221a3f">Array</a>('idstr'=&gt;'node'.++<a class="code" href="lib_8c_tree_d_b_8php.html#83018d9153d17d91fbcf3bc10158d34f">$i</a>), <a class="code" href="inc_8php3.html#214c52515fce219c0e06c1d587221a3f">Array</a>())
+                        ,<span class="keyword">new</span> <a class="code" href="classc_tree_node.html">cTreeNode</a>( null, <a class="code" href="inc_8php3.html#214c52515fce219c0e06c1d587221a3f">Array</a>('idstr'=&gt;'node'.++<a class="code" href="lib_8c_tree_d_b_8php.html#83018d9153d17d91fbcf3bc10158d34f">$i</a>), <a class="code" href="inc_8php3.html#214c52515fce219c0e06c1d587221a3f">Array</a>())
+                        ,<span class="keyword">new</span> <a class="code" href="classc_tree_node.html">cTreeNode</a>( null, <a class="code" href="inc_8php3.html#214c52515fce219c0e06c1d587221a3f">Array</a>('idstr'=&gt;'node'.++<a class="code" href="lib_8c_tree_d_b_8php.html#83018d9153d17d91fbcf3bc10158d34f">$i</a>), <a class="code" href="inc_8php3.html#214c52515fce219c0e06c1d587221a3f">Array</a>())
+                ))
+                ,<span class="keyword">new</span> <a class="code" href="classc_tree_node.html">cTreeNode</a>( null, <a class="code" href="inc_8php3.html#214c52515fce219c0e06c1d587221a3f">Array</a>('idstr'=&gt;'node'.++<a class="code" href="lib_8c_tree_d_b_8php.html#83018d9153d17d91fbcf3bc10158d34f">$i</a>), <a class="code" href="inc_8php3.html#214c52515fce219c0e06c1d587221a3f">Array</a>(
+                         <span class="keyword">new</span> <a class="code" href="classc_tree_node.html">cTreeNode</a>( null, <a class="code" href="inc_8php3.html#214c52515fce219c0e06c1d587221a3f">Array</a>('idstr'=&gt;'node'.++<a class="code" href="lib_8c_tree_d_b_8php.html#83018d9153d17d91fbcf3bc10158d34f">$i</a>), <a class="code" href="inc_8php3.html#214c52515fce219c0e06c1d587221a3f">Array</a>())
+                        ,<span class="keyword">new</span> <a class="code" href="classc_tree_node.html">cTreeNode</a>( null, <a class="code" href="inc_8php3.html#214c52515fce219c0e06c1d587221a3f">Array</a>('idstr'=&gt;'node'.++<a class="code" href="lib_8c_tree_d_b_8php.html#83018d9153d17d91fbcf3bc10158d34f">$i</a>), <a class="code" href="inc_8php3.html#214c52515fce219c0e06c1d587221a3f">Array</a>())
+                        ,<span class="keyword">new</span> <a class="code" href="classc_tree_node.html">cTreeNode</a>( null, <a class="code" href="inc_8php3.html#214c52515fce219c0e06c1d587221a3f">Array</a>('idstr'=&gt;'node'.++<a class="code" href="lib_8c_tree_d_b_8php.html#83018d9153d17d91fbcf3bc10158d34f">$i</a>), <a class="code" href="inc_8php3.html#214c52515fce219c0e06c1d587221a3f">Array</a>())
+                ))
+        ))
+        ,<span class="keyword">new</span> <a class="code" href="classc_tree_node.html">cTreeNode</a>( null, <a class="code" href="inc_8php3.html#214c52515fce219c0e06c1d587221a3f">Array</a>('idstr'=&gt;'node'.++<a class="code" href="lib_8c_tree_d_b_8php.html#83018d9153d17d91fbcf3bc10158d34f">$i</a>), <a class="code" href="inc_8php3.html#214c52515fce219c0e06c1d587221a3f">Array</a>(
+                <span class="keyword">new</span> <a class="code" href="classc_tree_node.html">cTreeNode</a>( null, <a class="code" href="inc_8php3.html#214c52515fce219c0e06c1d587221a3f">Array</a>('idstr'=&gt;'node'.++<a class="code" href="lib_8c_tree_d_b_8php.html#83018d9153d17d91fbcf3bc10158d34f">$i</a>), <a class="code" href="inc_8php3.html#214c52515fce219c0e06c1d587221a3f">Array</a>())
+                ,<span class="keyword">new</span> <a class="code" href="classc_tree_node.html">cTreeNode</a>( null, <a class="code" href="inc_8php3.html#214c52515fce219c0e06c1d587221a3f">Array</a>('idstr'=&gt;'node'.++<a class="code" href="lib_8c_tree_d_b_8php.html#83018d9153d17d91fbcf3bc10158d34f">$i</a>), <a class="code" href="inc_8php3.html#214c52515fce219c0e06c1d587221a3f">Array</a>())
+                ,$oNodeLast =&amp; <span class="keyword">new</span> <a class="code" href="classc_tree_node.html">cTreeNode</a>( null, <a class="code" href="inc_8php3.html#214c52515fce219c0e06c1d587221a3f">Array</a>('idstr'=&gt;'node'.++<a class="code" href="lib_8c_tree_d_b_8php.html#83018d9153d17d91fbcf3bc10158d34f">$i</a>), <a class="code" href="inc_8php3.html#214c52515fce219c0e06c1d587221a3f">Array</a>())
+        ))
+) )
+</pre></div>
+</div>
+</div><p>
+<a class="anchor" name="678deed48270a83c8c4cd7e89446c560"></a><!-- doxytag: member="lib.cTreeDB.php::$oTreeDB" ref="678deed48270a83c8c4cd7e89446c560" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$oTreeDB = new <a class="el" href="classc_tree_d_b.html">cTreeDB</a>($oDB, 'treedb', 'id', 'idstr', 'idpar', 'val')          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="d1fb4e124799874b20591f6f69070894"></a><!-- doxytag: member="lib.cTreeDB.php::$oTreeLoaded" ref="d1fb4e124799874b20591f6f69070894" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$oTreeLoaded = $oTreeDB-&gt;LoadPathFromRootTo($iLastNodeId)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="d1fb4e124799874b20591f6f69070894"></a><!-- doxytag: member="lib.cTreeDB.php::$oTreeLoaded" ref="d1fb4e124799874b20591f6f69070894" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$oTreeLoaded = $oTreeDB-&gt;LoadTree($sIdStr)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="d1fb4e124799874b20591f6f69070894"></a><!-- doxytag: member="lib.cTreeDB.php::$oTreeLoaded" ref="d1fb4e124799874b20591f6f69070894" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$oTreeLoaded = $oTreeDB-&gt;LoadTree($sIdStr)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="7872e66ebb88a299fdbfe6b7011a4bf8"></a><!-- doxytag: member="lib.cTreeDB.php::$sStructure1" ref="7872e66ebb88a299fdbfe6b7011a4bf8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$sStructure1 = AdjustedPrintR($oTreeLoaded)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="3968d3536c339373e106d4104d1a9dfe"></a><!-- doxytag: member="lib.cTreeDB.php::$sStructure2" ref="3968d3536c339373e106d4104d1a9dfe" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$sStructure2 = AdjustedPrintR($oTreeLoaded)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="0544c3fe466e421738dae463968b70ba"></a><!-- doxytag: member="lib.cTreeDB.php::else" ref="0544c3fe466e421738dae463968b70ba" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="lib_8c_tree_d_b_8php.html#0544c3fe466e421738dae463968b70ba">else</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<hr size="1"><address style="align: right;"><small>Generováno Mon Dec 11 11:13:37 2006 pro projekt web inc lib programem&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.0 </small></address>
+</body>
+</html>

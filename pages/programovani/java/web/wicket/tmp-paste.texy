@@ -1,0 +1,100 @@
+
+
+
+Wicket component
+*********************************
+
+Originally I had:
+
+/--code html .[brush:]
+         <tr wicket:id="resources">
+            <td>
+                <a href="#" wicket:id="reslink">
+                   <img wicket:id="icoType" src="ResourceMachine.gif"/>
+                   <span wicket:id="label">jawa01</span>
+                </a>
+            </td>
+            ...
+         </tr>
+\--
+
+
+/--code java .[brush:]
+	// Link itself. We're giving the resource as the parameter for the Resource page.
+	new BookmarkablePageLink("reslink", new ResourcePage( item.getModelObject().getResource() ))
+	// Icon.
+	.add( new Image( "icoType", "ResourceMachine.gif" ) )
+	// Link's kabel
+	.add( new Label("label", item.getModelObject().getResource().getName() ))
+\--
+
+
+I tried to turn it into a component:
+
+/--code html .[brush:]
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>JawaBot resource</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   </head>
+   <body>
+
+   <a href="#">
+   <wicket:extend>
+      <img wicket:id="icoType" src="ResourceMachine.gif"/><span wicket:id="label">jawa01</span>
+   </wicket:extend>
+   </a>
+      
+   </body>
+</html>
+\--
+
+/--code java .[brush:]
+package org.jboss.jawabot.web._co;
+
+import org.apache.wicket.Page;
+import org.apache.wicket.PageParameters;
+import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.image.Image;
+import org.apache.wicket.markup.html.link.BookmarkablePageLink;
+import org.jboss.jawabot.Resource;
+import org.jboss.jawabot.web._pg.ResourcePage;
+
+/**
+ *  A Bookmarkable resource link leading to the ResourcePage.
+ *  @author OndrejZizka
+ */
+public class ResourceLink extends BookmarkablePageLink<Resource> {
+
+   public <C extends Page> ResourceLink( String id, Resource res ) {
+      super( id, ResourcePage.class );
+      this.add( new Image( "icoType", "ResourceMachine.gif" ) );
+      this.add( new Label("label", this.getModelObject().getName() ));
+   }
+
+}
+\--
+
+
+Using the component in a page
+=============================
+
+/--code html .[brush:]
+         <tr wicket:id="resources">
+            <td>
+                <a href="#" wicket:id="reslink">
+                   <img src="ResourceMachine.gif"/>
+                   <span>jawa01</span>
+                </a>
+            </td>
+            ...
+         </tr>
+\--
+
+/--code java .[brush:]
+	// Link itself. We're giving the resource as the parameter for the Resource page.
+	new ResourceLink("reslink", item.getModelObject().getResource() ))
+\--
+
+That's all.

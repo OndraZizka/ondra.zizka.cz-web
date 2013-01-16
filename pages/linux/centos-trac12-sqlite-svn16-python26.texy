@@ -1,0 +1,45 @@
+
+
+
+Installing Trac 12 on Centos 5.5 - requires Python 2.6
+******************************************************
+
+I had problems with incompatible versions - CentOS 5.5 insists on having Python 2.4 because Yum uses it.
+
+If you try to uninstall `python-sqlite` to upgrade to support SQLite 3.x, which is needed by Trac >=12.x,
+stupid `yum` will uninstall itself. I never thought any package manager would do that, but be warned - `yum` is really pretty dumb.
+
+----------------------------
+
+Basically, I added all the RPM repositories I found to Yum.
+
+In the end, my `/etc/yum.repo.d` contained:
+
+/--code plain
+[root@localhost yum.repos.d]# ls -1
+CentOS-Base.repo
+CentOS-Media.repo
+chl.repo
+epel.repo
+epel-testing.repo
+fedora-repos.repo
+jpackage50.repo
+mirrors-rpmforge
+rpmforge.repo
+rpmforge-testing.repo
+trac-repos.repo
+\--
+
+
+First, I needed Python 2.6. This was soved by Chris Lea's repo - 
+he made a package which installs Python 2.6 to `/usr/lib/python2.6`, leaving Python 2.4 in peace.
+
+Then, CentOS had SVN 1.4.2. I used `yum update subversion`, which updated to SVN 1.6.13 from one of the repos above, probably RPMForge.
+
+The last piece was to install `subversion-python` binding package to python 2.6, for which I needed to learn a new RPM trick:
+
+/--code plain
+rpm -i subversion-python...rpm --relocate /usr/lib/python2.4=/usr/lib/python2.6
+\--
+
+Yum can't do this AFAIK.

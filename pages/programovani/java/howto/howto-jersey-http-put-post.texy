@@ -1,0 +1,84 @@
+
+
+HTTP PUT and POST requests with Jersey
+**************************************
+
+May not be exactly right but you'll get the idea.
+
+
+/--code java .[brush:]
+import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.WebResource;
+import com.sun.jersey.api.client.WebResource.Builder;
+import com.sun.jersey.api.client.filter.HTTPBasicAuthFilter;
+import com.sun.jersey.multipart.FormDataBodyPart;
+import com.sun.jersey.multipart.FormDataMultiPart;
+import com.sun.jersey.multipart.file.FileDataBodyPart;
+import javax.ws.rs.core.MediaType;
+
+
+\--
+
+
+PUT
+======
+
+/--code java .[brush:]
+            String name = "someName";
+
+            // HTTP Client
+            final Client client = Client.create();
+            // Auth
+            client.addFilter( new HTTPBasicAuthFilter( this.conf.getUser(), this.conf.getPass()) );
+            Builder builder = client.resource( this.adminBaseUrl + URL_PATH_DEPLOY )
+                    // Some URL query param
+                    .queryParam("path", "/"+name)
+                    // What we're asking for.
+                    .accept(MediaType.TEXT_PLAIN_TYPE)
+                    // What we're sending in PUT body.
+                    .type(MediaType.APPLICATION_OCTET_STREAM_TYPE);
+
+            // Do the request itself.
+            final String textResponse = builder.put(String.class, form);
+\--
+
+
+HTML form-like multipart POST file upload
+=========================================
+
+/--code java .[brush:]
+            final File archiveFile = new File(new File(System.getProperty("java.io.tmpdir")), archiveName);
+
+            // Build up the POST form to send to Tomcat
+            final FormDataMultiPart form = new FormDataMultiPart();
+            form.getBodyParts().add(new FormDataBodyPart("update", "true"));
+            form.getBodyParts().add(new FileDataBodyPart("file", archiveFile));
+            
+            String name = archiveName.substring(0, archiveName.lastIndexOf("."));
+            this.deploymentName = name;
+            // Some form field
+            form.field("context", name, MediaType.TEXT_PLAIN_TYPE);
+
+            // HTTP Client
+            final Client client = Client.create();
+            // Auth
+            client.addFilter( new HTTPBasicAuthFilter( this.conf.getUser(), this.conf.getPass()) );
+
+            Builder builder = client.resource( this.adminBaseUrl + URL_PATH_DEPLOY )
+                    // What we're asking for.
+                    .accept(MediaType.TEXT_PLAIN_TYPE)
+                    // What we're sending in PUT body.
+                    .type(MediaType.MULTIPART_FORM_DATA_TYPE)
+                    // Do the request itself.
+                    .post(String.class, form);
+\--
+
+
+... and yet how to export Arquillian's archive to a file
+========================================================
+
+/--code java .[brush:]
+            // Export to a file so we can send it over the wire
+            final File archiveFile = new File(new File(System.getProperty("java.io.tmpdir")), archiveName);
+            archive.as(ZipExporter.class).exportZip(archiveFile, true);
+\--

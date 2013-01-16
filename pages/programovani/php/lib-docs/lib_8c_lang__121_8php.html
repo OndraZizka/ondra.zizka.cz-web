@@ -1,0 +1,419 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=windows-1250">
+<title>web inc lib: Dokumentace souboru lib.cLang_121.php</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generováno programem Doxygen 1.5.0 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Hlavní&nbsp;stránka</span></a></li>
+    <li><a href="annotated.html"><span>Třídy</span></a></li>
+    <li id="current"><a href="files.html"><span>Soubory</span></a></li>
+    <li><a href="pages.html"><span>Ostatní&nbsp;stránky</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="files.html"><span>Seznam&nbsp;souborů</span></a></li>
+    <li><a href="globals.html"><span>Symboly&nbsp;v&nbsp;souborech</span></a></li>
+  </ul></div>
+<h1>Dokumentace souboru lib.cLang_121.php</h1><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Třídy</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classc_lang_context.html">cLangContext</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classc_string_source.html">cStringSource</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classc_string_source___with_alternative.html">cStringSource_WithAlternative</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classc_lang.html">cLang</a></td></tr>
+
+<tr><td colspan="2"><br><h2>Výčty</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8c_lang__121_8php.html#67ea5423a92b397cc1ac6bb958d01a56">CLANG_NOT_FOUND</a> </td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8c_lang__121_8php.html#f81e8512d589523f45a45ad46dff032e">CLANG_FOUND</a> </td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8c_lang__121_8php.html#0b33284b98d3e4d9a2f4123262b11b31">CLANG_FOUND_ALT</a> </td></tr>
+
+<tr><td colspan="2"><br><h2>Proměnné</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8c_lang__121_8php.html#0544c3fe466e421738dae463968b70ba">else</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8c_lang__121_8php.html#fe4eeb300e568bacac72df4094daf23f">$oDB</a> = &amp; new <a class="el" href="classc_d_b_access___my_s_q_l.html">cDBAccess_MySQL</a>('localhost:3350', 'test', 'test', 'test', 'windows-1250'/**/)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8c_lang__121_8php.html#34c4a2864159004e7fb2449f90ce0645">$oStringSourceXML</a> = &amp; new <a class="el" href="classc_string_source___x_m_lfiles.html">cStringSource_XMLfiles</a>('lang.cz.xml')</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8c_lang__121_8php.html#ba4fcb0f2a3ce4ecbcc49f4cfd229df2">$oStringSourceDB</a> = &amp; new <a class="el" href="classc_string_source__c_d_b_access.html">cStringSource_cDBAccess</a>($oDB, 'test_cStringSource_cDBAccess')</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8c_lang__121_8php.html#c22d0a910658b318d6cc4fed1a300307">$oStringSourceCache</a> = &amp; new <a class="el" href="classc_string_source___cache.html">cStringSource_Cache</a>()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8c_lang__121_8php.html#60a8c1bab3a0aa8b898937edb2c089d7">$oLangContext</a> = &amp; new <a class="el" href="classc_lang_context.html">cLangContext</a>('cz', &quot;windows-1250&quot;)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8c_lang__121_8php.html#2b7b702b3c3e898a0228b99b4c11888a">$oLang</a> = &amp; new <a class="el" href="classc_lang.html">cLang</a>($oLangContext)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8c_lang__121_8php.html#50b05cf2e02ef0b67fcad97106dd7634">$s</a> = $oLang-&gt;Tr('welcome')</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8c_lang__121_8php.html#50b05cf2e02ef0b67fcad97106dd7634">$s</a> = $s $oLang-&gt;Tr('welcome')</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8c_lang__121_8php.html#50b05cf2e02ef0b67fcad97106dd7634">$s</a> = $oLang-&gt;Tr('welcome')</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8c_lang__121_8php.html#50b05cf2e02ef0b67fcad97106dd7634">$s</a> = $s $oLang-&gt;Tr('welcome')</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8c_lang__121_8php.html#50b05cf2e02ef0b67fcad97106dd7634">$s</a> = $oLang-&gt;Tr('welcome')</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8c_lang__121_8php.html#50b05cf2e02ef0b67fcad97106dd7634">$s</a> = $oLang-&gt;Tr('welcome')</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8c_lang__121_8php.html#50b05cf2e02ef0b67fcad97106dd7634">$s</a> = $oLang-&gt;Tr('welcome')</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8c_lang__121_8php.html#50b05cf2e02ef0b67fcad97106dd7634">$s</a> = $s $oLang-&gt;Tr('welcome')</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8c_lang__121_8php.html#50b05cf2e02ef0b67fcad97106dd7634">$s</a> = $oLang-&gt;Tr('welcome')</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8c_lang__121_8php.html#50b05cf2e02ef0b67fcad97106dd7634">$s</a> = $s $oLang-&gt;Tr('welcome')</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8c_lang__121_8php.html#50b05cf2e02ef0b67fcad97106dd7634">$s</a> = $oLang-&gt;Tr('welcome')</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_8c_lang__121_8php.html#50b05cf2e02ef0b67fcad97106dd7634">$s</a> = $oLang-&gt;Tr('welcome')</td></tr>
+
+</table>
+<hr><h2>Dokumentace výčtových typů</h2>
+<a class="anchor" name="f81e8512d589523f45a45ad46dff032e"></a><!-- doxytag: member="lib.cLang_121.php::CLANG_FOUND" ref="f81e8512d589523f45a45ad46dff032e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="lib_8c_lang__110_8php.html#f81e8512d589523f45a45ad46dff032e">CLANG_FOUND</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="0b33284b98d3e4d9a2f4123262b11b31"></a><!-- doxytag: member="lib.cLang_121.php::CLANG_FOUND_ALT" ref="0b33284b98d3e4d9a2f4123262b11b31" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="lib_8c_lang__110_8php.html#0b33284b98d3e4d9a2f4123262b11b31">CLANG_FOUND_ALT</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="67ea5423a92b397cc1ac6bb958d01a56"></a><!-- doxytag: member="lib.cLang_121.php::CLANG_NOT_FOUND" ref="67ea5423a92b397cc1ac6bb958d01a56" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="lib_8c_lang__110_8php.html#67ea5423a92b397cc1ac6bb958d01a56">CLANG_NOT_FOUND</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+&lt;*****************************************************************************&gt; <a class="el" href="classc_lang.html">cLang</a> - i18n library. <dl class="author" compact><dt><b>Autor:</b></dt><dd>Ondra Zizka, 2006. </dd></dl>
+<dl class="version" compact><dt><b>Verze:</b></dt><dd>1.2.2</dd></dl>
+History: 1.2.2 - Added: FlushAllSources(). 1.2.1 - Added: Tests for Character set converting 1.2.0 - Added functionality: Character set converting: var $sCharsetOut; function GetCharsetOut() function SetCharsetOut($sCharsetOut)<p>
+var $asCharsetsIn; function AddCharsetIn($sLang, $sCharset) function GetCharsetIn($sLang)<p>
+function ConvertCharset($sString)<p>
+1.1.0 - Changed concept of layering the sources. Now it's done solely by <a class="el" href="classc_lang.html">cLang</a> and cStringSource's are absolutely independent on the layering technique (does not need to extend from <a class="el" href="classc_string_source___with_alternative.html">cStringSource_WithAlternative</a>{}. 1.0.1 - Separated StringSource derived classes. 
+</div>
+</div><p>
+<hr><h2>Dokumentace proměnných</h2>
+<a class="anchor" name="fe4eeb300e568bacac72df4094daf23f"></a><!-- doxytag: member="lib.cLang_121.php::$oDB" ref="fe4eeb300e568bacac72df4094daf23f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$oDB = &amp; new <a class="el" href="classc_d_b_access___my_s_q_l.html">cDBAccess_MySQL</a>('localhost:3350', 'test', 'test', 'test', 'windows-1250'/**/)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="2b7b702b3c3e898a0228b99b4c11888a"></a><!-- doxytag: member="lib.cLang_121.php::$oLang" ref="2b7b702b3c3e898a0228b99b4c11888a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$oLang = &amp; new <a class="el" href="classc_lang.html">cLang</a>($oLangContext)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="60a8c1bab3a0aa8b898937edb2c089d7"></a><!-- doxytag: member="lib.cLang_121.php::$oLangContext" ref="60a8c1bab3a0aa8b898937edb2c089d7" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$oLangContext = &amp; new <a class="el" href="classc_lang_context.html">cLangContext</a>('cz', &quot;windows-1250&quot;)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="c22d0a910658b318d6cc4fed1a300307"></a><!-- doxytag: member="lib.cLang_121.php::$oStringSourceCache" ref="c22d0a910658b318d6cc4fed1a300307" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$oStringSourceCache = &amp; new <a class="el" href="classc_string_source___cache.html">cStringSource_Cache</a>()          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="ba4fcb0f2a3ce4ecbcc49f4cfd229df2"></a><!-- doxytag: member="lib.cLang_121.php::$oStringSourceDB" ref="ba4fcb0f2a3ce4ecbcc49f4cfd229df2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$oStringSourceDB = &amp; new <a class="el" href="classc_string_source__c_d_b_access.html">cStringSource_cDBAccess</a>($oDB, 'test_cStringSource_cDBAccess')          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="34c4a2864159004e7fb2449f90ce0645"></a><!-- doxytag: member="lib.cLang_121.php::$oStringSourceXML" ref="34c4a2864159004e7fb2449f90ce0645" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$oStringSourceXML = &amp; new <a class="el" href="classc_string_source___x_m_lfiles.html">cStringSource_XMLfiles</a>('lang.cz.xml')          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="50b05cf2e02ef0b67fcad97106dd7634"></a><!-- doxytag: member="lib.cLang_121.php::$s" ref="50b05cf2e02ef0b67fcad97106dd7634" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$s = $oLang-&gt;Tr('welcome')          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="50b05cf2e02ef0b67fcad97106dd7634"></a><!-- doxytag: member="lib.cLang_121.php::$s" ref="50b05cf2e02ef0b67fcad97106dd7634" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$s = $oLang-&gt;Tr('welcome')          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="50b05cf2e02ef0b67fcad97106dd7634"></a><!-- doxytag: member="lib.cLang_121.php::$s" ref="50b05cf2e02ef0b67fcad97106dd7634" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$s = $s $oLang-&gt;Tr('welcome')          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="50b05cf2e02ef0b67fcad97106dd7634"></a><!-- doxytag: member="lib.cLang_121.php::$s" ref="50b05cf2e02ef0b67fcad97106dd7634" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$s = $oLang-&gt;Tr('welcome')          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="50b05cf2e02ef0b67fcad97106dd7634"></a><!-- doxytag: member="lib.cLang_121.php::$s" ref="50b05cf2e02ef0b67fcad97106dd7634" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$s = $s $oLang-&gt;Tr('welcome')          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="50b05cf2e02ef0b67fcad97106dd7634"></a><!-- doxytag: member="lib.cLang_121.php::$s" ref="50b05cf2e02ef0b67fcad97106dd7634" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$s = $oLang-&gt;Tr('welcome')          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="50b05cf2e02ef0b67fcad97106dd7634"></a><!-- doxytag: member="lib.cLang_121.php::$s" ref="50b05cf2e02ef0b67fcad97106dd7634" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$s = $oLang-&gt;Tr('welcome')          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="50b05cf2e02ef0b67fcad97106dd7634"></a><!-- doxytag: member="lib.cLang_121.php::$s" ref="50b05cf2e02ef0b67fcad97106dd7634" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$s = $oLang-&gt;Tr('welcome')          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="50b05cf2e02ef0b67fcad97106dd7634"></a><!-- doxytag: member="lib.cLang_121.php::$s" ref="50b05cf2e02ef0b67fcad97106dd7634" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$s = $s $oLang-&gt;Tr('welcome')          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="50b05cf2e02ef0b67fcad97106dd7634"></a><!-- doxytag: member="lib.cLang_121.php::$s" ref="50b05cf2e02ef0b67fcad97106dd7634" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$s = $oLang-&gt;Tr('welcome')          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="50b05cf2e02ef0b67fcad97106dd7634"></a><!-- doxytag: member="lib.cLang_121.php::$s" ref="50b05cf2e02ef0b67fcad97106dd7634" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$s = $s $oLang-&gt;Tr('welcome')          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="50b05cf2e02ef0b67fcad97106dd7634"></a><!-- doxytag: member="lib.cLang_121.php::$s" ref="50b05cf2e02ef0b67fcad97106dd7634" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$s = $oLang-&gt;Tr('welcome')          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="0544c3fe466e421738dae463968b70ba"></a><!-- doxytag: member="lib.cLang_121.php::else" ref="0544c3fe466e421738dae463968b70ba" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="lib_8c_tree_d_b_8php.html#0544c3fe466e421738dae463968b70ba">else</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<hr size="1"><address style="align: right;"><small>Generováno Fri Dec 1 23:39:11 2006 pro projekt web inc lib programem&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.0 </small></address>
+</body>
+</html>

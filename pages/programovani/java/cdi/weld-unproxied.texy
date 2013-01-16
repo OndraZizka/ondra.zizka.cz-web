@@ -1,0 +1,55 @@
+
+
+CDI / Weld: UnproxyableResolutionException: WELD-001437 Normal scoped bean String is not proxyable because the type is final or it contains a final method
+************************************************************************
+
+/--code plain .[brush:]
+09:35:09.378 DEBUG [main] org.jboss.weld.Bootstrap  WELD-000100 Weld initialized. Validating beans
+09:35:09.384 WARN  [main] org.mortbay.log  failed org.mortbay.jetty.servlet.Context@5110ba8b{/,null}: org.jboss.weld.exceptions.UnproxyableResolutionException: WELD-001437 Normal scoped bean class java.lang.String is not proxyable because the type is final or it contains a final method class java.lang.String.
+09:35:09.385 ERROR [main] org.mortbay.log  Error starting handlers
+org.jboss.weld.exceptions.UnproxyableResolutionException: WELD-001437 Normal scoped bean class java.lang.String is not proxyable because the type is final or it contains a final method class java.lang.String.
+	at org.jboss.weld.util.Proxies.getUnproxyableClassException(Proxies.java:239)
+	at org.jboss.weld.util.Proxies.getUnproxyableTypeException(Proxies.java:159)
+	at org.jboss.weld.util.Proxies.getUnproxyableTypesException(Proxies.java:191)
+	at org.jboss.weld.bootstrap.Validator.validateBean(Validator.java:111)
+	at org.jboss.weld.bootstrap.Validator.validateRIBean(Validator.java:129)
+	at org.jboss.weld.bootstrap.Validator.validateBeans(Validator.java:351)
+	at org.jboss.weld.bootstrap.Validator.validateDeployment(Validator.java:336)
+	at org.jboss.weld.bootstrap.WeldBootstrap.validateBeans(WeldBootstrap.java:396)
+	at org.jboss.weld.environment.servlet.Listener.contextInitialized(Listener.java:205)
+	at org.mortbay.jetty.handler.ContextHandler.startContext(ContextHandler.java:549)
+	at org.mortbay.jetty.servlet.Context.startContext(Context.java:136)
+	at org.mortbay.jetty.handler.ContextHandler.doStart(ContextHandler.java:518)
+	at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+	at org.mortbay.jetty.handler.HandlerWrapper.doStart(HandlerWrapper.java:130)
+	at org.mortbay.jetty.Server.doStart(Server.java:224)
+	at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+	at org.jboss.jawabot.web.RunInJetty.run(RunInJetty.java:100)
+	at org.jboss.jawabot.mod.web.WebModuleHook.initModule(WebModuleHook.java:18)
+	at org.jboss.jawabot.JawaBotApp.initAndStartModules(JawaBotApp.java:106)
+	at org.jboss.jawabot.JawaBotApp.main(JawaBotApp.java:53)
+\--
+
+
+See "Weld reference - 4.9. Client proxies":http://docs.jboss.org/weld/reference/1.1.0.Final/en-US/html_single/#d0e1429
+
+You need to create beans.xml. This should ensure that everything gets scanned:
+
+
+/--code xml .[brush:]
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://java.sun.com/xml/ns/javaee" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:weld="http://jboss.org/schema/weld/beans" 
+       xsi:schemaLocation="
+          http://java.sun.com/xml/ns/javaee http://docs.jboss.org/cdi/beans_1_0.xsd
+          http://jboss.org/schema/weld/beans http://jboss.org/schema/weld/beans_1_1.xsd">
+    
+    <weld:scan>
+        <weld:include name="org.jboss.jawabot.**"/>
+    </weld:scan>
+    
+</beans>
+\--
+
+HTH

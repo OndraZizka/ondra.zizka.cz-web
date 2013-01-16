@@ -1,0 +1,22 @@
+
+
+How to get curent class'es `.jar` location (directory, path)
+************************************************************
+
+Nice trick.
+
+/--code java .[brush:]
+  private String getBaseDirectory()
+  {
+     String name = super.getClass().getName();
+     int lastdot = name.lastIndexOf('.');
+     if (lastdot != -1) {
+       name = name.substring(lastdot + 1);
+     }
+
+     URL url = super.getClass().getResource(name + ".class");
+     return getURLDirName(url);
+  }
+\--
+
+Nowadays, however, it often leads somewhere to the Maven repository :)

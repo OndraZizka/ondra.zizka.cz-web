@@ -1,0 +1,54 @@
+
+
+Querying and transforming CSV files using SQL.
+**********************************************
+
+Building:
+=========
+
+Provided you have Java JDK 1.6 and "Maven 2.2.1+":http://maven.apache.org/download.html installed:
+
+/--code bash .[brush:]
+svn co http://ondrazizka.googlecode.com/svn/trunk/CsvCruncher/
+cd CsvCruncher
+mvn clean install
+\--
+
+
+Usage:
+======
+
+/--code bash .[brush:]
+crunch [-in] <inCSV> [-out] <outCSV> [-sql] <SQL>"
+\--
+
+Examples
+========
+
+
+/--code bash .[brush:]
+  crunch input.csv output.csv "SELECT AVG(duration) AS durAvg FROM (SELECT * FROM indata ORDER BY duration LIMIT 2 OFFSET 6)"
+\--
+
+-----------------
+
+/--code bash .[brush:]
+   ## jobName, buildNumber, config, ar, arFile, deployDur, warmupDur, scale
+   'eap-5.1.0-perf-deployers', 355,'production','testdata/war/hellothere.war','hellothere.war',10282,14804,1000
+   'eap-5.1.0-perf-deployers', 355,'production','testdata/ear/EarWithWar-Counter.ear','EarWithWar-Counter.ear',11005,18904,1000
+   'eap-5.1.0-perf-deployers', 355,'production','testdata-own/war/war-big-1.0.war','war-big-1.0.war',1966,14800,100
+   ...
+\--
+
+/--code bash .[brush:]
+   SELECT jobName, buildNumber, config, ar, arFile, deployDur, warmupDur, scale,"
+     + " CAST(warmupDur AS DOUBLE) / CAST(deployDur AS DOUBLE) AS warmupSlower FROM indata ORDER BY deployDur
+\--
+
+/--code bash .[brush:]
+   'eap-5.1.0-perf-deployers',355,'production','testdata/war/hellothere.war','hellothere.war',10282,14804,1000,1.4397977047267068E0
+   'eap-5.1.0-perf-deployers',355,'production','testdata/ear/EarWithWar-Counter.ear','EarWithWar-Counter.ear',11005,18904,1000,1.7177646524307133E0
+   'eap-5.1.0-perf-deployers',355,'production','testdata-own/war/war-big-1.0.war','war-big-1.0.war',1966,14800,100,7.527975584944048E0
+\--
+
+(For the `crunch` see `target/appassabler/bin` .)
