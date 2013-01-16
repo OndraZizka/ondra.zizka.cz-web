@@ -16,6 +16,7 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
+import org.apache.wicket.request.resource.SharedResourceReference;
 import res.ResourcesPackageMarker;
 
 /**
@@ -39,6 +40,7 @@ public class TexyDocumentPanel extends Panel {
             add( new Label("substituteTitle", "Page not found."));
             add( new Label("body", "Doesn't exist: " + texyFile.getPath() ));
             getWebResponse().setStatus(404);
+            // TODO: log
         }
         else {
             String title = guessTitle(texyFile.getName());
@@ -89,12 +91,12 @@ public class TexyDocumentPanel extends Panel {
     @Override
     public void renderHead( IHeaderResponse response ) {
         // Syntax Highlighter.
-        response.render( new CssReferenceHeaderItem(
-            new CssResourceReference( ResourcesPackageMarker.class, "js/syntaxhighlighter/styles/shThemeDefault.css"), null, null, null));
+        //response.render( new CssReferenceHeaderItem(
+        //    new CssResourceReference( ResourcesPackageMarker.class, "js/syntaxhighlighter3/styles/shThemeDefault.css"), null, null, null));
         response.render( new JavaScriptReferenceHeaderItem(
-            new JavaScriptResourceReference( ResourcesPackageMarker.class, "js/syntaxhighlighter/scripts/shCore.js"), null, "shCore", true, null, null));
+            new JavaScriptResourceReference( ResourcesPackageMarker.class, "js/syntaxhighlighter3/scripts/shCore.js"), null, "shCore", true, null, null));
         response.render( new JavaScriptReferenceHeaderItem(
-            new JavaScriptResourceReference( ResourcesPackageMarker.class, "js/syntaxhighlighter/scripts/shAutoloader.js"), null, "shAutoloader", true, null, null));
+            new JavaScriptResourceReference( ResourcesPackageMarker.class, "js/syntaxhighlighter3/scripts/shAutoloader.js"), null, "shAutoloader", true, null, null));
     }
 
 
