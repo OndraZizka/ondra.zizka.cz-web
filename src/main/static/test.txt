@@ -1,0 +1,1 @@
+Test /static from src/main/static

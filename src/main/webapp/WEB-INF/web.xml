@@ -10,7 +10,7 @@
         <servlet-class>cz.oz.web.util.FileServlet</servlet-class>
         <init-param>
             <param-name>basePath</param-name>
-            <param-value>/</param-value>
+            <param-value>/WEB-INF/classes/static</param-value>
         </init-param>
     </servlet>
     <servlet-mapping>
