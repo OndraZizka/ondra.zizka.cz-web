@@ -3,14 +3,9 @@ package cz.oz.web._co.baseLayout;
 import org.apache.wicket.Session;
 import org.apache.wicket.devutils.debugbar.DebugBar;
 import org.apache.wicket.markup.html.WebPage;
-import org.apache.wicket.request.resource.CssResourceReference;
 import cz.oz.web.security.OzCzAuthSession;
-import cz.oz.web.wicket.FavIconLink;
-import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.request.resource.JavaScriptResourceReference;
 
 
 /**
