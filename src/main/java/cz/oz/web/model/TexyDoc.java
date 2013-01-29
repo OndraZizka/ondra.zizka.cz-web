@@ -23,8 +23,9 @@ import org.apache.commons.codec.digest.DigestUtils;
 
 
 /**
- *
- * @author Ondrej Zizka
+ *  Texy document, inc. source and rendered HTML.
+ * 
+ *  @author Ondrej Zizka
  */
 @SuppressWarnings("serial")
 @Entity
