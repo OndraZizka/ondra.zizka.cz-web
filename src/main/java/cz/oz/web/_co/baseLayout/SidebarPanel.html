@@ -22,30 +22,8 @@
     <div wicket:id="menu" class="menu"/>
 
 
-    <!-- Donation -->
+    <!-- Donation - PayPal -->
     <div class="donation">
-        <wicket:remove>
-        <!--
-          JD
-          <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-            <input name="cmd" value="_s-xclick" type="hidden">
-            <input src="/sites/default/themes/jd/getimage.php?p=images/paypal-donate.gif" name="submit" alt="" border="0" type="image">
-            <select name="hosted_button_id">
-              <option value="8585269" selected="selected">Euro (€)</option>
-              <option value="8585343">USD ($)</option>
-            </select>
-          </form>
-
-          CZK
-          <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-            <input type="hidden" name="cmd" value="_s-xclick">
-            <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
-        ">
-            <input type="image" src="http://ondra.zizka.cz/img/paypal-donate.gif" border="0" name="submit" alt="">
-            <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-          </form>
-        -->
-        </wicket:remove>
 
         <div style="padding-left: 4px;">
             <p>
