@@ -1,0 +1,37 @@
+
+Wicket: How to disable page caching
+***********************************
+
+Server side
+===========
+
+/--code java .brush
+
+@Override
+protected IDataStore newDataStore() {
+    return new HttpSessionDataStore( new DefaultPageManagerContext(), new PageNumberEvictionStrategy(0));
+}
+\--
+
+You can use getStoreSettings#setMaxSizePerSession(Bytes.bytes(1))  with the default DiskDataStore too.
+But the above approach is better because this way you don't do IO operations.
+
+
+
+Client-side
+===========
+
+
+/--code java .brush
+public class MyPage extends WebPage {
+
+    @Override
+    protected void setHeaders(WebResponse response) {
+        super.setHeaders(response);
+        response.disableCaching();
+        response.setHeader("X-Frame-Options","deny"); // Avoid  IFRFAMES
+        response.setHeader("Cache-Control", "no-cache,no-store,private,must-revalidate,max-stale=0,post-check=0,pre-check=0");
+        response.setHeader("Expires","0");
+        response.setHeader("Pragma", "no-cache");
+    }
+\--

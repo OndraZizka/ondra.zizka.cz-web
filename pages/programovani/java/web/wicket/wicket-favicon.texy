@@ -1,0 +1,98 @@
+
+Wicket: Favicon
+***************
+
+Option 1: <wicket:link>
+=======================
+
+/--code html .brush
+        <wicket:link>
+        <link rel="shortcut icon" type="image/x-icon" href="ico/favicon.ico"/>
+        </wicket:link>
+\--
+
+Put the icon relative to the Page it is in.
+
+/--code plain
+com/myapp/Page.html
+com/myapp/Page.java
+com/myapp/ico/favicon.ico
+\--
+
+Disadvantage: Bound to component.
+
+
+Option 2: `FavIconLink`
+=======================
+
+/--code html .brush
+<link wicket:id="favicon" rel="shortcut icon" type="image/x-icon" href="images/ico/Leaf.ico"/>
+\--
+
+/--code java .brush
+public class BaseLayoutPage extends WebPage {
+
+    public BaseLayoutPage() {
+
+        add( new FavIconLink("favicon", "favicon.ico") );
+\--
+
+/--code java .brush
+public class FavIconLink extends ExternalLink
+{
+    public FavIconLink( String id, String path ){
+        super( id, path );
+        add(new AttributeModifier("type", "image/x-icon"));
+        add(new AttributeModifier("rel", "shortcut icon"));
+        this.setContextRelative( true );
+    }
+}
+\--
+
+And put the `favicon.ico` into .jar's root, i.e. by putting to `webapp/` in Maven WAR app.
+
+
+Option 3:  `FavIconHeaderContributor` behavior
+==============================================
+
+
+/--code java .brush
+public class WicketJavaEEApplication extends WebApplication {
+    
+    @Override protected void init() {
+        super.init();
+        getSharedResources().add("favicon", new ContextRelativeResource("WEB-INF/classes/Leaf.ico"));
+        mountResource("/favicon.ico", new SharedResourceReference("favicon") );
+\--
+
+/--code java .brush
+        add( new FavIconHeaderContributor( new SharedResourceReference("favicon") ) );
+\--
+
+
+
+/--code java .brush
+public class FavIconHeaderContributor implements IHeaderContributor
+{
+    private ResourceReference resRef;
+
+    public FavIconHeaderContributor(ResourceReference ref){
+        resRef = ref;
+    }
+
+    public void renderHead(IHeaderResponse response) {
+        CharSequence url = RequestCycle.get().urlFor(resRef, null);
+        // Wicket 1.5:
+        response.renderString( this.getFavIconReference(url) );
+        // Wicket 1.6:
+        //response.render( new StringHeaderItem( this.getFavIconReference(url) ) );
+        
+    }
+
+    private CharSequence getFavIconReference(CharSequence url) {
+        StringBuilder sb=new StringBuilder();
+        sb.append("<link rel=\"shortcut icon\" href=\"").append(url).append("\" type=\"image/x-icon\">\n");
+        return sb.toString();
+    }
+}
+\--
