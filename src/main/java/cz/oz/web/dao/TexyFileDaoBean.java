@@ -1,10 +1,11 @@
 package cz.oz.web.dao;
 
-import cz.oz.web.model.TexyFile;
+import cz.oz.web.model.TexyDoc;
 import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 
@@ -18,32 +19,45 @@ public class TexyFileDaoBean {
     private EntityManager em;
 
 
-    @SuppressWarnings("unchecked")
-    public List<TexyFile> getContacts() {
-        return em.createQuery("SELECT f FROM TexyFile f").getResultList();
+    /**
+     *  Get all Texy docs indexed in given dir.
+     */
+    public List<TexyDoc> getDocsFromDir( String dir ) {
+        return em.createQuery("SELECT doc FROM TexyDoc doc WHERE doc.origPath LIKE CONCAT( :1, '%'")
+                .setParameter( 1, dir)
+                .getResultList();
     }
 
     /**
      * Get Contact by ID.
      */
-    public TexyFile getContact(Long id) {
-        return em.find(TexyFile.class, id);
+    public TexyDoc getDoc(Long id) {
+        return em.find(TexyDoc.class, id);
     }
 
-    /**
-     * Add a new Contact.
-     */
-    public void addFile(String path) {
-        em.merge(new TexyFile(path));
-    }
+
 
     /**
-     * Remove a Contact.
+     * Remove a doc.
      */
-    public void remove(TexyFile modelObject) {
-        TexyFile managed = em.merge(modelObject);
+    public void remove(TexyDoc doc) {
+        TexyDoc managed = em.merge(doc);
         em.remove(managed);
         em.flush();
+    }
+
+    public TexyDoc findDocByPath( String path ) {
+        try {
+            return em.createQuery("SELECT doc FROM TexyDoc doc WHERE doc.origPath LIKE CONCAT('%', :1)", TexyDoc.class)
+                .setParameter(1, path)
+                .getSingleResult();
+        } catch ( NoResultException ex ){
+            return null;
+        }
+    }
+
+    public void addTexyFile( TexyDoc texyFile ) {
+        em.persist( texyFile );
     }
     
 }
