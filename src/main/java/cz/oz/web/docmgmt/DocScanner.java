@@ -48,45 +48,50 @@ public class DocScanner implements ServletContextListener {
 
     void scan( File dirToScan ) throws IOException{
         new DirectoryWalker( null, new SuffixFileFilter(".texy"), -1){
+            File dirToScan;
+
             @Override protected void handleFile( File file, int depth, Collection results ) throws IOException {
-                addDocToIndexIfNotExists( file );
+                String rel = dirToScan.toURI().relativize(file.toURI()).getPath();
+                File relativePath = new File(rel);
+                addDocToIndexIfNotExists( dirToScan, relativePath );
             }
 
             public void scan( File dirToScan ) throws IOException {
                 List results = new ArrayList();
+                this.dirToScan = dirToScan;
                 walk( dirToScan, results );
             }
         }.scan( dirToScan );
     }
 
-    private void addDocToIndexIfNotExists( File file ) {
+    private void addDocToIndexIfNotExists( File baseDir, File relativePath ) {
         try {
-            TexyDoc texyFile = dao.findDocByPath( file.getPath() );
+            TexyDoc texyFile = dao.findDocByPath( relativePath.getPath() );
             if( null != texyFile ){
-                System.out.println( "INFO: Aready indexed: " + file.getPath() );
+                System.out.println( "INFO: Aready indexed: " + relativePath.getPath() );
                 return;
             }
 
-            System.out.println( "INFO: Scanning " + file.getPath() );
-            texyFile = parser.createTexyDoc( file );
+            System.out.println( "INFO: Parsing " + relativePath.getPath() );
+            texyFile = parser.createTexyDoc( baseDir, relativePath );
             dao.addTexyFile( texyFile );
         }
         catch( UnsupportedOperationException ex ){
-            System.err.println( "ERROR when parsing " + file.getPath() + ": " + ex ); // LOG
+            System.err.println( "ERROR when parsing " + relativePath.getPath() + ": " + ex ); // LOG
             ex.printStackTrace( System.err );
         }
         // For input string: "d��" in /home/ondra/uw/oz.cz/web-git/pages/programovani/php/lib-docs/classc_d_b_a___error.png
         catch( NumberFormatException ex ){
-            System.err.println( "ERROR when parsing " + file.getPath() + ": " + ex ); // LOG
+            System.err.println( "ERROR when parsing " + relativePath.getPath() + ": " + ex ); // LOG
             ex.printStackTrace( System.err );
         }
         // Illegal group reference in /home/ondra/uw/oz.cz/web-git/pages/programovani/php/advantages-and-disadvantages-of-PHP.html
         catch( IllegalArgumentException ex ){
-            System.err.println( "ERROR when parsing " + file.getPath() + ": " + ex ); // LOG
+            System.err.println( "ERROR when parsing " + relativePath.getPath() + ": " + ex ); // LOG
             ex.printStackTrace( System.err );
         }
         catch( Throwable ex ){
-            System.err.println( "ERROR when parsing " + file.getPath() + ": " + ex ); // LOG
+            System.err.println( "ERROR when parsing " + relativePath.getPath() + ": " + ex ); // LOG
         }
     }
 

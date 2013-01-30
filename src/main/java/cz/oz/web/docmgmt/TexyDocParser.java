@@ -19,28 +19,30 @@ import org.apache.commons.io.FileUtils;
  */
 public class TexyDocParser {
 
-    public TexyDoc createTexyDoc( File file ) {
-        return this.createTexyDoc( file, Charset.forName("utf-8") );
+    public TexyDoc createTexyDoc( File docRootDir, File path ) {
+        return this.createTexyDoc( docRootDir, path, Charset.forName("utf-8") );
     }
 
-    public TexyDoc createTexyDoc( File texyFile, Charset encoding ) {
+    public TexyDoc createTexyDoc( File docRootDir, File relativePath, Charset encoding ) {
+
+        File fullPath = new File( docRootDir, relativePath.getPath() );
         
         try {
             // Read.
-            String src = FileUtils.readFileToString(texyFile, encoding);
+            String src = FileUtils.readFileToString(fullPath, encoding);
             // Convert.
             String html = JTexy.create().process(src);
 
             //Files.readAttributes( texyFile.toPath(), BasicFileAttributes.class ).creationTime();
-            long lastModified = texyFile.lastModified();
+            long lastModified = fullPath.lastModified();
             
-            return new TexyDoc( texyFile.getPath(), src, html ).setAdded( new Date(lastModified) );
+            return new TexyDoc( relativePath.getPath(), src, html ).setAdded( new Date(lastModified) );
         }
         catch( IOException ex ) {
-            return new TexyDoc( texyFile.getPath(), ex ).setAdded( new Date() );
+            return new TexyDoc( relativePath.getPath(), ex ).setAdded( new Date() );
         }
         catch( TexyException ex ) {
-            return new TexyDoc( texyFile.getPath(), ex ).setAdded( new Date() );
+            return new TexyDoc( relativePath.getPath(), ex ).setAdded( new Date() );
         }
 
     }// createTexyDoc()
