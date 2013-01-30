@@ -3,6 +3,7 @@ package cz.oz.web;
 import cz.oz.web.util._co.LogResourceReference;
 import cz.oz.web._pg.JTexyPage;
 import cz.oz.web._pg.JTexyTestPage;
+import cz.oz.web._pg.doclist.DocListPage;
 import cz.oz.web.model.User;
 import cz.oz.web.qualifiers.CurrentSession;
 import cz.oz.web.qualifiers.LoggedIn;
@@ -64,6 +65,7 @@ public class WicketJavaEEApplication extends WebApplication {
         // Mount all paths to JTexy.
         mountPage("/test", JTexyTestPage.class);
         mountPage("/stranky", JTexyPage.class);
+        mountPage("/docs/#{limit}/#{offset}", DocListPage.class);
         mountResource("/log", new LogResourceReference());
         mountResource("/clipboard.swf", new PackageResourceReference( ResourcesPackageMarker.class, "js/syntaxhighlighter/scripts/clipboard.swf") );
 
@@ -84,7 +86,7 @@ public class WicketJavaEEApplication extends WebApplication {
     }
 
     
-    
+    @Produces
     public Settings getSettings() {
         return settings;
     }
@@ -95,13 +97,17 @@ public class WicketJavaEEApplication extends WebApplication {
         // Get the value from web.xml's <env-entry>.
         //settings.texyFilesRootPath = this.getServletContext().getResourceAsStream("texyFilesRootPaths").toString();
         try {
-            Context env = (Context)new InitialContext().lookup("java:comp/env");
-            settings.setTexyFilesRootPaths( (String)env.lookup("texyFilesRootPaths") );
+            settings.setTexyFilesRootPaths( getTexyFilesRootPaths() );
         } catch( NamingException ex ){
             // TODO
         }
         
         return settings;
+    }
+
+    public static String getTexyFilesRootPaths() throws NamingException {
+        Context env = (Context)new InitialContext().lookup("java:comp/env");
+        return (String)env.lookup("texyFilesRootPaths");
     }
 
     
