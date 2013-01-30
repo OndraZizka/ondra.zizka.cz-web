@@ -6,6 +6,7 @@ import cz.oz.web._pg.JTexyTestPage;
 import cz.oz.web._pg.doclist.DocListPage;
 import cz.oz.web.model.User;
 import cz.oz.web.qualifiers.CurrentSession;
+import cz.oz.web.qualifiers.FromApp;
 import cz.oz.web.qualifiers.LoggedIn;
 import cz.oz.web.security.OzCzAuthSession;
 import javax.enterprise.inject.Produces;
@@ -86,7 +87,7 @@ public class WicketJavaEEApplication extends WebApplication {
     }
 
     
-    @Produces
+    @Produces @FromApp
     public Settings getSettings() {
         return settings;
     }
