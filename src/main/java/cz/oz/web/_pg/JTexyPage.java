@@ -41,7 +41,7 @@ public class JTexyPage extends BaseLayoutPage implements ICountablePage {
     }
 
     private void init( String path ) {
-        add( new TexyDocumentPanel("document", reqPath) );
+        add( new TexyDocumentPanel("document", path) );
     }
 
     

@@ -18,15 +18,20 @@ public class TexyDocStripePanel extends Panel {
     public TexyDocStripePanel( String id, final IModel<TexyDoc> docModel ) {
         super( id, new CompoundPropertyModel<TexyDoc>(docModel) );
 
-        add( new Label("title") );
         add( new Link("link") {
-            @Override public void onClick() {
-                setResponsePage( new JTexyPage( docModel.getObject().getPath() ) );
+                @Override public void onClick() {
+                    String path = getTexyDocFromModel().getPath();
+                    setResponsePage( new JTexyPage( path ) );
+                }
             }
-        } );
+            .add( new Label("titleOrFileName") )
+        );
         add( new Label("added") );
         add( new Label("author") );
         add( new Label("path") );
     }
 
+    TexyDoc getTexyDocFromModel(){
+        return (TexyDoc) this.getDefaultModelObject();
+    }
 }

@@ -1,5 +1,6 @@
 package cz.oz.web.model;
 
+import cz.oz.web._co.TexyDocumentPanel;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -37,6 +38,8 @@ public class TexyDoc implements Serializable {
     @Id @GeneratedValue(strategy = IDENTITY)
     @Column(columnDefinition = "INT UNSIGNED")
     private Long id;
+
+    private String title;
     
     @Column(unique=true)
     private String origPath;
@@ -88,22 +91,18 @@ public class TexyDoc implements Serializable {
     }
     
     
-    private static String computeFileHash( File file ) throws IOException {
-        FileInputStream fis = null;
-        try {
-            fis = new FileInputStream( file );
-            return DigestUtils.md5Hex(fis);
-        } catch( FileNotFoundException ex ) {
-            return null;
-        } catch( IOException ex ) {
-            throw ex;
-        } finally {
-            try { fis.close(); } catch( IOException ex ) {}
-        }
+    @Transient public String getTitleOrFileName(){
+        return title != null ?  title : TexyDocumentPanel.guessTitle( new File(origPath).getName() );
+    }
+
+    @Transient boolean isParsingFailed(){ return parsingException != null; }
+
+    @Transient
+    public String getPath() {
+        return origPath;
     }
 
 
-    
     //<editor-fold defaultstate="collapsed" desc="get/set">
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -150,9 +149,19 @@ public class TexyDoc implements Serializable {
     }
     //</editor-fold>
 
-    @Transient
-    public String getPath() {
-        return origPath;
-    }
-    
+    /*
+    private static String computeFileHash( File file ) throws IOException {
+        FileInputStream fis = null;
+        try {
+            fis = new FileInputStream( file );
+            return DigestUtils.md5Hex(fis);
+        } catch( FileNotFoundException ex ) {
+            return null;
+        } catch( IOException ex ) {
+            throw ex;
+        } finally {
+            try { fis.close(); } catch( IOException ex ) {}
+        }
+    }*/
+
 }// class

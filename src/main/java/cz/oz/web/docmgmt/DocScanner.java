@@ -62,8 +62,10 @@ public class DocScanner implements ServletContextListener {
     private void addDocToIndexIfNotExists( File file ) {
         try {
             TexyDoc texyFile = dao.findDocByPath( file.getPath() );
-            if( null != texyFile )
+            if( null != texyFile ){
+                System.out.println( "INFO: Aready indexed: " + file.getPath() );
                 return;
+            }
 
             System.out.println( "INFO: Scanning " + file.getPath() );
             texyFile = parser.createTexyDoc( file );

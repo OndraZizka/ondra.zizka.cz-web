@@ -105,7 +105,7 @@ public class TexyDocumentPanel extends Panel {
      *  foo-bar-baz.texy --> Foo bar baz.
      */
     public static String guessTitle( String name ) {
-        return StringUtils.capitalize( name ).replaceAll("-", " ");
+        return StringUtils.capitalize( name ).replace(".texy","").replaceAll("-", " ");
     }
 
 }// class TexyDocumentPanel
