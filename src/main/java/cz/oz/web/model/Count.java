@@ -2,6 +2,7 @@
 package cz.oz.web.model;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -16,7 +17,8 @@ public class Count implements Serializable {
 
     @Id
     private String id;
-    
+
+    @Column(columnDefinition = "INT UNSIGNED")
     private int count;
 
 
