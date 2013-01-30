@@ -47,6 +47,9 @@ public class TexyDoc implements Serializable {
     @Temporal( TemporalType.TIMESTAMP )
     private Date added;
 
+    @Temporal( TemporalType.TIMESTAMP )
+    private Date lastChanged;
+
     @ManyToOne @JoinColumn(name = "author_id")
     private User author;
 
@@ -107,10 +110,14 @@ public class TexyDoc implements Serializable {
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
+    public String getTitle() { return title; }
+    public void setTitle( String title ) { this.title = title; }
     public String getOrigPath() { return origPath; }
     public void setOrigPath( String origPath ) { this.origPath = origPath; }
     public Date getAdded() { return added; }
     public TexyDoc setAdded( Date added ) { this.added = added; return this; }
+    public Date getLastChanged() { return lastChanged != null ? lastChanged : added; }
+    public void setLastChanged( Date lastChanged ) { this.lastChanged = lastChanged; }
     public User getAuthor() { return author; }
     public void setAuthor( User author ) { this.author = author; }
     public String getContentHash() { return contentHash; }
