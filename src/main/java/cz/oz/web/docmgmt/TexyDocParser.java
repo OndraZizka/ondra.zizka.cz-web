@@ -7,6 +7,9 @@ import cz.oz.web.model.TexyDoc;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.util.Date;
 import org.apache.commons.io.FileUtils;
 
 /**
@@ -28,13 +31,16 @@ public class TexyDocParser {
             // Convert.
             String html = JTexy.create().process(src);
 
-            return new TexyDoc( texyFile.getPath(), src, html );
+            //Files.readAttributes( texyFile.toPath(), BasicFileAttributes.class ).creationTime();
+            long lastModified = texyFile.lastModified();
+            
+            return new TexyDoc( texyFile.getPath(), src, html ).setAdded( new Date(lastModified) );
         }
         catch( IOException ex ) {
-            return new TexyDoc( texyFile.getPath(), ex );
+            return new TexyDoc( texyFile.getPath(), ex ).setAdded( new Date() );
         }
         catch( TexyException ex ) {
-            return new TexyDoc( texyFile.getPath(), ex );
+            return new TexyDoc( texyFile.getPath(), ex ).setAdded( new Date() );
         }
 
     }// createTexyDoc()

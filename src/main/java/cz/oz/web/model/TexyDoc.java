@@ -17,21 +17,25 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import org.apache.commons.codec.digest.DigestUtils;
 
 
 /**
- *  Texy document, inc. source and rendered HTML.
+ *  Texy document, including source and rendered HTML.
  * 
  *  @author Ondrej Zizka
  */
 @SuppressWarnings("serial")
 @Entity
+@Table(name = "texydoc")
 public class TexyDoc implements Serializable {
 
     @Id @GeneratedValue(strategy = IDENTITY)
+    @Column(columnDefinition = "INT UNSIGNED")
     private Long id;
     
     @Column(unique=true)
@@ -43,7 +47,7 @@ public class TexyDoc implements Serializable {
     @ManyToOne @JoinColumn(name = "author_id")
     private User author;
 
-    @Column(columnDefinition = "CHAR", length = 32)
+    @Column(columnDefinition = "CHAR(32)", length = 32)
     private String contentHash;
 
     // Lazily loaded body.
@@ -56,7 +60,8 @@ public class TexyDoc implements Serializable {
     @Basic(fetch = FetchType.LAZY )
     private String renderedHtml;
 
-    private Exception parsingException;
+    @Column(columnDefinition = "TEXT")
+    private String parsingException;
 
 
     
@@ -72,7 +77,8 @@ public class TexyDoc implements Serializable {
 
     public TexyDoc( String origPath, Exception parsingException ) {
         this.origPath = origPath;
-        this.parsingException = parsingException;
+        if( parsingException != null )
+            this.parsingException = parsingException.toString();
     }
 
     
@@ -101,6 +107,21 @@ public class TexyDoc implements Serializable {
     //<editor-fold defaultstate="collapsed" desc="get/set">
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
+
+    public String getOrigPath() { return origPath; }
+    public void setOrigPath( String origPath ) { this.origPath = origPath; }
+    public Date getAdded() { return added; }
+    public TexyDoc setAdded( Date added ) { this.added = added; return this; }
+    public User getAuthor() { return author; }
+    public void setAuthor( User author ) { this.author = author; }
+    public String getContentHash() { return contentHash; }
+    public void setContentHash( String contentHash ) { this.contentHash = contentHash; }
+    public String getContent() { return content; }
+    public void setContent( String content ) { this.content = content; }
+    public String getRenderedHtml() { return renderedHtml; }
+    public void setRenderedHtml( String renderedHtml ) { this.renderedHtml = renderedHtml; }
+    public String getParsingException() { return parsingException; }
+    public void setParsingException( String parsingException ) { this.parsingException = parsingException; }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="hash/eq">
@@ -128,5 +149,10 @@ public class TexyDoc implements Serializable {
         return true;
     }
     //</editor-fold>
+
+    @Transient
+    public String getPath() {
+        return origPath;
+    }
     
 }// class

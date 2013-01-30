@@ -24,7 +24,6 @@ public class JTexyPage extends BaseLayoutPage implements ICountablePage {
     private String reqPath;
 
     
-    // Set up the dynamic behavior for the page, widgets bound by id
     public JTexyPage(PageParameters params) {
         
         // Construct the path to the texy file.
@@ -34,13 +33,21 @@ public class JTexyPage extends BaseLayoutPage implements ICountablePage {
         }
         // Requested path. May be served from cache/db.
         this.reqPath = sb.toString();
+        init( reqPath );
+    }
 
+    public JTexyPage( String path ) {
+        this.init(path);
+    }
+
+    private void init( String path ) {
         add( new TexyDocumentPanel("document", reqPath) );
     }
 
-
+    
     @Override public String getCounterId() {
         return "stranky:" + this.reqPath;
     }
+
 
 }// class

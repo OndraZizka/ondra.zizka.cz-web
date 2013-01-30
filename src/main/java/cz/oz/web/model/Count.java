@@ -4,12 +4,14 @@ package cz.oz.web.model;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  *  @author Ondrej Zizka
  */
 @Entity
+@Table(name = "counter")
 public class Count implements Serializable {
 
     @Id
