@@ -47,8 +47,7 @@ public class DocScanner implements ServletContextListener {
     }
 
     void scan( File dirToScan ) throws IOException{
-        new DirectoryWalker( null, new SuffixFileFilter(".texy"), 0){
-        //new DirectoryWalker(){
+        new DirectoryWalker( null, new SuffixFileFilter(".texy"), -1){
             @Override protected void handleFile( File file, int depth, Collection results ) throws IOException {
                 addDocToIndexIfNotExists( file );
             }
