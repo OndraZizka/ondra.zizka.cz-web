@@ -19,6 +19,8 @@ import org.apache.commons.io.filefilter.SuffixFileFilter;
 
 /**
  *  Scans and indexes the Texy documents.
+ *  Currently on deployment.
+ *
  *  @author Ondrej Zizka
  */
 //@Stateless
@@ -27,17 +29,17 @@ public class DocScanner implements ServletContextListener {
 
     @Inject TexyFileDaoBean dao;
     @Inject @FromApp Settings settings;
-    
-    TexyDocParser parser = new TexyDocParser();
-    
     //@Resource private TimerService timerService;
+    
+    TexyDocParser parser = new TexyDocParser(); // Could be EJB, but no need for.
+    
 
     
     @Override public void contextInitialized( ServletContextEvent sce ) {
         scan();
     }
 
-    //@Schedule(minute = "*/3", hour = "*")
+    //@Schedule(minute = "23", hour = "*/2")
     void scan(){
         try {
             scan( new File(settings.getTexyFilesRootPath()) );
@@ -46,6 +48,9 @@ public class DocScanner implements ServletContextListener {
         }
     }
 
+    /**
+     *  Scan the directory for Texy pages.
+     */
     void scan( File dirToScan ) throws IOException{
         new DirectoryWalker( null, new SuffixFileFilter(".texy"), -1){
             File dirToScan;
@@ -64,6 +69,12 @@ public class DocScanner implements ServletContextListener {
         }.scan( dirToScan );
     }
 
+    /**
+     *  Adds this Texy page to index, if it is not already indexed.
+     *
+     *  TODO: Check for indexed pages without file, look for the same base name / source hash.
+     *        If found, do some redirection.
+     */
     private void addDocToIndexIfNotExists( File baseDir, File relativePath ) {
         try {
             TexyDoc texyFile = dao.findDocByPath( relativePath.getPath() );
