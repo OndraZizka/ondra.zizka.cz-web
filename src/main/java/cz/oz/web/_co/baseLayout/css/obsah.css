@@ -7,7 +7,8 @@
 
 /** Svetlejsi pozadi obsahu **/
 #obsah {
-    background: #ebf5fc URL("../img/obsah_bg.png") repeat-x top left;
+    /*background: #ebf5fc URL("../img/obsah_bg.png") repeat-x top left;*/
+    background-color: #F4F7F9;
     padding-bottom: 1ex;
 }
 
@@ -16,6 +17,8 @@
 
 #obsah p,
 #obsah table { margin-bottom: 1.6ex; }
+
+#obsah a { color: #2675ae; }
 
 /* Cervenozlutej nadpis v obsahu */
 #obsah h1, 
@@ -86,5 +89,5 @@ body #obsah img.no_margin { margin: 0; }
 
 
 /***** Kontakty *****/
-.kontakty table    { margin-left:   50px; }
-.kontakty table td { padding-right: 1em; font-size: 120%; vertical-align: top; }
+#obsah .kontakty table    { margin-left:   50px; }
+#obsah .kontakty table td { padding-right: 1em; font-size: 120%; vertical-align: top; }
