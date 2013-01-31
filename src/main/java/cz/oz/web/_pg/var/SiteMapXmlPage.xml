@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+   <url wicket:id="urls">
+      <loc wicket:id="loc">http://www.example.com/</loc>
+      <lastmod wicket:id="lastMod">2005-01-01</lastmod>
+      <changefreq wicket:id="changeFreq">monthly</changefreq>
+      <priority wicket:id="priority">0.8</priority>
+   </url>
+
+</urlset>

@@ -276,3 +276,14 @@ td, th  { font-family: Arial CE, Arial, Helvetica CE, Helvetica, sans-serif; fon
 	scrollbar-darkshadow-color: #333333;
 	scrollbar-arrow-color: #808080;
 }
+
+/*  DocList  */
+.docList { width: 100%; background: none; }
+table.docList tr.doc td {
+    border: none !important;
+    border-top:    1px solid #9ebbff !important;
+    border-bottom: 1px solid #9ebbff !important;
+    padding: 0.4ex 1em !important;
+}
+.docList tr.doc td h3 { margin: 0.3ex 0; color: #2675ae; }
+.docList tr.doc td h3 a { color: inherit; text-decoration: none; }

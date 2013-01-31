@@ -4,6 +4,7 @@ import cz.oz.web.util._co.LogResourceReference;
 import cz.oz.web._pg.JTexyPage;
 import cz.oz.web._pg.JTexyTestPage;
 import cz.oz.web._pg.doclist.DocListPage;
+import cz.oz.web._pg.var.SiteMapXmlPage;
 import cz.oz.web.model.User;
 import cz.oz.web.qualifiers.CurrentSession;
 import cz.oz.web.qualifiers.FromApp;
@@ -64,6 +65,7 @@ public class WicketJavaEEApplication extends WebApplication {
         //mountPage("/add", InsertContact.class);
         
         // Mount all paths to JTexy.
+        mountPage("/sitemap.xml", SiteMapXmlPage.class);
         mountPage("/test", JTexyTestPage.class);
         mountPage("/stranky", JTexyPage.class);
         mountPage("/docs/#{limit}/#{offset}", DocListPage.class);
