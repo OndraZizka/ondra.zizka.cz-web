@@ -1,7 +1,7 @@
 
 package cz.oz.web._pg.doclist;
 
-import cz.oz.web._pg.JTexyPage;
+import cz.oz.web._pg.jtexy.JTexyPage;
 import cz.oz.web.model.TexyDoc;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

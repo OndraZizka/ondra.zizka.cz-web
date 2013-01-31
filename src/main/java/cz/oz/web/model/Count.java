@@ -19,15 +19,21 @@ public class Count implements Serializable {
     private String id;
 
     @Column(columnDefinition = "INT UNSIGNED")
-    private int count;
+    private long count;
 
+    public Count() {}
+
+    public Count( String id, long count ) {
+        this.id = id;
+        this.count = count;
+    }
 
 
     //<editor-fold defaultstate="collapsed" desc="get/set/override">
     public String getId() { return id; }
     public void setId( String id ) { this.id = id; }
-    public int getCount() { return count; }
-    public void setCount( int count ) { this.count = count; }
+    public long getCount() { return count; }
+    public void setCount( long count ) { this.count = count; }
 
     @Override
     public int hashCode() {

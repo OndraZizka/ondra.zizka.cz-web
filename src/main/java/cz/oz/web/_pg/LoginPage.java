@@ -1,5 +1,6 @@
 package cz.oz.web._pg;
 
+import cz.oz.web._pg.jtexy.JTexyTestPage;
 import cz.oz.web._co.baseLayout.BaseLayoutPage;
 import cz.oz.web.model.User;
 import javax.persistence.NoResultException;

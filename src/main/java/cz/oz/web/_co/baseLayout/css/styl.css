@@ -37,7 +37,7 @@ a:visited { color: #000000; }
 #title_part2 { background-image: URL("../img/tipart2.gif"); background-repeat: repeat-x; }
 .title   { text-align: center; font-family: Arial CE, Arial, Helvetica, sans-serif; font-size: 30pt; font-weight: bold; }
 #title_part3 { background-image: URL("../img/tipart3.gif"); background-repeat: no-repeat; }
-.counter { font-family: Arial CE, Arial, Helvetica, sans-serif; font-size:  7pt; font-weight: bold; }
+.counter { font-family: Arial CE, Arial, Helvetica, sans-serif; font-size:  8pt; font-weight: bold; }
 
 /***** Main *****/
 /* Debilni MSIE tohle neskousne */

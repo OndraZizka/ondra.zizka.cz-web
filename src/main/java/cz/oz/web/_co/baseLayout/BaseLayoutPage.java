@@ -1,9 +1,12 @@
 package cz.oz.web._co.baseLayout;
 
+import cz.oz.web._pg.ICountablePage;
+import cz.oz.web.dao.CountDao;
 import org.apache.wicket.Session;
 import org.apache.wicket.devutils.debugbar.DebugBar;
 import org.apache.wicket.markup.html.WebPage;
 import cz.oz.web.security.OzCzAuthSession;
+import javax.inject.Inject;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.basic.Label;
 
@@ -14,6 +17,9 @@ import org.apache.wicket.markup.html.basic.Label;
  *  @author Ondrej Zizka
  */
 public class BaseLayoutPage extends WebPage {
+
+    @Inject private CountDao countDao;
+
 
     /** Adds CSS reference. */
     public void renderHead(IHeaderResponse response) {
@@ -42,6 +48,21 @@ public class BaseLayoutPage extends WebPage {
         //add( new ContentPanel("obsah") );
 
         add( new PocitadlaPanel("pocitadla") );
+    }
+
+    // Moved here to have the page fully instantiated.
+    @Override protected void onInitialize() {
+        super.onInitialize();
+
+        // Counter increment & get.
+        if( this instanceof ICountablePage ){
+            ICountablePage cp = (ICountablePage) this;
+            try {
+                long count = countDao.getCountAfterIncrement( cp.getCounterId() );
+                cp.setCount(count);
+            } catch (Exception ex){
+            }
+        }
     }
     
     

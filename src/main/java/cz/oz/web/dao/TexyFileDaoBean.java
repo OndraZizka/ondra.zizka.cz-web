@@ -48,10 +48,10 @@ public class TexyFileDaoBean {
 
     public TexyDoc findDocByPath( String path ) {
         try {
-            //return em.createQuery("SELECT doc FROM TexyDoc doc WHERE doc.origPath LIKE CONCAT('%', :1)", TexyDoc.class)
-            //    .setParameter(1, path)
-            path = path.replace("'", "\'");
-            return em.createQuery("SELECT doc FROM TexyDoc doc WHERE doc.origPath LIKE '%"+path+"'", TexyDoc.class)
+            return em.createQuery("SELECT doc FROM TexyDoc doc WHERE doc.origPath LIKE CONCAT('%', :path)", TexyDoc.class)
+                .setParameter("path", path)
+            //path = path.replace("'", "\'");
+            //return em.createQuery("SELECT doc FROM TexyDoc doc WHERE doc.origPath LIKE '%"+path+"'", TexyDoc.class)
                 .getSingleResult();
         } catch ( NoResultException ex ){
             return null;

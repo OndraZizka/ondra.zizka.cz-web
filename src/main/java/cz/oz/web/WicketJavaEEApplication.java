@@ -1,8 +1,8 @@
 package cz.oz.web;
 
 import cz.oz.web.util._co.LogResourceReference;
-import cz.oz.web._pg.JTexyPage;
-import cz.oz.web._pg.JTexyTestPage;
+import cz.oz.web._pg.jtexy.JTexyPage;
+import cz.oz.web._pg.jtexy.JTexyTestPage;
 import cz.oz.web._pg.doclist.DocListPage;
 import cz.oz.web._pg.var.SiteMapXmlPage;
 import cz.oz.web.model.User;

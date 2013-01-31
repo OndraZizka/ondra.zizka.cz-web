@@ -1,7 +1,7 @@
-package cz.oz.web._pg;
+package cz.oz.web._pg.jtexy;
 
-import cz.oz.web._co.TexyDocumentPanel;
 import cz.oz.web._co.baseLayout.BaseLayoutPage;
+import cz.oz.web._pg.ICountablePage;
 import cz.oz.web.dao.TexyFileDaoBean;
 import javax.inject.Inject;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
@@ -20,8 +20,11 @@ public class JTexyPage extends BaseLayoutPage implements ICountablePage {
 
     @Inject private transient TexyFileDaoBean dao;
 
+    
     // ID of the page to show.
     private String reqPath;
+
+    private Long viewCount;
 
     
     public JTexyPage(PageParameters params) {
@@ -44,10 +47,13 @@ public class JTexyPage extends BaseLayoutPage implements ICountablePage {
         add( new TexyDocumentPanel("document", path) );
     }
 
-    
+
+    // Counter stuff
     @Override public String getCounterId() {
-        return "stranky:" + this.reqPath;
+        return "texyPage:" + this.reqPath;
     }
+    @Override public void setCount( Long count ) { this.viewCount = count; }
+    @Override public Long getCount() { return this.viewCount; }
 
 
 }// class

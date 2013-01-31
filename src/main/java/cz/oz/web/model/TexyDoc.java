@@ -1,6 +1,6 @@
 package cz.oz.web.model;
 
-import cz.oz.web._co.TexyDocumentPanel;
+import cz.oz.web._pg.jtexy.TexyDocumentPanel;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
