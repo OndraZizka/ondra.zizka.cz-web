@@ -7,13 +7,7 @@ import cz.oz.web.util.FilesystemRequestHandler;
 import java.io.File;
 import org.apache.wicket.Page;
 import org.apache.wicket.RestartResponseAtInterceptPageException;
-import org.apache.wicket.request.IRequestCycle;
-import org.apache.wicket.request.handler.resource.ResourceStreamRequestHandler;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.apache.wicket.request.resource.ContentDisposition;
-import org.apache.wicket.util.resource.FileResourceStream;
-import org.apache.wicket.util.resource.IResourceStream;
-import org.apache.wicket.util.time.Duration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -61,14 +55,6 @@ public class ContentDispatchPage extends Page {
         File rootPath = new File(((WicketJavaEEApplication)this.getApplication()).getSettings().getTexyFilesRootPath());
         File fullPath = new File(rootPath, reqPath);
         
-        /*try {
-            IOUtils.copy( new FileInputStream(file), getResponse().getOutputStream());
-        } catch( FileNotFoundException ex ) {
-            log.error("Non-Texy file not found: " + ex);
-        } catch( IOException ex ) {
-            log.error("Error serving non-Texy file: " + ex);
-        }*/
-
         // Process request using this handler.
         getRequestCycle().scheduleRequestHandlerAfterCurrent( new FilesystemRequestHandler( fullPath ) );
 
