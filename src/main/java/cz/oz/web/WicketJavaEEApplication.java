@@ -1,5 +1,6 @@
 package cz.oz.web;
 
+import cz.oz.web._pg.ContentDispatchPage;
 import cz.oz.web.util._co.LogResourceReference;
 import cz.oz.web._pg.jtexy.JTexyPage;
 import cz.oz.web._pg.jtexy.JTexyTestPage;
@@ -10,6 +11,9 @@ import cz.oz.web.qualifiers.CurrentSession;
 import cz.oz.web.qualifiers.FromApp;
 import cz.oz.web.qualifiers.LoggedIn;
 import cz.oz.web.security.OzCzAuthSession;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.BeanManager;
 import javax.naming.Context;
@@ -17,11 +21,17 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import net.ftlines.wicket.cdi.CdiConfiguration;
 import static net.ftlines.wicket.cdi.ConversationPropagation.NONE;
+import org.apache.commons.lang.StringUtils;
 import org.apache.wicket.Page;
 import org.apache.wicket.Session;
+import org.apache.wicket.core.request.mapper.BookmarkableMapper;
+import org.apache.wicket.core.request.mapper.MountedMapper;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.Request;
 import org.apache.wicket.request.Response;
+import org.apache.wicket.request.Url;
+import org.apache.wicket.request.mapper.parameter.IPageParametersEncoder;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.request.resource.PackageResourceReference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -68,6 +78,19 @@ public class WicketJavaEEApplication extends WebApplication {
         mountPage("/sitemap.xml", SiteMapXmlPage.class);
         mountPage("/test", JTexyTestPage.class);
         mountPage("/stranky", JTexyPage.class);
+        //mountPage("/stranky", ContentDispatchPage.class);
+        /*mount(new MountedMapper("/stranky2", ContentDispatchPage.class, new IPageParametersEncoder() {
+            @Override public PageParameters decodePageParameters( Url url ) {
+                return new PageParameters().add("path", url.getPath());
+            }
+            @Override public Url encodePageParameters( PageParameters pageParameters ) {
+                return new Url(
+                        new ArrayList<String>( Arrays.asList( StringUtils.split(pageParameters.get("path").toString(""), '/') ) ),
+                        Collections.EMPTY_LIST // Query params
+                );
+            }
+        } ) );*/
+
         mountPage("/docs/#{limit}/#{offset}", DocListPage.class);
         mountResource("/log", new LogResourceReference());
         mountResource("/clipboard.swf", new PackageResourceReference( ResourcesPackageMarker.class, "js/syntaxhighlighter/scripts/clipboard.swf") );

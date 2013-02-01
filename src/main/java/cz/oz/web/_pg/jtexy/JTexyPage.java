@@ -1,10 +1,20 @@
 package cz.oz.web._pg.jtexy;
 
+import cz.oz.web.WicketJavaEEApplication;
 import cz.oz.web._co.baseLayout.BaseLayoutPage;
+import cz.oz.web._pg.ContentDispatchPage;
 import cz.oz.web._pg.ICountablePage;
 import cz.oz.web.dao.TexyFileDaoBean;
+import cz.oz.web.util.FilesystemRequestHandler;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import javax.inject.Inject;
+import org.apache.commons.io.IOUtils;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -17,6 +27,7 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
  */
 @SuppressWarnings("serial")
 public class JTexyPage extends BaseLayoutPage implements ICountablePage {
+    private static final Logger log = LoggerFactory.getLogger(JTexyPage.class);
 
     @Inject private transient TexyFileDaoBean dao;
 
@@ -35,8 +46,7 @@ public class JTexyPage extends BaseLayoutPage implements ICountablePage {
             sb.append('/').append(params.get(i));
         }
         // Requested path. May be served from cache/db.
-        this.reqPath = sb.toString();
-        init( reqPath );
+        init( sb.toString() );
     }
 
     public JTexyPage( String path ) {
@@ -44,6 +54,17 @@ public class JTexyPage extends BaseLayoutPage implements ICountablePage {
     }
 
     private void init( String path ) {
+        this.reqPath = path;
+
+        if( ! path.endsWith(".texy") ){
+            // Filesystem path.
+            File rootPath = new File(((WicketJavaEEApplication)this.getApplication()).getSettings().getTexyFilesRootPath());
+            File fullPath = new File(rootPath, reqPath);
+            //getRequestCycle().scheduleRequestHandlerAfterCurrent( ContentDispatchPage.createFileReqestHandler( fullPath ) );
+            getRequestCycle().scheduleRequestHandlerAfterCurrent( new FilesystemRequestHandler( fullPath ) );
+            return;
+        }
+        
         add( new TexyDocumentPanel("document", path) );
     }
 
