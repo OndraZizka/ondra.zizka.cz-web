@@ -23,7 +23,7 @@ public class TexyFileDaoBean {
      *  Get all Texy docs indexed in given dir.
      */
     public List<TexyDoc> getDocsFromDir( String dir ) {
-        return em.createQuery("SELECT doc FROM TexyDoc doc WHERE doc.origPath LIKE CONCAT( ?, '%'")
+        return em.createQuery("SELECT doc FROM TexyDoc doc WHERE doc.origPath LIKE CONCAT( ?1, '%'")
                 .setParameter( 1, dir)
                 .getResultList();
     }

@@ -18,7 +18,7 @@ public class CountDao {
 
     public long getCountAfterIncrement( String id ){
         // TODO: How to surround with a transaction? em.getTransaction() can't be used for JTA.
-        int affected = em.createQuery("UPDATE Count cnt SET cnt.count = cnt.count +1 WHERE cnt.id = ?").setParameter(1, id).executeUpdate();
+        int affected = em.createQuery("UPDATE Count cnt SET cnt.count = cnt.count +1 WHERE cnt.id = ?1").setParameter(1, id).executeUpdate();
         if( affected != 0 )
             return getCount( id );
 
@@ -29,7 +29,7 @@ public class CountDao {
     }
 
     public long getCount( String id ){
-        return em.createQuery("SELECT cnt.count FROM Count cnt WHERE cnt.id = ?", Long.class )
+        return em.createQuery("SELECT cnt.count FROM Count cnt WHERE cnt.id = ?1", Long.class )
                 .setParameter(1, id).getSingleResult();
     }
     
