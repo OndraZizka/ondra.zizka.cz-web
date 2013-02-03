@@ -1,0 +1,63 @@
+
+MySQL: Error Code: 1005. Can't create table 'essc.#sql-4cb_35' (errno: 150)
+********************************************************************
+
+This happens when you're trying to `ALTER` a table, but it hits foreign key constraints.
+ From my experience, this happens most often because the types do not match. E.g. one table has `id` INT UNSIGNED PRIMARY KEY`, and the other tries to create a `FOREIGN KEY` using a `BIGINT` column.
+
+Usually, the solution is to drop all the relevant foreign keys, then align (or better, unify) the ID column types, and create the foreign keys again.
+
+
+Hibernate
+=========
+
+With Hibernate, this may happen when you're adding entities to an existing schema, and rely on `hbm2dd` to create the columns for you (for development purposes, of course).
+
+Cause
+======
+
+/--code java .[brush]
+@Entity
+public class MyEntity {
+    @Id @Generated(GenerationStrategy.IDENTITY)
+    Long id;
+}
+
+@Entity
+public class OtherEntity {
+    @ManyToOne
+    @JoinColumn(name = "myent_id")
+    MyEntity myEntity;
+}
+\--
+
+This results into:
+
+/--code sql .[brush]
+CREATE TABLE MyEntity (
+  `myent_id` BIGINT DEFAULT NULL,
+  ...
+  CONSTRAINT `FK...` FOREIGN KEY (``myent_id`) REFERENCES `MyEntity` (`id`),
+)
+\--
+
+`hbm2ddl`'s attempt to create the table this way will fail with similar error:
+
+/--code
+Error Code: 1005. Can't create table 'essc.#sql-4cb_35' (errno: 150)
+\--
+
+
+Solution
+========
+
+The solution is to add column definition:
+
+/--code java .[brush]
+@Entity
+public class MyEntity {
+    @Id @Generated(GenerationStrategy.IDENTITY)
+    @Column(columnDefinition = "INT UNSIGNED")
+    Long id;
+}
+\--

@@ -1,0 +1,49 @@
+HHH000104: firstResult/maxResults specified with collection fetch; applying in memory!
+**************************************************************************************
+
+Symptoms
+========
+
+/--code
+15:08:58,096 WARN  [org.hibernate.hql.internal.ast.QueryTranslatorImpl] (http-/127.0.0.1:8080-1) HHH000104: firstResult/maxResults specified with collection fetch; applying in memory!
+\--
+
+Cause
+=====
+
+Not necessarily by `firstResult()` or `maxResults`. Can also happen with `getSingleResult()`.
+
+The reason is that Hibernate used `JOIN` to fetch collection, so database's support for limits can't be used (e.g. MySQL's `LIMIT` and `OFFSET`).
+
+/--code java .[brush]
+    public Release getRelease( String prodName, String version, boolean withDeps ) {
+        return this.em.createQuery("SELECT rel FROM Release rel "
+                + " LEFT JOIN FETCH rel.product pr "
+                + " WHERE rel.product.name = ?1 AND rel.version = ?2", Release.class)
+                .setParameter(1, prodName)
+                .setParameter(2, version)
+                .getSingleResult(); // Causes "firstResult/maxResults specified with collection fetch; applying in memory!"
+    }
+\--
+
+Solutions
+=========
+
+1) Use `SELECT` JOIN strategy.
+
+2) Use `getResultsList()` instead:
+
+/--code java .[brush]
+    public Release getRelease( String prodName, String version, boolean withDeps ) {
+        List result = this.em.createQuery("SELECT rel FROM Release rel "
+                + " LEFT JOIN FETCH rel.product pr "
+                + " WHERE rel.product.name = ?1 AND rel.version = ?2", Release.class)
+                .setParameter(1, prodName)
+                .setParameter(2, version)
+                .setMaxResults(1)
+                .getResultList();
+        
+        if (result.isEmpty())  return null;
+        return result.get(0);
+    }
+\--
