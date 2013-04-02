@@ -5,8 +5,7 @@
     <!--
     This causes a parse error:
     xsi:schemaLocation="
-        urn:jboss:deployment-structure:1.0 http://www.jboss.org/schema/jbossas/jboss-deployment-structure-1_0.xsd
-        urn:jboss:deployment-structure:1.2 https://raw.github.com/jbossas/jboss-as/master/build/src/main/resources/docs/schema/jboss-deployment-structure-1_2.xsd
+        urn:jboss:deployment-structure:1.2 http://www.jboss.org/schema/jbossas/jboss-deployment-structure-1_2.xsd
     "
     -->
     

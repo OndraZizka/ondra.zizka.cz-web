@@ -3,8 +3,9 @@
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
     version="2.5">
 
-    <display-name>JBoss AS Quickstart: Wicket WAR</display-name>
+    <display-name>Ondra.Zizka.cz</display-name>
 
+    <!-- Attempt to serve files from /WEB-INF/classes/static -->
     <servlet>
         <servlet-name>FileServlet</servlet-name>
         <servlet-class>cz.oz.web.util.FileServlet</servlet-class>
