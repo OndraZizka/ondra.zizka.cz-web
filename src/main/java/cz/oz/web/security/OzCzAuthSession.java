@@ -22,7 +22,7 @@ public class OzCzAuthSession extends AuthenticatedWebSession {
     
     private User user;
     
-    private EsscSettings settings = new EsscSettings();
+    //private Settings settings = new Settings();
     
     
 
@@ -66,7 +66,7 @@ public class OzCzAuthSession extends AuthenticatedWebSession {
         return new Roles( Roles.ADMIN );
     }
 
-    public EsscSettings getSettings() { return settings; }
+    //public Settings getSettings() { return settings; }
     
     public User getUser() { return user; }
     public void setUser( User user ) { this.user = user; }
