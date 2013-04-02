@@ -38,9 +38,9 @@
         <!-- JBoss dependency versions -->
         <version.org.jboss.as.plugins.maven.plugin>7.3.Final</version.org.jboss.as.plugins.maven.plugin>
         <!-- 3.0.0.Final-redhat-1 For EAP -->
-        <version.org.jboss.spec.jboss.javaee.6.0>3.0.0.Final</version.org.jboss.spec.jboss.javaee.6.0>
+        <version.org.jboss.spec.jboss.javaee.6.0>3.0.2.Final</version.org.jboss.spec.jboss.javaee.6.0>
 
-        <version.org.apache.wicket>6.4.0</version.org.apache.wicket>
+        <version.org.apache.wicket>6.6.0</version.org.apache.wicket>
         <version.net.ftlines.wicket-cdi>6.0</version.net.ftlines.wicket-cdi>
         
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
