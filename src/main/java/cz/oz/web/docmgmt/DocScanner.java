@@ -1,7 +1,7 @@
 
 package cz.oz.web.docmgmt;
 
-import cz.oz.web.Settings;
+import cz.oz.web.AppSettings;
 import cz.oz.web.dao.TexyFileDaoBean;
 import cz.oz.web.model.TexyDoc;
 import cz.oz.web.qualifiers.FromApp;
@@ -28,7 +28,7 @@ import org.apache.commons.io.filefilter.SuffixFileFilter;
 public class DocScanner implements ServletContextListener {
 
     @Inject TexyFileDaoBean dao;
-    @Inject @FromApp Settings settings;
+    @Inject @FromApp AppSettings settings;
     //@Resource private TimerService timerService;
     
     TexyDocParser parser = new TexyDocParser(); // Could be EJB, but no need for.

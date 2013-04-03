@@ -1,12 +1,11 @@
 package cz.oz.web;
 
-import cz.oz.web._pg.ContentDispatchPage;
 import cz.oz.web.util._co.LogResourceReference;
 import cz.oz.web._pg.jtexy.JTexyPage;
 import cz.oz.web._pg.jtexy.JTexyTestPage;
 import cz.oz.web._pg.doclist.DocListPage;
-import cz.oz.web._pg.jtexy.PathPageParametersEncoder;
 import cz.oz.web._pg.var.SiteMapXmlPage;
+import cz.oz.web.ex.OzczException;
 import cz.oz.web.model.User;
 import cz.oz.web.qualifiers.CurrentSession;
 import cz.oz.web.qualifiers.FromApp;
@@ -14,15 +13,12 @@ import cz.oz.web.qualifiers.LoggedIn;
 import cz.oz.web.security.OzCzAuthSession;
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.BeanManager;
-import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import net.ftlines.wicket.cdi.CdiConfiguration;
 import static net.ftlines.wicket.cdi.ConversationPropagation.NONE;
 import org.apache.wicket.Page;
 import org.apache.wicket.Session;
-import org.apache.wicket.core.request.mapper.MountedMapper;
-import org.apache.wicket.core.request.mapper.ResourceMapper;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.Request;
 import org.apache.wicket.request.Response;
@@ -39,7 +35,7 @@ import res.ResourcesPackageMarker;
 public class WicketJavaEEApplication extends WebApplication {
     private static final Logger log = LoggerFactory.getLogger(WicketJavaEEApplication.class);
     
-    private Settings settings = createSettings();
+    private AppSettings appSettings;
 
     
     @Override
@@ -52,7 +48,7 @@ public class WicketJavaEEApplication extends WebApplication {
     protected void init() {
         super.init();
         
-        log.info("Log Test");
+        this.appSettings = createSettings();
 
         // Enable CDI
         BeanManager bm;
@@ -97,29 +93,20 @@ public class WicketJavaEEApplication extends WebApplication {
 
     
     @Produces @FromApp
-    public Settings getSettings() {
-        return settings;
+    public AppSettings getSettings() {
+        return appSettings = (appSettings == null ? createSettings() : appSettings);
     }
 
-    private Settings createSettings() {
-        Settings settings = new Settings();
-        
-        // Get the value from web.xml's <env-entry>.
-        //settings.texyFilesRootPath = this.getServletContext().getResourceAsStream("texyFilesRootPaths").toString();
+    private AppSettings createSettings() {
+        AppSettings sett;
         try {
-            settings.setTexyFilesRootPaths( getTexyFilesRootPaths() );
-        } catch( NamingException ex ){
-            // TODO
+            return new AppSettings();
+        } catch( OzczException ex ) {
+            throw new RuntimeException(ex);
         }
-        
-        return settings;
     }
 
-    public static String getTexyFilesRootPaths() throws NamingException {
-        Context env = (Context)new InitialContext().lookup("java:comp/env");
-        return (String)env.lookup("texyFilesRootPaths");
-    }
-
+    
     
     @Override
     public Session newSession( Request request, Response response ) {

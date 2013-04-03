@@ -43,4 +43,11 @@
         <env-entry-value>${ozcz.texyFilesRootPaths}</env-entry-value>
     </env-entry>
 
+    <!-- Index JTexy file to show for root and subdirs (default is "index.texy"). -->
+    <env-entry>
+        <env-entry-name>texyIndexFileName</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>index.texy</env-entry-value>
+    </env-entry>
+
 </web-app>
