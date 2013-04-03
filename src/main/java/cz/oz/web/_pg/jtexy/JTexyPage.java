@@ -14,8 +14,6 @@ import java.io.File;
 import java.io.IOException;
 import javax.inject.Inject;
 import org.apache.commons.lang.StringUtils;
-import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.request.http.WebResponse;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -82,20 +80,17 @@ public class JTexyPage extends BaseLayoutPage implements ICountablePage {
                 getRequestCycle().scheduleRequestHandlerAfterCurrent( new FilesystemRequestHandler( fullPath ) );
                 return;
             }
+            add( new TexyDocumentPanel("document", path) );
         }
         catch( NotFoundException ex ){
-            add( new Label("substituteTitle", "Page not found."));
-            add( new Label("body", "Doesn't exist: " + path ));
-            ((WebResponse)getRequestCycle().getResponse()).setStatus(404);
+            add( new TexyDocumentErrorPanel("document", "Page not found", "Doesn't exist: " + path, 404));
+            //((WebResponse)getRequestCycle().getResponse()).setStatus(404);
         }
         catch( OzczException ex ){
-            add( new Label("substituteTitle", "Error occured when loading document."));
-            add( new Label("body", "Couldn't load: " + path ));
-            ((WebResponse)getRequestCycle().getResponse()).setStatus(500);
+            add( new TexyDocumentErrorPanel("document", "Error occured when loading document.", "Couldn't load: " + path, 500));
+            //((WebResponse)getRequestCycle().getResponse()).setStatus(500);
         }
 
-        
-        add( new TexyDocumentPanel("document", path) );
     }
 
     
