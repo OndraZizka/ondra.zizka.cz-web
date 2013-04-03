@@ -83,10 +83,12 @@ public class JTexyPage extends BaseLayoutPage implements ICountablePage {
             add( new TexyDocumentPanel("document", path) );
         }
         catch( NotFoundException ex ){
+            log.error("Not found: " + path, ex);
             add( new TexyDocumentErrorPanel("document", "Page not found", "Doesn't exist: " + path, 404));
             //((WebResponse)getRequestCycle().getResponse()).setStatus(404);
         }
         catch( OzczException ex ){
+            log.error("Error rendering: " + path, ex);
             add( new TexyDocumentErrorPanel("document", "Error occured when loading document.", "Couldn't load: " + path, 500));
             //((WebResponse)getRequestCycle().getResponse()).setStatus(500);
         }
