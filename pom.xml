@@ -213,7 +213,7 @@
                 <groupId>org.jboss.as.plugins</groupId>
                 <artifactId>jboss-as-maven-plugin</artifactId>
                 <version>${version.org.jboss.as.plugins.maven.plugin}</version>
-                <executions> <execution> <id>ASdeploy</id> <phase>deploy</phase> <goals> <goal>deploy</goal> </goals> </execution> </executions>
+                <executions> <execution> <id>ASdeploy</id> <phase>deploy</phase> <goals> <goal>undeploy</goal> <goal>deploy</goal> </goals> </execution> </executions>
                 <configuration>
                     <ignoreMissingDeployment>true</ignoreMissingDeployment>
                     <fileNames>
