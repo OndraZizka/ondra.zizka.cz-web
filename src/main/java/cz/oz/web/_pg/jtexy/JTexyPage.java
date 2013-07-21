@@ -10,6 +10,7 @@ import cz.oz.web.ex.OzczException;
 import cz.oz.web.qualifiers.FromApp;
 import cz.oz.web.util.FileUtil;
 import cz.oz.web.util.FilesystemRequestHandler;
+import cz.oz.web.util.RepeatedExceptionsDetector;
 import java.io.File;
 import java.io.IOException;
 import javax.inject.Inject;
@@ -43,6 +44,9 @@ public class JTexyPage extends BaseLayoutPage implements ICountablePage {
 
     private Long viewCount;
     private long MAX_TEXY_FILE_SIZE = 20*1024;
+    
+    // Exceptions cache.
+    private transient static RepeatedExceptionsDetector repeatedExDetector = new RepeatedExceptionsDetector();
 
     
     public JTexyPage(PageParameters params) {
@@ -87,8 +91,12 @@ public class JTexyPage extends BaseLayoutPage implements ICountablePage {
             add( new TexyDocumentErrorPanel("document", "Page not found", "Doesn't exist: " + path, 404));
             //((WebResponse)getRequestCycle().getResponse()).setStatus(404);
         }
-        catch( OzczException ex ){
-            log.error("Error rendering: " + path, ex);
+        catch( Exception ex ){
+            int count = repeatedExDetector.countException( ex );
+            if( count < 2 )
+                log.error("Error rendering: " + path, ex);
+            else
+                log.error("Recurring rendeding error: " + path);
             add( new TexyDocumentErrorPanel("document", "Error occured when loading document.", "Couldn't load: " + path, 500));
             //((WebResponse)getRequestCycle().getResponse()).setStatus(500);
         }

@@ -57,12 +57,12 @@ public class TexyDoc implements Serializable {
     private String contentHash;
 
     // Lazily loaded body.
-    @Column(columnDefinition = "TEXT")
+    @Column(columnDefinition = "MEDIUMTEXT", length = 16777200)
     @Basic(fetch = FetchType.LAZY )
     private String content;
     
     // Lazily loaded rendered html code.
-    @Column(columnDefinition = "TEXT")
+    @Column(columnDefinition = "MEDIUMTEXT", length = 16777200)
     @Basic(fetch = FetchType.LAZY )
     private String renderedHtml;
 
