@@ -213,11 +213,20 @@
                 <groupId>org.jboss.as.plugins</groupId>
                 <artifactId>jboss-as-maven-plugin</artifactId>
                 <version>${version.org.jboss.as.plugins.maven.plugin}</version>
+                <executions> <execution> <id>ASdeploy</id> <phase>deploy</phase> <goals> <goal>deploy</goal> </goals> </execution> </executions>
                 <configuration>
+                    <ignoreMissingDeployment>true</ignoreMissingDeployment>
                     <fileNames>
                         <fileName>target/${project.build.finalName}.war</fileName>
                     </fileNames>
                 </configuration>
+            </plugin>
+            <!-- Supress default deploy plugin. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.7</version>
+                <executions> <execution> <id>default-deploy</id> <phase>none</phase> </execution> </executions>
             </plugin>
             
             <plugin>
