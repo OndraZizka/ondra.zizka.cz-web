@@ -83,7 +83,7 @@ public class JTexyPage extends BaseLayoutPage implements ICountablePage {
             add( new TexyDocumentPanel("document", path) );
         }
         catch( NotFoundException ex ){
-            log.error("Not found: " + path, ex);
+            log.error("Texy page not found: " + path);
             add( new TexyDocumentErrorPanel("document", "Page not found", "Doesn't exist: " + path, 404));
             //((WebResponse)getRequestCycle().getResponse()).setStatus(404);
         }
@@ -150,14 +150,15 @@ public class JTexyPage extends BaseLayoutPage implements ICountablePage {
             throw new NotFoundException(texyFile.getPath());
         }
         
-        if( texyFile.length() > MAX_TEXY_FILE_SIZE )
-            throw new OzczException("File is too large: " + texyFile.getPath());
-        
         // Not a .texy file?
         if( ! texyFile.getName().endsWith(TEXY_FILE_SUFFIX) ){
             return null;
         }
         
+        // Too large.
+        if( texyFile.length() > MAX_TEXY_FILE_SIZE )
+            throw new OzczException("File is too large: " + texyFile.getPath());
+                
         return texyFile;
     }
 
