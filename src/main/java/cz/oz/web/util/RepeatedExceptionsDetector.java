@@ -1,19 +1,20 @@
 package cz.oz.web.util;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- *
+ *  Counts the occurrences of given exception.
+ *  Uses messages hashes and first 3 stack elements class name hashes to determine "same" exception.
+ * 
  *  @author Ondrej Zizka, ozizka at redhat.com
  */
 public class RepeatedExceptionsDetector {
     private static final Logger log = LoggerFactory.getLogger( RepeatedExceptionsDetector.class );
 
-    private Map<String, Integer> exCount = new ConcurrentHashMap();
+    private final Map<String, Integer> exCount = new ConcurrentHashMap();
     
     private static final int STACKTRACE_SCAN_DEPTH = 3;
     
@@ -22,7 +23,8 @@ public class RepeatedExceptionsDetector {
      */
     public int countException( Exception ex ){
         String chara = buildCharacteristicsString( ex );
-        log.info("Characteristic: " + chara);
+        if( log.isDebugEnabled() )  log.debug("Characteristic: " + chara);
+        
         Integer count = this.exCount.get( chara );
         if( count == null )
             count = new Integer(1);
@@ -41,13 +43,13 @@ public class RepeatedExceptionsDetector {
         
         Throwable curEx = ex;
         do{
-            sb.append( curEx.getMessage().hashCode() );
+            sb.append( Integer.toHexString( curEx.getMessage().hashCode() ) );
             StackTraceElement[] stackTrace = curEx.getStackTrace();
             // For each stack trace element, append "cFooClass@72".
             for( int i = 0; i < stackTrace.length & i <= STACKTRACE_SCAN_DEPTH; i++ ) {
                 StackTraceElement ste = stackTrace[i];
-                sb.append('c');
-                sb.append( ste.getClassName().hashCode() );
+                sb.append('{');
+                sb.append( Integer.toHexString( ste.getClassName().hashCode() ) );
                 sb.append('@');
                 sb.append( ste.getLineNumber() );
             }
@@ -58,6 +60,4 @@ public class RepeatedExceptionsDetector {
         return sb.toString();
     }
     
-    
-
 }// class
