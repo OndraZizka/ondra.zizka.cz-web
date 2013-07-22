@@ -11,8 +11,8 @@ import org.slf4j.LoggerFactory;
  * 
  *  @author Ondrej Zizka, ozizka at redhat.com
  */
-public class RepeatedExceptionsDetector {
-    private static final Logger log = LoggerFactory.getLogger( RepeatedExceptionsDetector.class );
+public class RepeatedExceptionsCounter {
+    private static final Logger log = LoggerFactory.getLogger( RepeatedExceptionsCounter.class );
 
     private final Map<String, Integer> exCount = new ConcurrentHashMap();
     

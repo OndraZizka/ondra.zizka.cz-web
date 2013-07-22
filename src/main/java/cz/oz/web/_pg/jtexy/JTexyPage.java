@@ -10,7 +10,7 @@ import cz.oz.web.ex.OzczException;
 import cz.oz.web.qualifiers.FromApp;
 import cz.oz.web.util.FileUtil;
 import cz.oz.web.util.FilesystemRequestHandler;
-import cz.oz.web.util.RepeatedExceptionsDetector;
+import cz.oz.web.util.RepeatedExceptionsCounter;
 import java.io.File;
 import java.io.IOException;
 import javax.inject.Inject;
@@ -46,7 +46,7 @@ public class JTexyPage extends BaseLayoutPage implements ICountablePage {
     private long MAX_TEXY_FILE_SIZE = 20*1024;
     
     // Exceptions cache.
-    private transient static RepeatedExceptionsDetector repeatedExDetector = new RepeatedExceptionsDetector();
+    private transient static RepeatedExceptionsCounter repeatedExDetector = new RepeatedExceptionsCounter();
 
     
     public JTexyPage(PageParameters params) {
