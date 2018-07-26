@@ -52,7 +52,7 @@ public class ReservePage extends BaseLayoutPage {
       form.add( new DateTextField("dateFrom", new PropertyModel<Date>( this, "dateFrom" ), pdc ) );
       form.add( new DateTextField("dateTo",   new PropertyModel<Date>( this ), pdc ) );
 
-      
+
 
       // Action handling.
       Integer fromOffset = params.getInt("fromDateOffset", 0);
@@ -71,7 +71,7 @@ Discussion
 (12:58:50 AM) OndraZizka: not enough to have private field
 (12:58:58 AM) OndraZizka: ok thx
 (12:59:20 AM) OndraZizka: When I don't have that,
-(12:59:25 AM) OndraZizka: wicket throws: 
+(12:59:25 AM) OndraZizka: wicket throws:
 (12:59:25 AM) OndraZizka: java.lang.ClassCastException: org.jboss.jawabot.web.pg.ReservePage cannot be cast to java.util.Date
 (01:00:00 AM) OndraZizka: I'd expect it to complain like "dateFrom" property not found in ...ReservePage
 \--
@@ -79,5 +79,110 @@ Discussion
 Stacktrace
 ==========
 
-<span wicket:id="exception"><p>WicketMessage: Exception in rendering component: [MarkupContainer [Component id = form]]</p><p>Root cause:</p><p>java.lang.ClassCastException: org.jboss.jawabot.web.pg.ReservePage cannot be cast to java.util.Date<br>     at org.apache.wicket.datetime.DateConverter.convertToString(DateConverter.java:143)<br>     at org.apache.wicket.Component.getDefaultModelObjectAsString(Component.java:1770)<br>     at org.apache.wicket.Component.getDefaultModelObjectAsString(Component.java:1743)<br>     at org.apache.wicket.markup.html.form.FormComponent.getModelValue(FormComponent.java:1377)<br>     at org.apache.wicket.markup.html.form.FormComponent.getValue(FormComponent.java:879)<br>     at org.apache.wicket.markup.html.form.TextField.onComponentTag(TextField.java:106)<br>     at org.apache.wicket.Component.renderComponent(Component.java:2661)<br>     at org.apache.wicket.MarkupContainer.onRender(MarkupContainer.java:1539)<br>     at org.apache.wicket.Component.render(Component.java:2521)<br>     at org.apache.wicket.MarkupContainer.renderNext(MarkupContainer.java:1441)<br>     at org.apache.wicket.MarkupContainer.renderComponentTagBody(MarkupContainer.java:1604)<br>     at org.apache.wicket.MarkupContainer.onComponentTagBody(MarkupContainer.java:1528)<br>     at org.apache.wicket.markup.html.form.Form.onComponentTagBody(Form.java:2011)<br>     at org.apache.wicket.Component.renderComponent(Component.java:2690)<br>     at org.apache.wicket.MarkupContainer.onRender(MarkupContainer.java:1539)<br>     at org.apache.wicket.Component.render(Component.java:2521)<br>     at org.apache.wicket.MarkupContainer.renderNext(MarkupContainer.java:1441)<br>     at org.apache.wicket.MarkupContainer.renderComponentTagBody(MarkupContainer.java:1604)<br>     at org.apache.wicket.MarkupContainer.onComponentTagBody(MarkupContainer.java:1528)<br>     at org.apache.wicket.Component.renderComponent(Component.java:2690)<br>     at org.apache.wicket.MarkupContainer.onRender(MarkupContainer.java:1539)<br>     at org.apache.wicket.Component.render(Component.java:2521)<br>     at org.apache.wicket.MarkupContainer.autoAdd(MarkupContainer.java:229)<br>     at org.apache.wicket.markup.resolver.MarkupInheritanceResolver.resolve(MarkupInheritanceResolver.java:66)<br>     at org.apache.wicket.markup.resolver.ComponentResolvers.resolve(ComponentResolvers.java:81)<br>     at org.apache.wicket.MarkupContainer.renderNext(MarkupContainer.java:1445)<br>     at org.apache.wicket.MarkupContainer.renderComponentTagBody(MarkupContainer.java:1604)<br>     at org.apache.wicket.MarkupContainer.onComponentTagBody(MarkupContainer.java:1528)<br>     at org.apache.wicket.Component.renderComponent(Component.java:2690)<br>     at org.apache.wicket.MarkupContainer.onRender(MarkupContainer.java:1539)<br>     at org.apache.wicket.Component.render(Component.java:2521)<br>     at org.apache.wicket.MarkupContainer.autoAdd(MarkupContainer.java:229)<br>     at org.apache.wicket.markup.resolver.MarkupInheritanceResolver.resolve(MarkupInheritanceResolver.java:73)<br>     at org.apache.wicket.markup.resolver.ComponentResolvers.resolve(ComponentResolvers.java:81)<br>     at org.apache.wicket.MarkupContainer.renderNext(MarkupContainer.java:1445)<br>     at org.apache.wicket.MarkupContainer.renderAll(MarkupContainer.java:1555)<br>     at org.apache.wicket.Page.onRender(Page.java:1594)<br>     at org.apache.wicket.Component.render(Component.java:2521)<br>     at org.apache.wicket.Page.renderPage(Page.java:932)<br>     at org.apache.wicket.request.target.component.BookmarkablePageRequestTarget.respond(BookmarkablePageRequestTarget.java:261)<br>     at org.apache.wicket.request.AbstractRequestCycleProcessor.respond(AbstractRequestCycleProcessor.java:105)<br>     at org.apache.wicket.RequestCycle.processEventsAndRespond(RequestCycle.java:1258)<br>     at org.apache.wicket.RequestCycle.step(RequestCycle.java:1329)<br>     at org.apache.wicket.RequestCycle.steps(RequestCycle.java:1436)<br>     at org.apache.wicket.RequestCycle.request(RequestCycle.java:545)<br>     at org.apache.wicket.protocol.http.WicketFilter.doGet(WicketFilter.java:486)<br>     at org.apache.wicket.protocol.http.WicketServlet.doGet(WicketServlet.java:138)<br>     at javax.servlet.http.HttpServlet.service(HttpServlet.java:707)<br>     at javax.servlet.http.HttpServlet.service(HttpServlet.java:820)<br>     at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:511)<br>     at org.mortbay.jetty.servlet.ServletHandler.handle(ServletHandler.java:401)<br>     at org.mortbay.jetty.servlet.SessionHandler.handle(SessionHandler.java:182)<br>     at org.mortbay.jetty.handler.ContextHandler.handle(ContextHandler.java:766)<br>     at org.mortbay.jetty.handler.HandlerWrapper.handle(HandlerWrapper.java:152)<br>     at org.mortbay.jetty.Server.handle(Server.java:326)<br>     at org.mortbay.jetty.HttpConnection.handleRequest(HttpConnection.java:542)<br>     at org.mortbay.jetty.HttpConnection$RequestHandler.headerComplete(HttpConnection.java:928)<br>     at org.mortbay.jetty.HttpParser.parseNext(HttpParser.java:549)<br>     at org.mortbay.jetty.HttpParser.parseAvailable(HttpParser.java:212)<br>     at org.mortbay.jetty.HttpConnection.handle(HttpConnection.java:404)<br>     at org.mortbay.jetty.bio.SocketConnector$Connection.run(SocketConnector.java:228)<br>     at org.mortbay.thread.QueuedThreadPool$PoolThread.run(QueuedThreadPool.java:582)</p><p>Complete stack:</p><p>org.apache.wicket.WicketRuntimeException: Exception in rendering component: [MarkupContainer [Component id = form]]<br>     at org.apache.wicket.Component.renderComponent(Component.java:2729)<br>     at org.apache.wicket.MarkupContainer.onRender(MarkupContainer.java:1539)<br>     at org.apache.wicket.Component.render(Component.java:2521)<br>     at org.apache.wicket.MarkupContainer.renderNext(MarkupContainer.java:1441)<br>     at org.apache.wicket.MarkupContainer.renderComponentTagBody(MarkupContainer.java:1604)<br>     at org.apache.wicket.MarkupContainer.onComponentTagBody(MarkupContainer.java:1528)<br>     at org.apache.wicket.Component.renderComponent(Component.java:2690)<br>     at org.apache.wicket.MarkupContainer.onRender(MarkupContainer.java:1539)<br>     at org.apache.wicket.Component.render(Component.java:2521)<br>     at org.apache.wicket.MarkupContainer.autoAdd(MarkupContainer.java:229)<br>     at org.apache.wicket.markup.resolver.MarkupInheritanceResolver.resolve(MarkupInheritanceResolver.java:66)<br>     at org.apache.wicket.markup.resolver.ComponentResolvers.resolve(ComponentResolvers.java:81)<br>     at org.apache.wicket.MarkupContainer.renderNext(MarkupContainer.java:1445)<br>     at org.apache.wicket.MarkupContainer.renderComponentTagBody(MarkupContainer.java:1604)<br>     at org.apache.wicket.MarkupContainer.onComponentTagBody(MarkupContainer.java:1528)<br>     at org.apache.wicket.Component.renderComponent(Component.java:2690)<br>     at org.apache.wicket.MarkupContainer.onRender(MarkupContainer.java:1539)<br>     at org.apache.wicket.Component.render(Component.java:2521)<br>     at org.apache.wicket.MarkupContainer.autoAdd(MarkupContainer.java:229)<br>     at org.apache.wicket.markup.resolver.MarkupInheritanceResolver.resolve(MarkupInheritanceResolver.java:73)<br>     at org.apache.wicket.markup.resolver.ComponentResolvers.resolve(ComponentResolvers.java:81)<br>     at org.apache.wicket.MarkupContainer.renderNext(MarkupContainer.java:1445)<br>     at org.apache.wicket.MarkupContainer.renderAll(MarkupContainer.java:1555)<br>     at org.apache.wicket.Page.onRender(Page.java:1594)<br>     at org.apache.wicket.Component.render(Component.java:2521)<br>     at org.apache.wicket.Page.renderPage(Page.java:932)<br>     at org.apache.wicket.request.target.component.BookmarkablePageRequestTarget.respond(BookmarkablePageRequestTarget.java:261)<br>     at org.apache.wicket.request.AbstractRequestCycleProcessor.respond(AbstractRequestCycleProcessor.java:105)<br>     at org.apache.wicket.RequestCycle.processEventsAndRespond(RequestCycle.java:1258)<br>     at org.apache.wicket.RequestCycle.step(RequestCycle.java:1329)<br>     at org.apache.wicket.RequestCycle.steps(RequestCycle.java:1436)<br>     at org.apache.wicket.RequestCycle.request(RequestCycle.java:545)<br>     at org.apache.wicket.protocol.http.WicketFilter.doGet(WicketFilter.java:486)</p><p></p></span>
+/--code
+WicketMessage: Exception in rendering component: [MarkupContainer [Component id = form]]
+
+Root cause:
+
+java.lang.Clas­sCastException: org.jboss.jawa­bot.web.pg.Re­servePage cannot be cast to java.util.Date
+at org.apache.wic­ket.datetime.Da­teConverter.con­vertToString(Da­teConverter.ja­va:143)
+at org.apache.wic­ket.Component­.getDefaultMo­delObjectAsStrin­g(Component.ja­va:1770)
+at org.apache.wic­ket.Component­.getDefaultMo­delObjectAsStrin­g(Component.ja­va:1743)
+at org.apache.wic­ket.markup.html­.form.FormCom­ponent.getModel­Value(FormCom­ponent.java:1377)
+at org.apache.wic­ket.markup.html­.form.FormCom­ponent.getValu­e(FormComponen­t.java:879)
+at org.apache.wic­ket.markup.html­.form.TextFiel­d.onComponentTag(Tex­tField.java:106)
+at org.apache.wic­ket.Component­.renderComponen­t(Component.ja­va:2661)
+at org.apache.wic­ket.MarkupCon­tainer.onRender(Mar­kupContainer.ja­va:1539)
+at org.apache.wic­ket.Component­.render(Compo­nent.java:2521)
+at org.apache.wic­ket.MarkupCon­tainer.render­Next(MarkupCon­tainer.java:1441)
+at org.apache.wic­ket.MarkupCon­tainer.render­ComponentTagBo­dy(MarkupConta­iner.java:1604)
+at org.apache.wic­ket.MarkupCon­tainer.onCompo­nentTagBody(Mar­kupContainer.ja­va:1528)
+at org.apache.wic­ket.markup.html­.form.Form.on­ComponentTagBo­dy(Form.java:2011)
+at org.apache.wic­ket.Component­.renderComponen­t(Component.ja­va:2690)
+at org.apache.wic­ket.MarkupCon­tainer.onRender(Mar­kupContainer.ja­va:1539)
+at org.apache.wic­ket.Component­.render(Compo­nent.java:2521)
+at org.apache.wic­ket.MarkupCon­tainer.render­Next(MarkupCon­tainer.java:1441)
+at org.apache.wic­ket.MarkupCon­tainer.render­ComponentTagBo­dy(MarkupConta­iner.java:1604)
+at org.apache.wic­ket.MarkupCon­tainer.onCompo­nentTagBody(Mar­kupContainer.ja­va:1528)
+at org.apache.wic­ket.Component­.renderComponen­t(Component.ja­va:2690)
+at org.apache.wic­ket.MarkupCon­tainer.onRender(Mar­kupContainer.ja­va:1539)
+at org.apache.wic­ket.Component­.render(Compo­nent.java:2521)
+at org.apache.wic­ket.MarkupCon­tainer.autoAd­d(MarkupConta­iner.java:229)
+at org.apache.wic­ket.markup.re­solver.MarkupIn­heritanceResol­ver.resolve(Mar­kupInheritance­Resolver.java:66)
+at org.apache.wic­ket.markup.re­solver.Componen­tResolvers.re­solve(Componen­tResolvers.ja­va:81)
+at org.apache.wic­ket.MarkupCon­tainer.render­Next(MarkupCon­tainer.java:1445)
+at org.apache.wic­ket.MarkupCon­tainer.render­ComponentTagBo­dy(MarkupConta­iner.java:1604)
+at org.apache.wic­ket.MarkupCon­tainer.onCompo­nentTagBody(Mar­kupContainer.ja­va:1528)
+at org.apache.wic­ket.Component­.renderComponen­t(Component.ja­va:2690)
+at org.apache.wic­ket.MarkupCon­tainer.onRender(Mar­kupContainer.ja­va:1539)
+at org.apache.wic­ket.Component­.render(Compo­nent.java:2521)
+at org.apache.wic­ket.MarkupCon­tainer.autoAd­d(MarkupConta­iner.java:229)
+at org.apache.wic­ket.markup.re­solver.MarkupIn­heritanceResol­ver.resolve(Mar­kupInheritance­Resolver.java:73)
+at org.apache.wic­ket.markup.re­solver.Componen­tResolvers.re­solve(Componen­tResolvers.ja­va:81)
+at org.apache.wic­ket.MarkupCon­tainer.render­Next(MarkupCon­tainer.java:1445)
+at org.apache.wic­ket.MarkupCon­tainer.renderA­ll(MarkupConta­iner.java:1555)
+at org.apache.wic­ket.Page.onRen­der(Page.java:1594)
+at org.apache.wic­ket.Component­.render(Compo­nent.java:2521)
+at org.apache.wic­ket.Page.render­Page(Page.java:932)
+at org.apache.wic­ket.request.tar­get.component­.Bookmarkable­PageRequestTar­get.respond(Bo­okmarkablePage­RequestTarget­.java:261)
+at org.apache.wic­ket.request.Ab­stractRequestCy­cleProcessor.res­pond(AbstractRe­questCyclePro­cessor.java:105)
+at org.apache.wic­ket.RequestCy­cle.processEven­tsAndRespond(Re­questCycle.ja­va:1258)
+at org.apache.wic­ket.RequestCy­cle.step(Requ­estCycle.java:1329)
+at org.apache.wic­ket.RequestCy­cle.steps(Requ­estCycle.java:1436)
+at org.apache.wic­ket.RequestCy­cle.request(Re­questCycle.ja­va:545)
+at org.apache.wic­ket.protocol.http­.WicketFilter­.doGet(Wicket­Filter.java:486)
+at org.apache.wic­ket.protocol.http­.WicketServlet­.doGet(Wicket­Servlet.java:138)
+at javax.servlet­.http.HttpSer­vlet.service(HttpSer­vlet.java:707)
+at javax.servlet­.http.HttpSer­vlet.service(HttpSer­vlet.java:820)
+at org.mortbay.jet­ty.servlet.Ser­vletHolder.han­dle(ServletHol­der.java:511)
+at org.mortbay.jet­ty.servlet.Ser­vletHandler.han­dle(ServletHan­dler.java:401)
+at org.mortbay.jet­ty.servlet.Ses­sionHandler.han­dle(SessionHan­dler.java:182)
+at org.mortbay.jet­ty.handler.Con­textHandler.han­dle(ContextHan­dler.java:766)
+at org.mortbay.jet­ty.handler.Han­dlerWrapper.han­dle(HandlerWrap­per.java:152)
+at org.mortbay.jet­ty.Server.han­dle(Server.ja­va:326)
+at org.mortbay.jet­ty.HttpConnec­tion.handleRe­quest(HttpCon­nection.java:542)
+at org.mortbay.jet­ty.HttpConnec­tion$RequestHan­dler.headerCom­plete(HttpCon­nection.java:928)
+at org.mortbay.jet­ty.HttpParser­.parseNext(HttpPar­ser.java:549)
+at org.mortbay.jet­ty.HttpParser­.parseAvailable(HttpPar­ser.java:212)
+at org.mortbay.jet­ty.HttpConnec­tion.handle(HttpCon­nection.java:404)
+at org.mortbay.jet­ty.bio.Socket­Connector$Con­nection.run(Soc­ketConnector.ja­va:228)
+at org.mortbay.thre­ad.QueuedThre­adPool$PoolThre­ad.run(Queued­ThreadPool.ja­va:582)
+
+Complete stack:
+
+org.apache.wic­ket.WicketRun­timeException: Exception in rendering component: [MarkupContainer [Component id = form]]
+at org.apache.wic­ket.Component­.renderComponen­t(Component.ja­va:2729)
+at org.apache.wic­ket.MarkupCon­tainer.onRender(Mar­kupContainer.ja­va:1539)
+at org.apache.wic­ket.Component­.render(Compo­nent.java:2521)
+at org.apache.wic­ket.MarkupCon­tainer.render­Next(MarkupCon­tainer.java:1441)
+at org.apache.wic­ket.MarkupCon­tainer.render­ComponentTagBo­dy(MarkupConta­iner.java:1604)
+at org.apache.wic­ket.MarkupCon­tainer.onCompo­nentTagBody(Mar­kupContainer.ja­va:1528)
+at org.apache.wic­ket.Component­.renderComponen­t(Component.ja­va:2690)
+at org.apache.wic­ket.MarkupCon­tainer.onRender(Mar­kupContainer.ja­va:1539)
+at org.apache.wic­ket.Component­.render(Compo­nent.java:2521)
+at org.apache.wic­ket.MarkupCon­tainer.autoAd­d(MarkupConta­iner.java:229)
+at org.apache.wic­ket.markup.re­solver.MarkupIn­heritanceResol­ver.resolve(Mar­kupInheritance­Resolver.java:66)
+at org.apache.wic­ket.markup.re­solver.Componen­tResolvers.re­solve(Componen­tResolvers.ja­va:81)
+at org.apache.wic­ket.MarkupCon­tainer.render­Next(MarkupCon­tainer.java:1445)
+at org.apache.wic­ket.MarkupCon­tainer.render­ComponentTagBo­dy(MarkupConta­iner.java:1604)
+at org.apache.wic­ket.MarkupCon­tainer.onCompo­nentTagBody(Mar­kupContainer.ja­va:1528)
+at org.apache.wic­ket.Component­.renderComponen­t(Component.ja­va:2690)
+at org.apache.wic­ket.MarkupCon­tainer.onRender(Mar­kupContainer.ja­va:1539)
+at org.apache.wic­ket.Component­.render(Compo­nent.java:2521)
+at org.apache.wic­ket.MarkupCon­tainer.autoAd­d(MarkupConta­iner.java:229)
+at org.apache.wic­ket.markup.re­solver.MarkupIn­heritanceResol­ver.resolve(Mar­kupInheritance­Resolver.java:73)
+at org.apache.wic­ket.markup.re­solver.Componen­tResolvers.re­solve(Componen­tResolvers.ja­va:81)
+at org.apache.wic­ket.MarkupCon­tainer.render­Next(MarkupCon­tainer.java:1445)
+at org.apache.wic­ket.MarkupCon­tainer.renderA­ll(MarkupConta­iner.java:1555)
+at org.apache.wic­ket.Page.onRen­der(Page.java:1594)
+at org.apache.wic­ket.Component­.render(Compo­nent.java:2521)
+at org.apache.wic­ket.Page.render­Page(Page.java:932)
+at org.apache.wic­ket.request.tar­get.component­.Bookmarkable­PageRequestTar­get.respond(Bo­okmarkablePage­RequestTarget­.java:261)
+at org.apache.wic­ket.request.Ab­stractRequestCy­cleProcessor.res­pond(AbstractRe­questCyclePro­cessor.java:105)
+at org.apache.wic­ket.RequestCy­cle.processEven­tsAndRespond(Re­questCycle.ja­va:1258)
+at org.apache.wic­ket.RequestCy­cle.step(Requ­estCycle.java:1329)
+at org.apache.wic­ket.RequestCy­cle.steps(Requ­estCycle.java:1436)
+at org.apache.wic­ket.RequestCy­cle.request(Re­questCycle.ja­va:545)
+at org.apache.wic­ket.protocol.http­.WicketFilter­.doGet(Wicket­Filter.java:486)
+\---
 

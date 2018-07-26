@@ -3,7 +3,7 @@ MySQL: Error Code: 1005. Can't create table 'essc.#sql-4cb_35' (errno: 150)
 ********************************************************************
 
 This happens when you're trying to `ALTER` a table, but it hits foreign key constraints.
- From my experience, this happens most often because the types do not match. E.g. one table has `id` INT UNSIGNED PRIMARY KEY`, and the other tries to create a `FOREIGN KEY` using a `BIGINT` column.
+ From my experience, this happens most often because the types do not match. E.g. one table has `id INT UNSIGNED PRIMARY KEY`, and the other tries to create a `FOREIGN KEY` using a `BIGINT` column.
 
 Usually, the solution is to drop all the relevant foreign keys, then align (or better, unify) the ID column types, and create the foreign keys again.
 
