@@ -1,20 +1,19 @@
 
 
-Kontrola rodného èísla (RÈ) a identifikaèního èísla (IÈ)
+Kontrola rodnÃ©ho ÄÃ­sla (RÄŒ) a identifikaÄnÃ­ho ÄÃ­sla (IÄŒ)
 ********************************************************
 
-Vıcuc z http://latrine.dgx.cz/jak-overit-platne-ic-a-rodne-cislo .
+VÃ½cuc z http://latrine.dgx.cz/jak-overit-platne-ic-a-rodne-cislo .
 
 
-
-Ovìøení rodného èísla
+OvÄ›Å™enÃ­ rodnÃ©ho ÄÃ­sla
 =====================
 
-1.  spoèti zbytek po dìlení prvních devíti èíslic a èísla 11
-2. je-li zbytek 10, musí bıt poslední èíslice 0
-3. jinak poslední èíslice musí bıt rovna zbytku 
+1. spoÄti zbytek po dÄ›lenÃ­ prvnÃ­ch devÃ­ti ÄÃ­slic a ÄÃ­sla 11
+2. je-li zbytek 10, musÃ­ bÃ½t poslednÃ­ ÄÃ­slice 0
+3. jinak poslednÃ­ ÄÃ­slice musÃ­ bÃ½t rovna zbytku
 
-Tedy 780123/3540 je korektní rodné èíslo, aèkoliv není dìlitelné jedenácti.
+Tedy 780123/3540 je korektnÃ­ rodnÃ© ÄÃ­slo, aÄkoliv nenÃ­ dÄ›litelnÃ© jedenÃ¡cti.
 
 
 Implementace v PHP:
@@ -30,12 +29,12 @@ function verifyRC($rc)
 
     list(, $year, $month, $day, $ext, $c) = $matches;
 
-    // do roku 1954 pøidìlovaná devítimístná RÈ nelze ovìøit
+    // do roku 1954 pÅ™idÄ›lovanÃ¡ devÃ­timÃ­stnÃ¡ RÄŒ nelze ovÄ›Å™it
     if ($c === '') {
         return $year < 54;
     }
 
-    // kontrolní èíslice
+    // kontrolnÃ­ ÄÃ­slice
     $mod = ($year . $month . $day . $ext) % 11;
     if ($mod === 10) $mod = 0;
     if ($mod !== (int) $c) {
@@ -45,7 +44,7 @@ function verifyRC($rc)
     // kontrola data
     $year += $year < 54 ? 2000 : 1900;
 
-    // k mìsíci mùe bıt pøipoèteno 20, 50 nebo 70
+    // k mÄ›sÃ­ci mÅ¯Å¾e bÃ½t pÅ™ipoÄteno 20, 50 nebo 70
     if ($month > 70 && $year > 2003) $month -= 70;
     elseif ($month > 50) $month -= 50;
     elseif ($month > 20 && $year > 2003) $month -= 20;
@@ -60,7 +59,7 @@ function verifyRC($rc)
 \--
 
 
-Rodné èíslo - JavaScript:
+RodnÃ© ÄÃ­slo - JavaScript:
 -------------------------
 
 /--code js .[brush:]
@@ -94,7 +93,7 @@ function testRC(x, age)
   }
   catch(e)
   {
-    alert('Zadanı údaj není korektní!');
+    alert('ZadanÃ½ Ãºdaj nenÃ­ korektnÃ­!');
     return false;
   }
   return true;
@@ -106,19 +105,19 @@ function testRC(x, age)
 
 
 
-Ovìøení IÈ
+OvÄ›Å™enÃ­ IÄŒ
 ==========
 
 
-Take, jak se ovìøuje IÈ? Napøíklad 69663963
+TakÅ¾e, jak se ovÄ›Å™uje IÄŒ? NapÅ™Ã­klad 69663963
 
-1. první a sedmou èíslici vynásobíme èísly 8, 7, 6, 5, 4, 3, 2 a souèiny seèteme:
+1. prvnÃ­ aÅ¾ sedmou ÄÃ­slici vynÃ¡sobÃ­me ÄÃ­sly 8, 7, 6, 5, 4, 3, 2 a souÄiny seÄteme:
    `soucet = 6*8 + 9*7 + 6*6 + 6*5 + 3*4 + 9*3 + 6*2 = 228`
-2. spoèítáme zbytek po dìlení jedenácti: `zbytek = soucet % 11`
-3. pro poslední osmou èíslici c musí platit:
+2. spoÄÃ­tÃ¡me zbytek po dÄ›lenÃ­ jedenÃ¡cti: `zbytek = soucet % 11`
+3. pro poslednÃ­ osmou ÄÃ­slici c musÃ­ platit:
     * je-li zbytek 0 nebo 10, pak `c = 1`
     * je-li zbytek 1, pak `c = 0`
-    * v ostatních pøípadech je `c = 11 - zbytek`
+    * v ostatnÃ­ch pÅ™Ã­padech je `c = 11 - zbytek`
 
 
 Implementace v PHP:
@@ -130,12 +129,12 @@ function verifyIC($ic)
     // "be liberal in what you receive"
     $ic = preg_replace('#\s+#', '', $ic);
 
-    // má poadovanı tvar?
+    // mÃ¡ poÅ¾adovanÃ½ tvar?
     if (!preg_match('#^\d{8}$#', $ic)) {
         return FALSE;
     }
 
-    // kontrolní souèet
+    // kontrolnÃ­ souÄet
     $a = 0;
     for ($i = 0; $i < 7; $i++) {
         $a += $ic[$i] * (8 - $i);
@@ -155,7 +154,7 @@ function verifyIC($ic)
 
 
 
-IÈ - JavaScript:
+IÄŒ - JavaScript:
 -------------------------
 
 /--code js .[brush:]
@@ -178,7 +177,7 @@ function testICO(x)
   }
   catch(e)
   {
-    alert('Zadanı údaj není korektní!');
+    alert('ZadanÃ½ Ãºdaj nenÃ­ korektnÃ­!');
     return false;
   }
   return true;
@@ -189,7 +188,7 @@ function testICO(x)
 
 
 
-DIÈ - JavaScript:
+DIÄŒ - JavaScript:
 -------------------------
 
 /--code js .[brush:]
@@ -214,12 +213,12 @@ function testDIC(x)
       }
       throw 1;
     }
-    alert('Není moné zkontrolovat DIÈ mimo Èeskou a Slovenskou republiku!');
+    alert('NenÃ­ moÅ¾nÃ© zkontrolovat DIÄŒ mimo ÄŒeskou a Slovenskou republiku!');
     return true;
   }
   catch(e)
   {
-    alert('Zadanı údaj není korektní!');
+    alert('ZadanÃ½ Ãºdaj nenÃ­ korektnÃ­!');
     return false;
   }
 }

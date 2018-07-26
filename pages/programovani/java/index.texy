@@ -2,7 +2,7 @@ Java + J2EE
 ***********
 
 This page is a mix of czech and english, sorry for non-separated
-and loosely organized content, but hopefully you will find your subject 
+and loosely organized content, but hopefully you will find your subject
 by using `Ctrl+F` :-)
 
 ----------------------------------------------------
@@ -63,7 +63,7 @@ mvn test -DargLine="-Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=d
 
 "How to create a JNPL file (for Java WebStart) with Maven":maven/maven-create-jnlp-file.texy
 
-"Quick and dirty mavenization":maven/mavenize-quick-and-dirty.texy - How to install an existing library with dependencies to Maven repository. 
+"Quick and dirty mavenization":maven/mavenize-quick-and-dirty.texy - How to install an existing library with dependencies to Maven repository.
 
 I've presented Maven 2 for the company I work for. Download here: "Maven presentation for Red Hat / JBoss":download/Maven2presentation.pdf.
 <!-- See https://www.jboss.org/community/docs/DOC-13358 . -->
@@ -74,7 +74,7 @@ Read my own opinion about "How Maven 2 compares to Ivy":maven/maven-ant-ivy-comp
 "Short code for Antrun Maven plugin":maven/ant-run-plugin-short.texy
 
 
-Java alternative of PHP's `preg_replace_callback` 
+Java alternative of PHP's `preg_replace_callback`
 =================================================
 
 "Here":php_preg_replace_callback.texy.
@@ -139,7 +139,7 @@ How to transform `web.xml` with XSTL and XPath
 In short, the trick is that XPath doesn't work well with element names containing a minus.
 So you have to match e.g `web-xml` like this:
 
-/--code xpath .[brush:]
+/--code xpath
 *[name()='web-xml']
 \--
 
@@ -302,7 +302,7 @@ Used in the "Insolvenční rejstřík":http://www.pohlidame.cz/ project.
 JPA and Hibernate mapping with MySQL - common errors and exceptions
 ===================================================================
 
-Some "tips for those tampering with Java Persistence API and Hibernate":hibernate-common-errors-and-exceptions.texy - 
+Some "tips for those tampering with Java Persistence API and Hibernate":hibernate-common-errors-and-exceptions.texy -
 how to tame the exceptions comming from Hibernate EntityManager, Hibernate Annotations and JDBC.
 
 
@@ -337,11 +337,11 @@ Web service client from WSDL using Axis2
 Here's "how to create web service client from WSDL using Axis2":web_service_client_from_wsdl_using_axis2.texy.
 
 
-Logov?n? v Jav? ? `log4j` a `java.util.logging`
+Logování v Javě ? `log4j` a `java.util.logging`
 ===============================================
 
-Sepsal jsem si "stru?n? ?vod do logov?n? v Jav?":navod_logovani_java.util.logging.texy
- s uk?zkou konfigurace.
+Sepsal jsem si "stručný úvod do logování v Javě":navod_logovani_java.util.logging.texy
+ s ukázkaou konfigurace.
 
 
 JPA with Hibernate common mistakes
@@ -406,11 +406,11 @@ When you change it outside DAO and then call some DAO method to save it, call `m
 
 
 
-Za??tky se Spring AOP (Aspect Oriented Programming)
+Začátky se Spring AOP (Aspect Oriented Programming)
 ===================================================
 
 Rozchodil jsem Spring AOP a zde d?v?m
-"stru?n? n?vod, jak si Spring AOP":navod-spring-aop-zacatky.texy rozchod?te taky.
+"stručný núvod, jak si Spring AOP":navod-spring-aop-zacatky.texy rozchod?te taky.
 
 
 FreeMarker templates via Spring in non-web application
@@ -456,9 +456,9 @@ It's confusing and doesn't work the way most people would expect it to,
 quite the opposite actually.
 It's used to map nullable columns to non-nullable class members,
 like int, long, double, boolean etc...
- 
+
 **It will not be available in iBATIS 3.**
- 
+
 Clinton Begin
 
 </blockquote>
@@ -474,14 +474,14 @@ and some have empty strings).  Handling it in Java or SQL code would clutter it 
 
 Can we expect some substitute for this in iBatis 3?
 
-Ondra 
+Ondra
 
 </blockquote>
 
 While waiting for response, I realized this:
 
 In case of MySQL, one can use `NULLIF(expr1,expr2)` function in `INSERT`,
-which returns `NULL` if `expr1` = `expr2` is true, otherwise returns `expr1`. 
+which returns `NULL` if `expr1` = `expr2` is true, otherwise returns `expr1`.
 
 /--code sql .[brush:]
 INSERT INTO table SET name = NULLIF(#name#,'');
@@ -557,7 +557,7 @@ and needs to be set for every connection, or globally for the whole server.
 
 What helps is setting JDBC driver's `zeroDateTimeBehavior` property to `convertToNull`:
 
-> What should happen when the driver encounters DATETIME values 
+> What should happen when the driver encounters DATETIME values
 > that are composed entirely of zeroes (used by MySQL to represent invalid dates)?
 > Valid values are `"exception"`, `"round"` and `"convertToNull"`.
 
@@ -578,14 +578,14 @@ jdbc:mysql://localhost/test?zeroDateTimeBehavior=convertToNull&autoReconnect=tru
 "What's the difference between `java` and `javaw`?":java_javaw_difference.texy
 
 
-N?vod: Import projektu ze SVN do NetBeans projektu
+Návod: Import projektu ze SVN do NetBeans projektu
 ==================================================
 
 Cht?l jsem se trochu povrtat v projektu "Apache POI":http://poi.apache.org/subversion.html,
-ale jak pr?vodci v NetBeans, tak instrukce na str?nce projektu p?edpokl?daj?,
-?e se SVN um?te, jak kdy? bi?em mrsk?, co? v m?m p??pad? bylo dote? p?esn? naopak :-)
+ale jak prúvodci v NetBeans, tak instrukce na stránce projektu předpokládají,
+že se SVN umíte, jak když bičem mrská, což v mém případě bylo přesně naopak :-)
 
-Proto jsem sepsal velmi stru?n? "n?vod, jak do NetBeans dostat projekt ze Subversion repository":navod-svn_subversion_v_netbeans.texy.
+Proto jsem sepsal velmi stručný "núvod, jak do NetBeans dostat projekt ze Subversion repository":navod-svn_subversion_v_netbeans.texy.
 
 
 
@@ -605,19 +605,19 @@ It's not as trivial as converting a number between two radixes.
 Here is "my solution":converting_number_to_excel_column_letters_name.texy.
 
 
-Uz?v?ry v jazyce Java - p?es m?stn? vnit?n? t??du
+Uzávěry v jazyce Java - přes místní vnitřní třídu
 =================================================
 
-P?i tvorb? GUI k jednomu syst?mu se mi zastesklo po snadnosti uz?v?r? v JavaScriptu.
-Prozkoumal jsem "mo?nosti uz?v?r? v Jav?":uzavery_v_jave_mistni_vnitrni_trida.texy.
+Při tvorbě GUI k jednomu syst?mu se mi zastesklo po snadnosti uzávěry v JavaScriptu.
+Prozkoumal jsem "možnosti uzávěr v Javě":uzavery_v_jave_mistni_vnitrni_trida.texy.
 
 
-Spring Framework - ?vod
+Spring Framework - úvod
 =======================
 
-P?ipravil jsem velmi stru?n? "tutori?l na rozb?h?n? jedn? ??sti Spring Frameworku, a sice Beans Factory":navod-spring-framework-zacatky.texy.
-V ?e?tin?.
- 
+Připravil jsem velmi stručný "tutoriál na rozběhání jedné části Spring Frameworku, a sice Beans Factory":navod-spring-framework-zacatky.texy.
+V češtině.
+
 
 
 Hibernate super-quick start in NetBeans
@@ -666,14 +666,14 @@ I didn't like the two-line output of `java.util.logging.SimpleFormatter`.
 On current widescreen LCDs, whole log record can fit at a single line.
 So I've written `cz.dynawest.logging.SimplestFormatter`. Compare:
 
-/--code log .[brush:]
+/--code log
 13.7.2008 0:47:10 cz.dynawest.isir.Conversion3Controller ZpracujArchiv - INFO:   Test
 13.7.2008 0:47:10 cz.dynawest.isir.Conversion3Controller ZpracujArchiv - INFO:   Test2
 \--
 
 vs.
 
-/--code log .[brush:]
+/--code log
 13.7.2008 0:47:10 cz.dynawest.isir.Conversion3Controller ZpracujArchiv
 INFO:   Test
 13.7.2008 0:47:10 cz.dynawest.isir.Conversion3Controller ZpracujArchiv
@@ -681,7 +681,7 @@ INFO:   Test2
 \--
 
 
-If you like it, the source code is available for 
+If you like it, the source code is available for
 "download here":download/cz.dynawest.logging.SimplestFormatter.zip.
 
 
@@ -691,7 +691,7 @@ Java tipy a triky
 Patříte mezi programátory, kteří prvně hledají řešení na Google jako slovní úlohu a až pak studují jakékoliv API?
 Pak vám možná pomůže moje "stránka tipů pro Javu":tipy.texy. Zatím není nijak moc rozsáhlá, budu postupně doplňovat.
  Podobných tipů a triků jsou po webu kvanta, ale ne tolik v češtině.
- 
+
 //Update:// Tak nakonec stejně vše zveřejňuju v angličtině...
 
 
@@ -765,7 +765,7 @@ K dispozici na   http://download.texy.info/refs.zip
 
 Algou a omegou původní PHP imiplementace jsou PCRE. Knihovna pro Javu, která zvládá PCRE podle Perl 5, je na http://jakarta.apache.org/oro/  .
 
-Ondra ?i?ka
+Ondra Žižka
 
 </blockquote>
 
@@ -773,7 +773,7 @@ Ondra ?i?ka
 
 
 
-?pln? za??tky v Jav?
+Úplné začátky v Javě
 ====================
 
 Java často začátečníka odradí relativní složitost přípravy kódu a jeho překladu do čehokoliv spustitelného
