@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250"/>
+	<meta name="Author" content="Ondřej Žižka; ondra at dynawest.cz"/>
+	<style type="text/css">body { }</style>
+	<script type="text/javascript">
+function cAbstractClass(){
+  // Pokud konstruujeme prototyp odvozené třídy, nereagovat:
+  // cImplementingClass.prototype = new cAbstractClass();
+  if(this.constructor != arguments.callee){
+    var asNonImplemented = this.CheckInterface("PrvniPovinnaMetoda DruhaPovinnaMetoda");
+    if( asNonImplemented.length > 0 )
+      alert("Chyba! Třída ["+this.constructor.name+"] neimplementuje tyto povinné metody:\n" + asNonImplemented.join("\n"));
+  }
+}
+
+cAbstractClass.prototype.CheckInterface = function(saMethods){
+  // this ukazuje na nově vytvářený objekt.
+  // this.constructor na konstruktor odvozené třídy.
+  // Její prototyp musí implementovat potřebné metody.
+  var asMustHave = saMethods.split(" ");
+  var asNonImplemented = new Array();
+  for(var i in asMustHave){
+    if(!this.constructor.prototype[asMustHave[i]] ||
+      "function" != typeof this.constructor.prototype[asMustHave[i]])
+        asNonImplemented.push(asMustHave[i]);
+  }
+  return asNonImplemented;
+}
+	
+function cImplementingClass(){
+  // Nejprve změníme konstruktor, aby ho konstruktor bázové třídy zjistil.
+  this.constructor = arguments.callee;
+  // Potom voláme konstruktor bázové třídy,
+  // který vyhrabeme z prototypu třídy cImplementingClass.
+  arguments.callee.prototype.constructor.apply(this, this.arguments);
+}
+cImplementingClass.prototype = new cAbstractClass();
+cImplementingClass.prototype.PrvniPovinnaMetoda = function(){}
+// Záměrne vynecháme. Při konstrukci objektu třídy cImplementingClass
+// bychom měli být upozorněni na to, že metoda není implementována.
+//cImplementingClass.prototype.DruhaPovinnaMetoda = function(){}
+
+var x;
+x = new cImplementingClass();
+	</script>
+<title> Možnosti JavaScriptu při dekompozici; JavaScript - Diplomová práce, Ondřej Žižka </title></head>
+<body>
+
+</body></html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250"/>
+	<meta name="Author" content="Ondřej Žižka; ondra at dynawest.cz"/>
+	<style type="text/css">body { background-color: White; }</style>
+	<script type="text/javascript">
+	function Zabarvi(){
+		// Najdeme první pravidlo v prvním bloku CSS kódu
+		// (předpokládáme, že existuje)
+		var oPravidlo = document.styleSheets[0].cssRules[0];
+		var oStyl;
+		// Pokud se jedná o běžné pravidlo,
+		// nastavíme barvu pozadí na pěknou modrou
+		if(oPravidlo.type == CSSRule.STYLE_RULE){
+			oPravidlo.style.backgroundColor = oPravidlo.style.backgroundColor == "LightSkyBlue" ? "White" : "LightSkyBlue";
+		}
+		window.setTimeout("Zabarvi();", 4000);
+	}
+	window.onload = window.setTimeout("Zabarvi();", 4000);
+	</script>
+<title> Provázanost JavaScriptu a CSS; JavaScript - Diplomová práce, Ondřej Žižka </title></head>
+<body>
+	<p style="color: LightSkyBlue; font-size: 60pt;">Za chvíli stránka zmodrá.</p>
+	<p style="color: White;        font-size: 60pt;">Za chvíli stránka zbělá.</p>
+</body></html>

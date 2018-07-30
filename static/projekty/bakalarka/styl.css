@@ -1,0 +1,362 @@
+@page:left {
+  margin-left: 4cm;
+  margin-right: 3cm;
+}
+@page:right {
+  margin-left: 3cm;
+  margin-right: 4cm;
+}
+@page { margin: 3cm; }
+
+body {
+	background-color: #ffffff; /*margin: 0px; padding: 0px;*/
+	color: black;
+	font-family: Verdana CE, Verdana, sans-serif;
+	font-size: 11pt;
+	font-style: normal;
+}
+@media screen { body { margin: 0em 5%; } }
+@media print { body {
+	padding: 0 0.1cm 0 0cm;
+	xborder: 3px solid red;
+} }
+
+
+/****  Predsadka  ****/
+
+#content #predsadka, #content #predsadka p {
+	/*page-break-after: always;*/
+	font-family: /*"Garamond CE",*/ "Times New Roman CE", "Times New Roman", Times, serif;
+	text-align: center !important;
+}
+#content #predsadka .ju { font-size: 24pt; font-weight: bold;  margin:  60pt auto  0pt; } /* Jihoèeská Univerzita */
+#content #predsadka .pf { font-size: 24pt; font-weight: bold;  margin:   0pt auto 20pt; } /* Pedagogická fakulta */
+#content #predsadka .oz { font-size: 36pt; font-weight: bold;  margin:  45pt auto 10pt; } /* Ondøej Žižka */
+/*#content #predsadka .av { font-size: 19pt; font-weight: bold;  margin:  10pt auto;      } /* a vedoucí dipl. práce */
+/*#content #predsadka .jj { font-size: 36pt; font-weight: bold;  margin:  10pt auto 20pt; } /* Jan Jára */
+#content #predsadka .dp { font-size: 19pt; font-weight: bold;  margin:  65pt auto  0pt; } /* diplomová práce */
+#content #predsadka .nt { font-size: 19pt; font-weight: bold;  margin:   0pt auto  1em; } /* na téma */
+#content #predsadka h1 {
+	font-family: "Times New Roman CE", "Times New Roman", Times, serif;
+	/*font-family: "Garamond CE", sans-serif;*/
+	font-size: 45pt; font-weight: bold;
+	/*page-break-after: always;*/
+	margin: 50pt auto 5pt;
+}
+/*#predsadka .v { font-size: 7pt; font-weight: normal;  margin:   0pt auto 0em; } /* na téma */
+
+#content #predsadka .v { font-size:   8pt; font-weight: normal;  margin:   0pt auto 0em;  } /* verze 1.0.0 */
+#content #predsadka .av { font-size: 18pt; font-weight: normal;  margin:  65pt auto 0pt; }  /* Vedoucí dipl. práce: */
+#content #predsadka .jj { font-size: 18pt; font-weight: normal;  margin:   0pt auto 20pt; } /* Jan Jára */
+
+@media print {
+	#content #zadani .literatura { font-size: 9pt; }
+}
+#content #zadani ul.literatura { padding-right: 2ex; }
+
+
+@media print {
+	hr { display: none; }
+	#content hr.pagebreak { display: none; }
+	#content #predsadka .dp { margin-top: 200pt; }
+	#content #predsadka h1 {
+		margin: 50pt auto 0pt;
+		font-size: 30pt;		
+	}
+	#content #predsadka .v { visibility: hidden;  } /* verze 1.0.0 */
+	#content #predsadka .av { margin:  3cm auto 0pt; } /* Vedoucí dipl. práce: */
+	#content abbr:after { content: " (" attr(title) ") "; }
+	#content abbr       { border-bottom: 1px solid white; }
+	a:visited { color:blue; }
+}
+
+
+#prohlaseni, #podekovani {
+	font-family: "Times New Roman CE", "Times New Roman", "Times CE", Times, serif;
+	font-style: italic;
+	font-size: 14pt;
+}
+#prohlaseni h6, #podekovani h6 {
+	margin-left: 0px;
+	font-size: 105%;
+	margin-top: 1.2em; margin-bottom: 0.5em;
+}
+#prohlaseni { margin-top: 80px; }
+#podekovani { margin-top: 2em; }
+#podekovani p { margin: 0.15em auto; }
+#prohlaseni p:first-letter,
+#podekovani p:first-letter { padding-left: 2ex; }
+
+@media print {
+#prohlaseni, #podekovani { font-size: 10pt; width: 95%; }
+#prohlaseni { margin-top: 4cm; }
+#podekovani { margin-top: 1cm; }
+}
+
+/* --- Obsah (osnova) --- */
+@media print { #osnova a { color: black; text-decoration: none; } } /* pri tisku obsah cerne */
+
+#osnova #menu_predmluva { margin: -0.8em auto -0.4em; }
+#osnova ul { padding-left: 4ex; } /* Mozilla */
+
+#osnova ul    { font-size: 13pt; line-height: 20pt;  }    /* korenovy seznam - blok  */
+#osnova ul li { margin-top: 8px; }   /* korenovy seznam - listy */
+#osnova ul li ul {  }   /* korenovy seznam - listy */
+#osnova ul ul { font-size: 10pt; line-height: normal; }    /* podzesnam - blok */
+#osnova ul ul li { margin-top: 0px; } /* podzesnam - listy */
+
+
+#content { margin-bottom: 3em; }
+#content p { text-align: justify; }
+
+#content h2, #content h3, #content h4, #content h5, #content h6 { clear: both; }
+#content h2 {
+	font-size: 240%; font-weight: bold;
+	margin-top: 1.5em; margin-bottom: 0.5em;
+	page-break-before: always;
+	page-break-after: avoid;
+	border-bottom: 2px solid #32cd32;
+}
+#content h2.no-page-break { page-break-before: avoid; margin-top: 2.5em; }
+/*@media print { #text h2 { display: list-item; list-style-type: upper-alpha; } }*/
+@media print { #content h2 { margin-top: 0em; } }
+
+#content h3 {
+	font-size: 180%;
+	margin-top: 1.5em; margin-bottom: 0.5em;
+	page-break-after: avoid;
+	border-bottom: 2px dashed #32cd32;
+}
+
+#content h4 {
+	font-size: 140%; margin-left: 1cm;
+	margin-top: 1.8em; margin-bottom: 0.5em;
+	/*page-break-after: avoid;*/
+	border-bottom: 1px solid #32cd32;
+}
+@media print { #content h4 { margin-left: 1cm; } }
+
+/* H5 už je v dílèích souborech */
+#content h5 {
+	font-size: 115%; margin-left: 1cm;
+	margin-top: 1.2em; margin-bottom: 0.5em;
+	page-break-after: avoid;
+	border-bottom: 1px dashed #32cd32;
+}
+@media print { #content h5 { margin-left: 1cm; } }
+
+#content #text h6 {
+	font-size: 105%; margin-left: 1cm;
+	margin-top: 1.2em; margin-bottom: 0.5em;
+	/*page-break-after: avoid;*/
+}
+@media print { #content #text h6 { margin-left: 1cm; } }
+
+
+
+#content ul { margin: 0.2em auto 0.3em; }
+
+ul.pismena_velka { list-style-type: upper-alpha; }
+ul.pismena_mala  { list-style-type: lower-alpha; }
+ul.rimske_velke  {  list-style-type: upper-roman; }
+ul.cisla         {  list-style-type: decimal; }
+
+.zdroj         { margin-top: 1em; }
+.zdroj .nazev   { font-weight: bold; }
+.zdroj .nazev_originalni { font-style: italic; }
+.zdroj .autor   {  }
+.zdroj .vydav   {  }
+.zdroj .isbn    {  }
+
+
+.float_right { float: right; }
+
+
+
+/* Obecne prvky */
+
+code {
+	font-family: "Courier New CE", "Courier New", Courier, monospace;
+}
+code.small_code { font-size: 90%; }
+
+code.block {
+	display: block;	white-space: pre;
+	white-space: preserve;
+	margin: 0.5em auto;
+	padding: 0.2em 0.5em;
+	background-color: #f0f0f0;
+}
+
+
+/* --- JavaScript --- */
+code.js, code.jsl { color: black; background-color: #eeeeee; }
+code.js {
+	display: block;	white-space: pre;
+	margin: 0.5em auto;
+	padding: 0.2em 0.5em;
+	/*background-image: url("img/icon_js_pad6.gif");*/
+	/*background-image: url("img/icon_js_small_pad4.gif");*/
+	background-image: url("img/icon_js_middle_pad5.gif");
+	background-repeat: no-repeat;
+	background-position: top right;
+	border: 1px solid gray;
+}																											
+code.js.small_icon { background-image: url("img/icon_js_small_pad4.gif"); }
+@media print {
+	code.js { background-image: url("img/icon_js_big_print.gif"); }
+	code.js.small_icon { background-image: url("img/icon_js.gif"); }
+}
+
+code.jsl {
+	display: inline;	white-space: pre;
+	margin: auto 0.3em;
+	padding: auto 0.2em;
+}
+code.js .k, code.jsl .k { color: #0000ff; font-weight: bold;     }   /* key words */
+code.js .k2, code.jsl .k2 { color: #0000ff; font-weight: normal; }   /* key words */
+code.js .o, code.jsl .o { color: red;     font-weight: bold;     }   /* operators */
+code.js .f, code.jsl .f { color: #000080; font-weight: bold;     }   /* functions */
+code.js .n, code.jsl .n { color: #ff00ff; font-weight: normal;   }   /* numbers */
+code.js .s, code.jsl .s { color: #ff00ff; font-weight: normal;   }   /* strings   */
+code.js .re, code.jsl .re { color: #ff4500; font-weight: normal;   }   /* strings   */
+code.js .l, code.jsl .l { color: #2058FF; font-weight: normal;   }   /* literals (null, true, false)   */
+code.js .cml, code.jsl .cml,
+code.js .cmb, code.jsl .cmb,
+code.js .cmd, code.jsl .cmd
+{ color: #009F28; font-weight: bold;   } /* comments */
+
+
+/* --- Java --- */
+code.java.block {
+	background-image: url("img/icon_java_middle.gif");
+	background-repeat: no-repeat;
+	background-position: 99.5% 2%;
+	border: 1px solid gray;
+}
+@media print {
+	code.java.block { background-image: url("img/icon_java_big_print.gif"); }
+}
+code.java .cml { color: #009F28; font-weight: bold;   }  /* comments */
+code.java .k   { color: #0000ff; font-weight: bold;   }  /* key words */
+code.java .k2  { color: #0000ff; font-weight: normal; }  /* key words */
+code.java .o   { color: red;     font-weight: bold;   }  /* operators */
+code.java .s   { color: #ff00ff; font-weight: normal; }  /* strings   */
+code.java .n   { color: #ff00ff; font-weight: normal; }  /* numbers */
+
+
+
+/* --- HTML --- */
+code.html, code.htmll { font-family: "Courier New CE", "Courier New", Courier, monospace; color: black; background-color: #f0f0f0; }
+code.html .cmt { background-color:  #C2F4AA; font-style: italic; }    /* <!--  --> */
+code.html .c   { color:  #1000D9; font-weight: bold; }               /* kod */
+code.html.default_mode_code   { color:  #1000D9; font-weight: bold; }	  /* Defaultne je vsechno kod, text se extra vytipava */
+code.html.default_mode_code * { color: black; font-weight: normal; }    /* Vyruseni vlastnosti textu kodu na potomky */
+code.html.default_mode_code .t  { color:  black; font-weight: normal; }	/* Text */
+code.html .img { color: 800080; font-weight: bold; }
+code.html .tbl { color: 008080; font-weight: normal; }
+
+code.html {
+	display: block;	white-space: pre;
+	margin: 0.5em auto;
+	padding: 0.2em 0.5em;
+	background-image: url("img/icon_html_middle.gif");
+	background-repeat: no-repeat;
+	background-position: 99% 99%;
+	border: 1px solid gray;
+}
+code.html.small_icon { background-image: url("img/icon_html_ff_small.gif"); background-position: 99.7% 4px; }
+@media print { code.html.small_icon { background-image: url("img/icon_html_middle.gif"); } }
+
+code.htmll {
+	display: inline;
+	/*background-image: url("img/icon_html_ff_small.gif");
+	background-position: right;
+	background-repeat: no-repeat;
+	padding-right: 18px;*/
+}
+
+/* HTTP */
+code.http { font-family: "Courier New CE", "Courier New", Courier, monospace; color: #8b4513; background-color: #f0f0f0; }
+code.http.block {
+	border: 1px inset #8b4513;
+}
+code.http.line { display: inline; }
+
+/* --- SVG --- */
+code.svg { font-family: "Courier New CE", "Courier New", Courier, monospace; color: #00008b; background-color: #EEECF6; }
+code.svg.block {
+	display: block;	white-space: pre;
+	margin: 0.5em auto;
+	padding: 0.2em 0.5em;
+	border: 1px solid black;
+}
+code#svg_circles {
+	background-image: url("img/svg_circles.png");
+	background-position: 99% 9%;
+	background-repeat: no-repeat;
+	font-size: 9pt;
+}
+
+img.alone { margin: 1ex 2ex; }
+img.left  { float: left; margin-right: 2ex; margin-bottom: 1em; }
+img.right { float: right; margin-left: 2ex; margin-bottom: 1em; }
+img.border { border: 1px solid gray; }
+.img_popisek { font-size: 70%; font-style: italic; color: silver; }
+.center { text-align: center; }
+/*img { page-break-inside: avoid; }*/
+
+blockquote { font-style: italic; }
+blockquote .popisek { text-align: right; font-size: 90%; }
+.block.quote { font-style: italic; padding-left: 3ex; }
+.block.quote .popisek { text-align: right; font-size: 90%; }
+
+table.seznam { margin: 1em 0.8ex 1em 0.5ex; }
+table.border_gray    { border-collapse: collapse;  }
+table.border_gray td { border: 1px solid gray; }
+table.seznam td, table.seznam th { padding: 1px 4px; }
+table.seznam th { text-align: left; }
+@media print {
+	table.seznam { font-size: 9pt; } 
+	table.seznam td, table#soubory th { padding: 1px 8px; }
+	/*table.border_gray { border: 2px solid gray; }*/
+	table#soubory, table#priklady { margin-bottom: -0.7em; margin-top: 0.0em; }
+}
+
+@media print {
+	img#screenshot_miner_banka { margin-top: -0.25cm; margin-bottom: 0.3cm; }
+	img#win_scripts { height: 50%; width: 50%; }
+}
+
+
+
+/* --- SplashScreen --- */
+/*@media screen { body { position: relative; } }*/
+#splashscreen_obalka {
+	position: absolute;
+	top: 0px; left: 0px;
+	/*padding: 80px;*/
+	width: 100%;
+	/*border: 3px solid green;*/
+}
+/**[id="splashscreen_obalka"] { position: fixed; }*/
+*[id="splashscreen_obalka"] { position: fixed !important; }
+
+@media print { #splashscreen_obalka { display: none; } }
+
+#splashscreen {
+	border: 3px solid green;
+	background-color: #90ee90;
+	margin: 80px 80px;
+	padding: 20px;
+}
+#splashscreen .vnitrek {
+	background-color: white;
+	text-align: center !important;
+	padding: 2ex;
+}
+#splashscreen .vnitrek h4 {
+	font-size: 140%;
+	margin: 1em 3ex 1em 3ex;
+	border-bottom: 1px solid #32cd32;
+} 

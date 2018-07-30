@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250"/>
+	<meta name="Author" content="Ondra Žižka; ondra at dynawest.cz"/>
+	<meta name="Keywords" content=""/>
+	<meta name="Description" content=""/>
+	<link rel="stylesheet" type="text/css" href="dw_styles.css"/>
+	<link rel="stylesheet" type="text/css" href="dw_default.css"/>
+	<!-- <link rel="stylesheet" type="text/css" href="styl.css"/> -->
+	<style type="text/css">/*<![CDATA[*/
+	BODY { background-color: #ffffff; /*margin: 0px; padding: 0px;*/ }
+	/*]]>*/</style>
+	<script type="text/javascript"  charset="windows-1250" src="fce.js"></script>
+	<script type="text/javascript">
+function SvazPredlozky(oTextNode){
+	//DumpObjectEx(oNode);
+	//alert(oNode.data.charCodeAt(4));
+	//oTextNode.nodeValue = oTextNode.nodeValue.replace(/ /g, String.fromCharCode(160));
+	//oNode.nodeValue = oNode.nodeValue.replace(/ /g, " egů ");
+	
+	//oTextNode.nodeValue = oTextNode.nodeValue.replace(/\b(a|ze?) /gi, "$1" + String.fromCharCode(160));
+	//oTextNode.nodeValue = oTextNode.nodeValue.replace(new RegExp("\\b(a|ze?) ", "gi"), "$1" + String.fromCharCode(160));
+	var saPredlozky = "a ať aby ani až bez do i k ke na nad než o od ob před po pod při s se si u v ve z ze že";
+	var asPredlozky = saPredlozky.split(" ");
+	var rePredlozky = new RegExp("\\b(" + asPredlozky.join("|") + ") ", "gi");
+	oTextNode.nodeValue = oTextNode.nodeValue.replace(rePredlozky, "$1" + String.fromCharCode(160));
+}
+function AplikujTypografiiNaStrom(doc){
+	if(1 && doc.implementation.hasFeature("Traversal","2.0")){
+		// Je k dispozici rozhrani DOM Traversal //
+		var callbackFilterFunc = function(oNode){
+			return oNode.nodeName != "pre" && oNode.nodeName != "code" && oNode.nodeType == 3 ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+		}
+		var noteIter = doc.createNodeIterator(doc, NodeFilter.SHOW_ELEMENT, callbackFilterFunc, false);
+		var oNodeIter; while( oNodeIter = noteIter.nextNode() ){
+			SvazPredlozky(oNodeIter);
+		}
+	}else{
+		// Neni k dispozici rozhrani DOM Traversal //
+		var fFunc = function(oNode){
+			// Pokud ma tento element ID, pridame do seznamu. //
+			if(oNode.nodeName != "pre" && oNode.nodeName != "code" && 3 == (oNode.nodeType||oNode.type)){
+				SvazPredlozky(oNode);
+			}
+			// Projedem deti touto funkci.           //
+			var aChildren = (oNode.childNodes||oNode.children);
+			for(var i in aChildren){
+				arguments.callee(aChildren[i]);
+			}
+		}
+		// Zavolame rekurzivni fci na dokument v argumentu doc //
+		fFunc(doc);
+	}
+}
+
+function OnLoad(){
+	//var oNode = document.getElementById("text3").firstChild;
+	//VlozNedelitelneMezery(oNode);
+	//DumpObjectEx(oNode);	
+	//alert(oNode.nodeType||oNode.type);
+	
+	//AplikujTypografiiNaStrom(document);
+}
+function OnClick(){
+	if(!window.bTypografieAplikovana){
+		AplikujTypografiiNaStrom(document);
+		window.bTypografieAplikovana = true;
+	}
+}
+
+window.onload = OnLoad;
+window.document.onclick = OnClick;
+// --------------------------------------------
+	</script>
+
+
+
+<title> Nedělitelné mezery u předložek </title></head>
+<body>
+<p style="color: red;">Pro svázání předložek klikněte na text.</p>
+
+<div style="width: 100px;">
+<p id="text">Ahoj&nbsp;lidi</p>
+<p id="text2">
+Ohledně&nbsp;důvěryhodnosti si JavaScriptové programy s komunikací se servery mnoho nezadají -
+jedná se o kód posílaný ze serveru a vykonávaný u klienta.
+Proto nemůže být o přímém zápisu do souborového systému ani řeč.
+Nicméně potřeba dočasně uložit data je u JavaScriptových programů také.
+Proto byl v prohlížečích implementován jednoduchý mechanismus:
+Pokud nastavíte vlastnost document.cookie, prohlížeč se zachová naprosto stejně,
+jako by ze serveru dostal HTTP hlavičku Set-Cookie se stejnou hodnotou.
+Při čtení této vlastnosti vrátí prohlížeč stejný řetězec, jaký by poslal na server jako hodnotu hlavičky Cookie.
+Ukázka funkce cookies v JavaScriptu je v příkladu - zejména si prohlédněte zdrojový kód. 
+</p>
+<p id="text3">
+A bcdef a bcdef a bcdef a bcdef a bcdef a bcdef a bcdef a bcdef a bcdef a bcdef a bcdef a bcdef a bcdef a bcdef a bcdef
+ a bcdef a bcdef a bcdef a bcdef a bcdef a bcdef a bcdef a bcdef a bcdef a bcdef a bcdef a bcdef a bcdef a bcdef
+ Ze školy do školy ke škole od školy ze školy do školy ke škole od školy
+ ze školy do školy ke škole od školy ze školy do školy ke škole od školy.
+</p>
+</div>
+
+
+</body></html>

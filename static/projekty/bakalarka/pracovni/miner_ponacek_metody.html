@@ -1,0 +1,63 @@
+cPanacek.prototype.HalogenOnOff = function(bOn){  }
+cPanacek.prototype.PripravLopatu = function(){  }
+cPanacek.prototype.PripravKrumpac = function(){  }
+cPanacek.prototype.PripravVrtak = function(){  }
+cPanacek.prototype.PripravSbijecku = function(){  }
+cPanacek.prototype.OdpalDynamit = function(){  }
+cPanacek.prototype.PripravKbelik = function(){  }
+cPanacek.prototype.PripravPumpu = function(){  }
+
+cPanacek.prototype.GetCellRelative = function(dy, dx){  }
+// Prekresli bunku, kde panacek zrovna stoji. //
+cPanacek.prototype.RedrawCellRelative = function(dy, dx){  }
+
+// Prepocita matici na odkryv okoli podle vlastnenych predmetu. //
+cPanacek.prototype.PrepoctiOdkryvKoef = function(){  }
+cPanacek.prototype.Draw = function(){  }
+cPanacek.prototype.Turn = function(){  }
+
+// Posouvani playgroundu 
+cPanacek.prototype.Focus = function(dy,dx){  }
+
+cPanacek.prototype.Move = function(dx,dy){  }
+
+
+cPanacek.prototype.GetCellRelative = function(dy,dx){  }
+
+// Prekresli bunku zadanou relativne od mista, kde panacek stoji //
+cPanacek.prototype.RedrawCellRelative = function(dy,dx){  }
+
+// Odkryje bunky okolo panacka //
+cPanacek.prototype.OdkryjOkoli = function(){  }
+cPanacek.prototype.VytezBunkuPudu = function(cell){  }
+cPanacek.prototype.VytezBunkuObsah = function(cell){  }
+cPanacek.prototype.VytezBunku = function(cell){  }
+cPanacek.prototype.ZkusTezitSkalu = function(cell){  }
+cPanacek.prototype.ZkusTezitZaval = function(cell){  }
+
+cPanacek.prototype.UberZdraviUprav = function(kolik, pricina){  }
+cPanacek.prototype.PridejZdravi = function(kolik){ this.zdravi = Math.min(this.zdravi + kolik, 100); }
+cPanacek.prototype.UberZdravi = function(kolik,nomsg){  }
+
+cPanacek.prototype.TryEnter = function(){  }
+cPanacek.prototype.VratSe = function(){  }
+cPanacek.prototype.VratSeZeZachodu = function(){  }
+cPanacek.prototype.Enter = function(dvereid){  }
+cPanacek.prototype.Exit = function(){}
+
+/****************************
+*   Inventar                *
+****************************/
+
+// BuyItem() //
+cPanacek.prototype.BuyItem = function(sItemKey, iCena){
+	if(this.inv.Pridej(sItemKey)){
+		this.UpravPenize(-iCena);
+		this.PrepoctiOdkryvKoef();
+	}
+}
+
+cPanacek.prototype.PouzijPredmetAZkontroluj = function(p){  }
+cPanacek.prototype.UpravPenize = function(kolik){  }
+cPanacek.prototype.SynchronizeInfo = function(){  }
+

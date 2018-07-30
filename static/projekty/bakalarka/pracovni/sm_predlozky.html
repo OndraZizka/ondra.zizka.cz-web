@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250"/>
+	<meta name="Author" content="Ondra Žižka; ondra at dynawest.cz"/>
+	<meta name="Keywords" content=""/>
+	<meta name="Description" content=""/>
+	<link rel="stylesheet" type="text/css" href="dw_styles.css"/>
+	<link rel="stylesheet" type="text/css" href="dw_default.css"/>
+	<!-- <link rel="stylesheet" type="text/css" href="styl.css"/> -->
+	<style type="text/css">/*<![CDATA[*/
+	BODY { background-color: #ffffff; /*margin: 0px; padding: 0px;*/ }
+	/*]]>*/</style>
+	<script type="text/javascript"  charset="windows-1250" src="fce.js"></script>
+	<script type="text/javascript">
+function cTypografie(){
+	var sa, as;
+	this.sNbsp = String.fromCharCode(160);
+	
+	// --- Vytvoříme regulární výraz pro předložky --- //
+	sa = "a ať aby ani až bez do i k ke na nad než o od ob před po pod při s se si u v ve z ze že";
+	// Eskejpujeme specialni znaky regularnich vyrazu 
+	sa = sa.replace(/\./g, "\\.");
+	as = sa.split(" ");
+	this.rePredlozky = new RegExp("\\b(" + as.join("|") + ") ", "gi");
+	this.rePredlozky.substitute = "$1" + this.sNbsp;
+
+	// --- Vytvoříme regulární výraz pro dvouslovné fráze --- //
+	sa = "Miner JS|Miner VGA";
+	sa.replace(/\./g, "\\.");
+	as = sa.split("|");
+	//for(var i in as){ as[i] = "(?=" + as[i].split(" ").join(")( )(?=") + ")"; }
+	//alert("\\b(" + as.join("|") + ")\\b");
+	//this.reFraze = new RegExp("\\b(" + as.join("|") + ")\\b", "g");
+	this.aaFraze = new Array();
+	// Pole [ [vzor, nahrada], ... ]
+	for(var i in as){ this.aaFraze.push( new Array(new RegExp(as[i], "g"), as[i].split(" ").join(this.sNbsp)) ); }
+	
+	// --- R.E. pro verze - Neco 2.0 --- //
+	this.reVerze = new RegExp("([A-ZĚŠČŘŽÝÁÍÉŤĎŇÚŮÓ]\\w) (\\d+\\.\\d+)", "g");
+	this.reVerze.substitute = "$1" + this.sNbsp + "$2";
+	
+	// --- R.E. pro iniciály - X. Yz --- //
+	this.reInicialy = new RegExp("([A-ZĚŠČŘŽÝÁÍÉŤĎŇÚŮÓ]\\.) ([A-ZĚŠČŘŽÝÁÍÉŤĎŇÚŮÓ]\w+)", "g");
+	this.reInicialy.substitute = "$1" + this.sNbsp + "$2";
+}
+
+cTypografie.prototype.SvazVsechno = function(oTextNode){
+	this.SvazPredlozky(oTextNode);
+	this.SvazFraze(oTextNode);
+	this.SvazVerze(oTextNode);
+	this.SvazInicialy(oTextNode);
+}
+
+// Až_navěky, o_nás, bez_nás, ...
+cTypografie.prototype.SvazPredlozky = function(oTextNode){
+	oTextNode.nodeValue = oTextNode.nodeValue.replace(this.rePredlozky, this.rePredlozky.substitute);
+}
+
+// Fráze - "Miner JS", "Miner VGA", atd.
+cTypografie.prototype.SvazFraze = function(oTextNode){
+	//oTextNode.nodeValue = oTextNode.nodeValue.replace(this.reFraze, this.reFraze.substitute);
+	var s = oTextNode.nodeValue;
+	for(var i in this.aaFraze){
+		s = s.replace(this.aaFraze[i][0], this.aaFraze[i][1]);
+	}
+	oTextNode.nodeValue = s;
+}
+
+// Neco 2.0 
+cTypografie.prototype.SvazVerze = function(oTextNode){
+	oTextNode.nodeValue = oTextNode.nodeValue.replace(this.reVerze, this.reVerze.substitute);
+}
+
+// Iniciály - X. Yz 
+cTypografie.prototype.SvazInicialy = function(oTextNode){
+	oTextNode.nodeValue = oTextNode.nodeValue.replace(this.reInicialy, this.reInicialy.substitute);
+}
+
+
+
+// AplikujTypografiiNaStrom(doc, oTypografie) 
+function AplikujTypografiiNaStrom(doc, oTypografie){
+	if(1 && doc.implementation.hasFeature("Traversal","2.0")){
+		// Je k dispozici rozhrani DOM Traversal //
+		var callbackFilterFunc = function(oNode){
+			return oNode.nodeName != "pre" && oNode.nodeName != "code" && oNode.nodeType == 3 ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+		}
+		var noteIter = doc.createNodeIterator(doc, NodeFilter.SHOW_ELEMENT, callbackFilterFunc, false);
+		var oNodeIter; while( oNodeIter = noteIter.nextNode() ){
+			oTypografie.SvazVsechno(oNodeIter);
+		}
+	}else{
+		// Neni k dispozici rozhrani DOM Traversal //
+		var fFunc = function(oNode){
+			// Přeskočíme uzly kódu 
+			if(oNode.nodeName == "pre" || oNode.nodeName == "code") return;
+			
+			// Pokud ma tento element ID, pridame do seznamu. //
+			if(3 == (oNode.nodeType||oNode.type)){
+				oTypografie.SvazVsechno(oNode);
+			}
+			// Projedem deti touto funkci.           //
+			var aChildren = (oNode.childNodes||oNode.children);
+			for(var i in aChildren){
+				arguments.callee(aChildren[i]);
+			}
+		}
+		// Zavolame rekurzivni fci na dokument v argumentu doc //
+		fFunc(doc);
+	}
+}
+
+function OnLoad(){
+	//var oNode = document.getElementById("text3").firstChild;
+	//VlozNedelitelneMezery(oNode);
+	//DumpObjectEx(oNode);	
+	//alert(oNode.nodeType||oNode.type);
+	
+	//AplikujTypografiiNaStrom(document);
+}
+function OnClick(){
+	var oTypografie = new cTypografie();
+	if(!window.bTypografieAplikovana){
+		AplikujTypografiiNaStrom(document, oTypografie);
+		window.bTypografieAplikovana = true;
+	}
+}
+
+window.onload = OnLoad;
+window.document.onclick = OnClick;
+// --------------------------------------------
+	</script>
+
+
+
+<title> Nedělitelné mezery u předložek </title></head>
+<body>
+<p style="color: red;">Pro svázání předložek klikněte na text.</p>
+
+<div style="width: 120px;">
+
+<h3>Tadyklenc se spojují dvouslovné fráze "Miner JS" a "Miner VGA".</h3>
+<p id="text">Ahoj lidi Miner JS je hra, taky Miner VGA je hra, Miner JS Miner VGA Miner JS Miner VGA Miner JS Miner VGA Miner JS Miner VGA</p>
+
+<h3>Dále se spojují předložky.</h3>
+<p id="text2">
+Ohledně&nbsp;důvěryhodnosti si JavaScriptové programy s komunikací se servery mnoho nezadají -
+jedná se o kód posílaný ze serveru a vykonávaný u klienta.
+Proto nemůže být o přímém zápisu do souborového systému ani řeč.
+Nicméně potřeba dočasně uložit data je u JavaScriptových programů také.
+Proto byl v prohlížečích implementován jednoduchý mechanismus:
+Pokud nastavíte vlastnost document.cookie, prohlížeč se zachová naprosto stejně,
+jako by ze serveru dostal HTTP hlavičku Set-Cookie se stejnou hodnotou.
+Při čtení této vlastnosti vrátí prohlížeč stejný řetězec, jaký by poslal na server jako hodnotu hlavičky Cookie.
+Ukázka funkce cookies v JavaScriptu je v příkladu - zejména si prohlédněte zdrojový kód. 
+</p>
+<p id="text3">
+A bcdef a bcdef a bcdef a bcdef a bcdef a bcdef a bcdef a bcdef a bcdef a bcdef a bcdef a bcdef a bcdef a bcdef a bcdef
+ a bcdef a bcdef a bcdef a bcdef a bcdef a bcdef a bcdef a bcdef a bcdef a bcdef a bcdef a bcdef a bcdef a bcdef
+ Ze školy do školy ke škole od školy ze školy do školy ke škole od školy
+ ze školy do školy ke škole od školy ze školy do školy ke škole od školy.
+</p>
+</div>
+
+
+</body></html>

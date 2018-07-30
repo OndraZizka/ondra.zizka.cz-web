@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250"/>
+	<meta name="Author" content="Ondra Žižka; ondra at dynawest.cz"/>
+	<link rel="stylesheet" type="text/css" href="dw_default.css"/>
+	<title>Počítadlo s pomocí cookies</title>
+</head>
+<body>
+	<h1>Demonstrace cookies</h1>
+
+	<p id="info"></p>
+	
+<script type="text/javascript">
+function ParseCookie() {
+	var cookieList = document.cookie.split("; ");
+	var cookieArray = new Array();
+	var name;
+	for (var i = 0; i < cookieList.length; i++) {
+		name = cookieList[i].split("=");
+		cookieArray[unescape(name[0])] = unescape(name[1]);
+	}
+	return cookieArray;
+}
+
+function SetCookie(visits) {
+	var expireDate = new Date();
+	var today = new Date();
+	// Set an expiration date in the future.
+	expireDate.setDate(365 + expireDate.getDate());
+	// Save the number of visits.
+	document.cookie = "Visits=" + visits + "; expires=" + expireDate.toGMTString() + ";"; 
+	// Save today's time and date as the last visit.
+	document.cookie = "LastVisit=" + escape(today.toLocaleString()) + "; expires=" + expireDate.toGMTString() + ";";
+	//alert((new Date()).toString() + "\n" + (new Date()).toLocaleString() + "\n" + (new Date()).toGMTString());
+}
+
+function OnLoad(){
+	window.oInfo = window.document.getElementById("info");
+	//alert(document.cookie);///
+	var sText = "";
+	if("" == document.cookie) {
+	   SetCookie(1);
+	   sText = "Toto je vaše první návštěva.";
+	}else{
+	   var cookies = ParseCookie();
+	
+	   // Vypíše uvítání a přičte počítadlo.
+	   sText = "Vítejte zpátky. Navštívil jste nás " + cookies.Visits++ + "x, ";
+	   sText += "naposledy " + cookies.LastVisit + ".";
+	   // Zamění stávající cookies za nové.
+	   SetCookie(cookies.Visits);
+	}
+	window.oInfo.innerHTML = sText;
+}
+window.onload = OnLoad;
+</script>
+
+</body>
+</html>

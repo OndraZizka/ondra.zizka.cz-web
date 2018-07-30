@@ -1,0 +1,27 @@
+
+FreeMarker Tricks
+******************
+
+How to split text by lines in FreeMarker
+--------------------------
+
+/--code html
+<#assign photos>
+DSC_0005.jpg
+DSC_0008.jpg
+DSC_0013.jpg
+DSC_0020.jpg
+</#assign>
+<#assign photos = photos?split('\\n', 'rmc') >
+\--
+
+How to get random numbers in FreeMarker
+-------------------------
+
+/--code html
+<#assign nextRandom = .now?string["HHmmssSSS"]?number>
+<#list posts[0..*MAX_POSTS] as posts>
+    <img src="${photos[nextRandom % photos?size]}">
+    <#assign nextRandom = nextRandom * 13 % 104729>
+</#list>
+\--

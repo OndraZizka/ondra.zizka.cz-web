@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250"/>
+	<meta name="Author" content="Ondřej Žižka; ondra at dynawest.cz"/>
+	<style type="text/css">body { }</style>
+	<script type="text/javascript">
+function cAbstractClass(){
+  //alert(this);
+  // Pokud konstruujeme prototyp odvozené třídy, nereagovat:
+  // cImplementingClass.prototype = new cAbstractClass();
+  if(this.constructor != arguments.callee)
+    if(!this.CheckInterface())
+      alert(this.constructor.name + " neimplementuje všechny povinné metody!");
+}
+
+cAbstractClass.prototype.CheckInterface = function(){
+  // this ukazuje na nově vytvářený objekt.
+  // this.constructor na konstruktor odvozené třídy.
+  // Její prototyp musí implementovat potřebné metody.
+  if(!this.constructor.prototype.PrvniPovinnaMetoda ||
+    "function" != typeof this.constructor.prototype.PrvniPovinnaMetoda) return false;
+  if(!this.constructor.prototype.DruhaPovinnaMetoda ||
+    "function" != typeof this.constructor.prototype.DruhaPovinnaMetoda) return false;
+}
+	
+function cImplementingClass(){
+  var fConstructor = this.constructor;
+  // Nejprve změníme konstruktor 
+  this.constructor = arguments.callee;
+  fConstructor.apply(this, this.arguments);
+  // arguments.callee.prototype.constructor.apply(this, this.arguments);
+}
+cImplementingClass.prototype = new cAbstractClass();
+cImplementingClass.prototype.PrvniPovinnaMetoda = function(){}
+// Záměrne vynecháme. Při konstrukci objektu třídy cImplementingClass
+// bychom měli být upozorněni na to, že metoda není implementována.
+//cImplementingClass.prototype.DruhaPovinnaMetoda = function(){}
+
+var x;
+x = new cImplementingClass();
+	</script>
+<title> Provázanost JavaScriptu a CSS; JavaScript - Diplomová práce, Ondřej Žižka </title></head>
+<body>
+
+</body></html>

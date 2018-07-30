@@ -1,0 +1,140 @@
+- MSXML reference: http://www.perfectxml.com/msxmlDOM.asp
+i WSH:
+<ul>
+<li><a href="http://homepages.go.com/%7Esbondi/powerscripting/index.html">Power Scripting</a>
+</li><li><a href="http://www.winscripter.com/">WinScripter.com</a>
+</li><li><a href="http://cwashington.netreach.net/">Win32 Scripting</a>
+</li><li><a href="http://www.windows-script.com/">Windows-Script.com</a>
+</li><li><a href="http://ourworld.compuserve.com/homepages/Guenter_Born/index0.htm">Gunter Born</a>
+</li></ul>
+
+- Tisk prilohy:
+index.html
+inc.bunky.js
+inc.system.js
+inc.panacek.js
+inc.predmety.js
+budova.banka.html
+miner.css
+
+x Dotazy Jára:
+  x Najít "The game was" - pøeložit?
+
+- Požadavky Jára:
+  + Úprava první stránky
+  + Èíslování kapitol
+	+ Okraje ke høbetu zjistit kolik je tøeba (minimálnì 2 cm, a to je úplnì nadoraz, takže tak 3,5)
+	x Vytisknout možná oboustranì - dvì verze, jedna pro liché stránky, jedna pro sudé
+	+ Napsat závìr se shrnutím
+	+ Zkusit nìco udìlat s pøedložkami - skript (jo, funguje perfektnì)
+	+ Napsat i nevýhody XHTML a tam alibizovat nešvary tištìné podoby
+
+i Kniharství - Katka  [ detail firmy ]
+  Adresa:    	Skuherského 30
+  370 05 Ceské Budejovice
+  Telefon:  	387437613
+
+i ZDECO Telefon:  	38 635 19 50
+
+- Do vazby pøidat kopii zadání
+- Dodìlat pøílohy
++ Nekompatibilita Miner JS s MSIE pøendána z Pøedmluvy do kapitoly B.1.3. Zvolené prostøedky pro zobrazení
++ "Seznam rezervovaných identifikátorù je v pøíloze." - tak je tam dát (v pøíloze => ve specifikaci)
++ Pøidat doznání a podìkování
++ Provázanost JavaScriptu s HTML!!!  k-a-3-3
+- Zvolené prostredky pro zobrazení - budovy = nová okna
++ Realizace jednotlivých cástí - asi vynechat, již obsaženo.
++ Jára: Co s odkazy v tištené podobì? Nic - nechat jak jsou.
++ Zajistit vazbu (ujistit se, že to budou mít do 11:00)
+  + Budou: ZDECO - donesu až do 17:00 a ráno to bude.
+	
++ Predelani () na cerveny
+function\(([^\)])\){([^}<])}
+function\(([^\)])\)
+
+<span class="k">function</span>\(([^\)]*)\)[[:space:]]*{([^}<]*)}
+<span class="k">function</span><span class="o">(</span>\1<span class="o">){</span>\2<span class="o">}</span>
+
++ MSIE nedokaze udrzet v CODE white-space: pre; - je treba predelat na PRE
+<code class="js([^l])
+<pre><code class="js\1
+
+<code class="js([^l].+)</code>
+<pre><code class="js\1></code>
+
+
++ Hlavicky XHTML:
+  <!-- <?xml version="1.0" encoding="windows-1250"?> -->
+  <!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> -->
+  <!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> -->
+  <!--  xmlns="http://www.w3.org/1999/xhtml" xml:lang="cz" -->
+
+- Scripting Languages: http://www.mvps.org/scripting/languages/
++ SVG hry: http://www.guide.cz/svg/
++ SVG forum: http://www.svg-cafe.com/
++ JavaScript ve Flashi:
+  + http://www.x-flash.org/as/docs/extensibilidad1.htm
+  + http://www.macromedia.com/devnet/mx/flash/articles/jsapi.html
+i Stary Netscapy: http://sillydog.org/narchive/full123.php
+
+Tvorba aplikací na stranì klienta
+s použitím technologie JavaScript
+
+JavaScript, EcmaScript, LiveScript, JScript, tenký klient, klientská aplikace, klietské aplikace, dekompozice
+
+Creating client-side applications
+using the JavaScript technology
+
+JavaScript, EcmaScript, LiveScript, JScript, thin client, client application, client applications, decomposition
+
+
+http://www.ecma-international.org/publications/standards/Ecma-262.htm
+http://www.crockford.com/javascript/
+
+- JavaScript: The World's Most Misunderstood Programming Language
+  http://www.crockford.com/javascript/javascript.html
+	
+- Propojeni JavaScriptu a Javy: interpretace Javou a kompilace do .class (Rhino) a kompilace do CLR (Mono icvm)
+  http://chimpen.com/things/archives/001427.php
+	
+- JavaScript 2.0:
+  http://www.mozilla.org/js/language/js20/rationale/syntax.html
+	
+- JavaScript Language Resources
+  http://www.mozilla.org/js/language/index.html
+
+
+	
+-------
+Otázky:
++ Jak citovat
++ Jak moc citovat
++ Nakolik poèítat se znalostmi ètenáøe (jak je tøeba, bez omezení)
++ Pøedsádka a ostatní formality (pøedsádka, anotace cz + en, podìkování, prohlášení, kopie oficiálního zadání)
++ Velikost písma - 12pt? (10pt)
++ Kolik vìnovat teoretické a kolik praktické èásti (takhle vpoøádku)
++ Termíny (29.4.2005, prošvihnuto)
+	
+	
+
+-moz-opacity: 50%;       filter: alpha(opacity=50%)
+-moz-outline-color
+-moz-outline-width
+-moz-outline-style
+
+-moz-box-sizing: border-box / content-box
+
+pre {
+  background: #eee;
+  padding: 3px 8px;
+  border: 1px solid #ccc;
+  -moz-border-radius: 12px;
+  width: auto;
+}
+	
+-moz-border-radius-topright: -12px;
+-moz-border-radius-topleft: 10px;
+-moz-border-radius-bottomright: 10px;
+-moz-border-radius-bottomleft: 10px;	
