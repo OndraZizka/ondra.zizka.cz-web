@@ -21,6 +21,12 @@ by using `Ctrl+F` :-)
 * "JBoss WebServices (JBossWS) notes":jboss/web-services.texy
 * "Simple JBoss AS clustering example":jboss/clustering-session-replication.texy (2 nodes, JSP session replication).
 
+
+My usual MySQL JDBC params:
+/--code plain .[brush:]
+jdbc:mysql://localhost/test?characterEncoding=UTF-8&characterSetResults=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull
+\--
+
 Maven Tips
 ==========
 
@@ -370,7 +376,7 @@ Začátky se Spring AOP (Aspect Oriented Programming)
 ===================================================
 
 Rozchodil jsem Spring AOP a zde dávám
-"stručný núvod, jak si Spring AOP":navod-spring-aop-zacatky.texy rozchodíte taky.
+"stručný návod, jak si Spring AOP":navod-spring-aop-zacatky.texy rozchodíte taky.
 
 
 FreeMarker templates via Spring in non-web application
