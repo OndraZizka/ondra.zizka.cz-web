@@ -8,41 +8,32 @@ by using `Ctrl+F` :-)
 ----------------------------------------------------
 
 
-"Quartz intro":howto/quartz-howto-intro.texy and "how to use Quartz in Wicket":web/wicket/wicket-quartz-scheduler-example.texy
-
-"My Wicket notes":web/wicket/index.texy
-
-"SVNbot":jboss/svn-commit-irc-bot-java.texy - an IRC bot announcing SVN commits, written in Java
-
-My usual MySQL JDBC params:
-/--code plain .[brush:]
-jdbc:mysql://localhost/test?characterEncoding=UTF-8&characterSetResults=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull
-\--
-
-"MySQL JDBC driver for Maven":http://ondrazizka.googlecode.com/svn/maven/mysql/mysql-connector-java/5.1.12/ - mavenized Connector/J
-
-"PircBot Mavenized":http://code.google.com/p/ondrazizka/source/browse/#svn/maven/cz/dynawest/third/pircbot/PircBot
-- PircBot IRC Bot framework library in a provisory Maven repository.
-
-"JAXB example":jaxb/jaxb-howto-introduction-tutorial.texy - keywords: JAXB howto example tutorial intro.
-
-"Sardine - WebDAV client library for Java":sardine-java-webdav-client-library.texy
-
-"JBoss AS Java system variables":jboss/jboss-as-startup-run-sh-java-system-variables.texy (`-D` for `bin/run.sh`)
-
-"JBoss Operation Network and Tomcat on Windows 2003: No-go":jboss/Tomcat-JON-Windows-2003-2008.texy
-
-"How to stop Jetty":jetty-how-to-stop.texy
-
-"JBoss WebServices (JBossWS) notes":jboss/web-services.texy
-
-"Simple JBoss AS clustering example":jboss/clustering-session-replication.texy (2 nodes, JSP session replication).
-
+* "Quartz intro":howto/quartz-howto-intro.texy and "how to use Quartz in Wicket":web/wicket/wicket-quartz-scheduler-example.texy
+* "My Wicket notes":web/wicket/index.texy
+* "SVNbot":jboss/svn-commit-irc-bot-java.texy - an IRC bot announcing SVN commits, written in Java
+* "MySQL JDBC driver for Maven":http://ondrazizka.googlecode.com/svn/maven/mysql/mysql-connector-java/5.1.12/ - mavenized Connector/J
+* "PircBot Mavenized":http://code.google.com/p/ondrazizka/source/browse/#svn/maven/cz/dynawest/third/pircbot/PircBot - PircBot IRC Bot framework library in a provisory Maven repository.
+* "JAXB example":jaxb/jaxb-howto-introduction-tutorial.texy - keywords: JAXB howto example tutorial intro.
+* "Sardine - WebDAV client library for Java":sardine-java-webdav-client-library.texy
+* "JBoss AS Java system variables":jboss/jboss-as-startup-run-sh-java-system-variables.texy (`-D` for `bin/run.sh`)
+* "JBoss Operation Network and Tomcat on Windows 2003: No-go":jboss/Tomcat-JON-Windows-2003-2008.texy
+* "How to stop Jetty":jetty-how-to-stop.texy
+* "JBoss WebServices (JBossWS) notes":jboss/web-services.texy
+* "Simple JBoss AS clustering example":jboss/clustering-session-replication.texy (2 nodes, JSP session replication).
 
 Maven Tips
 ==========
 
-"Maven and Log4j: Missing JMX dependencies":maven/log4j-missing-jmx-sun-deps.texy - mavenized jmxri and jmxtools.
+* "Maven and Log4j: Missing JMX dependencies":maven/log4j-missing-jmx-sun-deps.texy - mavenized jmxri and jmxtools.
+* "Profile activation and properties":maven/profile-activation-and-properties.texy
+* "How to add existing Java project's `.jar`s to Maven repository":maven/how-to-add-existing-project-jar-to-maven-repository.texy
+* "How to create an application distribution package with Maven":maven/maven-create-distribution-package.texy
+* "How to create a JNPL file (for Java WebStart) with Maven":maven/maven-create-jnlp-file.texy
+* "Quick and dirty mavenization":maven/mavenize-quick-and-dirty.texy - How to install an existing library with dependencies to Maven repository.
+* I've presented Maven 2 for the company I work for. Download here: "Maven presentation for Red Hat / JBoss":download/Maven2presentation.pdf. See https://www.jboss.org/community/docs/DOC-13358 .
+* A short polemic against "Ivy / Maven2 Comparison":http://ant.apache.org/ivy/m2comparison.html:
+* Read my own opinion about "How Maven 2 compares to Ivy":maven/maven-ant-ivy-comparison.texy.
+* "Short code for Antrun Maven plugin":maven/ant-run-plugin-short.texy
 
 To start maven goals in debug mode:
 /--code xml .[brush:]
@@ -55,29 +46,11 @@ mvn test -DargLine="-Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=d
 \--
 
 
-"Profile activation and properties":maven/profile-activation-and-properties.texy
-
-"How to add existing Java project's `.jar`s to Maven repository":maven/how-to-add-existing-project-jar-to-maven-repository.texy
-
-"How to create an application distribution package with Maven":maven/maven-create-distribution-package.texy
-
-"How to create a JNPL file (for Java WebStart) with Maven":maven/maven-create-jnlp-file.texy
-
-"Quick and dirty mavenization":maven/mavenize-quick-and-dirty.texy - How to install an existing library with dependencies to Maven repository.
-
-I've presented Maven 2 for the company I work for. Download here: "Maven presentation for Red Hat / JBoss":download/Maven2presentation.pdf.
-<!-- See https://www.jboss.org/community/docs/DOC-13358 . -->
-
-A short polemic against "Ivy / Maven2 Comparison":http://ant.apache.org/ivy/m2comparison.html:
-Read my own opinion about "How Maven 2 compares to Ivy":maven/maven-ant-ivy-comparison.texy.
-
-"Short code for Antrun Maven plugin":maven/ant-run-plugin-short.texy
-
 
 Java alternative of PHP's `preg_replace_callback`
 =================================================
 
-"Here":php_preg_replace_callback.texy.
+* "Here":php_preg_replace_callback.texy.
 
 
 XSLT transformation in Java
@@ -93,44 +66,37 @@ My "XSLT + Java notes":xslt-commandline-with-xalan.texy show:
 What I would change about Java
 ==============================
 
-"My Java feature requests":java-feature-requests.texy
-
+* "My Java feature requests":java-feature-requests.texy
 
 
 Enum with a lookup map
 ======================
 
-
-"Enum with a lookup map":enum-with-lookup-map.texy
+* "Enum with a lookup map":enum-with-lookup-map.texy
 
 
 
 JAXB - a List with inherited classes
 ====================================
 
-"JAXB - a List with inherited classes":jaxb/jaxb-list-with-inherited-classes.texy
-
+* "JAXB - a List with inherited classes":jaxb/jaxb-list-with-inherited-classes.texy
 
 
 Groovy bootloader bug with DOMBuilder
 =====================================
 
-Is "this":groovy-dombuilder-bug.texy a bug?
+* Is "this":groovy-dombuilder-bug.texy a bug?
 
 
 
 JBoss
 =====
 
-Unsign JBoss AS distribution: `find . -type f -iname '*.jar' -exec zip -d '{}' META-INF/JBOSSCOD.{SF,RSA} \;`
-
-"Filesystem Resource Adapter":jboss/filesystem-resource-adapter.texy
-
-"Bootstrapping JBoss Embedded server":jboss/jboss-embedded-bottstrapping.texy A very brief how-to - just a maven deps and the bootstraping code.
-
-"Common JBoss AS mistakes and exceptions":jboss/common-mistakes-and-exceptions.texy
-
-"JBoss vs. Spring":jboss/jboss-vs-spring.texy An attempt to answer what to use as a base for an enterprise web application.
+* Unsign JBoss AS distribution: `find . -type f -iname '*.jar' -exec zip -d '{}' META-INF/JBOSSCOD.{SF,RSA} \;`
+* "Filesystem Resource Adapter":jboss/filesystem-resource-adapter.texy
+* "Bootstrapping JBoss Embedded server":jboss/jboss-embedded-bottstrapping.texy A very brief how-to - just a maven deps and the bootstraping code.
+* "Common JBoss AS mistakes and exceptions":jboss/common-mistakes-and-exceptions.texy
+* "JBoss vs. Spring":jboss/jboss-vs-spring.texy An attempt to answer what to use as a base for an enterprise web application.
 
 
 How to transform `web.xml` with XSTL and XPath
@@ -147,17 +113,14 @@ So you have to match e.g `web-xml` like this:
 How to incrementally update a JAXB-mapped object
 ================================================
 
-Using a factory delegating the setters to the original object.
-//To be eventually written later.//
-
-
+Using a factory delegating the setters to the original object. //To be eventually written later.//
 
 
 
 JSON with JAXB - Jackson
 ========================
 
-How to "create JSON output from POJOs using JAXB annotations":jaxb/jaxb-json-jackson-howto.texy.
+* How to "create JSON output from POJOs using JAXB annotations":jaxb/jaxb-json-jackson-howto.texy.
 
 
 JBoss AOP in a standalone application - example / howto
@@ -174,14 +137,14 @@ Few articles about JBoss AOP:
 JBoss Microcontainer in a standalone application
 ======================================================
 
-A "brief introduction to usage of JBoss MC in a standalone app":jboss/jboss-microcontainer-howto-example-standalone-app.texy.
+* A "brief introduction to usage of JBoss MC in a standalone app":jboss/jboss-microcontainer-howto-example-standalone-app.texy.
 
 
 
 Java Concurency, Threads and Synchronization
 ============================================
 
-Attempt for "one modifier and many concurent readers":modifier-and-concurent-readers.texy - a variant of producers and consumers problem.
+* Attempt for "one modifier and many concurent readers":modifier-and-concurent-readers.texy - a variant of producers and consumers problem.
 
 
 
@@ -189,7 +152,7 @@ Maven: Order of execution of plugins in profiles
 ================================================
 
 I was curious in which order Maven executes the plugins:
-Whether it uses POM profile appearance order, or uses the ordering from the command line's `-P` param value.
+ Whether it uses POM profile appearance order, or uses the ordering from the command line's `-P` param value.
 
 Here is the "result of my try-out":maven/maven-plugin_in_profiles_execution_order.texy.
 
@@ -199,7 +162,7 @@ Spring AOP common mistake: CGLIB2 is not available
 ==================================================
 
 You've added a new bean to Spring. And want to do some AOP over its methods.
-But you run into this:
+ But you run into this:
 
 /--code text .[brush:]
 org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'udalostiQueueController' defined in class path resource [properties/Actions.xml]: Initialization of bean failed; nested exception is org.springframework.aop.framework.AopConfigException: Cannot proxy target class because CGLIB2 is not available. Add CGLIB to the class path or specify proxy interfaces.
@@ -321,14 +284,11 @@ How to read properties file in Spring Framework
 A new short tutorial on "how to provide properties read from a file to a bean":howto-spring-reading_properties_file.texy.
 
 
-
-
 Parametrized Spring Configuration
 =================================
 
 Here's a short sketch of my idea about "parametrizing Spring configuration":howto-substitutions_in_spring_configuration-tutorial.texy,
 using placeholders (`PropertyPlaceholderConfigurer`) and overrides (`PropertyOverrideConfigurer`).
-
 
 
 Web service client from WSDL using Axis2
@@ -486,8 +446,6 @@ which returns `NULL` if `expr1` = `expr2` is true, otherwise returns `expr1`.
 /--code sql .[brush:]
 INSERT INTO table SET name = NULLIF(#name#,'');
 \--
-
-
 
 
 
@@ -770,6 +728,13 @@ Ondra Žižka
 </blockquote>
 
 
+
+My usual MySQL JDBC params
+==========================
+
+/--code plain .[brush:]
+jdbc:mysql://localhost/test?characterEncoding=UTF-8&characterSetResults=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull
+\--
 
 
 

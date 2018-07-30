@@ -1,11 +1,12 @@
-HHH000104: firstResult/maxResults specified with collection fetch; applying in memory!
-**************************************************************************************
+Hibernate HHH000104: firstResult/maxResults specified with collection fetch; applying in memory
+*************************************************************************************
 
 Symptoms
 ========
 
 /--code
-15:08:58,096 WARN  [org.hibernate.hql.internal.ast.QueryTranslatorImpl] (http-/127.0.0.1:8080-1) HHH000104: firstResult/maxResults specified with collection fetch; applying in memory!
+15:08:58,096 WARN  [org.hibernate.hql.internal.ast.QueryTranslatorImpl] (http-/127.0.0.1:8080-1)
+  HHH000104: firstResult/maxResults specified with collection fetch; applying in memory!
 \--
 
 Cause
@@ -42,7 +43,7 @@ Solutions
                 .setParameter(2, version)
                 .setMaxResults(1)
                 .getResultList();
-        
+
         if (result.isEmpty())  return null;
         return result.get(0);
     }
