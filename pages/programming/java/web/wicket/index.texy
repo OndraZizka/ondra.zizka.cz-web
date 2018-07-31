@@ -20,10 +20,10 @@ Random Wicket Stuff
 ===================
 
 * "Wicket and Ajax I: Basic Wicket Form validation":http://www.jroller.com/karthikg/entry/wicket_and_ajax
-* "Filesystem-path-based UrlCodingStrategy":wicket-path-based-url-coding-strategy.texy
-* "Wicket's UrlCodingStrategy's":wicket-url-coding-strategy.texy
-* "Wicket servlet and filter in an embedded Jetty":wicket-servlet-filter-jetty-embedded.texy
-* "Wicket IPageStore implementation with Infinispan (formerly JBoss Cache)":wicket-pagestore-jbosscache-infinispan-integration.texy
+* "Filesystem-path-based UrlCodingStrategy":wicket-path-based-url-coding-strategy.html
+* "Wicket's UrlCodingStrategy's":wicket-url-coding-strategy.html
+* "Wicket servlet and filter in an embedded Jetty":wicket-servlet-filter-jetty-embedded.html
+* "Wicket IPageStore implementation with Infinispan (formerly JBoss Cache)":wicket-pagestore-jbosscache-infinispan-integration.html
 
 
 Debugging Wicket in Maven

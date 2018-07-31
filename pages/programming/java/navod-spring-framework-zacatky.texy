@@ -8,7 +8,7 @@ Spring má více částí, takže se dá využívat lecjak.
 
 - **Spring Web MVC** - framework pro návrh webových aplikací ve stylu //Model, View and Controller//
 - **Spring JDBC** - zjednodušení práce s JDBC, něco jako "iBatis":http://ibatis.apache.org/
-- **Spring AOP** - viz článek "Začátky se Spring AOP - návod":navod-spring-aop-zacatky.texy
+- **Spring AOP** - viz článek "Začátky se Spring AOP - návod":navod-spring-aop-zacatky.html
 - **Spring Inversion of Control** (dependency injection, BeanFactory, ApplicationContext) - knihovna pro vnější konfiguraci
 - a "další":http://www.springframework.org/about...
 
@@ -27,7 +27,7 @@ je technika, pomocí které především oddělíte konfiguraci od kódu a také
 Zprvu se vám může zdát, že stačí normální konfigurace přes `Properties`
 a dělat to níže popisovaným způsobem je složitější. A máte pravdu!
 Ale vtip je v tom, že pokud děláte J2EE aplikaci,
-postupem času začne váš projekt používat 
+postupem času začne váš projekt používat
 desítky((Například já teď pracuju na celkem jednoduchém projektu, ale už teď používám Hibernate přes JPA, iBatis, FreeMarker a další.)) modulů,
 z nichž každý má vlastní způsob konfigurace.
 
@@ -54,7 +54,7 @@ Hlavní třídou k tomuto je buď `ApplicationContext`, nebo //Bean Factory// ne
 kde najdete lepší tutoriál než je tento, ale v angličtině.</em>
 
 
-Zatímco běžně byste třeba pro databázové spojení měli třídu `DatabaseManager`, 
+Zatímco běžně byste třeba pro databázové spojení měli třídu `DatabaseManager`,
 z ní udělali jedináčka (singleton), a tuto třídu inicializovali a vložili kamsi do hlavního objektu aplikace,
 se Springem přenecháte vytvoření a konfiguraci objektu na Springu a v kódu ostatních si o něj vždy jen požádáte.
 
@@ -76,7 +76,7 @@ import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 
 public void init() {
-	   
+
   XmlBeanFactory bf = new XmlBeanFactory( new ClassPathResource( "properties/SpringBeans.xml" ));
 
 }
@@ -90,7 +90,7 @@ import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.web.context.support.ServletContextResource;
 
 public void init() {
-	   
+
   XmlBeanFactory bf = new XmlBeanFactory(new ServletContextResource(this.getServletContext(), "/WEB-INF/applicationContext.xml"));
 
 }
@@ -183,7 +183,7 @@ Ještě se podíváme na soubor `userDAOs.xml`.
  <bean id="userDAO" class="cz.dynawest.isir.dao.UserDAO">
    <property name="..." ref="..."/>
  </bean>
- 
+
  <bean id="udalostDAO" class="cz.dynawest.isir.dao.UdalostDAO">
    <property name="..." ref="..."/>
  </bean>

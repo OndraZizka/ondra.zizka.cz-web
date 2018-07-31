@@ -1,7 +1,7 @@
 How to add existing project's `jar` to SVN-based Maven repository
 *****************************************************************
 
-//See also//: "Quick and dirty mavenization of an existing project":mavenize-quick-and-dirty.texy
+//See also//: "Quick and dirty mavenization of an existing project":mavenize-quick-and-dirty.html
 
 
 Bash script for the impatient
@@ -37,7 +37,7 @@ echo "
   <packaging>pom</packaging>
   <version>0.0-SNAPSHOT</version>
   <name>Fake Maven deps from JARs</name>
-  
+
   <dependencies>
 " >> pomWithDeps.xml
 
@@ -49,7 +49,7 @@ for JAR_PATH in $LIB_PATH/*.jar ; do
   echo "    <dependency><groupId>$GROUP</groupId><artifactId>$ARTIFACT</artifactId><version>0.0</version></dependency>" >> pomWithDeps.xml
 done
 
-echo "  
+echo "
   </dependencies>
 
 </project>" >> pomWithDeps.xml
@@ -96,7 +96,7 @@ To add a new version, do the following:
 \--
 
 
-* `~/.m2/repository/` is your local Maven repository. 
+* `~/.m2/repository/` is your local Maven repository.
    On windows it is usually `c:\Documents and Settings\user\.m2\repository\`.
 * The `pom.xml` is there because it contains dependency definitions.
 

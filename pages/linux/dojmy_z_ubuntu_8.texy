@@ -19,8 +19,8 @@ Ve verzi 7 (Gutsy Gibon) již byla jakási grafická utilita, která měla být 
 ale ani ta si s touto konfigurací neporadila.
 
 Přelomem pro mě byla verze 8 (Hardy Heroin), ale nikoliv proto, že bych v ní již dokázal přesměrovat výstup grafiky,
-ale protože jsem si koupil desktop :-) Do něj jsem dal starší disk, co se válel v 
-"počítači, který jsem prodal":/stranky/osobni/prodavam_shanim.texy
+ale protože jsem si koupil desktop :-) Do něj jsem dal starší disk, co se válel v
+"počítači, který jsem prodal":/stranky/osobni/prodavam_shanim.html
 "spolubydlovi":http://www.steigl.com/, a na jeho posledních asi 30 GB šlo Ubuntu.
 
 
@@ -30,7 +30,7 @@ Spokojenost
 Musím říci, že Ubuntu již dospělo do stavu, kdy i člověk jako já, který neprahne po tom, aby si vše kompiloval,
 nastavoval v texťácích a podobně, jej zvládne bez problémů nejen používat, ale i spravovat.
 
-Zásluhu na tom má především vynikající integrace. Na úpravě Gnome je vidět, 
+Zásluhu na tom má především vynikající integrace. Na úpravě Gnome je vidět,
 že Ubuntu se snaží vyjít vstříc uživatelům windows (což je podle mě dobře),
 a to se projevuje i jinde:
 
@@ -60,7 +60,7 @@ Je tu ale i pár nevýhod:
 
 Co jsem ještě nezkoušel:
 * **Tisk** (asi půjde)
-* **Visual Studio** přes Wine (asi nepůjde) 
+* **Visual Studio** přes Wine (asi nepůjde)
 
 Celkově bych to tedy shrnul tak, že Ubuntu 8 už je systém, který je možné dát do rukou zkušenému Windowsákovi, aniž by neustále něco šteloval, ladil a opravoval, jen aby moh už konečně pohodlně pracovat.
 
@@ -70,7 +70,7 @@ Nic takového ale pro mě Linux zatím nenabízí:
 * Mít super operační systém je fajn, ale prakticky se to u mě nijak neprojevuje - Windows mi nepadají, běhají rychle a viry nemám.
 * Gnome je moc hezké prostředí (narozdíl od hnusně přeplácaného kýčovitě nablýskaného infantilního KDE (já vím že se dá vzhled měnit, ale nechce se mi), ale na tom zas tak moc nesejde...
 * Compiz a Beryl jsou fajn věci, ale já, který Windows XP vždy ihned po instalaci přenastavuje do vzhledu Windows 2000, takové věci ani nevnímám.
-* Ve Windows toho mám dost rozdělaného - poštu, kontakty, záložky... nechci trávit hodiny exportem a importem 
+* Ve Windows toho mám dost rozdělaného - poštu, kontakty, záložky... nechci trávit hodiny exportem a importem
 * Hry - i když hraju zřídkakdy a dalo by se přebootovat...
 * a samozřejmě velmi vyladěný oblíbený software, který přeci jen nativně funguje o něco lépe: Total Commander HomeSite, Miranda IM, ... (tím vyladěním myslím pluginy, nastavení, klávesové zkratky, atd atd... prostě ty tisíce malých drobností, které byste dohromady dělali celé dny, a přenést nejdou).
 
@@ -88,7 +88,7 @@ Mé střednědobé dojmy z této distribuce a celkově dojmy z Linuxu dané jej�
 Fonty
 =====
 
-V původním textu si stěžuji na antialiasing. Pokusil jsem se to řešit podle 
+V původním textu si stěžuji na antialiasing. Pokusil jsem se to řešit podle
 "návodu na zprovoznění microsoftích písem v Ubuntu":http://www.techdot.eu/index.php/2008/01/27/windows-xp-fonty-pro-ubuntu/.
 Nevím, jestli jsem si už zvyknul, nebo tento návod zabral, každopádně s `MS Courier New` v NetBeans
 už se mi pracuje hezky a s fonty není problém.
@@ -129,22 +129,22 @@ Chování při zátěži disku
 ------------------------
 
 Nevím, zda je to nastavením, které neznám, ale Ubuntu se docela špatně vyrovnává s velkou zátěží disku.
-Celý systém začne reagovat velmi pomalu. Když jsem si na disk překopíroval svoji legální sbírku empétrojek 
-a dal ji indexovat Amarokem a na pozadí běžely testy z EJB modulu TCK, celý systém se stal 
-na několik desítek minut skoro nepoužitelným, a to mám 2x QuadCore. 
+Celý systém začne reagovat velmi pomalu. Když jsem si na disk překopíroval svoji legální sbírku empétrojek
+a dal ji indexovat Amarokem a na pozadí běžely testy z EJB modulu TCK, celý systém se stal
+na několik desítek minut skoro nepoužitelným, a to mám 2x QuadCore.
 Windows jsou v takové situaci stále svěží a čilé, a to i na obyč DualCore.
 
 Komunikace s médii, síťová komunikace
 -------------------------------------
 
 Naopak velmi dobře je na tom Linux v práci se sítí a nejrůznějšími protokoly.
-Například FTP lítá na Linuxu mnohem lépe. Jedinou výjimkou je implementace 
+Například FTP lítá na Linuxu mnohem lépe. Jedinou výjimkou je implementace
 virtuálního diskového systému přes SSH (gvfs),
 která je schopná na minutu zaseknout programy, které naivně používá blokující volání na filesystem -
 a to jsou asi všechny: Gnome, Krusader, Konqueror... kupodivu programy psané v Javě (např. NetBeans)
 s tím problém neměly a prostě načítaly výpis adresářů postupně.
 
-Stejně tak s některým HW asi dokáže Linux pracovat efektivněji, 
+Stejně tak s některým HW asi dokáže Linux pracovat efektivněji,
 protože když jsem na Ubuntu kopíroval fotky z flašky, lítalo to kolem 32 MB/s,
 zatímco na Windows mezi 20 a 25 MB/s. Dlužno ale dodat, že šlo o jiné počítače,
 takže je to dost možná právě tím. Budu muset vyzkoušet na stejném...
@@ -179,7 +179,7 @@ Nyní tedy krátce k dojmům z Javy na linuxu.
 
 Pokud jde o rychlost, žádný výrazný rozdíl oproti Windows jsem nezaznamenal.
 Trochu potíže jsem měl pouze s výchozí instalací OpenJDK (či jak se to jmenuje),
-kterou jsem chtěl nahradit JDK od SUNu, ovšem po odinstalaci se po ní 
+kterou jsem chtěl nahradit JDK od SUNu, ovšem po odinstalaci se po ní
 například NetBeans vehementně sháněly, a musel jsem přepisovat konfigurační soubor
 (což jakožto původem nelinuxák samozřejmě považuji za nehorázný opruz :-)
 
@@ -200,7 +200,7 @@ Miranda
 Miranda je pro mě natolik důležitá, že jí věnuju samostatný podnadpis :-)
 Ve Wine chodí naprosto skvěle, až na jedinou drobnost - IRC plugin.
 Ten se prostě nepřipojí. A jelikož IRC je hlavní IM komunikační kanál mojí společnosti,
-Miranda letěla. Pidgin je sice proti Mirandě velký shit, 
+Miranda letěla. Pidgin je sice proti Mirandě velký shit,
 ale přeci jen mít na IRC Pidgin a vedle toho Mirandu na zbylých pět zpráv denně přes ICQ/Jabber... e-e.
 
 
@@ -227,7 +227,7 @@ poprvé bych mu s klidným srdcem podal právě instalační CD Ubuntu 8.04.
 Ubuntu je občas terčem kritiky komunity Linuxu, že má sice nejvíce uživatelů,
 ale nijak nepřispívá rozvoji Linuxu. No ale co se divíte? Copak to není logické?
 Kdo z komunity přispívá? Jsou to jednak programátoři, které programování baví natolik,
-že ve volném čase programují pro Linuxovou komunitu, a jednak profesionálové ze 
+že ve volném čase programují pro Linuxovou komunitu, a jednak profesionálové ze
 "společností vyvíjejících Linux distribuce":http://www.redhat.com/, jako je např Red Hat.
 
 A teď:

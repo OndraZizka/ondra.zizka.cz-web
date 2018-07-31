@@ -4,7 +4,7 @@ My Linux Notes
 **************
 
 
-"Installing Trac 12 on Centos 5.5 - requires Python 2.6":centos-trac12-sqlite-svn16-python26.texy
+"Installing Trac 12 on Centos 5.5 - requires Python 2.6":centos-trac12-sqlite-svn16-python26.html
 
 
 SSH tunelling
@@ -116,7 +116,7 @@ function resolve(){
   return 0
 }
 
-##  If called instead of sourced 
+##  If called instead of sourced
 if [ "resolve" == "${0: -7}" ] ; then
   if [ "" == "$1" ] ; then
     echo "Usage:  resolve <softlink>";

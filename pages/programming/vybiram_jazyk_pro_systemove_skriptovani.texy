@@ -18,7 +18,7 @@ Bash je jazyk hrůzy. Ne tak hrozný, jako Caché ObjectScript, ale pořád dost
 Jasně, chápu... je to jazyk určený hlavně pro práci v prostředí linuxu,
 a tedy pro práci převážně s GNU programy, které se vyvíjely v symbióze s Bashem.
 V interaktivním režimu je stále dobře použitelný pro jednořádkové příkazy.
-Pokud ale mám louskat několikastránkový skript, kde jsou takových jednořádkových 
+Pokud ale mám louskat několikastránkový skript, kde jsou takových jednořádkových
 příkazů desítky a každý je taková malá hra "hádej kolik syntaxí je zde použito",
 házím flintu do žita.
 
@@ -26,7 +26,7 @@ Doba pokročila, a skoro začíná být důležitější podpora novodobých tec
 jako je Java, XML, webové služby, a v neposlední řadě je velmi příjemné,
 když lze využít výhod IDE - doplňování, refactoring atd.
 
-Jak je patrné z těchto stránek, jsem momentálně fanda Javy - 
+Jak je patrné z těchto stránek, jsem momentálně fanda Javy -
 a to ačkoliv jsem si vědom (někdy až bolestně) všech jejích nevýhod.
 A jako každý (programátor), občas chci napsat stručný skript,
 který provede pár operací podle několika zadaných parametrů.
@@ -57,7 +57,7 @@ Kandidáti
 
 Nyní proberme jazyky a technologie, které připadají v úvahu:
 
- * PHP rovnou diskvalifikuji z "Těchto důvodů":php/vyhody_a_nevyhody_php.texy
+ * PHP rovnou diskvalifikuji z "Těchto důvodů":php/vyhody_a_nevyhody_php.html
  * Python, resp. Jython
  * Groovy
  * Scala

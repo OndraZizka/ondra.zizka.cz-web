@@ -3,18 +3,18 @@ Výhody a nevýhody PHP
 
 
 
-//Update: V návaznosti na tento článek vznikl další - "Je Java jako Linux nebo jako Windows?":/stranky/programovani/java/je_java_jako_linux_nebo_jako_windows.texy//
+//Update: V návaznosti na tento článek vznikl další - "Je Java jako Linux nebo jako Windows?":/stranky/programovani/java/je_java_jako_linux_nebo_jako_windows.html//
 
-//Update: 
+//Update:
 Abych nezůstal u teorie a subjektivních hodnocení PHP((Personal Home Page Tools)),
-přidám ukázku jednoho webu napsaného v PHP - a to hned 
-"web zabývající se programováním":vysledek_nasazeni_php_aneb_navrch_huj_uvnitr_fuj.texy.//
+přidám ukázku jednoho webu napsaného v PHP - a to hned
+"web zabývající se programováním":vysledek_nasazeni_php_aneb_navrch_huj_uvnitr_fuj.html.//
 
 
-//Update: V posledním (aspoň doufám) článku na toto téma 
-"vysvětluji jednotlivé body ze seznamu nevýhod":nevyhody_php_v_praktickych_prikladech.texy.//
+//Update: V posledním (aspoň doufám) článku na toto téma
+"vysvětluji jednotlivé body ze seznamu nevýhod":nevyhody_php_v_praktickych_prikladech.html.//
 
-<!-- "Srovnání Java a PHP":srovnani_php_a_javy.texy. -->
+<!-- "Srovnání Java a PHP":srovnani_php_a_javy.html. -->
 
 
 ----------------------------------------------
@@ -53,20 +53,20 @@ Popravdě jsem mu vyložil, že PHP umím dobře, prakticky do detailů, no což
 <blockquote>
 
 Dobrý den,
- 
+
 Vaše nabídka mě zaujala. Shrnu svoji situaci:
- 
+
 V PHP vyvíjím (komerčně) už několik let.
 Možná právě proto mě to ale velice silně táhne k Javě a J2EE [...].
 Dále mám zkušenosti s [... ... ...] .
- 
+
 Kolega XY mi už také psal, zvažoval jsem, že se ozvu, ale říkal, že váš J2EE tým je asi spíše plný.
- 
+
 Mohl bych tedy pracovat jak jako vývojář PHP, tak J2EE, nicméne druhé o mnoho raději [...].
 Nabídku pracovního místa už mám, proto by mě zajímaly další podmínky - můžeme je případně probrat po telefonu.
- 
+
 V příloze posílám své CV, pokud by bylo třeba.
- 
+
 S pozdravem
 Ing. Ondřej Žižka
 
@@ -175,9 +175,9 @@ Když jsem s J2EE začínal, také jsem se zalekl té neuvěřitelné haldy
 nových pojmů, specifikací, zkratek, XML konfiguračních souborů a postupů;
 dále nutnosti použít IDE nebo aspoň buildovací nástroj (Ant), naučit se spravovat něco jiného než Apache HTTPD...
 
-Ono totiž PHP je jen taková lehká nadstavba nad CGI - nad něj dává jen 
+Ono totiž PHP je jen taková lehká nadstavba nad CGI - nad něj dává jen
 relativně jednoduchou syntaxi a spoustu knihoven použitelných z této syntaxe.
-Jenže když jde do tuhého a úroveň vašich projektů se vznese nad příklady 
+Jenže když jde do tuhého a úroveň vašich projektů se vznese nad příklady
 z manuálu PHP, stejně musite začít řešit (hodně na přeskáčku):
 
 * Fyzickou strukturu webové aplikace - aneb adresáře, kam co dát
@@ -194,8 +194,8 @@ atd.
 
 A zatímco J2EE vás těmito "nesmysly" zavalí hned zpočátku,
 protože postupy jsou standardizované a často se věci rovnou řeší "složitě" s výhledem na budoucí rozvoj,
-PHP vás nechá, ať si děláte co chcete - 
-zlepšující se programátoři 
+PHP vás nechá, ať si děláte co chcete -
+zlepšující se programátoři
 časem začnou vytvářet "vlastní framework",
 vlastní normu pro strukturu aplikace,
 vlastní knihovnu pro automatické ukládání objektů do DB, a tak dále,
@@ -206,7 +206,7 @@ zatímco "naprostí začátečníci - neprogramátoři mohou třeba takto":http:
 Často potřebujeme vybrat data z databáze a následně je předat šabloně. Na začátku je tedy SQL dotaz:
 
 /--code php
-$result = mysql_query("SELECT nazev, titulek, text, cena FROM tabulka WHERE id='$id'"); 
+$result = mysql_query("SELECT nazev, titulek, text, cena FROM tabulka WHERE id='$id'");
 \--
 
 Jak nyní předat data šabloně?
@@ -234,11 +234,11 @@ Komentáře nevedu, ale jestli se vám něco v následujícím výčtu nezdá,
 napište mi "mail":ondra@dynawest.cz a já zde provedu veřejné pokání a omluvu sloníkovi elePHPantovi :)
 
 
-//Výhoda// a //nevýhoda// jsou relativní pojmy. Proto navrhuji jako "baseline" 
-pro srovnání použít ostatní technologie použitelné na podobné účely jako PHP, 
-tedy: ASP.NET, ColdFusion, Java EE, Perl, Python, Ruby (on Rails). 
-Naopak neuvažoval bych kombinace typu C + CGI (příliš složité programování), 
-Apache SSI (příliš omezená funkčnost), Caché Server Pages (příliš nesmyslná technologie), 
+//Výhoda// a //nevýhoda// jsou relativní pojmy. Proto navrhuji jako "baseline"
+pro srovnání použít ostatní technologie použitelné na podobné účely jako PHP,
+tedy: ASP.NET, ColdFusion, Java EE, Perl, Python, Ruby (on Rails).
+Naopak neuvažoval bych kombinace typu C + CGI (příliš složité programování),
+Apache SSI (příliš omezená funkčnost), Caché Server Pages (příliš nesmyslná technologie),
 XML + XSLT + JavaScript (principiálně příliš jinde), ASP (zastaralé) a podobně.
 
 
@@ -258,7 +258,7 @@ Technologie PHP má spoustu výhod, díky které se rychle stalo populárním. M
 * Nativní podpora mnoha databázových systémů
 * Zpočátku strmá křivka učení
 * --Je multiplaforní-- S tou multiplatformností to není tak žhavé. Zkuste si třeba PHP na Novellu. Spíše bych řekl: Jede víceméně stejně na Linuxu a na Windows.
-* Časem vznikla velká celosvětová komunita vývojářů a mnoho dobrých svobodných projektů, zejména publikační systémy a "Texy!":http://www.texy.info/ :-)
+* Časem vznikla velká celosvětová komunita vývojářů a mnoho dobrých svobodných projektů, zejména publikační systémy a "Texy!":http://www.html.info/ :-)
 * Velmi široká nabídka hostingu, levné ceny díky konkurenci
 * Dobrý, aktuální a úplný manuál s příklady
 * Někdy se hodí stručný model zpracování nedefinovaných hodnot a `null`
@@ -295,7 +295,7 @@ Na druhou stranu, PHP má také značné nevýhody, pro které jej mnozí kritiz
 * Ve standardní distribuci chybí ladící (debugovací) nástroj
 * Relativně složitá syntaxe oproti jiným technologiím použitelným na stejný účel
 * Po zpracování požadavku se "ztrácí" kontext aplikace a při příštím je vytvářen jiný
-* Mimo jiné z toho plyne relativně slabý výkon 
+* Mimo jiné z toho plyne relativně slabý výkon
 * Velký počet zásadních chyb v počátcích nových verzí
 * Nepodporuje jmenné prostory (Skutečně, stále ještě mohou existovat obrovské projekty, kde se knihovny rozlišují prefixem.)
 * Podivné fungování referencí - asi nejzrádnější askept PHP

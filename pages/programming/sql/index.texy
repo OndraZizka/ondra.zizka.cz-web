@@ -3,7 +3,7 @@ SQL corner
 
 One of my favorite technologies are relational databases and the SQL language.
 I like how elleganant a solution of certain programming tasks can be using SQL -
-mainly graph computation. E.g., computation of neural networks in common procedural 
+mainly graph computation. E.g., computation of neural networks in common procedural
 programming languages like C# and Java involves three nested loops;
 in SQL, it's only one loop, and the other program logic is expressed using SELECTs with JOINs.
 More explanation comes later.
@@ -20,9 +20,9 @@ Various SQL Implementations
 
 Here I publish some results of my efforts in SQL:
 
-* "MySQL Stored Procedures":mysql_stored_procedures.texy
-* "SQL Implementation of Neural Networks - Perceptron and Backpropagation":../neural_networks_in_sql_stored_procedures/index.texy
-* "Transport schedule search SQL implementation":../transport_schedule_search/index.texy
+* "MySQL Stored Procedures":mysql_stored_procedures.html
+* "SQL Implementation of Neural Networks - Perceptron and Backpropagation":../neural_networks_in_sql_stored_procedures/index.html
+* "Transport schedule search SQL implementation":../transport_schedule_search/index.html
 
 
 
@@ -33,8 +33,8 @@ Besides that, from time to time, I also write down what do I miss in MySQL.
 That's quite a long list, but the most important features are:
 
 * Passing of a result set between stored procedures
-* "Variables should be able to keep a result set":mysql_wishlist/result_set_in_variable.texy
-* "Java objects in Stored Procedures (sci-fi)":mysql_wishlist/java_objects_in_stored_procedures.texy
-* "`ALTER TABLE ... RENAME [**OVERWRITE**] TO`":mysql_wishlist/alter_table_rename_overwrite.texy
-* "Stored Procedure call stack in INFORMATION_SCHEMA":mysql_wishlist/stored_procedure_call_stack_in_information_schema.texy
+* "Variables should be able to keep a result set":mysql_wishlist/result_set_in_variable.html
+* "Java objects in Stored Procedures (sci-fi)":mysql_wishlist/java_objects_in_stored_procedures.html
+* "`ALTER TABLE ... RENAME [**OVERWRITE**] TO`":mysql_wishlist/alter_table_rename_overwrite.html
+* "Stored Procedure call stack in INFORMATION_SCHEMA":mysql_wishlist/stored_procedure_call_stack_in_information_schema.html
 * `sprintf()` equivalent in SQL (or rather take Java's `String::format()` as an inspiration)

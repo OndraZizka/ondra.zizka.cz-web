@@ -1,7 +1,7 @@
 JTexy! - Texy! Java Implementation project
 ******************************************
 
-I am about to port "Texy!":http://www.texy.info/ to Java.
+I am about to port "Texy!":http://www.html.info/ to Java.
 
 But that's a long-term plan, therefore this page is here as a placeholder.
 
@@ -112,9 +112,9 @@ Promising clues:
 -------------------
 
 Is this the same as multiple calls to `preg_match()`?
- --> `preg_match()` returns the number of times pattern  matches. 
-That will be either 0 times (no match) or 1 time because 
-`preg_match()` will stop searching after the first match. 
+ --> `preg_match()` returns the number of times pattern  matches.
+That will be either 0 times (no match) or 1 time because
+`preg_match()` will stop searching after the first match.
 `preg_match_all()`  on the contrary will continue until it reaches the end of subject.
 
 Is there similar in Java, or do I have to iterate?
@@ -184,7 +184,7 @@ public class RegexpInfo {
 
  **2) V parseru: Výsledky `preg_match_all()` převést na pole objektů, místo pole polí (... polí polí, jak je zvykem v PHP).**
 
-/--code php    
+/--code php
 class ParserMatchInfo implements Comparable<ParserMatchInfo>
 {
 	public final RegexpInfo pattern;
@@ -200,7 +200,7 @@ Taková třída je taky přirozeným místem pro funkci `cmp()`.
     Zaprvé se tak ušetří jeden lookup, zadruhé to zpřehlední kód.
 
  **4) V názvech proměnných zavést pojem `group` pro skupiny matchnutí reg. výrazu. "Match" ponechat pro celý match.**
-    Aneb: 
+    Aneb:
 
 /--code php
 preg_match_all( $pattern['pattern'],  $text,  $ms,  PREG_SET_ORDER );
@@ -281,7 +281,7 @@ Source code for an executable test case:
 
 String inputStr = "AAAfooBBBfoo";
 String patternStr = ".*foo";
- 
+
 Pattern pattern = Pattern.compile(patternStr);
 Matcher matcher = pattern.matcher(inputStr);
 

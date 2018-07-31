@@ -5,7 +5,7 @@ Quick and dirty mavenization of an existing project
 This is my lazy way to get anything to a Maven repo.
 Shown on my mavenization of the Sardine library.
 
-See also: "How to add existing project's jar to SVN-based Maven repository":how-to-add-existing-project-jar-to-maven-repository.texy
+See also: "How to add existing project's jar to SVN-based Maven repository":how-to-add-existing-project-jar-to-maven-repository.html
 
 -----------------------------------------------------------------------------------------------
 
@@ -13,29 +13,29 @@ See also: "How to add existing project's jar to SVN-based Maven repository":how-
 
 2) Create a script to put everything to the maven repo.
   Choose a group name for the library and it's deps.
-  You should not use the lib's package names, because it could interfere later 
+  You should not use the lib's package names, because it could interfere later
   with the official artifacts, should it ever be mavenized.
-  
-  I usually use my project's name with the lib's name appended - `org.jboss.qa.ews.sardine` in this case.   
-  
+
+  I usually use my project's name with the lib's name appended - `org.jboss.qa.ews.sardine` in this case.
+
   /--code
   @ECHO off
   ECHO echo Edit this file before use. Check the -DartifactId and -Dversion params.
   ECHO return
-  
+
   ECHO cmd /C mvn install:install-file -DpomFile=sardine-pom.xml -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\sardine.jar -DartifactId=sardine -Dversion=80
-  
+
   FOR %%f IN ( sardine-80\lib\*.jar) DO ECHO cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=%%f -DartifactId=%%~nf -Dversion=%%~nf
   \--
 
   This will create something like this:
-  
+
   /--code
-  echo Edit this file before use. Check the -DartifactId and -Dversion params.  
+  echo Edit this file before use. Check the -DartifactId and -Dversion params.
   return
 
   cmd /C mvn install:install-file -DpomFile=sardine-pom.xml -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\sardine.jar -DartifactId=sardine -Dversion=80
-  
+
   cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\lib\ant-googlecode-0.0.2.jar -DartifactId=ant-googlecode -Dversion=0.0.2
   cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\lib\commons-logging-1.1.1.jar -DartifactId=commons-logging -Dversion=1.1.1
   cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\lib\httpclient-4.0.1.jar -DartifactId=httpclient -Dversion=4.0.1
@@ -67,7 +67,7 @@ See also: "How to add existing project's jar to SVN-based Maven repository":how-
 \--
 
 4) Most of the deps should be found in some existing Maven repository.
-  
+
   Try to find as much as you can (the exact versions!), add them as a dependency to the `pom.xml`, and comment them out from the script.
   /--code xml .[brush:]
     <dependency>
@@ -118,10 +118,10 @@ See also: "How to add existing project's jar to SVN-based Maven repository":how-
       <version>0.0</version>
     </dependency>
   \--
-  
+
   /--code
   cmd /C mvn install:install-file -DpomFile=sardine-pom.xml -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\sardine.jar -DartifactId=sardine -Dversion=80
-  
+
   cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\lib\ant-googlecode-0.0.2.jar -DartifactId=ant-googlecode -Dversion=0.0.2
   @rem cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\lib\commons-logging-1.1.1.jar -DartifactId=commons-logging -Dversion=1.1.1
   @rem cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\lib\httpclient-4.0.1.jar -DartifactId=httpclient -Dversion=4.0.1
@@ -130,7 +130,7 @@ See also: "How to add existing project's jar to SVN-based Maven repository":how-
   cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\lib\svnkit.jar -DartifactId=svnkit -Dversion=0.0
   cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\lib\svntask.jar -DartifactId=svntask -Dversion=0.0
   \--
-  
+
 
 5) Some of the libs probably only serve the build process, in this case, `svnkit`, `svntask` and `ant-googlecode` (I just guessed from the names).
    These are going to be removed too.
@@ -138,7 +138,7 @@ See also: "How to add existing project's jar to SVN-based Maven repository":how-
 6) As you see, only the library itself left for addition to a maven repo.
 
   So, perform this:
-  
+
   /--code bash
   mvn install:install-file -DpomFile=sardine-pom.xml -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\sardine.jar -DartifactId=sardine -Dversion=80
   \--

@@ -11,18 +11,18 @@ by using `Ctrl+F` :-)
 ----------------------------------------------------
 
 
-* "Quartz intro":howto/quartz-howto-intro.texy and "how to use Quartz in Wicket":web/wicket/wicket-quartz-scheduler-example.texy
-* "My Wicket notes":web/wicket/index.texy
-* "SVNbot":jboss/svn-commit-irc-bot-java.texy - an IRC bot announcing SVN commits, written in Java
+* "Quartz intro":howto/quartz-howto-intro.texy and "how to use Quartz in Wicket":web/wicket/wicket-quartz-scheduler-example.html
+* "My Wicket notes":web/wicket/index.html
+* "SVNbot":jboss/svn-commit-irc-bot-java.html - an IRC bot announcing SVN commits, written in Java
 * "MySQL JDBC driver for Maven":http://ondrazizka.googlecode.com/svn/maven/mysql/mysql-connector-java/5.1.12/ - mavenized Connector/J
 * "PircBot Mavenized":http://code.google.com/p/ondrazizka/source/browse/#svn/maven/cz/dynawest/third/pircbot/PircBot - PircBot IRC Bot framework library in a provisory Maven repository.
-* "JAXB example":jaxb/jaxb-howto-introduction-tutorial.texy - keywords: JAXB howto example tutorial intro.
-* "Sardine - WebDAV client library for Java":sardine-java-webdav-client-library.texy
-* "JBoss AS Java system variables":jboss/jboss-as-startup-run-sh-java-system-variables.texy (`-D` for `bin/run.sh`)
-* "JBoss Operation Network and Tomcat on Windows 2003: No-go":jboss/Tomcat-JON-Windows-2003-2008.texy
-* "How to stop Jetty":jetty-how-to-stop.texy
-* "JBoss WebServices (JBossWS) notes":jboss/web-services.texy
-* "Simple JBoss AS clustering example":jboss/clustering-session-replication.texy (2 nodes, JSP session replication).
+* "JAXB example":jaxb/jaxb-howto-introduction-tutorial.html - keywords: JAXB howto example tutorial intro.
+* "Sardine - WebDAV client library for Java":sardine-java-webdav-client-library.html
+* "JBoss AS Java system variables":jboss/jboss-as-startup-run-sh-java-system-variables.html (`-D` for `bin/run.sh`)
+* "JBoss Operation Network and Tomcat on Windows 2003: No-go":jboss/Tomcat-JON-Windows-2003-2008.html
+* "How to stop Jetty":jetty-how-to-stop.html
+* "JBoss WebServices (JBossWS) notes":jboss/web-services.html
+* "Simple JBoss AS clustering example":jboss/clustering-session-replication.html (2 nodes, JSP session replication).
 
 
 My usual MySQL JDBC params:
@@ -33,16 +33,16 @@ jdbc:mysql://localhost/test?characterEncoding=UTF-8&characterSetResults=UTF-8&au
 Maven Tips
 ==========
 
-* "Maven and Log4j: Missing JMX dependencies":maven/log4j-missing-jmx-sun-deps.texy - mavenized jmxri and jmxtools.
-* "Profile activation and properties":maven/profile-activation-and-properties.texy
-* "How to add existing Java project's `.jar`s to Maven repository":maven/how-to-add-existing-project-jar-to-maven-repository.texy
-* "How to create an application distribution package with Maven":maven/maven-create-distribution-package.texy
-* "How to create a JNPL file (for Java WebStart) with Maven":maven/maven-create-jnlp-file.texy
-* "Quick and dirty mavenization":maven/mavenize-quick-and-dirty.texy - How to install an existing library with dependencies to Maven repository.
+* "Maven and Log4j: Missing JMX dependencies":maven/log4j-missing-jmx-sun-deps.html - mavenized jmxri and jmxtools.
+* "Profile activation and properties":maven/profile-activation-and-properties.html
+* "How to add existing Java project's `.jar`s to Maven repository":maven/how-to-add-existing-project-jar-to-maven-repository.html
+* "How to create an application distribution package with Maven":maven/maven-create-distribution-package.html
+* "How to create a JNPL file (for Java WebStart) with Maven":maven/maven-create-jnlp-file.html
+* "Quick and dirty mavenization":maven/mavenize-quick-and-dirty.html - How to install an existing library with dependencies to Maven repository.
 * I've presented Maven 2 for the company I work for. Download here: "Maven presentation for Red Hat / JBoss":download/Maven2presentation.pdf. See https://www.jboss.org/community/docs/DOC-13358 .
 * A short polemic against "Ivy / Maven2 Comparison":http://ant.apache.org/ivy/m2comparison.html:
-* Read my own opinion about "How Maven 2 compares to Ivy":maven/maven-ant-ivy-comparison.texy.
-* "Short code for Antrun Maven plugin":maven/ant-run-plugin-short.texy
+* Read my own opinion about "How Maven 2 compares to Ivy":maven/maven-ant-ivy-comparison.html.
+* "Short code for Antrun Maven plugin":maven/ant-run-plugin-short.html
 
 To start maven goals in debug mode:
 /--code xml .[brush:]
@@ -59,13 +59,13 @@ mvn test -DargLine="-Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=d
 Java alternative of PHP's `preg_replace_callback`
 =================================================
 
-* "Here":php_preg_replace_callback.texy.
+* "Here":php_preg_replace_callback.html.
 
 
 XSLT transformation in Java
 ============================
 
-My "XSLT + Java notes":xslt-commandline-with-xalan.texy show:
+My "XSLT + Java notes":xslt-commandline-with-xalan.html show:
 * How to call Xalan from a command line
 * A simple class for XSLT conversion using JDK's XSLT
 * Template which does some change and copies all other data
@@ -75,26 +75,26 @@ My "XSLT + Java notes":xslt-commandline-with-xalan.texy show:
 What I would change about Java
 ==============================
 
-* "My Java feature requests":java-feature-requests.texy
+* "My Java feature requests":java-feature-requests.html
 
 
 Enum with a lookup map
 ======================
 
-* "Enum with a lookup map":enum-with-lookup-map.texy
+* "Enum with a lookup map":enum-with-lookup-map.html
 
 
 
 JAXB - a List with inherited classes
 ====================================
 
-* "JAXB - a List with inherited classes":jaxb/jaxb-list-with-inherited-classes.texy
+* "JAXB - a List with inherited classes":jaxb/jaxb-list-with-inherited-classes.html
 
 
 Groovy bootloader bug with DOMBuilder
 =====================================
 
-* Is "this":groovy-dombuilder-bug.texy a bug?
+* Is "this":groovy-dombuilder-bug.html a bug?
 
 
 
@@ -102,10 +102,10 @@ JBoss
 =====
 
 * Unsign JBoss AS distribution: `find . -type f -iname '*.jar' -exec zip -d '{}' META-INF/JBOSSCOD.{SF,RSA} \;`
-* "Filesystem Resource Adapter":jboss/filesystem-resource-adapter.texy
-* "Bootstrapping JBoss Embedded server":jboss/jboss-embedded-bottstrapping.texy A very brief how-to - just a maven deps and the bootstraping code.
-* "Common JBoss AS mistakes and exceptions":jboss/common-mistakes-and-exceptions.texy
-* "JBoss vs. Spring":jboss/jboss-vs-spring.texy An attempt to answer what to use as a base for an enterprise web application.
+* "Filesystem Resource Adapter":jboss/filesystem-resource-adapter.html
+* "Bootstrapping JBoss Embedded server":jboss/jboss-embedded-bottstrapping.html A very brief how-to - just a maven deps and the bootstraping code.
+* "Common JBoss AS mistakes and exceptions":jboss/common-mistakes-and-exceptions.html
+* "JBoss vs. Spring":jboss/jboss-vs-spring.html An attempt to answer what to use as a base for an enterprise web application.
 
 
 How to transform `web.xml` with XSTL and XPath
@@ -129,7 +129,7 @@ Using a factory delegating the setters to the original object. //To be eventuall
 JSON with JAXB - Jackson
 ========================
 
-* How to "create JSON output from POJOs using JAXB annotations":jaxb/jaxb-json-jackson-howto.texy.
+* How to "create JSON output from POJOs using JAXB annotations":jaxb/jaxb-json-jackson-howto.html.
 
 
 JBoss AOP in a standalone application - example / howto
@@ -137,23 +137,23 @@ JBoss AOP in a standalone application - example / howto
 
 Few articles about JBoss AOP:
 
-* A "brief introduction to usage of JBoss MC with JBoss AOP":jboss/jboss-aop-howto-example-standalone-app.texy
-* "JBoss AOP: `java.lang.IllegalArgumentException: Unknown AOP tag: bean`":java.lang.IllegalArgumentException-Unknown-AOP-tag-bean.texy
-* "JBoss AOP: Could not find class":jboss-aop-could-not-find-class.texy
+* A "brief introduction to usage of JBoss MC with JBoss AOP":jboss/jboss-aop-howto-example-standalone-app.html
+* "JBoss AOP: `java.lang.IllegalArgumentException: Unknown AOP tag: bean`":java.lang.IllegalArgumentException-Unknown-AOP-tag-bean.html
+* "JBoss AOP: Could not find class":jboss-aop-could-not-find-class.html
 
 
 
 JBoss Microcontainer in a standalone application
 ======================================================
 
-* A "brief introduction to usage of JBoss MC in a standalone app":jboss/jboss-microcontainer-howto-example-standalone-app.texy.
+* A "brief introduction to usage of JBoss MC in a standalone app":jboss/jboss-microcontainer-howto-example-standalone-app.html.
 
 
 
 Java Concurency, Threads and Synchronization
 ============================================
 
-* Attempt for "one modifier and many concurent readers":modifier-and-concurent-readers.texy - a variant of producers and consumers problem.
+* Attempt for "one modifier and many concurent readers":modifier-and-concurent-readers.html - a variant of producers and consumers problem.
 
 
 
@@ -163,7 +163,7 @@ Maven: Order of execution of plugins in profiles
 I was curious in which order Maven executes the plugins:
  Whether it uses POM profile appearance order, or uses the ordering from the command line's `-P` param value.
 
-Here is the "result of my try-out":maven/maven-plugin_in_profiles_execution_order.texy.
+Here is the "result of my try-out":maven/maven-plugin_in_profiles_execution_order.html.
 
 
 
@@ -225,7 +225,7 @@ public class MyBeanImpl implements MyBean {
 Ibatis instantiation error
 ==========================
 
-"Ibatis instantiation exception":ibatis-instantiation-exception.texy can arise from the lack of default constructor.
+"Ibatis instantiation exception":ibatis-instantiation-exception.html can arise from the lack of default constructor.
 
 
 
@@ -263,7 +263,7 @@ Jabber (XMPP) Maven plugin
 
 I've created a simple plugin for Maven2, which can send a message from the Maven build process.
 
-See "Jabber (XMPP) Maven plugin":maven/jabber-xmpp-maven-plugin.texy
+See "Jabber (XMPP) Maven plugin":maven/jabber-xmpp-maven-plugin.html
 
 Used in the "Insolvenční rejstřík":http://www.pohlidame.cz/ project.
 
@@ -274,7 +274,7 @@ Used in the "Insolvenční rejstřík":http://www.pohlidame.cz/ project.
 JPA and Hibernate mapping with MySQL - common errors and exceptions
 ===================================================================
 
-Some "tips for those tampering with Java Persistence API and Hibernate":hibernate-common-errors-and-exceptions.texy -
+Some "tips for those tampering with Java Persistence API and Hibernate":hibernate-common-errors-and-exceptions.html -
 how to tame the exceptions comming from Hibernate EntityManager, Hibernate Annotations and JDBC.
 
 
@@ -283,33 +283,33 @@ how to tame the exceptions comming from Hibernate EntityManager, Hibernate Annot
 ImmutableProperties class
 =========================
 
-I've created an "immutable adapter of the java.util.Properties class":immutable_properties.texy.
+I've created an "immutable adapter of the java.util.Properties class":immutable_properties.html.
 Not that there aren't bunches of similar over the net...
 
 
 How to read properties file in Spring Framework
 ===============================================
 
-A new short tutorial on "how to provide properties read from a file to a bean":howto-spring-reading_properties_file.texy.
+A new short tutorial on "how to provide properties read from a file to a bean":howto-spring-reading_properties_file.html.
 
 
 Parametrized Spring Configuration
 =================================
 
-Here's a short sketch of my idea about "parametrizing Spring configuration":howto-substitutions_in_spring_configuration-tutorial.texy,
+Here's a short sketch of my idea about "parametrizing Spring configuration":howto-substitutions_in_spring_configuration-tutorial.html,
 using placeholders (`PropertyPlaceholderConfigurer`) and overrides (`PropertyOverrideConfigurer`).
 
 
 Web service client from WSDL using Axis2
 ========================================
 
-Here's "how to create web service client from WSDL using Axis2":web_service_client_from_wsdl_using_axis2.texy.
+Here's "how to create web service client from WSDL using Axis2":web_service_client_from_wsdl_using_axis2.html.
 
 
 Logování v Javě ? `log4j` a `java.util.logging`
 ===============================================
 
-Sepsal jsem si "stručný úvod do logování v Javě":navod_logovani_java.util.logging.texy
+Sepsal jsem si "stručný úvod do logování v Javě":navod_logovani_java.util.logging.html
  s ukázkaou konfigurace.
 
 
@@ -379,14 +379,14 @@ Začátky se Spring AOP (Aspect Oriented Programming)
 ===================================================
 
 Rozchodil jsem Spring AOP a zde dávám
-"stručný návod, jak si Spring AOP":navod-spring-aop-zacatky.texy rozchodíte taky.
+"stručný návod, jak si Spring AOP":navod-spring-aop-zacatky.html rozchodíte taky.
 
 
 FreeMarker templates via Spring in non-web application
 ======================================================
 
 Note on how to use "FreeMarker configured by Spring Dependency Injection
-in a standalone (non-web) application":navod-spring_freemarker_in_standalone_application.texy.
+in a standalone (non-web) application":navod-spring_freemarker_in_standalone_application.html.
 
 
 iBatis inline map format: empty String in nullValue
@@ -542,7 +542,7 @@ jdbc:mysql://localhost/test?zeroDateTimeBehavior=convertToNull&autoReconnect=tru
 `java` and `javaw` difference
 =============================
 
-"What's the difference between `java` and `javaw`?":java_javaw_difference.texy
+"What's the difference between `java` and `javaw`?":java_javaw_difference.html
 
 
 Návod: Import projektu ze SVN do NetBeans projektu
@@ -552,7 +552,7 @@ Chtěl jsem se trochu povrtat v projektu "Apache POI":http://poi.apache.org/subv
 ale jak prúvodci v NetBeans, tak instrukce na stránce projektu předpokládají,
 že se SVN umíte, jak když bičem mrská, což v mém případě bylo přesně naopak :-)
 
-Proto jsem sepsal velmi stručný "núvod, jak do NetBeans dostat projekt ze Subversion repository":navod-svn_subversion_v_netbeans.texy.
+Proto jsem sepsal velmi stručný "núvod, jak do NetBeans dostat projekt ze Subversion repository":navod-svn_subversion_v_netbeans.html.
 
 
 
@@ -560,7 +560,7 @@ Levn? Java/JSP/J2EE hosting
 ===========================
 
 Pokud hledáte levný hosting pro svoji J2EE webovou aplikaci,
-možná vás zaujme "tato nabídka":nabidka_levny_j2ee_jsp_hosting.texy.
+možná vás zaujme "tato nabídka":nabidka_levny_j2ee_jsp_hosting.html.
 
 
 Converting a number to Excel column character name
@@ -569,20 +569,20 @@ Converting a number to Excel column character name
 When working with Excel sheets, you might need to convert the column number
 to it's letter name - like `1` to `A`, `2` to `B`, `43` to `AQ`, etc.
 It's not as trivial as converting a number between two radixes.
-Here is "my solution":converting_number_to_excel_column_letters_name.texy.
+Here is "my solution":converting_number_to_excel_column_letters_name.html.
 
 
 Uzávěry v jazyce Java - přes místní vnitřní třídu
 =================================================
 
 Při tvorbě GUI k jednomu systému se mi zastesklo po snadnosti uzávěry v JavaScriptu.
-Prozkoumal jsem "možnosti uzávěr v Javě":uzavery_v_jave_mistni_vnitrni_trida.texy.
+Prozkoumal jsem "možnosti uzávěr v Javě":uzavery_v_jave_mistni_vnitrni_trida.html.
 
 
 Spring Framework - úvod
 =======================
 
-Připravil jsem velmi stručný "tutoriál na rozběhání jedné části Spring Frameworku, a sice Beans Factory":navod-spring-framework-zacatky.texy.
+Připravil jsem velmi stručný "tutoriál na rozběhání jedné části Spring Frameworku, a sice Beans Factory":navod-spring-framework-zacatky.html.
 V češtině.
 
 
@@ -590,7 +590,7 @@ V češtině.
 Hibernate super-quick start in NetBeans
 =======================================
 
-Here's my how-to for "starting a Hibernate project using Java Persistence API (JPA)":hibernate_netbeans_howto_tutorial.texy.
+Here's my how-to for "starting a Hibernate project using Java Persistence API (JPA)":hibernate_netbeans_howto_tutorial.html.
 
 Later, I'll write something about object-relational mapping.
 
@@ -656,7 +656,7 @@ Java tipy a triky
 =================
 
 Patříte mezi programátory, kteří prvně hledají řešení na Google jako slovní úlohu a až pak studují jakékoliv API?
-Pak vám možná pomůže moje "stránka tipů pro Javu":tipy.texy. Zatím není nijak moc rozsáhlá, budu postupně doplňovat.
+Pak vám možná pomůže moje "stránka tipů pro Javu":tipy.html. Zatím není nijak moc rozsáhlá, budu postupně doplňovat.
  Podobných tipů a triků jsou po webu kvanta, ale ne tolik v češtině.
 
 //Update:// Tak nakonec stejně vše zveřejňuju v angličtině...
@@ -701,7 +701,7 @@ Texy! Java Implementation
 
 Anyone knows about any? Please, "let me know via e-mail":ondra@dynawest.cz.
 
-"Texy! syntax use cases here":http://download.texy.info/refs.zip.
+"Texy! syntax use cases here":http://download.html.info/refs.zip.
 
 
 
@@ -754,7 +754,7 @@ Java často začátečníka odradí relativní složitost přípravy kódu a jeh
 (v roce 1998 to byl i můj případ a Javou jsem se prokousal až o další dva roky později :-) .
 
 Pro ten případ jsem připravil velmi polopatický
-"návod, jak vytvořit zdroják v Javě, jak ho přeložit do souboru `.class` a jak jej spustit":navod-java_zacatky.texy.
+"návod, jak vytvořit zdroják v Javě, jak ho přeložit do souboru `.class` a jak jej spustit":navod-java_zacatky.html.
 
 
 J2EE - Java pro web
@@ -769,4 +769,4 @@ V této souvislosti uvedu jeden trefný citát:
 
 
 Pro kamaráda jsem začal psát
-"velmi stručný úvod":navod-j2ee_uvod.texy, aby se hned zkraje neutopil v záplavě tří až pětipísmenných zkratek.
+"velmi stručný úvod":navod-j2ee_uvod.html, aby se hned zkraje neutopil v záplavě tří až pětipísmenných zkratek.

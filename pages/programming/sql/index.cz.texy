@@ -10,16 +10,16 @@ Ale o tom až dále.
 Mojí oblíbenou databází je MySQL 5.0. Schválně uvádím verzi, protože jsem si ji oblíl až na základě
 možnosti psát tzv. **Stored procedures**.
 
-V průběhu doby jsem při řešení různých projektů vytvořil užitečné procedury a funkce, 
+V průběhu doby jsem při řešení různých projektů vytvořil užitečné procedury a funkce,
 které usnadňují vývoj procedur pro MySQL a mohly by se kdekomu hodit.
 
 Omlouvám se těm, co nehovoří anglicky, ale zbytek SQL sekce bude většinou právě v angličtině.
 
-* "MySQL Stored Procedures":mysql_stored_procedures.texy
-* "Implementation of neural network in SQL - perceptron and backpropagation":../neural_networks_in_sql_stored_procedures/index.texy
+* "MySQL Stored Procedures":mysql_stored_procedures.html
+* "Implementation of neural network in SQL - perceptron and backpropagation":../neural_networks_in_sql_stored_procedures/index.html
 
 Krom toho střádám i své touhy, co by se mohlo (a mělo) v MySQL objevit:
 
-* "Java objects in Stored Procedures (sci-fi)":mysql_wishlist/java_objects_in_stored_procedures.texy
+* "Java objects in Stored Procedures (sci-fi)":mysql_wishlist/java_objects_in_stored_procedures.html
 
 

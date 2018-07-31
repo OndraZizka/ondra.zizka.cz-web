@@ -68,8 +68,8 @@ Co zrovna dělám
 
 Pokud zrovna nepracuji pro JBoss, zkoumám různé technologie:
 
-* "JBoss AOP":stranky/programovani/java/jboss-aop-howto-example-standalone-app.texy
-* "`canvas`":stranky/programovani/web_javascript_ajax_canvas/canvas_element_selection_buffer.texy
+* "JBoss AOP":stranky/programovani/java/jboss-aop-howto-example-standalone-app.html
+* "`canvas`":stranky/programovani/web_javascript_ajax_canvas/canvas_element_selection_buffer.html
 
 V mezičase se prokousávám webovými Java technologiemi (J2EE).
 
@@ -90,9 +90,9 @@ Momentálně pracuji na projektech:
 
 "**Vyhledávání spojů v jízdních řádech s využitím umělé inteligence k optimalizaci**":/projekty/diplomka/DiplomovaPrace-OndrejZizka.pdf
 -------------------
- 
+
 Součástí je implementace neuronových sítí v SQL/SP,
-což dává vznik většině obsahu v sekci "Programování / SQL":stranky/programovani/sql/index.texy.
+což dává vznik většině obsahu v sekci "Programování / SQL":stranky/programovani/sql/index.html.
 
 -->
 \---

@@ -7,11 +7,11 @@ Web, JavaScript, AJAX, and Canvas
 JavaScript isometric game rendering libraries
 ==============================================
 
-I've made up a "list of JavaScript libs for isometric rendering":javascript-isometric-libraries.texy. 
+I've made up a "list of JavaScript libs for isometric rendering":javascript-isometric-libraries.html.
 
 
 
-"WebTTD":web_javascript_ajax_canvas/webttd.texy - browser-based Transport Tycoon clone idea.
+"WebTTD":web_javascript_ajax_canvas/webttd.html - browser-based Transport Tycoon clone idea.
 ============================================================================================
 
 
@@ -19,4 +19,4 @@ I've made up a "list of JavaScript libs for isometric rendering":javascript-isom
 `canvas` element selection buffer
 =================================
 
-"English":canvas_element_selection_buffer.texy, "česky":canvas_element_selection_buffer.cz.texy
+"English":canvas_element_selection_buffer.texy, "česky":canvas_element_selection_buffer.cz.html

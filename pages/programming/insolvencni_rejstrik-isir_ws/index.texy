@@ -1,8 +1,8 @@
 Webová služba Insolvenční rejstřík - ISIR WS
 ********************************************
 
-1.1.2008 spustilo Ministerstvo spravedlnosti na svém serveru 
-"justice.cz":http://justice.cz/ 
+1.1.2008 spustilo Ministerstvo spravedlnosti na svém serveru
+"justice.cz":http://justice.cz/
 "webovou službu insolvenčního rejsříku":http://portal.justice.cz/ms/ms.aspx?o=1&j=1&k=170&d=209445 ,
 doplněk k informačnímu systému ISIR.
 S touto službou jsem měl tu čest pracovat a zde bych se rád podělil o zkušenosti
@@ -10,7 +10,7 @@ v naději, že na tuto stránku narazí i tvůrce služby, firma CCA.
 
 
 
-//Update 18.7.2008:// Sepsal jsem "Popis dalších nedomyšleností webové služby Insolvenční rejstřík":nesmysly_v_isir.texy.
+//Update 18.7.2008:// Sepsal jsem "Popis dalších nedomyšleností webové služby Insolvenční rejstřík":nesmysly_v_isir.html.
 
 //Update 25.7.2008:// Mám první funkční prototypy aplikace pro automatickou kontrolu subjektů v insolvenčním rejstříku.
 
@@ -32,7 +32,7 @@ Asi jako každý jsem začal prohlédnutím definice webové služby
 WSDL:https://isir.justice.cz:8443/isir_ws/services/IsirPub001?wsdl.
 Už ta vás trošku zatahá za oči, protože hledáte nějaké názvy funkcí,
 které budete volat, a typů, se kterými budete pracovat,
-ale zde najdete názvy podobného ražení jako 
+ale zde najdete názvy podobného ražení jako
 `getIsirPub001`, `ns2:IsirPub001Data`, `IsirPub001SOAP12port_http`
 a `tns:IsirPub001SEI_getIsirPub001Response`:
 
@@ -184,7 +184,7 @@ a v IS klikne na tlačítko "Nový pokyn insolvenčního soudu", a tím vzniká 
 
 /--code xml .[brush:]
 ID: 2954
-Cas: 23.1.2008 16:48:44 
+Cas: 23.1.2008 16:48:44
 Spis: INS 132/2008  Odd: A  Poradi: 4, Typ: 204 (Pokyn insolvenčního soudu)
 
 Data:
@@ -207,7 +207,7 @@ nejsou vedeni jako dlužníci, budete si muset stáhnout odhadem (lineární int
 1 500 000 záznamů a podle nich zreplikovat databázi informačního systému insolvenčního rejstříku!
 
 Ruku na srdce - nezdá se vám nepřiměřené, aby si _každý_, kdo chce službu jakkoliv využívat,
-dělal lokální kopii celého logu za celou historii existence systému, 
+dělal lokální kopii celého logu za celou historii existence systému,
 poté nastudoval pracovní postupy pracovníků soudů z nepřehledné "dokumentace" `Popis_WS.pdf`
 a na základě těchto znalostí aktualizoval svoji kopii databáze pro každou entitu,
 která v DB existuje, ačkoliv ho 99,999% z nich nezajímá a nikdy zajímat nebude,
@@ -256,9 +256,9 @@ Odpověď tvůrců webové služby
 ============================
 Na mé námitky vůči kvalitě zpracování služby odpověděla firma CCA Group takto:
 
-> Vámi připomínkovaný způsob fungování WS ISIR byl navržen, odsouhlasen a zpracován 
-> na základě požadavků MSp. Víme, že některé subjekty by radši používaly 
-> sofistikovanější WS s vlastnostmi, které popisujete. Dle sdělení zadavatele – MSp 
+> Vámi připomínkovaný způsob fungování WS ISIR byl navržen, odsouhlasen a zpracován
+> na základě požadavků MSp. Víme, že některé subjekty by radši používaly
+> sofistikovanější WS s vlastnostmi, které popisujete. Dle sdělení zadavatele – MSp
 > není takto koncipovaná WS ve shodě s jejich záměry dalšího rozvoje aplikace ISIR.
 
 Jinými slovy, ministerstvo (rozumějte - nejspíše laici, kteří ani netuší, co je webová služba)

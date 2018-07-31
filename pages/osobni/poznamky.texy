@@ -10,14 +10,14 @@ od všednich přes technické po ryze filozofické, od vážných po naprosté b
 Most used passwords
 ===================
 
-"Most used passwords from igigi's web":most-used-passwords.texy.
+"Most used passwords from igigi's web":most-used-passwords.html.
 
 
 
 Comparison of SSD vs. HDD disks - JBoss AS compilation
 ====================================
 
-A "simple test":ssd-vs-hdd-comparison-benchmark-test.texy performed on SSD disk Corsair X32.
+A "simple test":ssd-vs-hdd-comparison-benchmark-test.html performed on SSD disk Corsair X32.
 
 
 Co je špatně v Českých Budějovicích?
@@ -45,7 +45,7 @@ Prosím všechny novináře, zejména ty, kteří píšou úvodní hlášky ke z
 
 <!-- Prosím ty, kteří píšou úvodní hlášky ke zprávám, aby se vzdělali v pojmech levice a pravice. -->
 
-Pravice, to jsou lidé, kteří požadují menší zásahy státu a větší svobodu jednotlivce. Krajní pravice jsou anarchisti. 
+Pravice, to jsou lidé, kteří požadují menší zásahy státu a větší svobodu jednotlivce. Krajní pravice jsou anarchisti.
 
 Levice, to jsou lidé, kteří se o sebe nedokážou sami postarat, nezvládají samostatně myslet a hospodařit s vlastním majetkem, a potřebují nadiktovat, co je dobré a co špatné. Krajní levice jsou komunisté. Když se k tomu přidá krajní nacionalismus, jde o nacisty.
 
@@ -91,13 +91,13 @@ Návod na vázání uzlů u kravat
 =============================
 
 Kdo si má pořád pamatovat, jak se to šmodrchá?
-Já si pro jistotu dal "návod na uvázání kravaty":vazani_kravat.texy na web.
+Já si pro jistotu dal "návod na uvázání kravaty":vazani_kravat.html na web.
 
 
 Dojmy z Ubuntu 8 - Hardy Heron
 ==============================
 
-Své dojmy z přechodu na Linux v podobě Ubuntu 8 "popisuji zde":/stranky/linux/dojmy_z_ubuntu_8.texy.
+Své dojmy z přechodu na Linux v podobě Ubuntu 8 "popisuji zde":/stranky/linux/dojmy_z_ubuntu_8.html.
 
 
 
@@ -135,7 +135,7 @@ Jako i ostatní věci velmi obrazně popsané v Bibli se i tato dá vysvětlit v
 nebo pokřivením a antidatováním (ať už mylným či záměrným) popisu skutečných událostí.
 
 Dovedu si docela dobře představit, význam soudného dne, sečtění činů a věčný život
-ve skutečnosti reprezentují //osudný// den, sečtení činů ve smyslu dosavadního vývoje lidstva 
+ve skutečnosti reprezentují //osudný// den, sečtení činů ve smyslu dosavadního vývoje lidstva
 a jeho aktuálního stavu, a věčný život je ve skutečnosti naděje na udržitelný rozvoj civilizace.
 
 Mnoho textů v Bibli pochází od židovských i jiných filozofů, kteří se jistě zabývali i otázkou,
@@ -200,22 +200,22 @@ Po nějaké době mašina zastará a já si říkám, zda přínos projektu SETI
 
 Co se týká samotného primárního účelu SETI@home, tedy hledání mimozemské inteligence, zatím kde nic, tu nic.
 Zatím tedy nevíme nic - ani, zda mimozemská inteligence existuje, nebo zda neexistuje.
-V tomto směru tedy zatím výsledky žádné. (Je také otázka, co skutečně projekt zpracovává - 
+V tomto směru tedy zatím výsledky žádné. (Je také otázka, co skutečně projekt zpracovává -
 podle konspirační teorie mého kamaráda luští odposlechy systému --ECHOLON-- ECHELON.)
 
-Ospravedlňují tedy dosavadní výsledky mojich cca 200 W? Osobně jsem v tomto hodnocení trochu náladový. 
+Ospravedlňují tedy dosavadní výsledky mojich cca 200 W? Osobně jsem v tomto hodnocení trochu náladový.
 Nedávno jsem od SETI@home přešel na prokejt Rosetta@home. Po pár měsících mi ale provozovatelé SETI@home poslali mail,
-že nedávno jsem z projektu odešel, ale teď na přijímači v Areceibo pořídili zcela nový dekodér či co, 
-který je schopný nahrávat až ze sedmi lokací na obloze najednou, a proto potřebují každý TerraFLOP. 
+že nedávno jsem z projektu odešel, ale teď na přijímači v Areceibo pořídili zcela nový dekodér či co,
+který je schopný nahrávat až ze sedmi lokací na obloze najednou, a proto potřebují každý TerraFLOP.
 No budiž, znělo to tak přesvědčivě a prosebně, že jsem se nechal "ukecat" :-)
 
-Takže momentálně mám SETI@home puštěné 24 hodin denně, snad to k něčemu bude. 
-Projekt Rosetta mě moc nepřesvědčil; SETI sice nemá žádné výsledky, ale aspoň o tom pravidelně 
-a na poměrně slušné úrovni informují. Rosetta nemá žádné výsledky, ale to jen usuzuji z toho, 
-že na webu projektu nejsou informace o tom, zda něco objevili, či nikoliv. 
+Takže momentálně mám SETI@home puštěné 24 hodin denně, snad to k něčemu bude.
+Projekt Rosetta mě moc nepřesvědčil; SETI sice nemá žádné výsledky, ale aspoň o tom pravidelně
+a na poměrně slušné úrovni informují. Rosetta nemá žádné výsledky, ale to jen usuzuji z toho,
+že na webu projektu nejsou informace o tom, zda něco objevili, či nikoliv.
 Proto je pro mě projekt SETI@home důvěryhodnější a "výpočtuhodnější".
 
- 
+
 
 
 
@@ -242,13 +242,13 @@ ještě v době, kdy Mozilla suite nebyla tak dokonalá, a Opera již byla zadar
 <li> **Výchozí skin.**  Nemůžu si pomoci, výchozí skin Opery je hnusný (YMMV).
  Hnusně šedivý s hnusnými hnusně zelenými ovládacími prvky - zkrátka,
  nedá se na to koukat.
-</li> 
-<li> **Pluginy.**  Pro Mozillu, potažmo Firefox, vzniklo již 
-  po krátké době existence (rozuměj od doby, kdy jsem ji začal já používat, 
+</li>
+<li> **Pluginy.**  Pro Mozillu, potažmo Firefox, vzniklo již
+  po krátké době existence (rozuměj od doby, kdy jsem ji začal já používat,
   tedy snad "někdy ve verzi 0.7.x":http://en.wikipedia.org/wiki/History_of_Mozilla_Firefox)
-  tolik moc skvělých rozšíření, že se takovému stavu nemůže titěrná komunita 
+  tolik moc skvělých rozšíření, že se takovému stavu nemůže titěrná komunita
   fanoušků Opery --nikdy-- ++v dohledné době++ přiblížit.
-  Pro webového vývojáře je tato stránka věci zásadní. 
+  Pro webového vývojáře je tato stránka věci zásadní.
 
 </li>
 </ol>
@@ -271,7 +271,7 @@ SETI@home want's you back
 Před časem jsem seznal, že projekt "SETI@home":http://setiathome.berkeley.edu/
 již funguje dost dlouho na to, aby přinesl aspoň "nějaké" výsledky. Zatím však kde nic, tu nic.
 Ačkoliv "existenci ufonů připouští již i Vatikán":http://aktualne.centrum.cz/zahranici/evropa/clanek.phtml?id=605286,
-projekt SETI@home zatím církvi radost nedělá - žádní ufoni 
+projekt SETI@home zatím církvi radost nedělá - žádní ufoni
 (přesto že "Jiří Paroubek nabídl marťanům koaliční dohodu":http://www.rozhlas.cz/izurnal/cesko/_zprava/192239),
 žádná komunikace s "blízkými hvězdami":http://objekty.astro.cz/nase/50/,
 ba ani prachsprosté podezřelé pípnutí nebylo identifikováno.
@@ -280,14 +280,14 @@ Rozhodl jsem se tedy, že nebudu nadále plýtvat cca 120 W na bezvýsledné vý
 Jenže, po pár měsících mi napsali opravdu dojemný dopis, no posuďte sami:
 
 
-> Dear Astar Seran: 
-> 
-> We'd like to invite you to reconnect with SETI@home. Our records show that you've been with SETI@home since 09 February 2008, but it's been 104 days since you last returned a work unit. We want you back, and here's why: 
-> 
-> These are exciting times for SETI@home. Last year we implemented a new SETI@home data recorder at the Arecibo radio telescope in Puerto Rico. This recorder is attached to a state-of-the-art multibeam receiver, so we can now measure signals from 7 positions on the sky at once, with greater sensitivity to weak signals compared to the data from the flat feed antenna we've used since 1999. We've greatly increased the sensitivity of our data analysis, and the likelihood that we'll find the first signs of extraterrestrial life. We're also close to releasing a second application, Astropulse, which will look for extremely short pulses of astronomical (and possibly intelligent) origin. 
-> 
-> With these new developments comes an increase in required computing power, for which we depend on people like you. We hope you will consider signing back on with SETI@home, and help in this wonderful scientific venture. 
-> 
+> Dear Astar Seran:
+>
+> We'd like to invite you to reconnect with SETI@home. Our records show that you've been with SETI@home since 09 February 2008, but it's been 104 days since you last returned a work unit. We want you back, and here's why:
+>
+> These are exciting times for SETI@home. Last year we implemented a new SETI@home data recorder at the Arecibo radio telescope in Puerto Rico. This recorder is attached to a state-of-the-art multibeam receiver, so we can now measure signals from 7 positions on the sky at once, with greater sensitivity to weak signals compared to the data from the flat feed antenna we've used since 1999. We've greatly increased the sensitivity of our data analysis, and the likelihood that we'll find the first signs of extraterrestrial life. We're also close to releasing a second application, Astropulse, which will look for extremely short pulses of astronomical (and possibly intelligent) origin.
+>
+> With these new developments comes an increase in required computing power, for which we depend on people like you. We hope you will consider signing back on with SETI@home, and help in this wonderful scientific venture.
+>
 > ...
 
 Jistě uznáte, že když nainstalovali tak skvělý přijímač, musím jim dát ještě šanci.
@@ -332,17 +332,17 @@ Jenže na tento dotaz opět dostávám odkazy na stránky, které otázku stavě
 >  A. The "hotness" of radishes results from the length of time they have grown rather than from their size. The radishes either grew too slowly or are too old.
 "Nebo":[http://www.arhomeandgarden.org/_archive/askjanet/vegetables/radish.htm]:
 > Q: What makes radishes hot? My radishes this year are almost too hot to eat.
->   A: Radishes get hot for a number of reasons. If they are too old they are hotter, and if they were grown under low fertility 
+>   A: Radishes get hot for a number of reasons. If they are too old they are hotter, and if they were grown under low fertility
 > or if they got too dry, and their growth was not as fast as it should have been, then they turn hot.
 
 Takže jsme zase tam, kde jsme byli. Já chci vědět, která **látka** v ředkvičkách pálí. Vite někdo, proč ředkvičky pálí?
 
-//Update//: Tak výsledky vyhledávání se lehce změnily a do popředí se dostala 
+//Update//: Tak výsledky vyhledávání se lehce změnily a do popředí se dostala
 "odpověď Emeritního profesora Zahradnické fakulty Mendelovy zemědělské a lesnické univerzity Karla Kopce":http://server.ffa.vutbr.cz/~dub/wwwpetrdubcz/texty/texty_ruzne/redkvicky.html
 z Lidových novin:
 
 > Ředkvičky při krájení nebo rozkousání uvolňují látky, které jim dávají typickou vůni a chuť i větší či menší štiplavost (pálivost).
-> Ředkvičky totiž obsahují glukozionoláty, z nichž se v porušených buňkách uvolňují aromaticky i chuťově výrazné složky - izothiokyanáty. 
+> Ředkvičky totiž obsahují glukozionoláty, z nichž se v porušených buňkách uvolňují aromaticky i chuťově výrazné složky - izothiokyanáty.
 > Je jich řada a kromě chuťových vlastností mají také antimikrobiální účinky a výrazný vliv na lidské zdraví.
 > Přispívají ke zlepšení imunity, omezují riziko některých chorob, podporují stravitelnost ostatních pokrmů.
 > Právě proto se doporučuje zvýšit konzumaci ředkviček a ředkví až na jeden kg ročně.
@@ -357,7 +357,7 @@ Jaká je "výhřevnost vosku":[http://www.google.cz/search?hl=cs&client=firefox-
 Další věcí, která mě zajímala, je výhřevnost vosku. V domě nám už netopí, okna profukují, a tak se stane, že mám na pokoji 17 stupňů i při neustále puštěném počítači.
 Kamarád mi poradil, že když nechá na pokoji hořet čajovou svíčku, tak během zhruba čtyř hodin, po které svíčka vydrží, vzroste teplota v pokoji tak, že musí větrat.
 Jenže jeho pokoj má 16 m^2.
-Já jsem zapálil pole 6x6 čajových svíček, ale teplota vzrostla jen o půl stupně za hodinu. 
+Já jsem zapálil pole 6x6 čajových svíček, ale teplota vzrostla jen o půl stupně za hodinu.
 Proto jsem si chtěl ověřit, jak by se měla teplota vyvíjet teoreticky. Bohužel, výhřevnost vosku jsem na internetu nenašel. Stačila by mi jen orientační... nevite? :-)
 
 
@@ -465,7 +465,7 @@ A tak mi již denně nechodí dvacetkrát `Unrecognizable Rolex replica`, ale m�
 
 Mmm... představil jsem si sám sebe jako mužskou verzi té žluté ninja-holky z Kill Billa,
 jak ve stylu Jamese Bonda zachráním nějakou šikmookou kočku a pak na ni vypustím svého "vnitřního draka" :D
-Plný očekávání dalšího kvalitního obsahu jsem mail otevřel... ale zklamal mě. Nedočkal jsem se ničeho víc než 
+Plný očekávání dalšího kvalitního obsahu jsem mail otevřel... ale zklamal mě. Nedočkal jsem se ničeho víc než
 
 > If you cannot act the way you want, take some blue-coloured pills!
 
@@ -483,7 +483,7 @@ Tip na cestování hyperprostorem
 Problémem mezihvězdného cestování je nutnost těleso urychlit na rychlost přijatelnou k dostatečně rychlému přesunu, a potom jej zase zabrzdit.
 Co kdybychom ovšem využili princip kolotoče?
 
-Mohli bychom v jednom bodě (třeba i našeho prostoru) "upoutat" "lano", na konec lana připoutat těleso, které má cestovat, 
+Mohli bychom v jednom bodě (třeba i našeho prostoru) "upoutat" "lano", na konec lana připoutat těleso, které má cestovat,
 přemístit jej (stále v našem prostoru) na vzdálenost lana, a potom ho začít roztáčet.
 To by znamenalo udělit mu takovou energii směrem do jiného prostoru,
 která by stačila k jeho přemístění do výchozího bodu opisované "kružnice".
@@ -569,13 +569,13 @@ A4T4jXMh
 
 Remember - your ICQ password is case sensitive.
 
-After you login to your ICQ number, you might want to consider changing your 
+After you login to your ICQ number, you might want to consider changing your
 password to a more complex one.
 
-Your new password must contain 6-8 characters. It should include English upper 
+Your new password must contain 6-8 characters. It should include English upper
 and lower case letters and numbers.
 
-Try to select a random password that will be hard for others to guess. 
+Try to select a random password that will be hard for others to guess.
 (Example: ...)
 
 Here's how you change your password:

@@ -11,16 +11,16 @@ It's a JVM bug described "here":http://bugs.sun.com/bugdatabase/view_bug.do?bug_
 
 Also "here":http://sourceforge.net/projects/freetts/forums/forum/137669/topic/722735?message=1659298 :
 
-> 2) Another possibility, which I have not verified, might be due to a delay that we put it to the closing of the currentClip. 
+> 2) Another possibility, which I have not verified, might be due to a delay that we put it to the closing of the currentClip.
 >    We put in this delay to workaround a Java Sound bug in Linux.
->    The resulting scenario is: because the last clip was not closed before the next clip attempts to play, 
->    the audio device is still occupied, thus generating a LineUnavailableException. 
+>    The resulting scenario is: because the last clip was not closed before the next clip attempts to play,
+>    the audio device is still occupied, thus generating a LineUnavailableException.
 >    Though, we've hardly experienced any problems with the JavaClipAudioPlayer, so I doubt this is the problem.
 
 Also "here":http://sourceforge.net/projects/freetts/forums/forum/137669/topic/930844?message=2221602 about "long sentences":
 
 > The problem, it seems is in the code that breaks up a very long sentence. FreeTTS is designed to synthesize text with low latency.
-> When given a very long sentence, such as in your example, it will decide that the sentence is too long to be synthesized in a timely fashion 
+> When given a very long sentence, such as in your example, it will decide that the sentence is too long to be synthesized in a timely fashion
 > and break it up into smaller bits. This logic is rarely (if every executed) since it only is invoked when very long sentences occur.
 > If I change your sample code to concatenate a period instead of a comma after every "Number xx", things are synthesized just fine with no line unavailable error.
 
@@ -43,7 +43,7 @@ Also "here":http://sourceforge.net/projects/freetts/forums/forum/137669/topic/12
 
 Also, "testing the line availability":http://sourceforge.net/projects/freetts/forums/forum/137669/topic/686662?message=1582276 :
 > 2) To test if an environment supports sound, copy the code in `com.sun.speech.freetts.audio.JavaStreamingAudioPlayer.openLine()`
->    to a method in your application (remember to include the javax.sound.sampled.* packages). 
+>    to a method in your application (remember to include the javax.sound.sampled.* packages).
 >    Before you call FreeTTS methods, call this method to see if your environment supports sound.
 >    If it does, remember to close the audio line, since FreeTTS will try to open it again.
 
@@ -96,7 +96,7 @@ it also has code inside which actually relies on these data, which is the real p
 So if you Mavenize such library, it ends up in different directories. So it will not usually work in IDE.
 
 You need to flatten the dependencies to a single dir, using e.g. `mvn dependencies:copy`,
-see "this example":http://ondra.zizka.cz/stranky/programovani/java/maven/maven-create-distribution-package.texy.
+see "this example":http://ondra.zizka.cz/stranky/programovani/java/maven/maven-create-distribution-package.html.
 You also need to set Maven to put all app's dependencies to it's jar's `MANIFEST.MF`'s `Class-Path` - here it's ok because it's an app, not a library.
 
 Then you need to manually rewrite all FreeTTS libraries' MANIFEST.MF in the local repository, so that you can rebuild your application.

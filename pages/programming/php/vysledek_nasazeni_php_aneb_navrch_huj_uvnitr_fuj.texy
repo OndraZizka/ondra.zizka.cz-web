@@ -3,7 +3,7 @@ Výsledek nasazení PHP v praxi aneb navrch huj, uvnitř fuj.
 
 [*  elePHPant_Right_Tiny_jde_pryc.png  >]
 
-Abych nezůstal u "teorie a subjektivních hodnocení PHP((Personal Home Page Tools))":vyhody_a_nevyhody_php.texy,
+Abych nezůstal u "teorie a subjektivních hodnocení PHP((Personal Home Page Tools))":vyhody_a_nevyhody_php.html,
 přidám ukázku z jednoho webu napsaného v PHP - a to hned web zabývající se programováním.
 Jaký jiný web by měl být technicky dokonalý, ne-li web dávající rady, jak dobře programovat?
 
@@ -17,7 +17,7 @@ ale navrch huj, uvnitř fuj - a to právě kvůli PHP.
 
 Původcem první chyby je královna "super fičur" PHP a vrcholná zástupkyně filozofie PHP
 (tedy předpoklad, že programátor je blbec, a místo dobrého návrhu API to fixovat nahodilými obezličkami) - `magic_quotes_gpc`.
-Jenže na tuhle obezličku je nutné opět udělat obezličku, a to vede 
+Jenže na tuhle obezličku je nutné opět udělat obezličku, a to vede
 k "takovýmhle komediím":http://php.vrana.cz/vypnuti-magic_quotes_gpc.php,
 které nijak nesouvisejí s cílenou aplikací.
 Přesně to sedí na můj slogan pro PHP: //PHP - the Work-around Language//.
@@ -42,8 +42,8 @@ Kudy chodím, tudy říkám, že PHP by mělo veškeré chyby převést na výji
 Při přidání komentáře se zobrazuje Warning:
 
 /--code
-Warning: Cannot modify header information - headers already sent by 
-(output started at /mnt/data/accounts/p/programujte/data/www/www/pridej_kom.php:6) 
+Warning: Cannot modify header information - headers already sent by
+(output started at /mnt/data/accounts/p/programujte/data/www/www/pridej_kom.php:6)
 in /mnt/data/accounts/p/programujte/data/www/www/pridej_kom.php on line 62
 \--
 
@@ -55,7 +55,7 @@ Toto by se při vyhození výjimky nikdy stát nemohlo:
 Nastala by `Exception` a autor by přinejhorším viděl zastavený požadavek a výpis exception.
 V lepším případě by viděl warning aspoň v logu při debugu aplikace -
 to by ovšem musely být ladící nástroje pro PHP trochu dostupnější,
-a v ideálním případě by jeho aplikace neprošla unit-testy - 
+a v ideálním případě by jeho aplikace neprošla unit-testy -
 to by ale ve světě PHP napřed muselo být testování zvykem a nikoli výjimkou.
 
 Řekněme tedy, že by PHP skriptař viděl místo své stránky takovouto děsivou nestvůru:
@@ -104,7 +104,7 @@ Kdepak, primitivní PHP vám třeba ještě před XML prologem vystřihne svoje:
 <b>Warning</b>:  Cannot add header information - headers already sent by (output started at /var/www/html/lavoro/downloadIt.php:21 in <b>/var/www/html/lavoro/downloadIt.php</b> on line <b>21</b><br />
 \--
 
-a bez povšimnutí může proletět dále ke klientovi, ačkoliv chybějící hlavičky HTTP 
+a bez povšimnutí může proletět dále ke klientovi, ačkoliv chybějící hlavičky HTTP
 mohou zcela zásadně změnit chování webové aplikace.
 Ale jak by řekli tvůrci PHP - <a href="http://www.php.net/~derick/meeting-notes.html">"That's the PHP way."</a>
 
@@ -115,19 +115,19 @@ Reakce zástupce PHP komunity - redaktora serveru o programování
 Ještě lepší jsou reakce reakce autora článku, kde jsem chybu objevil:
 
 > Reagoval na komentář od uživatele Ondra [#19281]:
-> Mnohem jednoduší než se načit Javu bylo pro mne napast si vlastní framework, 
-> kde sem opravdu žádné magic ještě nikdy neřešil - framework řeší za mě. 
+> Mnohem jednoduší než se načit Javu bylo pro mne napast si vlastní framework,
+> kde sem opravdu žádné magic ještě nikdy neřešil - framework řeší za mě.
 
-Áááha... "vlastní framework", říkáte... však o tom píšu ve článku "Výhody a nevýhody PHP":vyhody_a_nevyhody_php.texy :-)
+Áááha... "vlastní framework", říkáte... však o tom píšu ve článku "Výhody a nevýhody PHP":vyhody_a_nevyhody_php.html :-)
 
 Naučit se Javu není tak těžké, věřte mi... u PHP je lehčí jen "začít generovat výstup",
-ale postupem času se stejně musíte naučit zhruba stejné množství věcí jako v Javě - 
+ale postupem času se stejně musíte naučit zhruba stejné množství věcí jako v Javě -
 akorát jsou jejich řešení méně elegantní, nesystémová a nezapadají do konceptu všeho okolo.
 
 > Ano, tyhle chyby mi nevadí :) Nejsem za ně zodpovědný.
 
-Přijde mi typické pro PHP komunitu, když web o programování vykazuje takovéto zásadní nedostatky, 
-a nevadí to ani čtenářům, ani autorům článků, ani programátorovi webu. 
+Přijde mi typické pro PHP komunitu, když web o programování vykazuje takovéto zásadní nedostatky,
+a nevadí to ani čtenářům, ani autorům článků, ani programátorovi webu.
 Ten má jistě také "svůj framework" - a pak to podle toho vypadá.
 
 

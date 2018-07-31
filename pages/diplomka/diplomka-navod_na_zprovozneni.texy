@@ -26,11 +26,11 @@ Další dva soubory obsahují ukázkové naučené neuronové sítě:
 Instalace MySQL, vytvoření databází a nastavení práv
 =================================
 
-Nejprve je třeba nainstalovat standardní distribuci MySQL 5.0 nebo vyšší 
+Nejprve je třeba nainstalovat standardní distribuci MySQL 5.0 nebo vyšší
 ("stahujte zde":http://dev.mysql.com/downloads/mysql/5.0.html#downloads).
 
 Poté je třeba vytvořit dvě databáze a nastavit uživatelská práva pro uživatele, který je bude používat.
-Následující kód vytvoří databáze `neural_network` a `jizdnirady_cb` 
+Následující kód vytvoří databáze `neural_network` a `jizdnirady_cb`
 a nastaví veškerá práva k nim uživateli `OndrejZizka`, který se může připojit odkudkoliv ('%'):
 
 /--code sql .[brush:]
@@ -47,7 +47,7 @@ případně vykonat SQL příkazy v nástroji MySQL Query Browser, viz níže.
 Rekonstrukce databáze z SQL souborů
 ===================================
 
-SQL skripty jsou vytvořené nástrojem MySQL Administator, oficiálním nástrojem 
+SQL skripty jsou vytvořené nástrojem MySQL Administator, oficiálním nástrojem
 pro administraci databázového systému MySQL
 ("stahujte zde":http://dev.mysql.com/downloads/gui-tools/5.0.html).
 
@@ -80,7 +80,7 @@ Výše jmenovaný balík GUI nástrojů zahrnuje také MySQL Query Browser,
 
 [* navod/MySQL_Query_Browser-01-B.png *]
 
-Výčet jeho vlastností a dovedností je dlouhý. My se pro účely demonstrace 
+Výčet jeho vlastností a dovedností je dlouhý. My se pro účely demonstrace
 kódu této diplomové práce omezíme na podstatné.
 
 Po spuštění stiskněte `F11` - to zvětší konzoli pro SQL příkazy.
@@ -90,7 +90,7 @@ Pokud voláte nějakou proceduru nebo pracujete s tabulkou, ujistěte se,
 že buď používáte plně kvalifikované jméno, nebo se daný objekt nachází ve vybrané databázi.
 
 SQL příkazy vykonáváte tak, že na něj najedete kurzorem (nikoliv ukazatelem myši) a stisknete Ctrl + Enter.
-Výsledek (resultset) se zobrazí v dolní části 
+Výsledek (resultset) se zobrazí v dolní části
 
 
 
@@ -113,7 +113,7 @@ Zde je například výpis zastávek a jejich geografických pozic:
 
 
 
-Po importu dat z výše uvedených souborů obsahují tabulky 
+Po importu dat z výše uvedených souborů obsahují tabulky
 všechna data jízdních řádů, na kterých jsme kód testovali.
 
 Z tabulek je možné vhodnými SELECTy získat jakékoliv informace, které chceme znát - například:
@@ -138,7 +138,7 @@ SELECT * FROM neural_network.nn_net_neurons;
 SELECT * FROM neural_network.nn_net_synapses;
 \--
 
-Po importu obsahují tabulky 
+Po importu obsahují tabulky
 několik testovacích neuronových sítí.
 
 
@@ -156,16 +156,16 @@ Volání API
 ==========
 
 Jak se konkrétní procedury používají je popsáno jednak v technické zprávě diplomové práce,
-jednak v komentářích v kódu jednotlivých procedur, a také na webu autora - 
-"jízdní řády":http://ondra.zizka.cz/stranky/programovani/transport_schedule_search/index.texy,
-"neuronové sítě":http://ondra.zizka.cz/stranky/programovani/neural_networks_in_sql_stored_procedures/index.texy.
+jednak v komentářích v kódu jednotlivých procedur, a také na webu autora -
+"jízdní řády":http://ondra.zizka.cz/stranky/programovani/transport_schedule_search/index.html,
+"neuronové sítě":http://ondra.zizka.cz/stranky/programovani/neural_networks_in_sql_stored_procedures/index.html.
 
 
 Proto zde jen několik příkladů, jak SQL příkazy používat.
 
 Standardně Query Browser po každém dotazu uzavře spojení s DB.
 Proto nejprve spusťte transakci - dočasné tabulky tak zůstanou k dispozici po volání procedury.
-Transakci spustíte buď příkazem `START TRANSACTION;` (a stisknutím `Ctrl+Enter`) 
+Transakci spustíte buď příkazem `START TRANSACTION;` (a stisknutím `Ctrl+Enter`)
 nebo tlačítkem //Transaction// v horním pruhu programu.
 Vedle něj se po spustění transakce objeví tlačítka pro potvrzení nebo zrušení transakce.
 Stejného efektu lze docílit provedením příkazů `COMMIT;` nebo `ROLLBACK;`.
@@ -246,7 +246,7 @@ podle předchozího stavu sítě, dočasně uložených výstupních hodnot vše
 
 Pro pohodlné vyzkoušení učení neuronové sítě je k dispozici
 procedra `nn_TeachXOR_Dynamic( //ID//, //cílová úroveň chyby//, //maximum kroků//)`.
-Kód v následující ukázce učí síť vytvořenou výše uvedeným postupem 
+Kód v následující ukázce učí síť vytvořenou výše uvedeným postupem
 na cílovou úroveň chyby 0,0001 v maximálním počtu 10 000 kroků:
 
 /--code sql .[brush:]
@@ -265,7 +265,7 @@ pro dosažení cílové zastávky v nejlepším čase.
 -- Vytvoření sítě pro zastávku 5 se třiceti neurony v jedné skryté vrstvě:
 CALL mhd_nn_CreateNetForStation(5, '30');
 
--- Učení právě vzniklé sítě pro zastávku 5 do cílové 
+-- Učení právě vzniklé sítě pro zastávku 5 do cílové
 -- úrovně chyby 0.0001, maximálně po 40 000 kol učení:
 CALL mhd_nn_TeachStationNet(5, LAST_INSERT_ID(), 0.0001, 40000);
 \--
@@ -280,7 +280,7 @@ Zde je ukázka záznamů z učení neuronové sítě zastávky s ID 530:
 [* navod/QB-Log_uceni_neuronove_site_zastavky.png *]
 
 
-Další vysvětlení najdete ve výše jmenovaných zdrojích - v diplomové prácí, 
+Další vysvětlení najdete ve výše jmenovaných zdrojích - v diplomové prácí,
 ve zdrojových kódech jednotlivých procedur a na webu autora.
 
 Případné dotazy směřujte na mail ondra@dynawest.cz nebo JabberID `ondra.zizka@jabber.cz`.

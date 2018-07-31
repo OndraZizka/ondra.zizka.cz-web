@@ -1,7 +1,7 @@
 Nevýhody PHP v praktických ukázkách __aneb__<br/>  Yet Another "Why PHP Sucks" Page
 ***********************************************************************************
 
-Když jsem sestavil docela dlouhý, ale přesto neúplný "seznam nevýhod PHP":vyhody_a_nevyhody_php.texy,
+Když jsem sestavil docela dlouhý, ale přesto neúplný "seznam nevýhod PHP":vyhody_a_nevyhody_php.html,
 ozvalo se celkem dost lidí s nechápavými dotazy, proč, co a jaktože.
 
 "Proč pomlouváš PHP!?"
@@ -10,7 +10,7 @@ ozvalo se celkem dost lidí s nechápavými dotazy, proč, co a jaktože.
 Nevím, jestli má smysl brát PHPčkářům jejich modlu.
 Někdo by se skoro mohl divit, proč se vlastně do PHPka tak pouštím.
 Inu, není to proto, že bych ho z duše nenáviděl, či tak něco...
-Prostě a jednoduše jsem čuchnul k lepšímu a od té doby 
+Prostě a jednoduše jsem čuchnul k lepšímu a od té doby
 --mě PHP čim dál více-- vidím na PHP čím dál více chyb.
 A proč tedy píšu tyhle "remcy", "hemzy" a "ranty"?
 Nejspíš abych si ujasnil, zda je na tom PHP opravdu tak špatně.
@@ -32,18 +32,18 @@ Vlastně se mi ten citát líbí tak moc, že jej musím uvést v širším kont
 <blockquote>
 
 Java Server Pages (link to Jakarta project) is reminiscent in nature of the Microsoft ASP framework,
-but intended from the ground up for enthusiasts of Java, 
-Enterprise Beans and the whole industry that has grown up around them. 
-A detractor of the juggernaut might describe it as being for people 
+but intended from the ground up for enthusiasts of Java,
+Enterprise Beans and the whole industry that has grown up around them.
+A detractor of the juggernaut might describe it as being for people
 with more money than sense but we try to remain agnostic.
 
-Choosing to use the panoply of tools and techniques engrossed by this world 
-is not a tactical or pragmatic choice of how to get something built 
-but is likely to based more on a strategic perception 
-of how you believe the industry will develop. 
-If all you want is an active website with a database backend, 
-this is going to be overkill unless you already have the range of skills in-house. 
-Entrance to this world is a cultural conversion, not a choice of one simple programming language over another. 
+Choosing to use the panoply of tools and techniques engrossed by this world
+is not a tactical or pragmatic choice of how to get something built
+but is likely to based more on a strategic perception
+of how you believe the industry will develop.
+If all you want is an active website with a database backend,
+this is going to be overkill unless you already have the range of skills in-house.
+Entrance to this world is a cultural conversion, not a choice of one simple programming language over another.
 
 <em>-- "Active Web Sites and Comparison of Scripting Languages":http://training.gbdirect.co.uk/courses/php/comparison_php_versus_perl_vs_asp_jsp_vs_vbscript_web_scripting.html (autor neznámý)</em> .>
 
@@ -70,7 +70,7 @@ Praktické projevy nevýhod v PHP
 ===============================
 
 Pokud chcete rovnou na konec, tedy k hotovému zmrvenému produktu, čtěte
-"Výsledek nasazení PHP v praxi aneb navrch huj, uvnitř fuj":vysledek_nasazeni_php_aneb_navrch_huj_uvnitr_fuj.texy.
+"Výsledek nasazení PHP v praxi aneb navrch huj, uvnitř fuj":vysledek_nasazeni_php_aneb_navrch_huj_uvnitr_fuj.html.
 
 Ale vezměme to podle seznamu...
 
@@ -92,7 +92,7 @@ Prostě jste zkopírovali kód z ukázky, poupravili, a jelo to!
 
 <h4>Rasmus Lerdorf o historii PHP</h4>
 
-PHP se vyvinulo tak, že Rasmus Lerdorf ke své sadě nástrojů //Personal Home Page Tools// 
+PHP se vyvinulo tak, že Rasmus Lerdorf ke své sadě nástrojů //Personal Home Page Tools//
 přidával stále další funkce, které uživatelé vyžadovali. Vypráví o tom takto:
 
 "Nevím jak to zastavit, nikdy jsem nezamýšlel vytvořit programovací jazyk [...]
@@ -113,7 +113,7 @@ a při použítí referencí se objevují záhadné chyby.
 Zejména pokud paralelně programujete v nějakém vyspělém jazyce s dobrým návrhem (Java, C#, JavaScript),
 časem se vám ztratí úsměv z tváře, čím dál častěji kroutíte hlavou
 a nakonec vzteky bušíte do stolu a kontrolujete blogy vývojářů PHP,
-jestli už se náhodou nechystají tu kterou pitomost z jazyka odstranit - 
+jestli už se náhodou nechystají tu kterou pitomost z jazyka odstranit -
 a "zase vás zklamou":[http://www.php.net/~derick/meeting-notes.html]:
 
 <ul><li>
@@ -135,10 +135,10 @@ pravděpodobně proto, že se chystají i nadále jít cestou Javy a zavést dek
 
 <blockquote>
 
-If something isn't done soon, then more and more coders using PHP 
+If something isn't done soon, then more and more coders using PHP
 will move on to Ruby and Python and PHP will become the new Perl.
-I can hear it now, "What ever happen to PHP?" or 
-"Pfft, no one programs in PHP anymore!" or 
+I can hear it now, "What ever happen to PHP?" or
+"Pfft, no one programs in PHP anymore!" or
 "Man, I had to maintain legacy PHP application!"
 
 -- Jacob Santos, "PHP is turning into the Classic ASP":http://www.santosj.name/programming/php-related/php-is-turning-into-the-classic-asp/ .>
@@ -177,7 +177,7 @@ Ne tak programátoři v PHP. Zde je slušností co nejvíce poctít svátost boh
 a pokud je to byť jen trochu možné, pak jej použít, nejlépe hned v několika významech.
 Co na tom, že chceme reprezentovat strom obsahující objekty, které mají identifikátor a kolekci čísel?
 Jednoduše uděláme schizofrenní "Array()", který má pod indexem `["id"]` identifikátor,
-pod indexem `["numbers"]` další `Array` s čísly a pod číselnými indexy ukryjeme potomky uzlu. 
+pod indexem `["numbers"]` další `Array` s čísly a pod číselnými indexy ukryjeme potomky uzlu.
 Nebo obráceně? To je jedno...  //That's the PHP way!//
 
 
@@ -185,7 +185,7 @@ Nebo obráceně? To je jedno...  //That's the PHP way!//
 <h4>`FALSE` - taktní, diskrétní a nevtíravé (ne)oznámení chyby.</h4>
 
 
-Pokud existuje sebemenší šance, že dojde k chybě, slušný programátor vyhodí výjimku, 
+Pokud existuje sebemenší šance, že dojde k chybě, slušný programátor vyhodí výjimku,
 kterou při pozdějším volání metody prostě nelze opomenout a musíte ji ošetřit -
 jinak se vám kód nepřeloží.
 
@@ -209,14 +209,14 @@ Ti opravdoví PHP experti (řekněme "PHP-developer senior":http://cz2.php.net/f
 však využijí pokročilou funkci jazyka, a to jsou reference!
 Jednoduše narvou návratové hodnoty do parametrů, a programátore, hledej:
 
-> If the value returned in errno is 0 and the function returned FALSE, 
+> If the value returned in errno is 0 and the function returned FALSE,
 > it is an indication that the error occurred before the connect() call.
-> This is most likely due to a problem initializing the socket. 
+> This is most likely due to a problem initializing the socket.
 
-Kde já jsem tohle viděl? Á, už vím! Einstein kdysi vymyslel takovou "logickou hru":/stranky/osobni/einsteinova_logicka_hra.texy:
+Kde já jsem tohle viděl? Á, už vím! Einstein kdysi vymyslel takovou "logickou hru":/stranky/osobni/einsteinova_logicka_hra.html:
 
 > Je pět pět parametrů, každý nese hodnotu nějakého typu.
-> Když návratová hodnota boolean a v prostřední hodnotě je nula, 
+> Když návratová hodnota boolean a v prostřední hodnotě je nula,
 > potom včelař nebydlí v modrém domě. Nastal chybový stav?
 
 Skutečně by nebylo lepší toto?
@@ -236,9 +236,9 @@ catch( IOException ex ){
 
 
 Programátor v objektově orientovaném jazyce, pokud potřebuje z funkce více informací,
-než stačí pokrýt skalární hodnota jednoho typu, 
+než stačí pokrýt skalární hodnota jednoho typu,
 vytvoří si pro přenos informace třídu a vrací si objekt daného typu.
-Konec konců, když už se mu takový objekt odněkud vrací, 
+Konec konců, když už se mu takový objekt odněkud vrací,
 pravděpodobně se jedná o třídu entit z reálného světa
 a tedy ji využije i jinde v modelu aplikace.
 
@@ -266,14 +266,14 @@ V jednom nejmenovaném velkém českém portálu jedou doteď na PHP 4.
 
 Odpověď je snadná:
 
-Protože kdysi jakýsi manažer učinil rozhodnutí, že pojedou na PHP. Rok po 
-tomhle rozhodnutí ho vyhodili a dodnes jeho volby litují, když při pohovoru 
+Protože kdysi jakýsi manažer učinil rozhodnutí, že pojedou na PHP. Rok po
+tomhle rozhodnutí ho vyhodili a dodnes jeho volby litují, když při pohovoru
 musí uchazeče zkoušet z PHP 4 a jeho chyb v návrhu (vlastností, chcete-li)
 a místo přepisu do PHP 5, který zoušeli, ale stálo by je to několik měsíců
-přepisování (s výhledem dalšího přepisu do PHP 6, 7, 8... se již raději 
+přepisování (s výhledem dalšího přepisu do PHP 6, 7, 8... se již raději
 poohlížejí po technologii, kde zpětná kompatibilita není jen prázdná fráze.
 
-Takových příkladů by se jistě dalo najít víc, ale asi to nemá smysl vypočítávat, 
+Takových příkladů by se jistě dalo najít víc, ale asi to nemá smysl vypočítávat,
 protože zase můžete kontrovat Wikipedií a dalšími úspěšnými weby, které zůstávají u PHP
 (aspoň u prezenční vrstvy).
 
@@ -333,7 +333,7 @@ Velice často zmiňovaná vada, vadí i těm nejzamilovanějším PHPčkárům (
 * Nedostatečná sebereflexe – datové typy „Třída“/„Funce“
 ------------------------------------------------------------------------------------------------------------------------
 
-Zkrátka chybí objekty pro reprezentaci tříd, pokud vím. Nemůžu tedy udělat 
+Zkrátka chybí objekty pro reprezentaci tříd, pokud vím. Nemůžu tedy udělat
 např.:
 
 /--code java .[brush:]
@@ -372,7 +372,7 @@ Asi před půl rokem jsem jeden řešil s kamarádem na IM, když to najdu, při
 Týkalo se to předávání pole. Jak jistě víte, pole není objekt, proto pokud jej chcete
 ve funkci měnit nebo chcete zamezit (mělkému) kopírování, je třeba jej předat referencí.
 Stejně tak jej musíte referencí propagovat do dalších kroků zpracování.
-Jenže reference stále fungují stejně jako v PHP 4, tedy tak, 
+Jenže reference stále fungují stejně jako v PHP 4, tedy tak,
 že v tabulce proměnných vzniká nový alias pro stejnou proměnnou.
 Tento alias zůstává v tabulce i po opuštění funkce, a po jejím opětovném volání
 a přiřazení reference proměnné se pole zpracovávané v předchozím volání
@@ -404,29 +404,29 @@ oproti:
 \--
 
 Je to asi jako v přirozeném jazyce říkat:
-> Chci zvětšit písmena v tom, co vznikne, když nahradím dva vykřičníky za 
-> tečku v tom, co vznikne, když nahradím "ahoj" za "nazdar" v tom, co vznikne, 
-> když převedu na malá písmena to, co vznikne, když odeberu netisknutelné 
+> Chci zvětšit písmena v tom, co vznikne, když nahradím dva vykřičníky za
+> tečku v tom, co vznikne, když nahradím "ahoj" za "nazdar" v tom, co vznikne,
+> když převedu na malá písmena to, co vznikne, když odeberu netisknutelné
 > znaky z okrajů "  Ahoj lidi!!  " '
 
   místo
 
-> Vezmu "  Ahoj lidi!!  ", z okrajů odeberu netisknutelné znaky, převedu to 
-> na malá písmena, "ahoj" nahradím "nazdar", dva vykřičníky nahradím tečkou a 
+> Vezmu "  Ahoj lidi!!  ", z okrajů odeberu netisknutelné znaky, převedu to
+> na malá písmena, "ahoj" nahradím "nazdar", dva vykřičníky nahradím tečkou a
 > převedu to na malá písmena, a to je výsledek.
 
 
-U abstraktních datových typů Javy (zahrnující seznam, množinu, mapu, atd...) 
+U abstraktních datových typů Javy (zahrnující seznam, množinu, mapu, atd...)
 spatřuji hlavní výhodu v minimalizaci rozhraní daného abstraktního typu
-a v tom, že jsou definované jako rozhraní, nikoliv jako jediná implementace, 
+a v tom, že jsou definované jako rozhraní, nikoliv jako jediná implementace,
 protože to značně ulehčuje práci programátorovi různých knihoven.
 
-Nedávno jsem si například během asi půl hodiny naprogramoval Mapu, která má jako 
-backend tabulku v transakční databázi, a můžu jí používat všude, kde někdo 
+Nedávno jsem si například během asi půl hodiny naprogramoval Mapu, která má jako
+backend tabulku v transakční databázi, a můžu jí používat všude, kde někdo
 očekává jako parametr Mapu.
 
-To by v PHP s `Array` udělat nešlo - jedině na úrovni C implementace PHP. 
-Šlo by to také naprogramovat jako třídu - ale potom to zas nebude 
+To by v PHP s `Array` udělat nešlo - jedině na úrovni C implementace PHP.
+Šlo by to také naprogramovat jako třídu - ale potom to zas nebude
 kompatibilní s `Array` a nepůjde na to použít např. `ksort()`.
 
 

@@ -7,7 +7,7 @@ Nový hosting?
 
 Máme nabídku nového hostingu... na Gigawebu to občas vypadne (mysql i web), a už není nijak moc pružný...
 
-"přístup zde":vpn.texy.
+"přístup zde":vpn.html.
 
 
 TODO list
@@ -16,7 +16,7 @@ TODO list
 Hodnocení lyrics
 ----------------
 
-"Dokumentace zde":doc/rating.texy.
+"Dokumentace zde":doc/rating.html.
 
 - Do interface přidat možnost ohodnotit lyrics.
 - Stupnice:
@@ -33,7 +33,7 @@ Hodnocení lyrics
 Přihlašování
 ------------
 
-"Dokumentace zde":doc/login.texy.
+"Dokumentace zde":doc/login.html.
 
 - Lyrics se budou stahovat přes login a heslo.
 - Zamezí to crackům

@@ -3,7 +3,7 @@ Nedomyšlenost webové služby Insolvenčním rejstříku
 
 S webovou službou Insolvenčního rejstříku pracuji již asi měsíc,
 ale stále nevycházím z údivu, jak hloupá tato služba je.
-Již jsem psal o "prapodivném konceptu celé webové služby":index.texy,
+Již jsem psal o "prapodivném konceptu celé webové služby":index.html,
 ale jak je vidět, oním článkem jsem popis jejích velice četných nedostatků ještě zdaleka nevyčerpal.
 
 Pojďme se nyní podívat, jak vypadá samotná obsahová stránka služby ISIR.
@@ -54,7 +54,7 @@ Pořadí událostí
 ---------------
 
 Pokud byste čekali, že události chodí pro každé řížení zhruba ve stejném pořadí, tak jste velmi na omylu.
-Jednou se spis zakládá událostí typu `185 - Vyhláška o zahájení insolvenčního řízení`, jindy 
+Jednou se spis zakládá událostí typu `185 - Vyhláška o zahájení insolvenčního řízení`, jindy
 událostí typu `6 - Insolvenční návrh spojený s návrhem na povolení oddlužení`,
 jindy událostí typu `5 - Insolvenční návrh`, a jindy zase typu `204 - Pokyn insolvenčního soudu`.
 
@@ -95,10 +95,10 @@ A aby toho nebylo dost, tak takováto zbytečná událost se v jednom spise mů�
 
 Následně k tomu přistupují lahůdky typu "Mylný zápis", kdy zpracujete nějakou událost,
 a následně přijde tato, která vám říká, že ta předchozí byla chybná a soudce ji zrušil.
-Co kdyby raději události týkající se onoho mylného zápisu vyřadili a informace 
+Co kdyby raději události týkající se onoho mylného zápisu vyřadili a informace
 o mylných zápisech by byly zpracované volitelně? Kdepak, pro CCA moc složité.
 
-//"Kompletní seznam událostí k 1.7.2008":isir_typy_akci.texy//
+//"Kompletní seznam událostí k 1.7.2008":isir_typy_akci.html//
 
 
 
@@ -150,7 +150,7 @@ Velmi inteligentní. Nechápu tedy, proč podle stejné logiky také nedali IČ 
 
 Tím ovšem hlouposti v návrhu u osob a adres nekončí.
 Pokud byste si tipnuli, že existují dva druhy osob, tedy fyzická osoba a právnická osoba,
-tak v CCA znají ještě třetí druh, a to je `"SPRÁV_INS"`. Ano - správce konkurzu nejspíš nemůže být 
+tak v CCA znají ještě třetí druh, a to je `"SPRÁV_INS"`. Ano - správce konkurzu nejspíš nemůže být
 ani právnická, ani fyzická osoba, a proto je třeba mu zavést zcela nový druh, i když používá
 naprosto stejné kolonky jako fyzická osoba, a lze jej odlišit podle role ve spisu.
 
@@ -193,7 +193,7 @@ Suma sumárum
 ============
 
 Když to shrnu:
-Chápu, že u komplexního informačního systému, jako je ISIR, 
+Chápu, že u komplexního informačního systému, jako je ISIR,
 je obtížné reflektovat často se měnící požadavky zadavatele často s nereálnými termíny dokončení,
 a webová služba zpřístupňující vybrané údaje pak podle toho může vypadat.
 

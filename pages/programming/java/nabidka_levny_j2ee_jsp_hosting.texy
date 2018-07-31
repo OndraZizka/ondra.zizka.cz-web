@@ -7,7 +7,7 @@ S pozvolným přechodem od PHP k Javě a J2EE jsem narazil na problém - kam s n
 Nejsem si zcela jist, zda java hosting je na správu náročnější než např. LAMP((Linux, Apache, MySQL, PHP)) -
 podle zkušeností kamaráda, který si hostuje sám, je to jednodušší - prostě nainstalujete Apache Tomcat a hotovo.
 
-Pro upřesnění - kamarádovi příliš nesedly aplikační servery (JBoss, IBM WebSphere, BEA WebLogic a další mamuti - 
+Pro upřesnění - kamarádovi příliš nesedly aplikační servery (JBoss, IBM WebSphere, BEA WebLogic a další mamuti -
 zjistil, že pro něj je lepší řešení Tomcat a všechny featury z aplikačních serverů instaluje do Tomcatu
 jako jednotlivé moduly, případně je vkládá přímo do webové aplikace.
 
@@ -20,7 +20,7 @@ Jak jsem k Java hostingu přišel
 *******************************
 
 S jedním kamarádem, zavilým Céčkařem a PHPčkářem, jsme (také :-) vedli debatu o
-"výhodách a nevýhodách PHP":http://ondra.zizka.cz/stranky/programovani/php/vyhody_a_nevyhody_php.texy.
+"výhodách a nevýhodách PHP":http://ondra.zizka.cz/stranky/programovani/php/vyhody_a_nevyhody_php.html.
 Tak jsme se dostali k tomu, že já vyvíjím nějaké projektíky v Javě, ale nemám je kam dát.
 
 Kamarád měl tehdy zakoupený docela silný stroj (nějaké čtyřjádro s 8 GB paměti a čtyřmi SAS disky @ 10k RMP),
@@ -50,7 +50,7 @@ Nemá však zkušenosti s administrací Java hostingu,
 a proto to momentálně řešíme tak, že mám plný přístup k Tomcatu
 a spravuji si sám.
 
-Řešení vašeho hostingu by vypadalo podobně - server by se nejspíše rozdělil 
+Řešení vašeho hostingu by vypadalo podobně - server by se nejspíše rozdělil
 na virtuální hostingy, ať už na úrovni Linuxu nebo Javy,
 a svůj virtuální hosting byste si spravovali sami.
 

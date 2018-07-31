@@ -77,7 +77,7 @@ much larger networks and more of them than if you used only in-memory networks.
 **Notes:**
 
 * Code is full of debugging logs (`CALL LoggP(...)`) and commented statements, which can be safely deleted.
-* Procedures listed below use the procedures and functions listed on the "MySQL Stored Procedures":../sql/mysql_stored_procedures.texy page.
+* Procedures listed below use the procedures and functions listed on the "MySQL Stored Procedures":../sql/mysql_stored_procedures.html page.
 * I also have versions of stored procedures that work with multiple networks at once, but they are not tested yet.
 
 
@@ -247,7 +247,7 @@ END $$
 
 
 Procedure `nn_GeneratePerceptron`  is called by `nn_CreatePerceptron`.
-That's because `nn_GeneratePerceptron` works independently and creates the network 
+That's because `nn_GeneratePerceptron` works independently and creates the network
 in a virtual space, before merging it to the persistent tables.
 This helps isolating the eventual transactions and improves the performance.
 
@@ -654,8 +654,8 @@ CALL nn_ComputeNet( iNetID, '1, -1', TRUE );  ##  Be sure to set to TRUE!
 
 Then we have to rename the tables, because MySQL does not allow
 to pass the result set in any other way.
-(At least one row could be spared... see my 
-"MySQL wish-list":../sql/mysql_wishlist/alter_table_rename_overwrite.texy.)
+(At least one row could be spared... see my
+"MySQL wish-list":../sql/mysql_wishlist/alter_table_rename_overwrite.html.)
 
 /--code sql .[brush:]
   DROP TEMPORARY TABLE IF EXISTS nn_CorrectWeights, nn_CorrectWeights_InternalValues;
@@ -751,7 +751,7 @@ BEGIN body: BEGIN
       FROM nn_CorrectWeights_Wanted_pos AS want
       LEFT JOIN nn_GetOutputNeuronIDs AS out_neu USING(pos);
     DROP TEMPORARY TABLE nn_CorrectWeights_Wanted_pos;
-    
+
     CALL LoggP('nn_CorrectWeights', CONCAT('Wanted values: ', (
       SELECT GROUP_CONCAT( CONCAT(id_neuron,': ',val) SEPARATOR '; ') FROM nn_CorrectWeights_Wanted
     )));
@@ -962,7 +962,7 @@ Modified procedures for computation and teaching
 ------------------------------------------------
 
 Due to need of optimization, procedures `nn_ComputeNet` and `nn_CorrectWeights`
-had to be modified. Two specialized procedures complete this task - 
+had to be modified. Two specialized procedures complete this task -
 `nn_ts_ComputeNet` and `nn_ts_CorrectWeights`.
 Their difference is in that they do not take serialized values
 in parameters; instead, they expect pre-created tables with these values.
@@ -1010,7 +1010,7 @@ The training process
 --------------------
 
 Finally, procedure `nn_ts_TeachTrainset` teaches the net using the prepared training data set.
-All it needs is the network ID, the training set ID, the learning rate, target error and the 
+All it needs is the network ID, the training set ID, the learning rate, target error and the
 maximum rounds to be completed (a "round" means that all cases from the training set are used exactly once).
 
 The training itself is done by "incremental backpropagation". The process of teaching is stopped
@@ -1099,8 +1099,8 @@ However, that's the snapshot right from my database, so expect it to have plenty
 
 Also, there are some parts of code that might cause problems, like <code>DEFINER=`root`@`localhost`</code> etc.
 
-And, lastly, the persistent **tables may have the Memory engine** set; so if you need your data to prevail the MySQL server reboot, 
-ensure that ALL non-TEMPORARY tables' engine is MyISAM (recommended native engine) 
+And, lastly, the persistent **tables may have the Memory engine** set; so if you need your data to prevail the MySQL server reboot,
+ensure that ALL non-TEMPORARY tables' engine is MyISAM (recommended native engine)
 or "PBXT":http://www.primebase.org/ (recommended plug-in engine, experimental).
 
 
@@ -1121,14 +1121,14 @@ I will focus further developement on these areas:
 Resources
 =========
 
-* Don Tveter: "Backpropagator's Review":http://www.dontveter.com/bpr/bpr.html, esp. 
+* Don Tveter: "Backpropagator's Review":http://www.dontveter.com/bpr/bpr.html, esp.
 * Russell D. Reed, Robert J. Marks II: "Neural Smithing":http://mitpress.mit.edu/catalog/item/default.asp?ttype=2&tid=8104&mode=toc. MIT Press 1999. ISBN-10: 0-262-18190-8
 * "comp.ai.neural-nets FAQ":ftp://ftp.sas.com/pub/neural/FAQ.html#questions
 
 
 
 
-Questions? See "contacts":../../osobni/kontakty.texy.
+Questions? See "contacts":../../osobni/kontakty.html.
 
 
 

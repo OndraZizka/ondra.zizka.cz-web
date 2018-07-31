@@ -3,7 +3,7 @@ Je Java jako Linux nebo jako Windows?
 
 <!-- //Článek momentálně upravuji.// -->
 
-Po napsání předchozího článku "Výhody a nevýhody PHP":/stranky/programovani/php/vyhody_a_nevyhody_php.texy
+Po napsání předchozího článku "Výhody a nevýhody PHP":/stranky/programovani/php/vyhody_a_nevyhody_php.html
 se ozval Jakub Vrána a chvíli jsme si mailovali nad některými body článku,
 což se, jak to bývá, stočilo na srovnání PHP s technologií, kterou já preferuji - tedy s Javou.
 
@@ -12,33 +12,33 @@ Zde je část z mailu:
 
 <blockquote>
 
-Jednu věc nechápu a budu rád, když mi jako (předpokládám) fanda Linuxu 
+Jednu věc nechápu a budu rád, když mi jako (předpokládám) fanda Linuxu
 vysvětlíš:
 
-Jak je možné, že lidé, kteří preferují Linux před Windows, zároveň preferují 
-PHP před Javou. Protože pokud bychom zobecnili vlastnosti a požadavky na 
-systémy a plaformy, potom právě Java oproti PHP by byla jako Linux oproti 
-Windows - technologicky vyspělejší, vývojově stabilnější, zpětně 
-kompatibilnější, modulárnější, konfigurovatelnější, víceúčelovější, a druhé 
-ideologicky vykrádá první, přičemž to ani nezvládne dotáhnout do konce a 
+Jak je možné, že lidé, kteří preferují Linux před Windows, zároveň preferují
+PHP před Javou. Protože pokud bychom zobecnili vlastnosti a požadavky na
+systémy a plaformy, potom právě Java oproti PHP by byla jako Linux oproti
+Windows - technologicky vyspělejší, vývojově stabilnější, zpětně
+kompatibilnější, modulárnější, konfigurovatelnější, víceúčelovější, a druhé
+ideologicky vykrádá první, přičemž to ani nezvládne dotáhnout do konce a
 zbyde jenom nedotažený hybrid zatížený historií svého vývoje.
 
-PHP se mi zdá jako takový rozjetý mnohakilometrový vlak tažený slabou 
-mašinkou, ke kterému stále napojují další a další vagóny - některé velice 
-moderní, přepychové, a pokud jedete po rovince, vše je ok - ale pak přijde 
-kopeček a mašinka se sotva vleče; a pak i v  těch nejpřepychovějších 
-vagónech poznáte, že je něco špatně. (Mašinka zde nepředstavuje výkonnost, 
+PHP se mi zdá jako takový rozjetý mnohakilometrový vlak tažený slabou
+mašinkou, ke kterému stále napojují další a další vagóny - některé velice
+moderní, přepychové, a pokud jedete po rovince, vše je ok - ale pak přijde
+kopeček a mašinka se sotva vleče; a pak i v  těch nejpřepychovějších
+vagónech poznáte, že je něco špatně. (Mašinka zde nepředstavuje výkonnost,
 ale právě ono "jádro".)
 
-Co je tedy podle tebe na PHP lepšího? Co tě k němu táhne kromě citové vazby? 
-(Tvoje zásluhy v PHP komunitě zhruba znám a oceňuji, a chápu a znám z 
-vlastní zkušenosti, že z takového rozjetého vlaku se velmi těžko vyskakuje.) 
-Zkoušels někdy proniknout do J2EE? Znáš základní konceptuální rozdíly? 
-Nechci tě nijak shazovat, jen mě zajímá, jestli se dokážeš vžít do mojí 
+Co je tedy podle tebe na PHP lepšího? Co tě k němu táhne kromě citové vazby?
+(Tvoje zásluhy v PHP komunitě zhruba znám a oceňuji, a chápu a znám z
+vlastní zkušenosti, že z takového rozjetého vlaku se velmi těžko vyskakuje.)
+Zkoušels někdy proniknout do J2EE? Znáš základní konceptuální rozdíly?
+Nechci tě nijak shazovat, jen mě zajímá, jestli se dokážeš vžít do mojí
 situace a pochopit tak, proč PHP tak "haním".
 
 Zdraví
-Ondra Žižka 
+Ondra Žižka
 
 </blockquote>
 
@@ -64,7 +64,7 @@ Ondřej Žižka:
 </blockquote>
 
 Jak někdo poznamenal v tamějších komentářích, Jakub posuzuje z pohledu technického,
-zatímco já se snažím spíše o ideologické srovnání - zkrátka principy, 
+zatímco já se snažím spíše o ideologické srovnání - zkrátka principy,
 na kterých vývojáři a komunita dané technologie (ne)staví.
 
 A to je z dlouhodobého hlediska mnohem důležitější -
@@ -98,14 +98,14 @@ Komplexnost jádra
 
 Co se týká "ne/komplexnosti" jádra, tak si nejsem zcela jist, jak rozlišit, co v jádru je či není.
 
-Pokud vím, v jádru Javy je jen několik tříd typu Object, String, Throwable, 
-dále nativní metody základních systémových tříd, a tím to hasne; 
+Pokud vím, v jádru Javy je jen několik tříd typu Object, String, Throwable,
+dále nativní metody základních systémových tříd, a tím to hasne;
 drtivá většina funkcionality JRE je již implementovaná v Javě a je oddělitelná.
 
 V PHP je mnoho knihoven instalovatelných z repozitáře PEAR,
 a většina těch, které jsou ve Windows verzi v phpXts.dll,
 jsou na linuxu volitelné za cenu vlastní kompilace PHP.
-Nicméně nevolitelnou součástí jádra jsou funkce 
+Nicméně nevolitelnou součástí jádra jsou funkce
 jako `money_format()`, `apache_note()` nebo `highlight_file()`,
 na kterých jistě technologie závislá není.
 
@@ -164,7 +164,7 @@ Syntaxe Java oproti syntaxi PHP:
 - Nemá # komentáře
 - Nemá `systémová volání`
 - Nemá podivné konstrukce typu Array($objekt, "VolanáMetoda")
-- Nemá konstrukty, které se tváří jako funkce, ale nejsou funkce 
+- Nemá konstrukty, které se tváří jako funkce, ale nejsou funkce
 - Nemá operátory and, or, xor, !==, ===
 - Nemá konstrukty require, require_once, include_once, declare
 - Nemá alternativní zápis kontrolních struktur s dvojtečkou
@@ -187,7 +187,7 @@ Závěr
 Co se tedy týký připodobnění Javy a PHP k Linuxu a Windows,
 není mnoho argumentů, proč PHP připodobňovat k Linuxu a Javu k Windows - spíše naopak.
 
-PHP je prostě na ocasu vývoje a s velkými obtížemi adoptuje vymoženosti 
+PHP je prostě na ocasu vývoje a s velkými obtížemi adoptuje vymoženosti
 jiných technologií (OOP, Unicode, výjimky, synchronizaci a sdílení, ...) - stejně jako Windows.
 
 Naproti tomu Java je spolu s C# a .NET na špičce vývoje na poli IT, podobně jako Linux na poli OS.
@@ -196,7 +196,7 @@ Naproti tomu Java je spolu s C# a .NET na špičce vývoje na poli IT, podobně 
 
 Jako tečku cituji člověka, který má PHP opravdu v malíku (a autora skvělého Texy!) - Davida Grudla:
 
-> Programovat v Javě umí kdekdo. O ASP.NET ani nemluvě. Jen v PHP píši skuteční hrdinové. 
+> Programovat v Javě umí kdekdo. O ASP.NET ani nemluvě. Jen v PHP píši skuteční hrdinové.
 > Renesanční bytosti. Fascinující a neskutečně trpěliví lidé. Trpěliví od slova trpět. Třeba jako já.
 >
 > -- David Grudl, http://latrine.dgx.cz/php-surprise .>

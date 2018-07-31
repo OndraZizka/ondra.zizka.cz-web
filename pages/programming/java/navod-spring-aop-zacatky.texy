@@ -37,7 +37,7 @@ Konfigurace Spring AOP v XML
 ****************************
 
 Dříve (před verzí Spring 2.0) se konfigurace AOP prováděla poněkud neohrabaně
-nastavováním Beans (což popisuji v návodu "Úplné začátky se Spring framework":[navod-spring-framework-zacatky.texy]).
+nastavováním Beans (což popisuji v návodu "Úplné začátky se Spring framework":[navod-spring-framework-zacatky.html]).
 
 V současnosti se AOP nastavuje pomocí elementů z namespace `<aop:*>`.
 Tento jmenný prostor je třeba v XML souboru zmínit, proto se místo DTD použije definice přes `xmlns:aop`.
@@ -53,19 +53,19 @@ Tento jmenný prostor je třeba v XML souboru zmínit, proto se místo DTD použ
      http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd"
 >
 
-  <!-- Před spuštěním metod tříd z balíku "aoptest" zavoláme metodu test() z beany s ID aopTestAdviceBean. -->  
+  <!-- Před spuštěním metod tříd z balíku "aoptest" zavoláme metodu test() z beany s ID aopTestAdviceBean. -->
   <aop:config>
     <aop:pointcut id="aopTestPointcut" expression="execution(* aoptest.*.*(..))"/>
     <aop:aspect ref="aopTestAdviceBean">
       <aop:before pointcut-ref="aopTestPointcut" method="test"/>
-    </aop:aspect>    
+    </aop:aspect>
   </aop:config>
 
   <!-- Metoda této beany (objektu) se bude volat podle výše uvedeného pravidla. -->
   <bean id="aopTestAdviceBean" class="aoptest.AopTestAdviceBean">
     <property name="foo" value="foo value"/>
   </bean>
-  
+
   <!-- Automatické volání metod funguje jen pro objekty vytvořené Springem. -->
   <bean id="nejakaTrida" class="aoptest.NejakaTrida">
     <property name="bar" value="bar value"/>
@@ -125,7 +125,7 @@ Závěr, literatura, zdroje
 
 Tolik tedy ke Spring AOP. Snad jsem na nic nezapomněl, ale v podstatě je to dost jednoduché.
 
-Cokoliv dalšího nastudujete z velmi obsáhlého 
+Cokoliv dalšího nastudujete z velmi obsáhlého
 "referenčního manuálu Springu":http://static.springframework.org/spring/docs/2.5.x/reference/,
 zejména oblasti:
 * Nejprve "Chapter 6. Aspect Oriented Programming with Spring":http://static.springframework.org/spring/docs/2.5.x/reference/aop.html#aop-aj-configure

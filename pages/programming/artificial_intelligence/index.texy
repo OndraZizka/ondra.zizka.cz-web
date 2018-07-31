@@ -44,7 +44,7 @@ Neural Networks and Backpropagation in Java
 =================================================
 
 JavaScript implementation re-written to Java. Thus, much faster.
-Otherwise it keeps  the original idea of maximum independence of 
+Otherwise it keeps  the original idea of maximum independence of
 distinct parts of the model (e.g., computing versus teaching).
 
 What's implemented? Not much, actually:
@@ -74,14 +74,14 @@ Kohonen maps, Hopfield network etc. The existing model is suitable for this.
 Neural Networks and Backpropagation in SQL Stored Procedures
 =================================================
 
-My last work in fields of artifical intelligence is 
+My last work in fields of artifical intelligence is
 an implementation of neural networks and in SQL.
 Using a library of Stored Procedures, you can create neural networks,
 teach them using backpropagation algorithm, and then use them,
 all just by calling very simple Stored Procedures API.
 
-Further info about 
-"SQL implementation of neural networks":../neural_networks_in_sql_stored_procedures/index.texy
+Further info about
+"SQL implementation of neural networks":../neural_networks_in_sql_stored_procedures/index.html
 on a dedicated page.
 
 
@@ -91,9 +91,9 @@ Other stuff
 
 These are just some humble ideas.
 
-"Plan to develop artificial cognition - what has to be done":developement_plan_of_artificial_cognition.texy
- "Covering Artificial Intelligence Theory":covering_ai_theory.texy
- "Business Society Algorithm":business_society_algorithm.texy
+"Plan to develop artificial cognition - what has to be done":developement_plan_of_artificial_cognition.html
+ "Covering Artificial Intelligence Theory":covering_ai_theory.html
+ "Business Society Algorithm":business_society_algorithm.html
 
 
 
