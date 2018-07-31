@@ -78,10 +78,10 @@ SyntaxHighlighter.all(); // Will add a listener to window.onload.
           <!-- Menu -->
           <div class="menu">
             <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<!--stranky/programovani/php/vyhody_a_nevyhody_php.texy-->
+<!--stranky/programming/php/vyhody_a_nevyhody_php.texy-->
 <ul xmlns:php="http://php.net/xsl" id="menu" class="flat level0">
 
-  <li onclick="ShowMenuSekce(this);" class="level0 collapsed "><span>Programování</span><ul class="flat level1"><li><a href="/stranky/programovani/index.texy">Rozcestník...</a></li><li><a href="/stranky/programovani/insolvencni_rejstrik-isir_ws/index.texy">Insolvenční rejstřík - ISIR WS</a></li><li><a href="/stranky/programovani/java/index.texy">Java + J2EE</a></li><li><a href="/stranky/programovani/sql/index.texy">(My)SQL</a></li><li><a href="/stranky/programovani/artificial_intelligence/index.texy">Neural Networks</a></li><li><a href="/stranky/programovani/web_javascript_ajax_canvas/canvas_element_selection_buffer.texy">Web, JavaScript, AJAX, Canvas</a></li><a href="/tools/">Text tools</a></ul></li>
+  <li onclick="ShowMenuSekce(this);" class="level0 collapsed "><span>Programování</span><ul class="flat level1"><li><a href="/stranky/programming/index.texy">Rozcestník...</a></li><li><a href="/stranky/programming/insolvencni_rejstrik-isir_ws/index.texy">Insolvenční rejstřík - ISIR WS</a></li><li><a href="/stranky/programming/java/index.texy">Java + J2EE</a></li><li><a href="/stranky/programming/sql/index.texy">(My)SQL</a></li><li><a href="/stranky/programming/artificial_intelligence/index.texy">Neural Networks</a></li><li><a href="/stranky/programming/web_javascript_ajax_canvas/canvas_element_selection_buffer.texy">Web, JavaScript, AJAX, Canvas</a></li><a href="/tools/">Text tools</a></ul></li>
 
   <li onclick="ShowMenuSekce(this);" class="level0 collapsed "><span>"Realitní kancelář"</span><ul class="flat level1"><li><a href="/stranky/realitni_kancelar/chaty_a_chalupy.texy">Chaty a chalupy</a></li><li><a href="/stranky/realitni_kancelar/byty_ceske_budejovice.texy">Byty</a></li></ul></li>
 
@@ -109,7 +109,7 @@ SyntaxHighlighter.all(); // Will add a listener to window.onload.
 <h1>Výhody a nevýhody PHP</h1>
 
 <p><em>Update: V návaznosti na tento článek vznikl další – <a
-href="/stranky/programovani/java/je_java_jako_linux_nebo_jako_windows.texy">Je
+href="/stranky/programming/java/je_java_jako_linux_nebo_jako_windows.texy">Je
 Java jako Linux nebo jako Windows?</a></em></p>
 
 <p><em>Update: Abych nezůstal u teorie a subjektivních hodnocení <acronym
@@ -124,7 +124,7 @@ ze seznamu nevýhod</a>.</em></p>
 <!-- "Srovnání Java a PHP":srovnani_php_a_javy.html. -->
 <hr />
 
-<div><img src="/stranky/programovani/php/ElePHPant_with_Tiger.jpg" alt=""
+<div><img src="/stranky/programming/php/ElePHPant_with_Tiger.jpg" alt=""
 class="right" /></div>
 
 <p>Na webu je mnoho flejmů, zda je PHP lepší / horší než Java a .NET atd.
@@ -471,7 +471,7 @@ Server Pages (příliš nesmyslná technologie), XML + XSLT + JavaScript
 
 <h2>Výhody PHP</h2>
 
-<div><img src="/stranky/programovani/php/elePHPant_Front_Tiny.png" alt=""
+<div><img src="/stranky/programming/php/elePHPant_Front_Tiny.png" alt=""
 class="right" /></div>
 
 <p>Technologie PHP má spoustu výhod, díky které se rychle stalo
@@ -510,7 +510,7 @@ populárním. Mezi ně patří např.:</p>
 
 <h2>Nevýhody PHP</h2>
 
-<div><img src="/stranky/programovani/php/elePHPant_RightFront_Tiny.png" alt=""
+<div><img src="/stranky/programming/php/elePHPant_RightFront_Tiny.png" alt=""
 class="right" /></div>
 
 <p>Na druhou stranu, PHP má také značné nevýhody, pro které jej mnozí
@@ -546,7 +546,7 @@ kritizují a někdy i opouštějí; mimo jiné tyto:</p>
 	mnoha úloh (např. objektově-relační mapování)</li>
 </ul>
 
-<div><img src="/stranky/programovani/php/elePHPant_LeftFront_Tiny_sad.png"
+<div><img src="/stranky/programming/php/elePHPant_LeftFront_Tiny_sad.png"
 alt="" class="right" /></div>
 
 <ul>
@@ -599,7 +599,7 @@ alt="" class="right" /></div>
 </ul>
 
 <div><img
-src="/stranky/programovani/php/elePHPant_RightFront_Tiny_lezi_oci_v_sloup.png"
+src="/stranky/programming/php/elePHPant_RightFront_Tiny_lezi_oci_v_sloup.png"
 alt="" class="right" /></div>
 
 <ul>
