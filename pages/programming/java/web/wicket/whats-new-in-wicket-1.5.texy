@@ -1,0 +1,12 @@
+
+What's new in Wicket 1.5
+************************
+
+* Wicket 1.5 requires at least Java 5.
+* Removed all methods, classes and interfaces which were marked deprecated in Wicket 1.4.
+* Removed FormComponent.setPersistence().
+* Removed HeaderContributor and friends.
+* Improved exception handling
+
+More at "Migration to Wicket 1.5":https://cwiki.apache.org/WICKET/migration-to-wicket-15.html
+and "Wicket 1.5 Wish List":https://cwiki.apache.org/WICKET/wicket-15-wish-list.html.

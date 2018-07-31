@@ -1,4 +1,7 @@
-Zajímavý software
+date=2008-01-01
+@@@
+
+Zajímavý software (2008)
 *****************
 
 Po nějaké době se každý ustálí na nějakých oblíbených programech.
@@ -19,5 +22,5 @@ Já používám a doporučuji tyto:
 |* Ostatní |||
 |Správa souborů | "Total Commander":http://www.ghisler.com/ |  Krusader - za poslední dva roky se hodně moc zlepšil
 |FTP klient     |                ^|  - nic -
-|Síťová jednotka z FTP účtu       | "FTPDrive":http://www.killprog.com/fdrve.html (stránka působí nedůvěryhodně, ale program funguje skvěle) |  nějaký FTP filesystem, nevzpomenu si na jméno
+|Síťová jednotka z FTP účtu       | "FTPDrive":http://www.killprog.com/fdrve.html (stránka působí nedůvěryhodně, ale program funguje skvěle) |  FUSE ftpfs
 |Zjišťování, kam mizí místo na disku | "JGoodies JDiskReport":http://www.jgoodies.com/freeware/jdiskreport/ ||

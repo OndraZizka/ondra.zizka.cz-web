@@ -1,0 +1,173 @@
+XULRunner tutorial
+******************
+
+I've been playing recently with a time-keeping tool, written in XUL, open in a popup window.
+The application is pretty simple, just allowing me to enter a list of tasks,
+and keep track of how long I've had any task selected.  Being in a popup allows me to 
+quickly change tasks and keep a much more accurate log of my time.
+
+I was having a problem though, because clicking links from emails or IMs would open up into my popup window, and not a new tab
+in Firefox, making me lose my data.  <a title="Nathan's blog" href="http://blogs.acceleration.net/birdman/">Nathan</a> suggested <a href="http://wiki.mozilla.org/XUL:Xul_Runner">XULRunner</a>, and after losing my data 3 more times, I broke
+down and figured out how to set it up.  XULRunner is a command-line app to run XUL applications, essentially starting another gecko instance 
+and running your code in that.  That way Outlook won't think that's a good place to load windows, and if Firefox crashes, my XULRunner instance
+is still fine and dandy.
+
+Documentation on XULRunner is a bit <a href="http://developer-test.mozilla.org/docs/XULRunner">scant</a>, but googling 
+revealed a <a href="http://friedfish.homeip.net/~darinf/xulrunner/xulmine.html">xulmine sample</a>, and from that I was
+able to reverse engineer what the hell XULRunner wanted me to do.  And, now that I review some of these links, 
+I see <a href="http://weblogs.mozillazine.org/darin/">Darin</a> has more information about XULRunner than I thought.
+
+As a convention, <em>emphasized</em> words are variables, and should be replaced with a value that makes
+sense for your application.
+
+
+   
+Setting up your folder structure
+================================
+
+
+Set up your application like so:
+
+/--code plain .[brush:]
+/applicationName
+   /chrome
+      /applicationName
+         your app files
+      chrome.manifest
+   /defaults
+      /preferences
+         prefs.js
+   application.ini
+\--
+
+/--code bash .[brush:]
+appName=myXulApp
+mkdir -p $appName/chrome/$appName
+   touch $appName/chrome/chrome.manifest
+mkdir -p $appName/defaults/preferences
+   touch $appName/defaults/preferences/prefs.js
+   touch $appName/application.ini
+\--
+
+There are more complicated ways to do it, but this seems to be the bare bones.
+Now let's set up all the configuration files.
+   
+
+
+   
+Setting up your <code>application.ini</code>
+============================================
+
+XULRunner works by reading an <code>application.ini</code> file, and then
+loading things up by looking at specific directories.
+Here's a sample <code>application.ini</code>:
+
+/--code plain .[brush:]
+[App]
+Vendor=company
+Name=applicationName
+Version=0.1
+BuildID=20050506
+
+[Gecko]
+MinVersion=1.8
+MaxVersion=1.8
+\--
+
+The important bit is the <code>[Gecko]</code> section.  The <code>[App]</code> section is nice, but doesn't seem to serve any essential function.
+The <code>[Gecko]</code> part tells XULRunner what versions of Gecko can be used with your app, and XULRunner will fail if those lines aren't there.   
+   
+
+Setting up your <code>prefs.js</code>
+=====================================
+
+This is a preferences file, where you set initial values of things, 
+either gecko engine settings or application specific settings.  All we need here is:
+
+/--code plain .[brush:]
+pref("toolkit.defaultChromeURI", "chrome://<em>applicationName</em>/content/<em>startPage</em>.xul");
+\--
+
+The <em>startPage</em> is what XUL page you want to view initially.
+   
+
+Setting up your <code>chrome.manifest</code>
+============================================
+
+      This file performs the mapping between a chrome:// url and your application files:
+
+/--code plain .[brush:]
+content <em>applicationName</em> file:<em>applicationName</em>/
+\--
+
+That effectively tells XULRunner to look at <em>applicationName</em>/ 
+in the chrome directory when it encounters a
+`chrome://<em>applicationName</em>/content/` URI.
+   
+
+      Most XUL apps I've seen are distributed as a .jar file, rather than a subfolder of chrome/ with all the files scattered about.
+      Having your application unpacked is much easier for development, but when you do want to deploy it as a jar:
+
+
+1) Zip up your /chrome/<em>applicationName</em> folder, put the <em>applicationName</em>.zip in the /chrome directory.
+2) Rename <em>applicationName</em>.zip to <em>applicationName</em>.jar
+3) Change the <code>chrome.manifest</code> to point to <em>applicationName</em>.jar:
+   /--code plain .[brush:]
+   content <em>applicationName</em> jar:<em>applicationName</em>.jar!/
+   \--
+   The `jar:` protocol tells XULRunner that this is a jar file, the the `!` after the filename tells it to look inside the jar file.
+   
+Running your app with XULRunner
+===============================
+
+Now all the prep work has been done, and your application is ready to be run.  After you <a href="http://ftp.mozilla.org/pub/mozilla.org/xulrunner/nightly/latest-trunk/">download XULRunner</a>, this is just a matter of a command line:
+
+/--code plain .[brush:]
+xulrunner application.ini
+\--
+
+Your <em>startPage</em>.xul should open up in a window, like any other desktop app.
+
+
+   
+Conclusion
+==========
+
+To get a XUL app working with XUL Runner, you need 3 config files in 3 different formats.  That's kinda messed up.  
+To be fair, the <code>chrome.manifest</code> format is something used for Firefox extensions, so it makes sense to re-use that functionality, but
+needing to specify your start page in <code>prefs.js</code> seems arbitrary.  There are some proposals for a different method of 
+<a href="http://wiki.mozilla.org/XUL:XUL_Application_Packaging">XUL Application Packaging</a>, but that's about a week old right now, and
+there's no code to support it.
+
+A XULRunner-based app seems like a good solution when you want to avoid Firefox.  I want to avoid Firefox because of outlook, but in general
+I don't see much of an advantage over just making an extension, its just a series of trade offs.<br />
+
+
+Pros:
+-----
+
+<ul>
+ <li>Runs in its own process</li>
+ <li>Unaffected by other Firefox extensions, skins, configuration.</li>
+ <li>Doesn't require Firefox</li>
+</ul>
+
+Cons:
+-----
+
+<ul>
+ <li>Doesn't auto-update with Firefox, auto-update code would need to be written</li>
+ <li>Unaffected by other Firefox extensions, skins, configuration.</li>
+ <li>Install package would be larger download to include the XULRunner binaries (13MB more)</li>
+</ul>
+   
+
+The big internal app we're writing will likely remain as a Firefox extension, 
+but going through this process has certainly taught me a lot more about how 
+to organize XUL apps.  I wonder if you could munge XULRunner config files
+to point to a Firefox extension?  Then you could auto-update with Firefox,
+and still get the benefits of XULRunner.
+
+
+Friday, May 06, 2005 3:29 PM
+
