@@ -157,8 +157,8 @@ Volání API
 
 Jak se konkrétní procedury používají je popsáno jednak v technické zprávě diplomové práce,
 jednak v komentářích v kódu jednotlivých procedur, a také na webu autora -
-"jízdní řády":http://ondra.zizka.cz/stranky/programming/transport_schedule_search/index.html,
-"neuronové sítě":http://ondra.zizka.cz/stranky/programming/neural_networks_in_sql_stored_procedures/index.html.
+"jízdní řády":http://ondra.zizka.cz/pages/programming/transport_schedule_search/index.html,
+"neuronové sítě":http://ondra.zizka.cz/pages/programming/neural_networks_in_sql_stored_procedures/index.html.
 
 
 Proto zde jen několik příkladů, jak SQL příkazy používat.

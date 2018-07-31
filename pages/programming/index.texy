@@ -35,8 +35,9 @@ Java
 * "Úplné začátky s frameworkem Spring":java/navod-spring-framework-zacatky.html - návod, jak začít se Springem a ukázka, k čemu Spring je.
 * "Tipy pro Java technologie":java/tipy.html
 * "JTexy! - Java Texy! Implementation":java/texy_java_implementation.html
+<!--
 * Moje historická "Java stránka":/java
-
+-->
 
 PHP
 ===
@@ -51,7 +52,7 @@ PHP
 SQL a MySQL
 ===========
 
-* "SQL Corner":http://ondra.zizka.cz/stranky/programming/sql/index.html (mostly in english)
+* "SQL Corner":http://ondra.zizka.cz/pages/programming/sql/index.html (mostly in english)
 
 
 Web, JavaScript, AJAX, Canvas

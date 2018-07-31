@@ -213,7 +213,7 @@ Jednoduše narvou návratové hodnoty do parametrů, a programátore, hledej:
 > it is an indication that the error occurred before the connect() call.
 > This is most likely due to a problem initializing the socket.
 
-Kde já jsem tohle viděl? Á, už vím! Einstein kdysi vymyslel takovou "logickou hru":/stranky/osobni/einsteinova_logicka_hra.html:
+Kde já jsem tohle viděl? Á, už vím! Einstein kdysi vymyslel takovou "logickou hru":/pages/osobni/einsteinova_logicka_hra.html:
 
 > Je pět pět parametrů, každý nese hodnotu nějakého typu.
 > Když návratová hodnota boolean a v prostřední hodnotě je nula,

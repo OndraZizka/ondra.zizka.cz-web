@@ -68,8 +68,8 @@ Co zrovna dělám
 
 Pokud zrovna nepracuji pro JBoss, zkoumám různé technologie:
 
-* "JBoss AOP":stranky/programming/java/jboss-aop-howto-example-standalone-app.html
-* "`canvas`":stranky/programming/web_javascript_ajax_canvas/canvas_element_selection_buffer.html
+* "JBoss AOP":pages/programming/java/jboss-aop-howto-example-standalone-app.html
+* "`canvas`":pages/programming/web_javascript_ajax_canvas/canvas_element_selection_buffer.html
 
 V mezičase se prokousávám webovými Java technologiemi (J2EE).
 
@@ -92,7 +92,7 @@ Momentálně pracuji na projektech:
 -------------------
 
 Součástí je implementace neuronových sítí v SQL/SP,
-což dává vznik většině obsahu v sekci "Programování / SQL":stranky/programming/sql/index.html.
+což dává vznik většině obsahu v sekci "Programování / SQL":pages/programming/sql/index.html.
 
 -->
 \---

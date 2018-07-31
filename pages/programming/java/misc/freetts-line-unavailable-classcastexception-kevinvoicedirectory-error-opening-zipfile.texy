@@ -96,7 +96,7 @@ it also has code inside which actually relies on these data, which is the real p
 So if you Mavenize such library, it ends up in different directories. So it will not usually work in IDE.
 
 You need to flatten the dependencies to a single dir, using e.g. `mvn dependencies:copy`,
-see "this example":http://ondra.zizka.cz/stranky/programming/java/maven/maven-create-distribution-package.html.
+see "this example":http://ondra.zizka.cz/pages/programming/java/maven/maven-create-distribution-package.html.
 You also need to set Maven to put all app's dependencies to it's jar's `MANIFEST.MF`'s `Class-Path` - here it's ok because it's an app, not a library.
 
 Then you need to manually rewrite all FreeTTS libraries' MANIFEST.MF in the local repository, so that you can rebuild your application.

@@ -32,7 +32,7 @@ CALL StoredProcedure() INTO @result;
 SET @result = (CALL StoredProcedure());
 
 More detailed formatted draft is here:
-http://ondra.zizka.cz/stranky/programming/sql/mysql_wishlist/result_set_in_variable.texy
+http://ondra.zizka.cz/pages/programming/sql/mysql_wishlist/result_set_in_variable.texy
 
 Now - what do you think? Would this ease your SP developement? Is there some better concept?
 
