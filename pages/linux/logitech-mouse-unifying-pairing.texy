@@ -1,0 +1,19 @@
+date: 2018-08-27
+
+Pairing the Logitech Mouse Unifying mouse in linux
+##################################################
+
+I have a Logitech mouse M-705. I've lost the USB dongle.
+
+Fortunatelly, there is an app for Linux that allows you to connect the mouse to other dongle: "ltunify":https://lekensteyn.nl/logitech-unifying.html.
+
+/--code bash
+git clone https://git.lekensteyn.nl/ltunify.git
+cd ltunify
+make install-home
+\--
+
+There is one more, "Solaar":https://codarren.com/2017/06/logitech-unifying-receiver-pairing-linux/,
+supposedly with a GTK UI, but I couldn't get it work - the UI just didn't appear.
+
+Update: I found another page describing how to make it run: Restart after installation :)

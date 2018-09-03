@@ -3,12 +3,7 @@
 NetBeans Wicket support wish list
 *********************************
 
-
 - One-step creation of html + java files
 - Validation in HTML files aware of wicket: namespace
 - Check consistency of HTML vs. Java files
 - Check consistency of property strings - e.g. `new PropertyModel<String>(this, "path")`
-
-
-
-
